@@ -1,4 +1,5 @@
 
+
 echo "Initilizing Install mysql-server..."
 sudo apt install mysql-server
 mysql_secure_installation
