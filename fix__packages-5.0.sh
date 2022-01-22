@@ -86,14 +86,24 @@ echo '**************************************************************************
 sudo swapoff -a && swapon -a && free -h
 
 #OK
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-
-echo -e "\033[01;05;31mTIMESHIFT IS CREATE SNAPSHOT!!\033[00;37m"
-sudo timeshift --create --verbose --comments "SNAPSHOT CREATED BY BASH *fix__packages-2.0.sh*" --tags D
-
 #echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-sudo timeshift --delete
-#echo -e "\033[01;37mDONE\033[01;37m"
+echo -e "\033[00;32mdone\033[00;37m"
 
-#echo -e '\033[05;01;32mALL PROCESSS TERMINATED SUCCESSULL!!\033[00;37m'
-#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
+echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
+read question
+
+if test "y" = "$question"
+then
+ 	echo "initializing..."
+	echo -e "\033[01;05;31mTIMESHIFT IS CREATE SNAPSHOT!!\033[00;37m"
+	sudo timeshift --create --verbose --comments 'SNAPSHOT CREATED BY BASH *fix__packages-5.0.sh*' --tags D
+	echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
+elif test  "n" = "$question"
+then
+	echo "Generating the list of snapshots..."
+	sudo timeshift --delete
+
+elif test "y" || "x" != "$question"
+then 
+	echo "Command not found!"
+fi
