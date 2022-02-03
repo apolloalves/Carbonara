@@ -18,7 +18,7 @@ sudo dpkg --list 'linux-image*'
 echo -e '********************************************************************************************************************'
 
 #OK
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 #echo -e '\033[01;32mCLEARING TRACES OF PACKAGES...\033[00;33m'
 
 sudo apt clean
@@ -95,8 +95,9 @@ read question
 if test "y" = "$question"
 then
  	echo "initializing..."
-	echo -e "\033[01;05;31mTIMESHIFT IS CREATE SNAPSHOT!!\033[00;37m"
-	sudo timeshift --create --verbose --comments 'SNAPSHOT CREATED BY BASH *fix__packages-5.0.sh*' --tags D
+        #echo -e "\033[01;31mCreating snapshot...\033[00;37m"
+	sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
+	neofetch
 	echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
 elif test  "n" = "$question"
 then
@@ -107,3 +108,5 @@ elif test "y" || "x" != "$question"
 then 
 	echo "Command not found!"
 fi
+
+
