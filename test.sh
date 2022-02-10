@@ -14,11 +14,6 @@ then
         
         neofetch
 
-elif test "y" || "n" != "$cl_question"
-                
-                then
-                echo "incorrect answer!"
-                
 
 elif test "n" = "$cl_question"
         echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
@@ -48,4 +43,11 @@ elif test "n" = "$cl_question"
 
 
         fi 
+
+
+elif test "y" || "n" != "$cl_question"
+                
+                then
+                echo "incorrect answer!"
+                
 fi

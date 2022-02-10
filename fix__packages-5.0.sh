@@ -139,7 +139,7 @@ elif test "n" = "$cl_question"
 
                         then
                                 echo "initializing timeshift..."
-                                sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
+                                sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.1.sh ]' --tags D
                                 echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
                                 #echo -e "\033[01;31mCreating snapshot...\033[00;37m"
                                 neofetch
