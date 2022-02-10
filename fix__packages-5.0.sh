@@ -109,7 +109,7 @@ echo -e '\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m'
 #********************************************************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #********************************************************************************************************************
-echo -n 'Do you want to open Stacer? (y/n)?'
+echo -n 'Deseja abrir o system cleaner (y/n)?'
 read cl_question
 
 if test "y" = "$cl_question"
@@ -124,11 +124,7 @@ then
         
         neofetch
 
-elif test "y" || "n" != "$cl_question"
-                
-                then
-                echo "incorrect answer!"
-                
+
 elif test "n" = "$cl_question"
         echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
         then
@@ -139,7 +135,7 @@ elif test "n" = "$cl_question"
 
                         then
                                 echo "initializing timeshift..."
-                                sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.1.sh ]' --tags D
+                                sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
                                 echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
                                 #echo -e "\033[01;31mCreating snapshot...\033[00;37m"
                                 neofetch
@@ -157,4 +153,11 @@ elif test "n" = "$cl_question"
 
 
         fi 
+
+
+elif test "y" || "n" != "$cl_question"
+                
+                then
+                echo "incorrect answer!"
+                
 fi
