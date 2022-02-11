@@ -2,15 +2,13 @@
 #********************************************************************************************************************
 #Highlights commands
 #********************************************************************************************************************
-#print google
+#Print google
 #echo -e '\033[01;34;47mG\033[01;31mo\033[01;33mo\033[01;34mg\033[01;32ml \033[01;31me\033[00;37;40m'
 #********************************************************************************************************************
-
-#print Fatal Error "RED" - "Blink"
+#Print Fatal Error "RED" - "Blink"
 #echo -e '\033[05;31mERRO FATAL\033[00;37m'
 #********************************************************************************************************************
-
-#print in "white bold Ubuntu" and "Green Underscore" "Focal Fossa"
+#Print in "white bold Ubuntu" and "Green Underscore" "Focal Fossa"
 #echo -e '\033[01;37mUbuntu \033[04;32mFocal Fossa\033[00;37m!!!'
 #********************************************************************************************************************
 
@@ -87,19 +85,23 @@ echo -e '\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m'
 	flatpak update -y
 
 #OK
-	echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-	echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
 	sudo update-grub
-	echo -e "\033[01;05;32mUPDADE GRUB OK!!\033[00;37m"
-	echo '************************************************************************************************************'
-	echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
-	echo '************************************************************************************************************'
-	df -h /dev/md0p* && lsblk | grep md0p3
-	echo '************************************************************************************************************'
 
-	echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
-	echo '************************************************************************************************************'
+echo -e "\033[01;05;32mUPDADE GRUB OK!!\033[00;37m"
+echo '************************************************************************************************************'
+echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
+echo '************************************************************************************************************'
+	
+	df -h /dev/md0p* && lsblk | grep md0p3
+
+echo '************************************************************************************************************'
+
+echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
+echo '************************************************************************************************************'
+	
 	sudo swapoff -a && swapon -a && free -h
 
 #*********************************************************************************************************************'
@@ -109,55 +111,56 @@ echo -e '\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m'
 #********************************************************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #********************************************************************************************************************
-echo -n 'Deseja abrir o system cleaner (y/n)?'
-read cl_question
+echo -n 'Do you want to open stacer? (y/n)'
+read stacer_question
 
-if test "y" = "$cl_question"
-then
-	echo "initializing stacer..."
-	stacer &        
-        echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
+
+if test "y" = "$stacer_question"
+
+   then
+
+         echo "initializing stacer..."
+         sudo stacer &        
+         echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
+         echo "initializing timeshift..."
+         sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
+         echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
+         neofetch
+   
+   elif test "n" = "$stacer_question"
+     
+      then
+      echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
+      read timeshift_question
         
-        echo "initializing timeshift..."
-        sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
-        echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
-        
-        neofetch
+         if test "y" = "$timeshift_question"
 
+            then
 
-elif test "n" = "$cl_question"
-        echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
-        then
-       
-        read ts_question
+               echo "initializing timeshift..."
+               sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
+               echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
+               echo -e "\033[01;31mCreating snapshot...\033[00;37m"
+               neofetch 
+                                
+         elif test "n" = "$timeshift_question"
+                        
+               then 
+               echo "Generating the list of snapshots..."
+               sudo timeshift --delete
+               neofetch
+         
+         elif
+               test "y" || "n" != "$stacer_question" 
+               then
+               echo "invalid arguments!"   
+           
+         fi
 
-                if test "y" = "$ts_question"
+   elif test "y" || "n" != "$stacer_question"
+      then
+      echo "Invalid arguments!"   
 
-                        then
-                                echo "initializing timeshift..."
-                                sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
-                                echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
-                                #echo -e "\033[01;31mCreating snapshot...\033[00;37m"
-                                neofetch
-
-                        elif test "n" = "$ts_question"
-                        then 
-                                echo "Generating the list of snapshots..."
-                                sudo timeshift --delete
-                                neofetch
-
-                        elif test "y" || "n" != "$ts_question"
-                        then
-                        # echo "Command not found!"
-                        echo "incorrect answer!"
-
-
-        fi 
-
-
-elif test "y" || "n" != "$cl_question"
-                
-                then
-                echo "incorrect answer!"
-                
 fi
+
+
