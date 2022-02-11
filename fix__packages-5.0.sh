@@ -131,7 +131,7 @@ if test "y" = "$stacer_question"
      
       then
       echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
-      read timeshift_question
+      read -r timeshift_question
         
          if test "y" = "$timeshift_question"
 

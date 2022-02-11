@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -n 'Deseja abrir o system cleaner (y/n)?'
-read st_question
+read -r  st_question
 
 
 if test "y" = "$st_question"
@@ -20,7 +20,7 @@ if test "y" = "$st_question"
         echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
         then
        
-        read ts_question
+        read -r  ts_question
 
                 if test "y" = "$ts_question"
 

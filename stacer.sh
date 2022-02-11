@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -n 'Do you want to open stacer? (y/n)'
-read stacer_question
+read -r stacer_question
 
 
 if test "y" = "$stacer_question"
@@ -19,7 +19,7 @@ if test "y" = "$stacer_question"
      
       then
       echo -n 'Can I create a new snapshot containing the current state of the system? (y/n)'
-      read timeshift_question
+      read -r timeshift_question
         
          if test "y" = "$timeshift_question"
 
