@@ -27,7 +27,7 @@ then
 fi 
 
 # Remove mongoDB
-    echo -n "would you like remove mongoDb? (y/n)"
+    echo -n "would you like remove mongoDb? (y/n) "
     read -r remove_mongoDB
 
     if test "y" = "$remove_mongoDB"
@@ -55,7 +55,7 @@ fi
 fi 
 
 # Reinstall mongoDB 
-    echo -n "would you like to reinstall mongoDb? (y/n)"
+    echo -n "would you like to reinstall mongoDb? (y/n) "
     read -r reinstall_mongoDB
 
     if test "y" = "$reinstall_mongoDB"
