@@ -72,14 +72,24 @@ echo '**************************************************************************
 #********************************************************************************************************************
 
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-echo -e '\033[01;32mOPENNING DEBORPHAN...\033[01;37m'
+echo -n 'Want to check for orphaned packages? (y/n)'
+read -r orphaner
 
-	sudo orphaner
+if test "y" = "$orphaner"
+      then 
+      echo -e '\033[01;32mOPENNING DEBORPHAN...\033[01;37m'
+      sudo orphaner
+
+elif test 'n'
+      then 
+      echo 'skipping ...'
+      sleep 1
+fi
 
 echo -e '\033[01;32mOPTIMIZING WITH PRELINK...\033[00;37m'
+sudo prelink -amR
+sudo /etc/cron.daily/prelink
 
-	#sudo prelink -amR
-	sudo /etc/cron.daily/prelink
 
 echo -e '\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m'
 	flatpak update -y
@@ -112,7 +122,7 @@ echo '**************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #********************************************************************************************************************
 echo -n 'Do you want to open stacer? (y/n)'
-read stacer_question
+read -r stacer_question
 
 
 if test "y" = "$stacer_question"
@@ -120,6 +130,7 @@ if test "y" = "$stacer_question"
    then
 
          echo "initializing stacer..."
+         sleep 2
          sudo stacer &        
          echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
          echo "initializing timeshift..."
@@ -138,6 +149,7 @@ if test "y" = "$stacer_question"
             then
 
                echo "initializing timeshift..."
+               sleep 2
                sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
                echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
                echo -e "\033[01;31mCreating snapshot...\033[00;37m"
@@ -147,6 +159,7 @@ if test "y" = "$stacer_question"
                         
                then 
                echo "Generating the list of snapshots..."
+               sleep 2
                sudo timeshift --delete
                neofetch
          
@@ -160,6 +173,7 @@ if test "y" = "$stacer_question"
    elif test "y" || "n" != "$stacer_question"
       then
       echo "Invalid arguments!"   
+
 
 fi
 
