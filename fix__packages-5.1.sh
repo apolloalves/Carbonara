@@ -27,12 +27,17 @@ echo -e '***********************************************************************
 #echo -e '\033[01;32mCLEARING TRACES OF PACKAGES...\033[00;33m'
 #********************************************************************************************************************
 
-	sudo apt clean
-	sudo apt --purge autoremove -y
-	sudo apt --fix-broken install
-	sudo apt update --fix-missing
+	sudo apt update -y 
 	sudo apt full-upgrade -y
+	sudo apt dist-upgrade -y
+	sudo apt update --fix-missing
+	sudo apt --fix-broken install
 	sudo apt install -f
+        sudo apt-get remove --purge $(dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d')
+	sudo apt autoremove -y
+	sudo apt --purge autoremove -y
+	sudo apt autoclean
+	sudo apt clean
 	sudo apt remove $(deborphan)
 
 #OK
@@ -47,6 +52,9 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	rm -f ~/.cache/thumbnails/normal/*
 	rm -f /var/cache/apt/archives/lock
 	rm -rf ~/.cache/tracker/
+	rm -rf ~/.local/share/recently-used.xbel
+	rm -Rf /var/log/*
+
 
 #********************************************************************************************************************
 #OK
@@ -133,9 +141,6 @@ if test "y" = "$stacer_question"
          sleep 2
          sudo stacer &        
          echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
-         echo "initializing timeshift..."
-         sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.0.sh ]' --tags D
-         echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
          neofetch
    
    elif test "n" = "$stacer_question"
@@ -176,5 +181,7 @@ if test "y" = "$stacer_question"
 
 
 fi
+
+
 
 
