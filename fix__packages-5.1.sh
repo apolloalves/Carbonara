@@ -17,6 +17,7 @@ echo -e '\033[01;32mMACHINE REPORT\033[00:37m'
 hostnamectl
 #lsb_release -cs
 echo -e '************************************************************************************************************'
+
 echo -e "\033[01;32mKERNELS LIST!\033[01;37m"
 sudo dpkg --list 'linux-image*'
 echo -e '************************************************************************************************************'
@@ -45,21 +46,25 @@ echo -e '***********************************************************************
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 
-	rm -rf /var/lib/apt/lists/lock
-	rm /var/lib/apt/lists/* -vf
-	rm -f /var/lib/dpkg/lock
-	rm -rf ~/.cache/thumbnails/*
-	rm -f ~/.cache/thumbnails/normal/*
-	rm -f /var/cache/apt/archives/lock
-	rm -rf ~/.cache/tracker/
-	rm -rf ~/.local/share/recently-used.xbel
-	rm -Rf /var/log/*
-
-
+	sudo rm -rf /var/lib/apt/lists/lock
+	sudo rm /var/lib/apt/lists/* -vf
+	sudo rm -f /var/lib/dpkg/lock
+	sudo rm -rf ~/.cache/thumbnails/*
+	sudo rm -f ~/.cache/thumbnails/normal/*
+	sudo rm -f /var/cache/apt/archives/lock
+	sudo rm -rf ~/.cache/tracker/ 
+	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
+	sleep 2
+	sudo trash-empty --all -f
+	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
+	echo 'Removing open recents files...'
+	sleep 1
+	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
+	sudo rm -Rf /var/log/*
+	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
 #********************************************************************************************************************
 #OK
 #********************************************************************************************************************
-echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
 echo -e "\033[01;32mCLEANING UP CACHE ENTRIES...\033[01;37m"
 
 	sudo sync; echo 1 > /proc/sys/vm/drop_caches
