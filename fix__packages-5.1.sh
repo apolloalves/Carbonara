@@ -13,7 +13,7 @@
 #********************************************************************************************************************
 
 #HOSTNAMECTL
-echo -e '\033[01;32mMACHINE REPORT\033[00:37m'
+echo -e "\033[01;32mMACHINE REPORT\033[00:37m"
 hostnamectl
 #lsb_release -cs
 echo -e '************************************************************************************************************'
@@ -43,7 +43,7 @@ echo -e '***********************************************************************
 
 #OK
 #********************************************************************************************************************
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 
 	sudo rm -rf /var/lib/apt/lists/lock
@@ -56,12 +56,13 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
 	sleep 2
 	sudo trash-empty --all -f
-	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
+	echo -e "\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n"
 	echo 'Removing open recents files...'
 	sleep 1
 	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
 	sudo rm -Rf /var/log/*
-	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
+	echo -e "\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n"
+
 #********************************************************************************************************************
 #OK
 #********************************************************************************************************************
@@ -83,13 +84,13 @@ echo '**************************************************************************
 #OK
 #********************************************************************************************************************
 
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -n 'Want to check for orphaned packages? (y/n)'
 read -r orphaner
 
 if test "y" = "$orphaner"
       then 
-      echo -e '\033[01;32mOPENNING DEBORPHAN...\033[01;37m'
+      echo -e "\n\033[01;32mOPENNING DEBORPHAN...\033[01;37m"
       sudo orphaner
 
 elif test 'n'
@@ -98,21 +99,21 @@ elif test 'n'
       sleep 1
 fi
 
-echo -e '\033[01;32mOPTIMIZING WITH PRELINK...\033[00;37m'
+echo -e "\n\033[01;32mOPTIMIZING WITH PRELINK...\033[00;37m"
 sudo prelink -amR
 sudo /etc/cron.daily/prelink
 
 
-echo -e '\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m'
+echo -e "\n\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m"
 	flatpak update -y
 
 #OK
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
 	sudo update-grub
 
-echo -e "\033[01;05;32mUPDADE GRUB OK!!\033[00;37m"
+echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m"
 echo '************************************************************************************************************'
 echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
@@ -121,7 +122,7 @@ echo '**************************************************************************
 
 echo '************************************************************************************************************'
 
-echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
+echo -e "\n\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
 echo '************************************************************************************************************'
 	
 	sudo swapoff -a && swapon -a && free -h
@@ -163,7 +164,7 @@ if test "y" = "$timeshift_question"
             echo "initializing timeshift..."
             sleep 2
             sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
-            echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
+            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
             echo -e "\033[01;31mCreating snapshot...\033[00;37m"
             neofetch 
                               
@@ -193,7 +194,7 @@ if test "n" = "$stacer_question"
             sleep 2
             sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
             echo -e "\033[01;31mCreating snapshot...\033[00;37m"
-            echo -e '\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n'
+            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
             echo "Generating the list of snapshots..."
             sleep 2
             sudo timeshift --delete
