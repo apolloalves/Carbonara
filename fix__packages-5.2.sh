@@ -25,7 +25,7 @@ echo -e '***********************************************************************
 #OK
 #********************************************************************************************************************
 #echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-#echo -e '\033[01;32mCLEARING TRACES OF PACKAGES...\033[00;33m'
+echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 #********************************************************************************************************************
 
 	sudo apt update -y 
@@ -34,12 +34,12 @@ echo -e '***********************************************************************
 	sudo apt update --fix-missing
 	sudo apt --fix-broken install
 	sudo apt install -f
-      sudo apt-get remove --purge "$(dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d') -y"
+	sudo apt-get remove --purge $(dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d') -y
 	sudo apt --purge autoremove -y
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 	sudo apt clean -y 
-	sudo apt remove "$(deborphan)"
+	sudo apt remove $(deborphan)
 
 #OK
 #********************************************************************************************************************
@@ -54,43 +54,55 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	sudo rm -f /var/cache/apt/archives/lock
 	sudo rm -rf ~/.cache/tracker/ 
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
-	sleep 2
+	sleep 1 
 	sudo trash-empty --all -f
-	echo -e "\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n"
-	echo "Removing open recents files..."
+	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
+	echo 'Removing open recents files...'
 	sleep 1
 	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
 	sudo rm -Rf /var/log/*
-	echo -e "\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n"
-
+	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
 #********************************************************************************************************************
 #OK
 #********************************************************************************************************************
-echo -e "\033[01;32mCLEANING UP CACHE ENTRIES...\033[01;37m"
+echo -e "\033[01;32mCleaning up cache entries...\033[01;37m"
+sleep 2
 
 	sudo sync; echo 1 > /proc/sys/vm/drop_caches
 	sudo sync; echo 2 > /proc/sys/vm/drop_caches
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
-
-echo -e "\033[01;32mFIXINIG DPKGS BROKENS\033[01;37m!\n"
-echo '**************************************************************************************************************'
-
 	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
 	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
-	sudo dpkg --purge "$(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)"
+	#sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
 	sudo dpkg --configure -a
 
 #********************************************************************************************************************
+#FLATPAK
+#********************************************************************************************************************
+echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
+        flatpak update -y
+#********************************************************************************************************************
+#PRELINK
+#********************************************************************************************************************
+echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
+sudo prelink -amR
+sudo /etc/cron.daily/prelink
+#********************************************************************************************************************
 #OK
 #********************************************************************************************************************
+echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+#*********************************************************************************************************************'
+#OK
+#*********************************************************************************************************************'
+#ORPHANER CONDITIONAL
+#********************************************************************************************************************
 
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-echo -n "Want to check for orphaned packages? ( y/n ) "
+echo -n 'Want to check for orphaned packages? ( y/n ) '
 read -r orphaner
 
 if test "y" = "$orphaner"
       then 
-      echo -e "\n\033[01;32mOPENNING DEBORPHAN...\033[01;37m"
+      echo -e "\033[01;32mOPENNING DEBORPHAN...\033[01;37m"
       sudo orphaner
 
 elif test 'n'
@@ -99,49 +111,36 @@ elif test 'n'
       sleep 1
 fi
 
-echo -e "\n\033[01;32mOPTIMIZING WITH PRELINK...\033[00;37m\n"
-sudo prelink -amR
-sudo /etc/cron.daily/prelink
+echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
+        sudo update-grub
 
-echo -e "\n\033[01;32mUPDATING FLATPAK MODULES...\033[00;37m"
-	flatpak update -y
-
-#OK
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
-
-	sudo update-grub
-
-echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m"
+echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m\n"
 echo '************************************************************************************************************'
 echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
-	
-	df -h /dev/md0p* && lsblk | grep md0p3
+
+        df -h /dev/md0p* && lsblk | grep md0p3
 
 echo '************************************************************************************************************'
 echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
 echo '************************************************************************************************************'
-	sudo swapoff -a && swapon -a && free -h
-echo -e "************************************************************************************************************\n"
+        sudo swapoff -a && swapon -a && free -h
+echo '************************************************************************************************************'
 
-#OK
-#**********************************************************************************************************************
-#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 #********************************************************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #********************************************************************************************************************
 
-echo -n "Do you want to open stacer? ( y/n ) "
-read -r stacer_question
+echo -n 'Do you want to open stacer? ( y/n ) '
+ read -r stacer_question
 
 
  if test "y" = "$stacer_question"
 
     then
 
-      echo -e "\nstacer is running..."
+      echo "stacer is running..."
       sleep 1
       stacer &        
 
@@ -152,7 +151,7 @@ read -r stacer_question
       done
 
 echo -e "\n"
-echo -n "Can I create a new snapshot containing the current state of the system? ( y/n ) "
+echo -n 'Can I create a new snapshot containing the current state of the system? ( y/n ) '
 read -r timeshift_question
         
 
@@ -173,8 +172,7 @@ if test "y" = "$timeshift_question"
             echo "Generating the list of snapshots..."
             sleep 2
             sudo timeshift --delete
-            neofetch
-      
+                  
       elif
             test "y" || "n" != "$stacer_question" 
             then
@@ -197,10 +195,11 @@ if test "n" = "$stacer_question"
             echo "Generating the list of snapshots..."
             sleep 2
             sudo timeshift --delete
-            neofetch
+            
 
             elif test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question"
             then
             echo "Invalid arguments!"   
 
 fi
+
