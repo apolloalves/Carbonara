@@ -53,8 +53,8 @@ sudo systemctl mask networkd-dispatcher.service systemd-networkd.service
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #********************************************************************************************************************
 
-
-
+sudo systemctl disable snapd.service
+sudo systemctl mask avahi-daemon.service ModemManager.service thermald.service pppd-dns.service
 
 
 
