@@ -1,4 +1,49 @@
 #!/bin/bash
+
+# This program contains routine automation scripts for:
+
+# Full kernel update;
+# Complete update of the list of repositories;
+# Application update via flatpak update
+# Complete device driver update;
+# GRUB update after kernel update;
+
+# Automatic removal and correction of apt/dpkg packages;
+# Removal and correction of traces of unused packages;
+# Automatic removal of orphaned packages that only occupy spaces;
+
+# Cleaning exchange;
+# Disk usage space summary;
+
+# In addition, we have included scripts to remove traces of unused dpkgs and apts packages that take up unnecessary space and also remove the accumulated kernel.
+# For it to work effectively, we recommend installing some dependencies:
+
+# STACER - System Optimizer and Monitor
+# https://github.com/oguzhaninan/Stacer
+
+# TRASH-CLI - REMOVAL RUBBISH BIN FILES
+# https://github.com/andreafrancia/trash-cli
+
+# ORPHANER - REMOVAL OF ORPHAN PACKAGES
+# sudo apt install deborphan
+
+# TIMESHIFT - SYSTEM RESTORATION
+# https://github.com/teejee2008/timeshift
+
+# Instructions:
+
+# 1 - Download the file;
+# 2 - Give him execution privileges (X) as root;
+# 3 - Move the file to the /bin directory
+# 4 - Run the command in the terminal with sudo
+
+# ATTENTION!
+# At your own risk, we are not responsible for any system failures or damages that may occur with your GNU/LINUX distribution.
+# The resource developed in this project is completely open source, we do not tolerate improper distribution or for profit. Modify it 
+# and distribute it for free to everyone!
+# We encourage you to feel free to further improve our code. After all, that's what the GNU/LINUX universe was born for!
+
+# Good luck! Greetings!
 #********************************************************************************************************************
 #Highlights commands
 #********************************************************************************************************************
@@ -28,18 +73,16 @@ echo -e '***********************************************************************
 echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 #********************************************************************************************************************
 
-	sudo apt update -y 
 	sudo apt full-upgrade -y
 	sudo apt dist-upgrade -y
 	sudo apt update --fix-missing
 	sudo apt --fix-broken install
 	sudo apt install -f
-	sudo apt-get remove --purge $(dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d') -y
-	sudo apt --purge autoremove -y
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 	sudo apt clean -y 
 	sudo apt remove $(deborphan)
+	sudo apt --purge autoremove -y
 
 #OK
 #********************************************************************************************************************
@@ -97,20 +140,6 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #ORPHANER CONDITIONAL
 #********************************************************************************************************************
 
-echo -n 'Want to check for orphaned packages? ( y/n ) '
-read -r orphaner
-
-if test "y" = "$orphaner"
-      then 
-      echo -e "\033[01;32mOPENNING DEBORPHAN...\033[01;37m"
-      sudo orphaner
-
-elif test 'n'
-      then 
-      echo 'skipping ...'
-      sleep 1
-fi
-
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
         sudo update-grub
@@ -129,10 +158,29 @@ echo '**************************************************************************
 echo '************************************************************************************************************'
 
 #********************************************************************************************************************
+#ORPHANER CONDITIONAL
+#********************************************************************************************************************
+echo -n 'Want to check for orphaned packages? ( y/n ) '
+read -r orphaner
+
+if test "y" = "$orphaner"
+      then 
+      echo -e "\033[01;32mOPENNING DEBORPHAN...\033[01;37m"
+      sudo orphaner
+
+elif test 'n'
+      then 
+      echo 'skipping ...'
+      sleep 1
+fi
+
+#********************************************************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #********************************************************************************************************************
+ VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
 
-echo -n 'Do you want to open stacer? ( y/n ) '
+
+ echo -n 'Do you want to open stacer? ( y/n ) '
  read -r stacer_question
 
 
@@ -140,17 +188,36 @@ echo -n 'Do you want to open stacer? ( y/n ) '
 
     then
 
-      echo "stacer is running..."
-      sleep 1
-      stacer &        
+            echo "stacer is running..."
+            sleep 1
+            stacer &        
 
       until ! pgrep -x "stacer" > /dev/null
+      
       do
             echo -e '\cAguardando o encerramento do stacer pelo usuário...'
             sleep 1
       done
 
-echo -e "\n"
+      elif test "n" = "$stacer_question"
+
+
+      then
+            echo "initializing timeshift..."
+            sleep 2
+            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
+            echo -e "\033[01;31mCreating snapshot...\033[00;37m"
+            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
+            echo "Generating the list of snapshots..."
+            sleep 2
+            sudo timeshift --delete
+           
+      else 
+            echo "${VALIDATE}"
+            echo "Invalid arguments!"
+fi
+
+
 echo -n 'Can I create a new snapshot containing the current state of the system? ( y/n ) '
 read -r timeshift_question
         
@@ -174,32 +241,9 @@ if test "y" = "$timeshift_question"
             sudo timeshift --delete
                   
       elif
-            test "y" || "n" != "$stacer_question" 
+            echo "${VALIDATE}"
             then
             echo "invalid arguments!"   
       
       fi
-
-fi
-
-
-if test "n" = "$stacer_question" 
-
-      then 
-
-            echo "initializing timeshift..."
-            sleep 2
-            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
-            echo -e "\033[01;31mCreating snapshot...\033[00;37m"
-            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-            echo "Generating the list of snapshots..."
-            sleep 2
-            sudo timeshift --delete
-            
-
-            elif test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question"
-            then
-            echo "Invalid arguments!"   
-
-fi
 
