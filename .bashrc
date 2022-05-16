@@ -11,7 +11,7 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-HISTTIMEFORMAT='%Y-%m-%d %T '
+HISTTIMEFORMAT='%Y-%m-%d%T '
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -92,8 +92,10 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='sudo /bin/fix__packages-5.1.sh'
-alias rc='rm ~/.local/share/recently-used.xbel'
+alias fix='sudo /bin/fix__packages-5.2.sh'
+alias rc='rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel'
+alias rb='trash-empty --all -f'
+alias cls='/bin/cls.sh'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
