@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Sign in to your account
+Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=imheobnlicjlpandpglkeeiemdconlkl
+Icon=brave-imheobnlicjlpandpglkeeiemdconlkl-Default
+StartupWMClass=crx_imheobnlicjlpandpglkeeiemdconlkl
