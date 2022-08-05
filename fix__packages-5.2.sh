@@ -114,9 +114,10 @@ sleep 2
 	sudo sync; echo 1 > /proc/sys/vm/drop_caches
 	sudo sync; echo 2 > /proc/sys/vm/drop_caches
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
+	dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge
 	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
 	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
-	#sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
+	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
 	sudo dpkg --configure -a
 
 #********************************************************************************************************************
@@ -180,7 +181,7 @@ fi
  VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
 
 
- echo -n 'Do you want to open stacer? ( y/n ) '
+ echo -n "Do you want to open stacer? ( y/n ) "
  read -r stacer_question
 
 
@@ -195,7 +196,7 @@ fi
       until ! pgrep -x "stacer" > /dev/null
       
       do
-            echo -e '\cAguardando o encerramento do stacer pelo usuário...'
+            echo -e "\cAguardando o encerramento do stacer pelo usuário..."
             sleep 1
       done
 
@@ -218,7 +219,7 @@ fi
 fi
 
 
-echo -n 'Can I create a new snapshot containing the current state of the system? ( y/n ) '
+echo -n "Can I create a new snapshot containing the current state of the system? ( y/n ) "
 read -r timeshift_question
         
 
