@@ -73,7 +73,6 @@ echo -e '***********************************************************************
 echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 #********************************************************************************************************************
 	sudo apt-get dist-upgrade
-	sudo apt update -y
 	sudo apt-get install base-files sosreport ubuntu-server
 	sudo apt-get install aptitude -y
 	sudo aptitude safe-upgrade
@@ -86,6 +85,7 @@ echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 	sudo apt clean -y 
 	sudo apt remove $(deborphan)
 	sudo apt --purge autoremove -y
+	sudo apt update -y && sudo apt upgrade -y
 
 #OK
 #********************************************************************************************************************
@@ -232,7 +232,7 @@ if test "y" = "$timeshift_question"
 
             echo "initializing timeshift..."
             sleep 2
-            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
+            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.3.sh ]' --tags D
             echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
             echo -e "\033[01;31mCreating snapshot...\033[00;37m"
             neofetch 
