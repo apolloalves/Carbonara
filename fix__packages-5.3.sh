@@ -101,7 +101,7 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	sudo rm -rf ~/.cache/tracker/ 
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
 	sleep 1 
-	sudo trash-empty --all -f
+	rm -rf ~/.local/share/Trash/*
 	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
 	echo 'Removing open recents files...'
 	sleep 1
