@@ -72,20 +72,19 @@ echo -e '***********************************************************************
 #echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 #********************************************************************************************************************
-	sudo apt-get dist-upgrade
-	sudo apt-get install base-files sosreport ubuntu-server
-	sudo apt-get install aptitude -y
-	sudo aptitude safe-upgrade
-	sudo apt full-upgrade -y
+	sudo apt update -y && sudo apt full-upgrade -y
+      sudo apt dist-upgrade
+	sudo aptitude safe-upgrade -y
+	sudo apt install aptitude -y
+	sudo apt install base-files sosreport ubuntu-server
 	sudo apt update --fix-missing
 	sudo apt --fix-broken install
 	sudo apt install -f
 	sudo apt autoremove -y
 	sudo apt autoclean -y
 	sudo apt clean -y 
-	sudo apt remove $(deborphan)
 	sudo apt --purge autoremove -y
-	sudo apt update -y && sudo apt upgrade -y
+	sudo apt remove $(deborphan)
 
 #OK
 #********************************************************************************************************************
@@ -99,15 +98,26 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	sudo rm -f ~/.cache/thumbnails/normal/*
 	sudo rm -f /var/cache/apt/archives/lock
 	sudo rm -rf ~/.cache/tracker/ 
+	sudo rm -Rf /var/log/*
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
 	sleep 1 
-	rm -rf ~/.local/share/Trash/*
+	sudo rm -rfv .local/share/Trash/*
 	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
 	echo 'Removing open recents files...'
 	sleep 1
 	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
-	sudo rm -Rf /var/log/*
 	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
+      
+      echo "Shutting down Nautilus now..."
+      sudo nautilus --quit
+      echo -e "\n"
+      echo -e "\033[01;05;31mCHECKING ATK__HAIRY MOUNT POINT...!!\033[00;37m"
+      sleep 2
+      sudo umount -l -f /dev/sdc8 /mnt/ATK__HAIRY/
+      sudo rm -rf ~/.local/share/Trash/*i
+      sleep 1
+      echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
 #********************************************************************************************************************
 #OK
 #********************************************************************************************************************
@@ -118,7 +128,7 @@ sleep 2
 	sudo sync; echo 2 > /proc/sys/vm/drop_caches
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
 	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge
+	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
 	sudo dpkg --configure -a
 	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
 	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
@@ -140,9 +150,6 @@ sudo /etc/cron.daily/prelink
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #*********************************************************************************************************************'
 #OK
-#*********************************************************************************************************************'
-#ORPHANER CONDITIONAL
-#********************************************************************************************************************
 
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
@@ -181,10 +188,11 @@ echo '**************************************************************************
 #********************************************************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #********************************************************************************************************************
- VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
+
+VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
 
 
- echo -n "Do you want to open stacer? ( y/n ) "
+ echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '
  read -r stacer_question
 
 
@@ -193,14 +201,14 @@ echo '**************************************************************************
     then
 
             echo "stacer is running..."
-            sleep 1
+            sleep 2
             stacer &        
 
       until ! pgrep -x "stacer" > /dev/null
       
       do
-            echo -e "\cAguardando o encerramento do stacer pelo usuário..."
-            sleep 1
+            echo -e '\cAguardando o encerramento do stacer pelo usuário...'
+            sleep 2
       done
 
       elif test "n" = "$stacer_question"
@@ -215,14 +223,14 @@ echo '**************************************************************************
             echo "Generating the list of snapshots..."
             sleep 2
             sudo timeshift --delete
-           
+            neofetch
       else 
             echo "${VALIDATE}"
-            echo "Invalid arguments!"
+            echo -e "The arguments are invalid or the operation was canceled by the user\n"
 fi
 
 echo -e "\n"
-echo -n "Can I create a new snapshot containing the current state of the system? ( y/n ) "
+echo -n 'Can I create a new snapshot containing the current state of the system ( y/n ) ? or press any key to exit '
 read -r timeshift_question
         
 
@@ -232,10 +240,14 @@ if test "y" = "$timeshift_question"
 
             echo "initializing timeshift..."
             sleep 2
-            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.3.sh ]' --tags D
+            echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
+            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
             echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-            echo -e "\033[01;31mCreating snapshot...\033[00;37m"
+            echo -e '\n************************************************************************************************************\n'
+            lsb_release -a      
+            echo -e '\n************************************************************************************************************\n'
             neofetch 
+
                               
       elif test "n" = "$timeshift_question"
                   
@@ -243,11 +255,14 @@ if test "y" = "$timeshift_question"
             echo "Generating the list of snapshots..."
             sleep 2
             sudo timeshift --delete
+            echo -e '\n************************************************************************************************************\n'
+            lsb_release -a      
+            echo -e '\n************************************************************************************************************\n'
+            neofetch 
                   
       elif
             echo "${VALIDATE}"
             then
-            echo "invalid arguments!"   
+            echo -e "The arguments are invalid or the operation was canceled by the user\n"   
       
       fi
-
