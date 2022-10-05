@@ -69,26 +69,6 @@ echo -e '***********************************************************************
 
 #OK
 #********************************************************************************************************************
-#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
-#********************************************************************************************************************
-	sudo apt update -y 
-	sudo apt full-upgrade -y
-        sudo apt dist-upgrade -y 
-	sudo aptitude safe-upgrade -y
-	sudo apt install aptitude -y
-	sudo apt install base-files sosreport ubuntu-server -y 
-	sudo apt update --fix-missing -y
-	sudo apt --fix-broken install -y 
-	sudo apt install -f
-	sudo apt autoremove -y
-	sudo apt autoclean -y
-	sudo apt clean -y 
-	sudo apt --purge autoremove -y
-	sudo apt remove $(deborphan)
-
-#OK
-#********************************************************************************************************************
 echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 
@@ -119,28 +99,30 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
       sleep 1
       echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
-#********************************************************************************************************************
-#OK
-#********************************************************************************************************************
-echo -e "\033[01;32mCleaning up cache entries...\033[01;37m"
-sleep 2
 
-	sudo sync; echo 1 > /proc/sys/vm/drop_caches
-	sudo sync; echo 2 > /proc/sys/vm/drop_caches
-	sudo sync; echo 3 > /proc/sys/vm/drop_caches
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
-	sudo dpkg --configure -a
-	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
-	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
 
+
+
+      #OK
 #********************************************************************************************************************
-#FLATPAK
+#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 #********************************************************************************************************************
-echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
-        flatpak update -y
-#********************************************************************************************************************
-#PRELINK
+	sudo apt update -y 
+	sudo apt full-upgrade -y
+      sudo apt dist-upgrade -y 
+	sudo aptitude safe-upgrade -y
+	sudo apt install aptitude -y
+	sudo apt install base-files sosreport ubuntu-server -y 
+	sudo apt update --fix-missing -y
+	sudo apt --fix-broken install -y 
+	sudo apt install -f
+	sudo apt autoremove -y
+	sudo apt autoclean -y
+	sudo apt clean -y 
+	sudo apt --purge autoremove -y
+	sudo apt remove $(deborphan)
+
 #********************************************************************************************************************
 echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
 sudo prelink -amR
@@ -151,6 +133,12 @@ sudo /etc/cron.daily/prelink
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #*********************************************************************************************************************'
 #OK
+#********************************************************************************************************************
+
+echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
+        flatpak update -y
+#********************************************************************************************************************
+#PRELINK
 
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
@@ -160,10 +148,17 @@ echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m\n"
 echo '************************************************************************************************************'
 echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
+      df -h /dev/md0p* && lsblk | grep md0p3
 
-        df -h /dev/md0p* && lsblk | grep md0p3
-
+echo -e '\n************************************************************************************************************'
+echo -e "\033[01;32mSTATE sd5 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
+            df -h /dev/sdc5 && lsblk | grep scd5
+echo '************************************************************************************************************'
+            df -h /dev/sdc6 && lsblk | grep scd6
+echo -e '\n************************************************************************************************************'
+
+
 echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
 echo '************************************************************************************************************'
         sudo swapoff -a && swapon -a && free -h
@@ -238,7 +233,7 @@ fi
             echo "initializing timeshift..."
             sleep 2
             echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
-            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
+            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.4.sh ]' --tags D
             echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
             echo -e '\n************************************************************************************************************\n'
             lsb_release -a      
