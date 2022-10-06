@@ -57,6 +57,7 @@
 #echo -e '\033[01;37mUbuntu \033[04;32mFocal Fossa\033[00;37m!!!'
 #********************************************************************************************************************
 
+
 #HOSTNAMECTL
 echo -e "\033[01;32mMACHINE REPORT\033[00:37m"
 hostnamectl
@@ -67,31 +68,36 @@ echo -e "\033[01;32mKERNELS LIST!\033[01;37m"
 sudo dpkg --list 'linux-image*'
 echo -e '************************************************************************************************************'
 
-#OK
 #********************************************************************************************************************
 #echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
+echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
 #********************************************************************************************************************
-	sudo apt update -y && sudo apt full-upgrade -y
-      sudo apt dist-upgrade
-	sudo aptitude safe-upgrade -y
-	sudo apt install aptitude -y
-	sudo apt install base-files sosreport ubuntu-server
+	sudo apt update -y 
 	sudo apt update --fix-missing
+      sudo apt upgrade -y
+      sudo apt full-upgrade -y
+      sudo apt dist-upgrade
+	sudo apt install aptitude -y
+	sudo aptitude safe-upgrade -y
+	sudo apt install base-files sosreport ubuntu-server
 	sudo apt --fix-broken install
 	sudo apt install -f
-	sudo apt autoremove -y
-	sudo apt autoclean -y
-	sudo apt clean -y 
-	sudo apt --purge autoremove -y
 	sudo apt remove $(deborphan)
 
 #OK
-#********************************************************************************************************************
+
 echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 
-	sudo rm -rf /var/lib/apt/lists/lock
+echo -e '************************************************************************************************************'
+      sudo apt autoremove -y
+	sudo apt autoclean -y
+	sudo apt clean -y 
+	sudo apt --purge autoremove -y
+      sudo rm -rf /var/lib/apt/lists/lock
+      sudo rm /var/lib/dpkg/lock-frontend
+      sudo dpkg --configure -a
+      sudo apt update
 	sudo rm /var/lib/apt/lists/* -vf
 	sudo rm -f /var/lib/dpkg/lock
 	sudo rm -rf ~/.cache/thumbnails/*
@@ -99,24 +105,22 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	sudo rm -f /var/cache/apt/archives/lock
 	sudo rm -rf ~/.cache/tracker/ 
 	sudo rm -Rf /var/log/*
+
+      echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
+     
+      echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+
 	sleep 1 
 	sudo rm -rfv .local/share/Trash/*
-	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'
+	
 	echo 'Removing open recents files...'
 	sleep 1
 	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
 	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
       
-      echo "Shutting down Nautilus now..."
-      sudo nautilus --quit
-      echo -e "\n"
-      echo -e "\033[01;05;31mCHECKING ATK__HAIRY MOUNT POINT...!!\033[00;37m"
-      sleep 2
-      sudo umount -l -f /dev/sdc8 /mnt/ATK__HAIRY/
-      sudo rm -rf ~/.local/share/Trash/*i
-      sleep 1
-      echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+#OK
 
 #********************************************************************************************************************
 #OK
@@ -129,17 +133,11 @@ sleep 2
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
 	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
 	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
-	sudo dpkg --configure -a
 	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
 	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
+	sudo dpkg --configure -a
+      sudo dpkg install -f
 
-#********************************************************************************************************************
-#FLATPAK
-#********************************************************************************************************************
-echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
-        flatpak update -y
-#********************************************************************************************************************
-#PRELINK
 #********************************************************************************************************************
 echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
 sudo prelink -amR
@@ -150,6 +148,12 @@ sudo /etc/cron.daily/prelink
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #*********************************************************************************************************************'
 #OK
+#********************************************************************************************************************
+
+echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
+        flatpak update -y
+#********************************************************************************************************************
+#PRELINK
 
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
@@ -159,14 +163,106 @@ echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m\n"
 echo '************************************************************************************************************'
 echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
+      df -h /dev/md0p* && lsblk | grep md0p3
 
-        df -h /dev/md0p* && lsblk | grep md0p3
-
+echo -e '\n************************************************************************************************************'
+echo -e "\033[01;32mSTATE sd5 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
+            df -h /dev/sdc5 && lsblk | grep scd5
+echo -e '\n************************************************************************************************************'
+            df -h /dev/sdc6 && lsblk | grep scd6
+echo -e '\n************************************************************************************************************'
+
+
 echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
 echo '************************************************************************************************************'
         sudo swapoff -a && swapon -a && free -h
 echo '************************************************************************************************************'
+
+
+#********************************************************************************************************************
+#STACER/TIMESHIFT CONDITIONAL
+#*******************************************************************************************************************
+
+VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
+
+
+ echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '
+ read -r stacer_question
+
+
+ if test "n" = "$stacer_question"
+                  
+            then 
+            echo "Generating the list of snapshots..."
+            sleep 2
+            sudo timeshift --delete
+            echo -e '\n************************************************************************************************************\n'
+            lsb_release -a      
+            echo -e '\n************************************************************************************************************\n'
+            neofetch 
+
+fi
+
+ if test "y" = "$stacer_question"
+
+    then
+
+      echo "stacer is running..."
+      sleep 2
+      stacer &        
+
+      until ! pgrep -x "stacer" > /dev/null
+      
+      do
+            echo -e '\cAguardando o encerramento do stacer pelo usuário...'
+            sleep 2
+      done
+      
+      echo -e '\n'
+      echo -n 'Can I create a new snapshot containing the current state of the system ( y/n ) ? or press any key to exit '
+      read -r timeshift_question
+
+fi
+ 
+  if test "y" = "$timeshift_question"
+
+            then
+
+            echo "initializing timeshift..."
+            sleep 2
+            echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
+            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.4.sh ]' --tags D
+            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
+            echo -e '\n************************************************************************************************************\n'
+            lsb_release -a      
+            echo -e '\n************************************************************************************************************\n'
+            neofetch 
+      fi
+
+      if test "n" = "$timeshift_question"
+
+                  
+            then 
+            echo "Generating the list of snapshots..."
+            sleep 2
+            sudo timeshift --delete
+            echo -e '\n************************************************************************************************************\n'
+            lsb_release -a      
+            echo -e '\n************************************************************************************************************\n'
+            neofetch 
+            
+
+      fi
+
+
+      if
+            echo "${VALIDATE}"
+            then
+            echo -e "The operation was canceled by the user\n"   
+
+      fi
+
 
 #********************************************************************************************************************
 #ORPHANER CONDITIONAL
@@ -185,84 +281,6 @@ echo '**************************************************************************
 #       sleep 1
 # fi
 
-#********************************************************************************************************************
-#STACER/TIMESHIFT CONDITIONAL
-#********************************************************************************************************************
-
-VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
 
 
- echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '
- read -r stacer_question
 
-
- if test "y" = "$stacer_question"
-
-    then
-
-            echo "stacer is running..."
-            sleep 2
-            stacer &        
-
-      until ! pgrep -x "stacer" > /dev/null
-      
-      do
-            echo -e '\cAguardando o encerramento do stacer pelo usuário...'
-            sleep 2
-      done
-
-      elif test "n" = "$stacer_question"
-
-
-      then
-            echo "initializing timeshift..."
-            sleep 2
-            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
-            echo -e "\033[01;31mCreating snapshot...\033[00;37m"
-            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-            echo "Generating the list of snapshots..."
-            sleep 2
-            sudo timeshift --delete
-            neofetch
-      else 
-            echo "${VALIDATE}"
-            echo -e "The arguments are invalid or the operation was canceled by the user\n"
-fi
-
-echo -e "\n"
-echo -n 'Can I create a new snapshot containing the current state of the system ( y/n ) ? or press any key to exit '
-read -r timeshift_question
-        
-
-if test "y" = "$timeshift_question"
-
-      then
-
-            echo "initializing timeshift..."
-            sleep 2
-            echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
-            sudo timeshift --create --verbose --comments 'shell : [ fix__packages-5.2.sh ]' --tags D
-            echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-            echo -e '\n************************************************************************************************************\n'
-            lsb_release -a      
-            echo -e '\n************************************************************************************************************\n'
-            neofetch 
-
-                              
-      elif test "n" = "$timeshift_question"
-                  
-            then 
-            echo "Generating the list of snapshots..."
-            sleep 2
-            sudo timeshift --delete
-            echo -e '\n************************************************************************************************************\n'
-            lsb_release -a      
-            echo -e '\n************************************************************************************************************\n'
-            neofetch 
-                  
-      elif
-            echo "${VALIDATE}"
-            then
-            echo -e "The arguments are invalid or the operation was canceled by the user\n"   
-      
-      fi
