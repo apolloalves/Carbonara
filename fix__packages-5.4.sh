@@ -72,11 +72,14 @@ echo -e '***********************************************************************
 #echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
 #********************************************************************************************************************
-	sudo apt update -y 
-	sudo apt update --fix-missing
-      sudo apt upgrade -y
-      sudo apt full-upgrade -y
-      sudo apt dist-upgrade
+	
+       sudo rm -rf /var/lib/dpkg/lock-frontend
+       sudo dpkg --configure -a
+       sudo apt update -y 
+       sudo apt update --fix-missing
+       sudo apt upgrade -y
+       sudo apt full-upgrade -y
+       sudo apt dist-upgrade
 	sudo apt install aptitude -y
 	sudo aptitude safe-upgrade -y
 	sudo apt install base-files sosreport ubuntu-server
@@ -166,7 +169,7 @@ echo '**************************************************************************
       df -h /dev/md0p* && lsblk | grep md0p3
 
 echo -e '\n************************************************************************************************************'
-echo -e "\033[01;32mSTATE sd5 PARTITIONS\033[00;37m"
+echo -e "\033[01;32mSTATE /DEV/SD5 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
             df -h /dev/sdc5 && lsblk | grep scd5
 echo -e '\n************************************************************************************************************'
