@@ -68,40 +68,19 @@ echo -e "\033[01;32mKERNELS LIST!\033[01;37m"
 sudo dpkg --list 'linux-image*'
 echo -e '************************************************************************************************************'
 
-#********************************************************************************************************************
-#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
-#********************************************************************************************************************
-	
-       sudo rm -rf /var/lib/dpkg/lock-frontend
-       sudo dpkg --configure -a
-       sudo apt update -y 
-       sudo apt update --fix-missing
-       sudo apt upgrade -y
-       sudo apt full-upgrade -y
-       sudo apt dist-upgrade
-	sudo apt install aptitude -y
-	sudo aptitude safe-upgrade -y
-	sudo apt install base-files sosreport ubuntu-server
-	sudo apt --fix-broken install
-	sudo apt install -f
-	sudo apt remove $(deborphan)
-
-#OK
-
 echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 
-echo -e '************************************************************************************************************'
+	sudo apt --purge autoremove -y
       sudo apt autoremove -y
 	sudo apt autoclean -y
+      sudo apt -s clean
 	sudo apt clean -y 
-	sudo apt --purge autoremove -y
+      sudo apt clean all
       sudo rm -rf /var/lib/apt/lists/lock
-      sudo rm /var/lib/dpkg/lock-frontend
+      sudo rm -rf /var/lib/dpkg/lock-frontend
       sudo dpkg --configure -a
-      sudo apt update
-	sudo rm /var/lib/apt/lists/* -vf
+      sudo rm /var/lib/apt/lists/* -vf
 	sudo rm -f /var/lib/dpkg/lock
 	sudo rm -rf ~/.cache/thumbnails/*
 	sudo rm -f ~/.cache/thumbnails/normal/*
@@ -109,21 +88,70 @@ echo -e '***********************************************************************
 	sudo rm -rf ~/.cache/tracker/ 
 	sudo rm -Rf /var/log/*
 
+
+#REMOVE PACKAGES UNWANTED
+echo -e '************************************************************************************************************'
+echo -e "\033[01;05;31mREMOVING UNWANTED PACKAGES AND PURGE LEFTOVER CONFIGURATION...\033[00;37m"
+sleep 2
+echo -e '************************************************************************************************************'
+
+    # remove unwanted packages and purge leftover configuration
+      purge-unwanted() {
+      apt autoremove --purge -y \
+      snapd lxd-agent-loader ufw command-not-found \
+      apport alsa-ucm-conf alsa-topology-conf byobu \
+      cloud-init cloud-guest-utils cloud-initramfs-copymods cloud-initramfs-dyn-netconf \
+      landscape-common motd-news-config pollinate popularity-contest ubuntu-advantage-tools \
+      open-iscsi multipath-tools accountsservice cryptsetup-initramfs open-vm-tools;
+      rm -rvf \
+      /root/snap \
+      /etc/pollinate \
+      /etc/cloud \
+      /var/lib/cloud \
+    /var/lib/command-not-found;
+}
+
+purge-unwanted
+
+
+      #OK
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
-     
-      echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-
 	sleep 1 
 	sudo rm -rfv .local/share/Trash/*
+      sudo rm -rfv /home/*/.local/share/Trash/*/**
+      sudo rm -rfv /root/.local/share/Trash/*/**
+      
+      #OK
+      echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 	
 	echo 'Removing open recents files...'
 	sleep 1
 	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
-	echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
+	
+      #OK
+      echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
       
 #OK
+#********************************************************************************************************************
+#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
+sleep 2
+#********************************************************************************************************************
+	
+      sudo dpkg --configure -a
+      sudo apt update --fix-missing
+	sudo aptitude safe-upgrade -y
+	sudo apt install base-files sosreport ubuntu-server
+	sudo apt --fix-broken install
+	sudo apt install -f
+	sudo apt install aptitude -y
+      sudo apt upgrade -y
+      sudo apt full-upgrade -y
+      sudo apt dist-upgrade
+      sudo apt remove $(deborphan)
+	
 
 #********************************************************************************************************************
 #OK
@@ -142,6 +170,7 @@ sleep 2
       sudo dpkg install -f
 
 #********************************************************************************************************************
+#PRELINK
 echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
 sudo prelink -amR
 sudo /etc/cron.daily/prelink
@@ -156,8 +185,7 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
         flatpak update -y
 #********************************************************************************************************************
-#PRELINK
-
+#UPDATE GRUB
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
 
         sudo update-grub
@@ -175,7 +203,6 @@ echo '**************************************************************************
 echo -e '\n************************************************************************************************************'
             df -h /dev/sdc6 && lsblk | grep scd6
 echo -e '\n************************************************************************************************************'
-
 
 echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
 echo '************************************************************************************************************'
@@ -262,7 +289,7 @@ fi
       if
             echo "${VALIDATE}"
             then
-            echo -e "The operation was canceled by the user\n"   
+            echo -e "Operation canceled by the user\n"   
 
       fi
 
