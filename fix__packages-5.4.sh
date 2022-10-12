@@ -90,38 +90,55 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 
 
 #REMOVE PACKAGES UNWANTED
-echo -e '************************************************************************************************************'
-echo -e "\033[01;05;31mREMOVING UNWANTED PACKAGES AND PURGE LEFTOVER CONFIGURATION...\033[00;37m"
-sleep 2
-echo -e '************************************************************************************************************'
 
-    # remove unwanted packages and purge leftover configuration
-      purge-unwanted() {
-      apt autoremove --purge -y \
-      snapd lxd-agent-loader ufw command-not-found \
-      apport alsa-ucm-conf alsa-topology-conf byobu \
-      cloud-init cloud-guest-utils cloud-initramfs-copymods cloud-initramfs-dyn-netconf \
-      landscape-common motd-news-config pollinate popularity-contest ubuntu-advantage-tools \
-      open-iscsi multipath-tools accountsservice cryptsetup-initramfs open-vm-tools;
-      rm -rvf \
-      /root/snap \
-      /etc/pollinate \
-      /etc/cloud \
-      /var/lib/cloud \
-    /var/lib/command-not-found;
-}
+VALIDATE=$(test "y" || "n" != "$pack" || test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
+ echo -e '\n'
+ echo -n 'Do you want remove unwanted packs of system ( y/n ) ? or press any key to exit '
+ read -r pack
 
-purge-unwanted
 
+
+ if test "y" = "$pack"
+
+      then
+
+      #REMOVE PACKAGES UNWANTED
+      echo -e '************************************************************************************************************'
+      echo -e "\033[01;05;31mREMOVING UNWANTED PACKAGES AND PURGE LEFTOVER CONFIGURATION...\033[00;37m"
+      sleep 2
+      echo -e '************************************************************************************************************\n'
+
+      # remove unwanted packages and purge leftover configuration
+            purge-unwanted() {
+            apt autoremove --purge -y \
+            snapd lxd-agent-loader ufw command-not-found \
+            apport alsa-ucm-conf alsa-topology-conf byobu \
+            cloud-init cloud-guest-utils cloud-initramfs-copymods cloud-initramfs-dyn-netconf \
+            landscape-common motd-news-config pollinate popularity-contest ubuntu-advantage-tools \
+            open-iscsi multipath-tools accountsservice cryptsetup-initramfs open-vm-tools;
+            rm -rvf \
+            /root/snap \
+            /etc/pollinate \
+            /etc/cloud \
+            /var/lib/cloud \
+            /var/lib/command-not-found;
+      }
+
+      purge-unwanted
+fi
+
+if test "n" = "$pack"
+   
+      then
 
       #OK
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 
 	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
-	sleep 1 
-	sudo rm -rfv .local/share/Trash/*
-      sudo rm -rfv /home/*/.local/share/Trash/*/**
-      sudo rm -rfv /root/.local/share/Trash/*/**
+        sleep 1 
+        sudo rm -rfv .local/share/Trash/*
+        sudo rm -rfv /home/*/.local/share/Trash/*/**
+        sudo rm -rfv /root/.local/share/Trash/*/**
       
       #OK
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
@@ -132,8 +149,22 @@ purge-unwanted
 	
       #OK
       echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
-      
-#OK
+
+fi
+#********************************************************************************************************************
+echo -e "\033[01;32mCleaning up cache entries...\033[01;37m"
+sleep 2
+
+	sudo sync; echo 1 > /proc/sys/vm/drop_caches
+	sudo sync; echo 2 > /proc/sys/vm/drop_caches
+	sudo sync; echo 3 > /proc/sys/vm/drop_caches
+	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
+	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
+	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
+	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
+	sudo dpkg --configure -a
+      sudo dpkg install -f
+
 #********************************************************************************************************************
 #echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
@@ -155,20 +186,6 @@ sleep 2
 
 #********************************************************************************************************************
 #OK
-#********************************************************************************************************************
-echo -e "\033[01;32mCleaning up cache entries...\033[01;37m"
-sleep 2
-
-	sudo sync; echo 1 > /proc/sys/vm/drop_caches
-	sudo sync; echo 2 > /proc/sys/vm/drop_caches
-	sudo sync; echo 3 > /proc/sys/vm/drop_caches
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
-	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
-	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
-	sudo dpkg --configure -a
-      sudo dpkg install -f
-
 #********************************************************************************************************************
 #PRELINK
 echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
@@ -214,12 +231,14 @@ echo '**************************************************************************
 #STACER/TIMESHIFT CONDITIONAL
 #*******************************************************************************************************************
 
-VALIDATE=$(test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
-
-
  echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '
  read -r stacer_question
 
+if
+            echo "${VALIDATE}"
+            then
+            echo -e "Operation canceled by the user\n"   
+fi
 
  if test "n" = "$stacer_question"
                   
@@ -286,13 +305,7 @@ fi
       fi
 
 
-      if
-            echo "${VALIDATE}"
-            then
-            echo -e "Operation canceled by the user\n"   
-
-      fi
-
+    
 
 #********************************************************************************************************************
 #ORPHANER CONDITIONAL
