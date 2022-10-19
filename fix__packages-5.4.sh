@@ -69,7 +69,7 @@ sudo dpkg --list 'linux-image*'
 echo -e '************************************************************************************************************'
 
 echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
+echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m\n"
 
 	sudo apt --purge autoremove -y
       sudo apt autoremove -y
@@ -87,6 +87,7 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m"
 	sudo rm -f /var/cache/apt/archives/lock
 	sudo rm -rf ~/.cache/tracker/ 
 	sudo rm -Rf /var/log/*
+
 
 
 #REMOVE PACKAGES UNWANTED
@@ -152,7 +153,8 @@ if test "n" = "$pack"
 
 fi
 #********************************************************************************************************************
-echo -e "\033[01;32mCleaning up cache entries...\033[01;37m"
+
+echo -e "\n\033[01;32mCleaning up cache entries...\033[01;37m\n"
 sleep 2
 
 	sudo sync; echo 1 > /proc/sys/vm/drop_caches
@@ -165,8 +167,9 @@ sleep 2
 	sudo dpkg --configure -a
       sudo dpkg install -f
 
+
 #********************************************************************************************************************
-#echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
 sleep 2
 #********************************************************************************************************************
@@ -184,6 +187,8 @@ sleep 2
       sudo apt remove $(deborphan)
 	
 
+
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 #********************************************************************************************************************
 #OK
 #********************************************************************************************************************
@@ -201,9 +206,12 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
 echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
         flatpak update -y
+
+
+sudo remove__oldsnaps.sh
 #********************************************************************************************************************
 #UPDATE GRUB
-echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m"
+echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m\n"
 
         sudo update-grub
 
