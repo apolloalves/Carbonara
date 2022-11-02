@@ -68,36 +68,12 @@ echo -e "\033[01;32mKERNELS LIST!\033[01;37m"
 sudo dpkg --list 'linux-image*'
 echo -e '************************************************************************************************************'
 
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m\n"
-
-	sudo apt --purge autoremove -y
-      sudo apt autoremove -y
-	sudo apt autoclean -y
-      sudo apt -s clean
-	sudo apt clean -y 
-      sudo apt clean all
-      sudo rm -rf /var/lib/apt/lists/lock
-      sudo rm -rf /var/lib/dpkg/lock-frontend
-      sudo dpkg --configure -a
-      sudo rm /var/lib/apt/lists/* -vf
-	sudo rm -f /var/lib/dpkg/lock
-	sudo rm -rf ~/.cache/thumbnails/*
-	sudo rm -f ~/.cache/thumbnails/normal/*
-	sudo rm -f /var/cache/apt/archives/lock
-	sudo rm -rf ~/.cache/tracker/ 
-	sudo rm -Rf /var/log/*
-
-
-
 #REMOVE PACKAGES UNWANTED
 
 VALIDATE=$(test "y" || "n" != "$pack" || test "y" || "n" != "$stacer_question" || test "y" || "n" != "$timeshift_question")
  echo -e '\n'
  echo -n 'Do you want remove unwanted packs of system ( y/n ) ? or press any key to exit '
  read -r pack
-
-
 
  if test "y" = "$pack"
 
@@ -117,7 +93,7 @@ VALIDATE=$(test "y" || "n" != "$pack" || test "y" || "n" != "$stacer_question" |
             cloud-init cloud-guest-utils cloud-initramfs-copymods cloud-initramfs-dyn-netconf \
             landscape-common motd-news-config pollinate popularity-contest ubuntu-advantage-tools \
             open-iscsi multipath-tools accountsservice cryptsetup-initramfs open-vm-tools;
-            rm -rvf \
+            sudo rm -rvf \
             /root/snap \
             /etc/pollinate \
             /etc/cloud \
@@ -125,7 +101,7 @@ VALIDATE=$(test "y" || "n" != "$pack" || test "y" || "n" != "$stacer_question" |
             /var/lib/command-not-found;
       }
 
-      purge-unwanted
+purge-unwanted
 fi
 
 if test "n" = "$pack"
@@ -152,6 +128,27 @@ if test "n" = "$pack"
       echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
 
 fi
+
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m\n"
+      sudo /bin/remove__oldsnaps.sh 
+      sudo rm -rf /var/lib/apt/lists/lock
+      sudo rm -rf /var/lib/dpkg/lock-frontend
+      sudo rm /var/lib/apt/lists/* -vf
+	sudo rm -f /var/lib/dpkg/lock
+	sudo rm -rf ~/.cache/thumbnails/*
+	sudo rm -f ~/.cache/thumbnails/normal/*
+	sudo rm -f /var/cache/apt/archives/lock
+	sudo rm -rf ~/.cache/tracker/ 
+	sudo rm -Rf /var/log/*
+      sudo apt autoremove -y
+	sudo apt autoclean -y
+      sudo apt -s clean
+	sudo apt clean -y 
+	sudo apt --purge autoremove -y
+      sudo apt clean all
+      sudo dpkg --configure -a
+
 #********************************************************************************************************************
 
 echo -e "\n\033[01;32mCleaning up cache entries...\033[01;37m\n"
@@ -161,7 +158,7 @@ sleep 2
 	sudo sync; echo 2 > /proc/sys/vm/drop_caches
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
 	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
+	#sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt -y purge
 	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
 	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
 	sudo dpkg --configure -a
@@ -207,12 +204,13 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
         flatpak update -y
 
-
-sudo remove__oldsnaps.sh
+echo -e "\n\033[01;32mReinstalling Nvidia Drivers...\033[00;37m\n"
+sleep 2
+sudo ubuntu-drivers autoinstall
 #********************************************************************************************************************
 #UPDATE GRUB
 echo -e "\033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m\n"
-
+      
         sudo update-grub
 
 echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m\n"
