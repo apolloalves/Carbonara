@@ -32,22 +32,26 @@ fi
     echo -n 'Deseja reinstalar o mysql? (y/n)'
     read -r mysql_reinstall
 
-if test 'y' =  '$mysql_reinstall'
+if test 'y' =  "$mysql_reinstall"
     
     then
 
             echo 'Updating packages of system'
-            sudo apt update
+            sudo apt update -y 
 
             echo 'display list mysql-server'
             dpkg -l mysql-server 
 
             echo "Initilizing Install mysql-server..."
-            sudo apt install mysql-server
-            mysql_secure_installation
+            sudo apt install mysql-server -y    
+            #mysql_secure_installation
             echo "Done!"
 
-            mysql -u root -p
+            sudo service mysql restart  
+            sudo systemctl status mysql.service
+            echo 'Execute o comando source'
+            sudo mysql -u root
+            #source /home/apollo__nicolly/gnu-bash/mysql__config.sql
 
   elif test 'n' = "$mysql_reinstall"      
   then 
@@ -55,7 +59,7 @@ if test 'y' =  '$mysql_reinstall'
 
 
      elif
-            test "y" || "n" != '$mysql_reinstall'
+            test "y" || "n" != "$mysql_reinstall"
             then
             echo "invalid arguments!"   
 
