@@ -6,30 +6,27 @@
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 # / was on /dev/md0p1 during installation
-UUID=76926cc8-92d9-4445-a23e-c33493a2e105 /               ext4    defaults        0	1
+UUID=76926cc8-92d9-4445-a23e-c33493a2e105       /       ext4    defaults        0       1
 # /home was on /dev/md0p2 during installation
-UUID=be71aa05-14cf-480a-b880-e510934f1a56 /home           ext4    defaults        2	0
+UUID=be71aa05-14cf-480a-b880-e510934f1a56       /home   ext4    defaults        2       0
 # swap was on /dev/md0p3 during installation
-UUID=4cbf0dc2-9b2c-4802-87f3-cfb062dcd4fd /dev/md0p3      swap    sw        0     0
-
-
-
+UUID=8a8a9fb5-9381-48ea-b620-b96dfd1e2b49 /dev/md0p3      swap    sw            0       0
 
 
 # EXT__STORAGE 
-UUID=c09ec19e-3d01-4187-873f-9f7563858ebf /mnt/EXT__STORAGE         	     ext4    defaults	     0	0
+UUID=c09ec19e-3d01-4187-873f-9f7563858ebf /mnt/EXT__STORAGE  ext4    defaults	0	    0:  
 
 
 # EXT__TIMESHIFT
-UUID=0b6f2318-fdef-4394-a090-73a350597683 /mnt/EXT__TIMESHIFT                ext4    defaults        0	0
+UUID=0b6f2318-fdef-4394-a090-73a350597683 /mnt/EXT__TIMESHIFT ext4    defaults  0	    0
 
  
 # VENTOY
-UUID=3E7E-078B      /mnt/VENTOY                                              ext4    defaults        0	0
+# UUID=3E7E-078B      /mnt/VENTOY                             ext4    defaults  0	    0
 
 
-/dev/disk/by-id/wwn-0x50026b775b0794d6-part1 /mnt/wwn-0x50026b775b0794d6-part1 auto nosuid,nodev,nofail,noauto 0 0
-/dev/disk/by-id/wwn-0x50026b7683929c8e-part1 /mnt/wwn-0x50026b7683929c8e-part1 auto nosuid,nodev,nofail,noauto 0 0
+/dev/disk/by-id/wwn-0x50026b775b0794d6-part1    /mnt/wwn-0x50026b775b0794d6-part1       auto    nosuid,nodev,nofail,noauto      0       0
+/dev/disk/by-id/wwn-0x50026b7683929c8e-part1    /mnt/wwn-0x50026b7683929c8e-part1       auto    nosuid,nodev,nofail,noauto      0       0
 
 # Move /tmp to RAM
-#tmpfs /tmp tmpfs defaults,noexec,nosuid 0 0
+tmpfs /tmp tmpfs defaults,noexec,nosuid 0 0

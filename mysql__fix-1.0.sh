@@ -5,8 +5,8 @@ read -r mysql_question
 if test "y" = "$mysql_question"
 
 then 
-    sudo apt remove --purge mysql-server
-    sudo apt remove --purge phpmyadmin 
+    sudo apt remove --purge mysql-server -y 
+    sudo apt remove --purge phpmyadmin -y 
 
     echo 'stoping services of mysql...'
     /etc/init.d/mysql stop
@@ -14,7 +14,7 @@ then
     echo 'Removing traces of packages...'
     sudo apt remove --purge mysql-common
     echo 'Removing mysql...'
-    rm -rf /var/lib/mysql
+    rm -rfv /var/lib/mysql
     echo 'mysql was removided'
 
     elif test "n" = "$mysql_question"
