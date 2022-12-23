@@ -156,6 +156,13 @@ echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
 # echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
 # sleep 2
 # sudo apt install gdm3 -y
+
+echo 'mysql installation in course...'
+sleep 2
+sudo mysql__fix-1.0.sh 
+
+
+
 #********************************************************************************************************************
 #UPDATE GRUB
 echo -e "\n033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m\n"
@@ -179,6 +186,7 @@ echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
 echo '************************************************************************************************************'
         sudo swapoff -a && swapon -a && free -h
 echo '************************************************************************************************************'
+
 
 
 #********************************************************************************************************************
@@ -227,7 +235,7 @@ fi
       read -r timeshift_question
 
 fi
- 
+
   if test "y" = "$timeshift_question"
 
             then
