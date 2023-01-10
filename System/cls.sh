@@ -1,7 +1,5 @@
 #!/bin/bash
 sudo rm -rfv  /home/apollo__nicolly/.local/share/recently-used.xbel
-sudo rm -rfv /mnt/ATK__HAIRY/.Trash*
-sudo umount -l -f /dev/sdc8 /mnt/ATK__HAIRY/ 
 #Trash-cli - is no longer supported
 #sudo trash-empty --all -f
 
