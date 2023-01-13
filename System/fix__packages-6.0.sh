@@ -1,34 +1,43 @@
 #!/bin/bash
-
-# This program contains routine automation scripts for:
-
-# Full kernel update;
-# Complete update of the list of repositories;
-# Application update via flatpak update
-# Complete device driver update;
-# GRUB update after kernel update;
-
-# Automatic removal and correction of apt/dpkg packages;
-# Removal and correction of traces of unused packages;
-# Automatic removal of orphaned packages that only occupy spaces;
-
-# Cleaning exchange;
-# Disk usage space summary;
-
-# In addition, we have included scripts to remove traces of unused dpkgs and apts packages that take up unnecessary space and also remove the accumulated kernel.
-# For it to work effectively, we recommend installing some dependencies:
-
-# STACER - System Optimizer and Monitor
-# https://github.com/oguzhaninan/Stacer
-
-# TRASH-CLI - REMOVAL RUBBISH BIN FILES
-# https://github.com/andreafrancia/trash-cli
-
-# ORPHANER - REMOVAL OF ORPHAN PACKAGES
-# sudo apt install deborphan
-
-# TIMESHIFT - SYSTEM RESTORATION
-# https://github.com/teejee2008/timeshift
+########################################################################################################################
+#                                                                                                                      #
+#                                                                                                                      #
+# THIS PROGRAM CONTAINS ROUTINE AUTOMATION SCRIPTS FOR:                                                                #
+#                                                                                                                      #
+# FULL KERNEL UPDATE;                                                                                                  #
+# COMPLETE UPDATE OF THE LIST OF REPOSITORIES;                                                                         #
+# APPLICATION UPDATE VIA FLATPAK UPDATE                                                                                #
+# COMPLETE DEVICE DRIVER UPDATE;                                                                                       #
+# GRUB UPDATE AFTER KERNEL UPDATE;                                                                                     #
+#                                                                                                                      #
+# AUTOMATIC REMOVAL AND CORRECTION OF APT/DPKG PACKAGES;                                                               #
+# REMOVAL AND CORRECTION OF TRACES OF UNUSED PACKAGES;                                                                 #
+# AUTOMATIC REMOVAL OF ORPHANED PACKAGES THAT ONLY OCCUPY SPACES;                                                      #
+#                                                                                                                      #
+# CLEANING EXCHANGE;                                                                                                   #
+# DISK USAGE SPACE SUMMARY;                                                                                            #
+#                                                                                                                      #
+# IN ADDITION, WE HAVE INCLUDED SCRIPTS TO REMOVE TRACES OF UNUSED DPKGS AND APTS PACKAGES THAT TAKE UP UNNECESSARY    #
+# SPACE AND                                                                                                         #
+# ALSO REMOVE THE ACCUMULATED KERNEL.                                                                                  #
+#                                                                                                                      #
+# AUTHOR : APOLLO ALVES                                                                                                                     #
+#                                                                                                                      #
+########################################################################################################################
+# FOR IT TO WORK EFFECTIVELY, WE RECOMMEND INSTALLING SOME DEPENDENCIES:                                               #
+########################################################################################################################
+# STACER - SYSTEM OPTIMIZER AND MONITOR      #
+# HTTPS://GITHUB.COM/OGUZHANINAN/STACER      #
+#                                            #
+# TRASH-CLI - REMOVAL RUBBISH BIN FILES      #
+# HTTPS://GITHUB.COM/ANDREAFRANCIA/TRASH-CLI #
+#                                            #
+# ORPHANER - REMOVAL OF ORPHAN PACKAGES      #
+# SUDO APT INSTALL DEBORPHAN                 #
+#                                            #
+# TIMESHIFT - SYSTEM RESTORATION             #
+# HTTPS://GITHUB.COM/TEEJEE2008/TIMESHIFT    #
+##############################################
 
 # Instructions:
 
@@ -37,26 +46,34 @@
 # 3 - Move the file to the /bin directory
 # 4 - Run the command in the terminal with sudo
 
-# ATTENTION!
-# At your own risk, we are not responsible for any system failures or damages that may occur with your GNU/LINUX distribution.
-# The resource developed in this project is completely open source, we do not tolerate improper distribution or for profit. Modify it 
-# and distribute it for free to everyone!
-# We encourage you to feel free to further improve our code. After all, that's what the GNU/LINUX universe was born for!
-
-# Good luck! Greetings!
-#********************************************************************************************************************
-#Highlights commands
-#********************************************************************************************************************
-#Print google
-#echo -e '\033[01;34;47mG\033[01;31mo\033[01;33mo\033[01;34mg\033[01;32ml \033[01;31me\033[00;37;40m'
-#********************************************************************************************************************
-#Print Fatal Error "RED" - "Blink"
-#echo -e '\033[05;31mERRO FATAL\033[00;37m'
-#********************************************************************************************************************
-#Print in "white bold Ubuntu" and "Green Underscore" "Focal Fossa"
-#echo -e '\033[01;37mUbuntu \033[04;32mFocal Fossa\033[00;37m!!!'
-#********************************************************************************************************************
-
+##################################################################################################################
+#                                                                                                                #
+# ATTENTION!                                                                                                     #
+#                                                                                                                #
+# AT YOUR OWN RISK, WE ARE NOT RESPONSIBLE FOR ANY SYSTEM FAILURES OR DAMAGES THAT MAY OCCUR WITH YOUR GNU/LINUX #
+# DISTRIBUTION.                                                                                                  #
+#                                                                                                                #
+# THE RESOURCE DEVELOPED IN THIS PROJECT IS COMPLETELY OPEN SOURCE, WE DO NOT TOLERATE IMPROPER DISTRIBUTION OR  #
+# FOR PROFIT. MODIFY IT AND DISTRIBUTE IT FOR FREE TO EVERYONE!                                                  #
+#                                                                                                                #
+# WE ENCOURAGE YOU TO FEEL FREE TO FURTHER IMPROVE OUR CODE. AFTER ALL, THAT'S WHAT THE GNU/LINUX UNIVERSE WAS   #
+# BORN FOR!                                                                                                      #
+#                                                                                                                #
+# # GOOD LUCK! GREETINGS!                                                                                        #
+##################################################################################################################
+# HIGHLIGHTS COMMANDS                                                                                            #
+##################################################################################################################
+#                                                                                                                #
+# PRINT GOOGLE                                                                                                   #
+# ECHO -E '\033[01;34;47MG\033[01;31MO\033[01;33MO\033[01;34MG\033[01;32ML \033[01;31ME\033[00;37;40M'           #
+#                                                                                                                #
+# PRINT FATAL ERROR "RED" - "BLINK"                                                                              #
+# ECHO -E '\033[05;31MERRO FATAL\033[00;37M'                                                                     #
+#                                                                                                                #
+# PRINT IN "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
+# ECHO -E '\033[01;37MUBUNTU \033[04;32MFOCAL FOSSA\033[00;37M!!!'                                               #
+#                                                                                                                #
+##################################################################################################################
 
 #HOSTNAMECTL
 echo -e "\033[01;32mMACHINE REPORT\033[00:37m"
@@ -82,25 +99,26 @@ echo -e "\033[00;32mUPDATE PACKAGES OF SYSTEM..\033[00;33m\n"
       sudo apt dist-upgrade
 	sudo aptitude safe-upgrade -y
      	echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-#********************************************************************************************************************
+#####################################################################################################################
 echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
-#********************************************************************************************************************
+#####################################################################################################################
       sleep 1 
       sudo rm -rfv .local/share/Trash/*
       sudo rm -rfv /home/*/.local/share/Trash/*/**
       sudo rm -rfv /root/.local/share/Trash/*/**
       #OK
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-#********************************************************************************************************************
+#####################################################################################################################
 echo 'Removing open recents files...'
-#********************************************************************************************************************
+#####################################################################################################################
       sleep 1
       sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
       #OK
       echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
-#********************************************************************************************************************
+#####################################################################################################################
 echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m\n"
-#********************************************************************************************************************
+#####################################################################################################################
+    
       sudo rm -rfv /var/lib/apt/lists/lock
       sudo rm -rfv /var/lib/dpkg/lock-frontend
       sudo rm /var/lib/apt/lists/* -vf
@@ -115,15 +133,16 @@ echo -e "\033[01;32mCLEANNING SYSTEM...\033[00;37m\n"
       sudo apt -s clean
 	sudo apt clean -y 
       sudo apt clean all
+
       sudo /bin/remove__oldsnaps.sh 
 	sudo apt --purge autoremove -y
       sudo apt remove $(deborphan)
 
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n" 
-#********************************************************************************************************************
+#####################################################################################################################
 echo -e "\n\033[01;32mCleaning up cache entries...\033[01;37m\n"
-#********************************************************************************************************************
- 
+#####################################################################################################################
+
 sleep 2
 
 	sudo sync; echo 1 > /proc/sys/vm/drop_caches
@@ -161,14 +180,14 @@ echo 'mysql installation in course...'
 sleep 2
 sudo mysql__fix-1.0.sh 
 
-
-
-#********************************************************************************************************************
+#####################################################################################################################
 #UPDATE GRUB
+#####################################################################################################################
 echo -e "\n033[01;05;31mATTENTION GRUB IS BEING UPDATED!! DOUGLAS DO NOT INTERRUPT THE PROCESS!!\033[00;37m\n"
-#********************************************************************************************************************
-      sudo update-grub
-      echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m\n"
+sudo update-grub
+
+echo -e "\n\033[01;05;32mUPDADE GRUB OK!!\033[00;37m\n"
+
 echo '************************************************************************************************************'
 echo -e "\033[01;32mSTATE RAID0 PARTITIONS\033[00;37m"
 echo '************************************************************************************************************'
@@ -187,11 +206,10 @@ echo '**************************************************************************
         sudo swapoff -a && swapon -a && free -h
 echo '************************************************************************************************************'
 
-
-
-#********************************************************************************************************************
+#####################################################################################################################
 #STACER/TIMESHIFT CONDITIONAL
-#*******************************************************************************************************************
+#####################################################################################################################
+
 
  echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '
  read -r stacer_question
@@ -265,9 +283,10 @@ fi
             
 
       fi
-#********************************************************************************************************************
-#ORPHANER CONDITIONAL
-#********************************************************************************************************************
+#####################################################################################################################################
+# ORPHANER CONDITIONAL                                                                                                             #
+#####################################################################################################################################
+
 # echo -n 'Want to check for orphaned packages? ( y/n ) '
 # read -r orphaner
 
