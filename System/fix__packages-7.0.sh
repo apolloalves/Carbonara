@@ -76,8 +76,8 @@ elif test "n" = "$packages_question"; then
             sudo rm -rfv /home/*/.local/share/Trash/*/**
             sudo rm -rfv /root/.local/share/Trash/*/**
             trash-empty -f
-
-            echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
+            echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+            echo -e "\n\033[00;37mSwap memory has been cleared...\033[00;37m"
             echo '************************************************************************************************************'
             sudo swapoff -a && swapon -a && free -h
             echo '************************************************************************************************************'
