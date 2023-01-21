@@ -92,10 +92,10 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='/bin/shellCare.sh'
-alias rc='rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel'
+alias fix='sudo /bin/shellCare.sh'
 alias rb='trash-empty --all -f'
-alias cls='/bin/cls.sh'
+alias cls='clear'
+#alias fixp='/bin/fix__packages-7.0.sh'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -120,9 +120,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-alias ls='ls --color=never'
 
-source /home/apollo__nicolly/.config/broot/launcher/bash/br
+source /home/apollo/.config/broot/launcher/bash/br
+export PATH="$PATH":~/.local/bini
 
 
 # Import colorscheme from 'wal' asynchronously
@@ -130,12 +130,11 @@ source /home/apollo__nicolly/.config/broot/launcher/bash/br
 # ( ) # Hide shell job control messages.
 (cat ~/.cache/wal/sequences &)
 
-#Alternative (blocks terminal for 0-3ms)
+# Alternative (blocks terminal for 0-3ms)
 cat ~/.cache/wal/sequences
 
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 
-#export EDITOR=$(which vim)
-
-
+# Keyboard config 
+setxkbmap -model abnt2 -layout br
