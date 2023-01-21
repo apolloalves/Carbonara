@@ -92,12 +92,10 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='sudo /bin/fix__packages-5.2.sh'
+alias fix='/bin/shellCare.sh'
 alias rc='rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel'
 alias rb='trash-empty --all -f'
 alias cls='/bin/cls.sh'
-alias atk='/bin/atk.sh' 
-#alias utk='sudo umount /dev/sdc8 /mnt/ATK__HAIRY/' 
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

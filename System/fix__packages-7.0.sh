@@ -9,11 +9,13 @@
 #                                                                   #
 #                                                                   #
 #####################################################################
-
+YES="y"
+NO="n"
 echo -n 'Do you want update packages system ( y/n ) ? or press any key to exit '
 read -r packages_question
 
-if test "y" = "$packages_question"; then
+if  [ "$YES" = "$packages_question" ]
+      then
       sleep 2
 
       echo -e "\nUpdating system packages...\n"
@@ -39,11 +41,13 @@ if test "y" = "$packages_question"; then
       sudo /etc/cron.daily/prelink
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 
-elif test "n" = "$packages_question"; then
+elif [ "$NO" = "$packages_question" ]
+       then
       echo -n 'Do you want cleaning packages of system? ( y/n ) ? or press any key to exit '
       read -r removepack_kernel
 
-      if test "y" = "$removepack_kernel"; then
+      if ["$YES" = "$removepack_kernel" ]
+       then
             #####################################################################################################################
             echo -e "\nRemoving cache and logs files system...\n"
             #####################################################################################################################
@@ -86,7 +90,8 @@ elif test "n" = "$packages_question"; then
 
       fi
 
-      if test "n" = "$removepack_kernel"; then
+      if [$YES = "$removepack_kernel" ] 
+       then
             echo "programa encerrado"
       fi
 
