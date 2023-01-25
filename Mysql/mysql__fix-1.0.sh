@@ -51,7 +51,7 @@ if test 'y' =  "$mysql_reinstall"
             sudo systemctl status mysql.service
             echo 'Execute o comando source'
             sudo mysql -u root
-            #source /home/apollo__nicolly/gnu-bash/mysql__config.sql
+            #source /home/apollo/gnu-bash/Mysql/mysql__config.sql
 
   elif test 'n' = "$mysql_reinstall"      
   then 
