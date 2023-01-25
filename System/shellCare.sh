@@ -12,8 +12,7 @@
 # Create : 21/01/2023                                                                         #
 #                                                                                             #
 ###############################################################################################
-
-clear
+MENU='sudo shellCare.sh'
 neofetch
 echo "###########################################################################################"
 echo "Choose an option from the menu"
@@ -23,10 +22,11 @@ echo -e "\033[01;37m  [\033[ 01;37m 1\033[01;37m ]\033[00;37m - Update all syste
 echo -e "\033[01;37m  [\033[ 01;37m 2\033[01;37m ]\033[00;37m - Remove traces of unused packages from the system\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 3\033[01;37m ]\033[00;37m - Run both\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 4\033[01;37m ]\033[00;37m - Optimize system performance\033m"
-echo -e "\033[01;37m  [\033[ 01;37m 5\033[01;37m ]\033[00;37m - Check space disks\033m"
-echo -e "\033[01;37m  [\033[ 01;37m 6\033[01;37m ]\033[00;37m - Create timeshift snapshot\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 5\033[01;37m ]\033[00;37m - Create timeshift snapshot\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 6\033[01;37m ]\033[00;37m - Check space disks\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 7\033[01;37m ]\033[00;37m - Restore timeshift snapshot\033m"
-echo -e "\033[01;37m  [\033[ 01;37m 8\033[01;37m ]\033[00;37m - Exit\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 8\033[01;37m ]\033[00;37m - Open CLONRAID backups\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 9\033[01;37m ]\033[00;37m - Exit\033m"
 echo
 echo "###########################################################################################"
 read -p "Option: " opcao
@@ -37,9 +37,8 @@ echo "##########################################################################
 case "$opcao" in
 
 1)
-    echo
-    sleep 3
     echo -e "\nUpdating system packages...\n"
+    sleep 1
 
     sudo apt update --fix-missing
     sudo apt install base-files sosreport ubuntu-server
@@ -54,11 +53,12 @@ case "$opcao" in
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    $MENU
     ;;
 2)
     echo
-    echo "Removing junk system files"
-    sleep 3
+    echo "Removing junk system files..."
+    sleep 2
     #####################################################################################################################
     echo -e "\nRemoving cache and logs files system...\n"
     #####################################################################################################################
@@ -91,18 +91,17 @@ case "$opcao" in
     sudo rm -rfv /home/*/.local/share/Trash/*/**
     sudo rm -rfv /root/.local/share/Trash/*/**
     trash-empty -f
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-    echo -e "\n\033[00;37mSwap memory has been cleared...\033[00;37m"
-    echo '************************************************************************************************************'
-    sudo swapoff -a && swapon -a && free -h
-    echo '************************************************************************************************************'
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    
+    $MENU
     ;;
 3)
     echo
     echo "Cleaning and updating the system..."
-    sleep 3
+    sleep 2
     sudo /bin/fix__packages-6.0.sh
+    echo
+    $MENU
     ;;
 4)
     echo "Option 4 chosen"
@@ -119,24 +118,25 @@ case "$opcao" in
     sudo swapoff -a && swapon -a && free -h
     echo "###########################################################################################"
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    sleep 2
+    echo
+    $MENU
     ;;
 5)
     echo
-    echo "initializing timeshift..."
     sleep 2
     echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
     sudo timeshift --create --verbose --comments 'shell : [ shellCare ]' --tags D
-    sudo timeshift --restore 
     echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
+    echo
+    $MENU
     ;;
 6)
     echo
-    echo "initializing timeshift..."
     sleep 2
     echo -e "\n\033[01;31mRestore snapshotlist.\033[00;37m\n"
     sudo timeshift --restore 
     echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
+    echo
     ;;
 
 
@@ -154,12 +154,28 @@ case "$opcao" in
     echo
     echo "###########################################################################################"
     echo
+    $MENU
     ;;
 
-8)
+
+8) 
+    echo
+    echo " Opening Nautilus..."
+    echo
+    sleep 2
+    nautilus /mnt/EXT__CLONRAID/  && > /dev/null 
+    clear
+    $MENU
+    echo
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    echo
+    ;;
+
+9)
     echo
     echo "Exiting the program..."
-    sleep 2
-    ;;
+    sleep 1
+    clear
+    
 
 esac
