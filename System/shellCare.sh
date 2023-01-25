@@ -22,8 +22,8 @@ echo -e "\033[01;37m  [\033[ 01;37m 1\033[01;37m ]\033[00;37m - Update all syste
 echo -e "\033[01;37m  [\033[ 01;37m 2\033[01;37m ]\033[00;37m - Remove traces of unused packages from the system\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 3\033[01;37m ]\033[00;37m - Run both\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 4\033[01;37m ]\033[00;37m - Optimize system performance\033m"
-echo -e "\033[01;37m  [\033[ 01;37m 5\033[01;37m ]\033[00;37m - Create timeshift snapshot\033m"
-echo -e "\033[01;37m  [\033[ 01;37m 6\033[01;37m ]\033[00;37m - Check space disks\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 5\033[01;37m ]\033[00;37m - Check space disks\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 6\033[01;37m ]\033[00;37m - Create timeshift snapshot\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 7\033[01;37m ]\033[00;37m - Restore timeshift snapshot\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 8\033[01;37m ]\033[00;37m - Open CLONRAID backups\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 9\033[01;37m ]\033[00;37m - Exit\033m"
@@ -122,26 +122,7 @@ case "$opcao" in
     $MENU
     ;;
 5)
-    echo
-    sleep 2
-    echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
-    sudo timeshift --create --verbose --comments 'shell : [ shellCare ]' --tags D
-    echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-    echo
-    $MENU
-    ;;
-6)
-    echo
-    sleep 2
-    echo -e "\n\033[01;31mRestore snapshotlist.\033[00;37m\n"
-    sudo timeshift --restore 
-    echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-    echo
-    ;;
-
-
-7)
-    echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
+echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     echo "###########################################################################################"
     echo
     df -h /dev/md0p* && lsblk | grep md0p3
@@ -156,6 +137,26 @@ case "$opcao" in
     echo
     $MENU
     ;;
+6)
+    echo
+    sleep 2
+    echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
+    sudo timeshift --create --verbose --comments 'shell : [ shellCare ]' --tags D
+    echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
+    echo
+    $MENU
+    ;;
+
+
+7)
+    echo
+    sleep 2
+    echo -e "\n\033[01;31mRestore snapshotlist\033[00;37m\n"
+    sudo timeshift --restore 
+    echo -e "\n\033[00;37m[\033[01;32m done!\033[00;37m ]\033m\n"
+    echo
+    ;;
+    
 
 
 8) 
