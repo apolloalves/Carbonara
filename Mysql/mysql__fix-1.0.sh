@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -n 'Would you like to remove mysql from the system? (y/n)'
+echo -n 'Would you like to remove mysql from the system? (y/n) '
 read -r mysql_question
 
 if test "y" = "$mysql_question"
@@ -16,6 +16,12 @@ then
     echo 'Removing mysql...'
     rm -rfv /var/lib/mysql
     echo 'mysql was removided'
+    sleep 1 
+    echo 'Removing mysqlmysql-workbench-community...'
+    snap remove mysql-workbench-community
+    echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
+
+
 
     elif test "n" = "$mysql_question"
     
@@ -29,7 +35,7 @@ then
 fi 
 
 
-    echo -n 'Deseja reinstalar o mysql? (y/n)'
+    echo -n 'Deseja reinstalar o mysql? (y/n) '
     read -r mysql_reinstall
 
 if test 'y' =  "$mysql_reinstall"
@@ -46,7 +52,11 @@ if test 'y' =  "$mysql_reinstall"
             sudo apt install mysql-server -y    
             #mysql_secure_installation
             echo "Done!"
-
+            echo "Reinstall Workbench..."
+            sudo snap install mysql-workbench-community 
+            echo "Fixing error connect database server ..;"
+            sudo snap connect mysql-workbench-community:password-manager-service :password-manager-service
+            echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
             sudo service mysql restart  
             sudo systemctl status mysql.service
             echo 'Execute o comando source'
