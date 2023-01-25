@@ -26,7 +26,8 @@ echo -e "\033[01;37m  [\033[ 01;37m 5\033[01;37m ]\033[00;37m - Check space disk
 echo -e "\033[01;37m  [\033[ 01;37m 6\033[01;37m ]\033[00;37m - Create timeshift snapshot\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 7\033[01;37m ]\033[00;37m - Restore timeshift snapshot\033m"
 echo -e "\033[01;37m  [\033[ 01;37m 8\033[01;37m ]\033[00;37m - Open CLONRAID backups\033m"
-echo -e "\033[01;37m  [\033[ 01;37m 9\033[01;37m ]\033[00;37m - Exit\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 9\033[01;37m ]\033[00;37m - Show mysql assistent\033m"
+echo -e "\033[01;37m  [\033[ 01;37m 10\033[01;37m ]\033[00;37m - Exit\033m"
 echo
 echo "###########################################################################################"
 read -p "Option: " opcao
@@ -172,7 +173,12 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     echo
     ;;
 
-9)
+
+9) 
+    echo 
+    sudo /bin/mysql__fix-1.0.sh
+    ;;
+10)
     echo
     echo "Exiting the program..."
     sleep 1
