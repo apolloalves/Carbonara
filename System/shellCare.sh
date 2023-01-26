@@ -18,17 +18,20 @@ echo "##########################################################################
 echo "Choose an option from the menu"
 echo "###########################################################################################"
 echo
-echo -e "\033[01;37m  [\033[01;37m1\033[01;37m]\033[00;37m - Update all system packages\033m"
-echo -e "\033[01;37m  [\033[01;37m2\033[01;37m]\033[00;37m - Remove traces of unused packages from the system\033m"
-echo -e "\033[01;37m  [\033[01;37m3\033[01;37m]\033[00;37m - Run both\033m"
-echo -e "\033[01;37m  [\033[01;37m4\033[01;37m]\033[00;37m - Optimize system performance\033m"
-echo -e "\033[01;37m  [\033[01;37m5\033[01;37m]\033[00;37m - Check space disks\033m"
-echo -e "\033[01;37m  [\033[01;37m6\033[01;37m]\033[00;37m - Create timeshift snapshot\033m"
-echo -e "\033[01;37m  [\033[01;37m7\033[01;37m]\033[00;37m - Restore timeshift snapshot\033m"
-echo -e "\033[01;37m  [\033[01;37m8\033[01;37m]\033[00;37m - Open CLONRAID backups\033m"
-echo -e "\033[01;37m  [\033[01;37m9\033[01;37m]\033[00;37m - Start mysql assistent\033m"
-echo -e "\033[01;37m  [\033[01;37m10\033[01;37m]\033[00;37m - Open Broot\033m"
-echo -e "\033[01;37m  [\033[01;37m11\033[01;37m]\033[00;37m - Exit\033m"
+echo -e "\033[01;37m[\033[ 01;37m01\033[01;37m]\033[00;37m - Update all system packages\033m"
+echo -e "\033[01;37m[\033[ 01;37m02\033[01;37m]\033[00;37m - Remove traces of unused packages from the system\033m"
+echo -e "\033[01;37m[\033[ 01;37m03\033[01;37m]\033[00;37m - Run both\033m"
+echo -e "\033[01;37m[\033[ 01;37m04\033[01;37m]\033[00;37m - Optimize system performance\033m"
+echo -e "\033[01;37m[\033[ 01;37m05\033[01;37m]\033[00;37m - Check space disks\033m"
+echo -e "\033[01;37m[\033[ 01;37m06\033[01;37m]\033[00;37m - Create timeshift snapshot\033m"
+echo -e "\033[01;37m[\033[ 01;37m07\033[01;37m]\033[00;37m - Restore timeshift snapshot\033m"
+echo -e "\033[01;37m[\033[ 01;37m08\033[01;37m]\033[00;37m - Open CLONRAID backups\033m"
+echo -e "\033[01;37m[\033[ 01;37m09\033[01;37m]\033[00;37m - Start mysql assistent\033m"
+echo -e "\033[01;37m[\033[01;37m10\033[01;37m]\033[00;37m - Disable mysql"
+echo -e "\033[01;37m[\033[01;37m11\033[01;37m]\033[00;37m - Open Broot\033m"
+echo -e "\033[01;37m[\033[01;37m12\033[01;37m]\033[00;37m - Disable services natives\033m"
+echo -e "\033[01;37m[\033[01;37m13\033[01;37m]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
+echo -e "\033[01;37m[\033[01;37m14\033[01;37m]\033[00;37m - Exit\033m"
 echo
 echo "###########################################################################################"
 read -p "Option: " opcao
@@ -180,6 +183,15 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     sudo /bin/mysql__fix-1.0.sh
     ;;
 10)
+    #mySQL Service
+    echo -e "Disabling mysql service..."
+    sudo systemctl disable mysql.service
+    sleep 1
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    echo
+    $MENU
+    ;;
+11)
     echo
     echo "Opening broot..."
     sleep 1
@@ -187,7 +199,21 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     sleep 1
     $MENU
     ;;
-11)
+12)
+    echo 
+    echo "Disabling natives services system..."
+    sudo disable__services.sh
+    $MENU
+    ;;
+13)
+    echo
+    echo "Loading journalctl -b..."
+    sleep 1
+    journalctl -b
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    $MENU
+    ;;
+14)
     echo
     echo "Exiting the program..."
     sleep 1
