@@ -113,19 +113,17 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
 
 
-# mySQL Service
-# echo -e "ativando mysql service..."
-# sudo systemctl enable mysql.services
-# sleep 1
-# sudo systemctl status mysql.service
-# echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+#mySQL Service
+echo -e "Disabling mysql service..."
+sudo systemctl disable mysql.service
+sleep 1
+echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
-# TeamViwer Service
-# echo -e "ativando teamviewer services..."
-# sudo systemctl enable teamviewerd.service
-# sleep 1
-# sudo systemctl status teamviewerd.service
-# echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+TeamViwer Service
+echo -e "ativando teamviewer services..."
+sudo systemctl disable teamviewerd.service
+sleep 1
+echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
 #################################
 #                               #
