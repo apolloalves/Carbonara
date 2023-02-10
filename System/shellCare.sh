@@ -31,7 +31,8 @@ echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Disable mysql"
 echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Open Broot\033m"
 echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Disable services natives\033m"
 echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
-echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Exit\033m"
+echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Swap State\033m"
+echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - Exit\033m"
 echo
 echo "###########################################################################################"
 read -p "Option: " opcao
@@ -152,7 +153,6 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     $MENU
     ;;
 
-
 7)
     echo
     sleep 2
@@ -161,9 +161,6 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     echo -e "\n\033[00;37m[\033[01;32m done!\033[00;37m ]\033m\n"
     echo
     ;;
-    
-
-
 8) 
     echo
     echo " Opening Nautilus..."
@@ -176,8 +173,6 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     echo
     ;;
-
-
 9) 
     echo 
     sudo /bin/mysql__fix-1.0.sh
@@ -214,6 +209,16 @@ echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
     $MENU
     ;;
 14)
+    echo -e "\033[01;37mSwap state\033[00;37m"
+    echo "###########################################################################################"
+    sleep 1
+    free -h
+    echo "###########################################################################################"
+    echo 
+    $MENU
+    ;;
+    
+q)
     echo
     echo "Exiting the program..."
     sleep 1

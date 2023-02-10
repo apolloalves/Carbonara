@@ -176,9 +176,9 @@ echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m"
 # sleep 2
 # sudo apt install gdm3 -y
 
-echo 'mysql installation in course...'
-sleep 2
-sudo mysql__fix-1.0.sh 
+# echo 'mysql installation in course...'
+# sleep 2
+# sudo mysql__fix-1.0.sh 
 
 #####################################################################################################################
 #UPDATE GRUB
