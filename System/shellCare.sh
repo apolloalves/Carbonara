@@ -38,10 +38,9 @@ echo "##########################################################################
 read -p "Option: " option_choice
 echo "###########################################################################################"
 
-if [ -z "$option_choice" ] || ! [ "$option_choice" ]; then
-  echo 'The option cannot be empty!' >&2
-else
-  echo -e '\nOption is invalid!!\n' >&2
+if [ -z "$option_choice" ] && ! [ "$option_choice" ]; then
+  echo 'Option is invalid!' >&2
+
 fi
 
 
