@@ -35,14 +35,19 @@ echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Swap State\033m"
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - Exit\033m"
 echo
 echo "###########################################################################################"
-read -p "Option: " opcao
+read -p "Option: " option_choice
 echo "###########################################################################################"
 
-#Rotinas de opções
+    command -v $option_choice >/dev/null 2>&1 || { echo -e >&2 "\ninvalid option!!\n"; exit 1; }
 
-case "$opcao" in
+    # if ! $option_choice 
 
-1)
+    # then 
+    # #    hash $option_choice 2>/dev/null || { echo >&2 "command not found"; exit 1; }
+
+    # fi
+
+function updateSystem {
     echo -e "\nUpdating system packages...\n"
     sleep 1
 
@@ -59,9 +64,10 @@ case "$opcao" in
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-    $MENU
-    ;;
-2)
+
+}
+
+function removeTracer {
     echo
     echo "Removing junk system files..."
     sleep 2
@@ -89,27 +95,30 @@ case "$opcao" in
     sudo apt remove $(deborphan)
 
     sleep 1
-    sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
     #####################################################################################################################
     echo -e "\nRemoving Rubbish Bin files...\n"
     #####################################################################################################################
+    trash-empty -f
+    sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
     sudo rm -rfv .local/share/Trash/*
     sudo rm -rfv /home/*/.local/share/Trash/*/**
     sudo rm -rfv /root/.local/share/Trash/*/**
-    trash-empty -f
     echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-    
-    $MENU
-    ;;
-3)
+
+}
+
+function cleanupdateSystem {
+
     echo
     echo "Cleaning and updating the system..."
     sleep 2
     sudo /bin/fix__packages-6.0.sh
     echo
-    $MENU
-    ;;
-4)
+
+}
+
+function systemPerformace {
+
     echo "Option 4 chosen"
     #********************************************************************************************************************
     #PRELINK
@@ -125,104 +134,155 @@ case "$opcao" in
     echo "###########################################################################################"
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     echo
-    $MENU
-    ;;
-5)
-echo -e "\033[01;37mRAID PARTITIONS\033[00;37m"
-    echo "###########################################################################################"
-    echo
-    df -h /dev/md0p* && lsblk | grep md0p3
-    echo
-    echo "###########################################################################################"
-    echo -e "\033[01;37mEXT PARTITIONS\033[00;37m"
-    echo "###########################################################################################"
-    echo
-    df -h /dev/sdc5 /dev/sdc6 /dev/sdc7 && lsblk | grep scd5
-    echo
-    echo "###########################################################################################"
-    echo
-    $MENU
-    ;;
-6)
+}
+function createSnapshot {
+
     echo
     sleep 2
     echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
     sudo timeshift --create --verbose --comments 'shell : [ shellCare ]' --tags D
     echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
     echo
-    $MENU
-    ;;
+}
 
-7)
+function restoreSnapshot {
+
     echo
     sleep 2
     echo -e "\n\033[01;31mRestore snapshotlist\033[00;37m\n"
-    sudo timeshift --restore 
+    sudo timeshift --restore
     echo -e "\n\033[00;37m[\033[01;32m done!\033[00;37m ]\033m\n"
     echo
-    ;;
-8) 
+}
+
+function nautilusDir {
+
     echo
     echo " Opening Nautilus..."
     echo
     sleep 2
-    nautilus /mnt/EXT__CLONRAID/  && > /dev/null 
+    nautilus /mnt/EXT__CLONRAID/ && >/dev/null
     clear
-    $MENU
     echo
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     echo
-    ;;
-9) 
-    echo 
+}
+
+function mysqlAssitent {
+
+    echo
     sudo /bin/mysql__fix-1.0.sh
-    ;;
-10)
+}
+
+function mysqlDisableService {
+
     #mySQL Service
     echo -e "Disabling mysql service..."
     sudo systemctl disable mysql.service
     sleep 1
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     echo
-    $MENU
-    ;;
-11)
+}
+
+function broot {
     echo
     echo "Opening broot..."
     sleep 1
     sudo broot
     sleep 1
-    $MENU
-    ;;
-12)
-    echo 
+}
+
+function disableNativeServicesSystem {
+    echo
     echo "Disabling natives services system..."
     sudo disable__services.sh
-    $MENU
-    ;;
-13)
+}
+
+function showJournalctl {
     echo
     echo "Loading journalctl -b..."
     sleep 1
     journalctl -b
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    $MENU
-    ;;
-14)
+
+}
+
+function swapState {
+
     echo -e "\033[01;37mSwap state\033[00;37m"
     echo "###########################################################################################"
     sleep 1
     free -h
     echo "###########################################################################################"
-    echo 
+    echo
+
+}
+
+case "$option_choice" in
+
+
+    1)
+    
+    updateSystem
     $MENU
     ;;
-    
+2)
+    removeTracer
+    $MENU
+    ;;
+3)
+    cleanupdateSystem
+    $MENU
+    ;;
+4)
+    systemPerformace
+    $MENU
+    ;;
+5)
+    systemPerformace
+    $MENU
+    ;;
+6)
+    createSnapshot
+    $MENU
+    ;;
+
+7)
+    restoreSnapshot
+    ;;
+8)
+    nautilusDir
+    $MENU
+    ;;
+9)
+    mysqlAssitent
+    ;;
+10)
+    mysqlDisableService
+    $MENU
+    ;;
+11)
+    broot
+    $MENU
+    ;;
+12)
+    disableNativeServicesSystem
+    $MENU
+    ;;
+13)
+    showJournalctl
+    $MENU
+    ;;
+14)
+    swapState
+    $MENU
+    ;;
+
 q)
     echo
     echo "Exiting the program..."
     sleep 1
     clear
-    
+    ;;
 
 esac
