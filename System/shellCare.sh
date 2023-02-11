@@ -12,7 +12,7 @@
 # Create : 21/01/2023                                                                         #
 #                                                                                             #
 ###############################################################################################
-MENU='sudo shellCare.sh'
+MENU='shellCare.sh'
 neofetch
 echo "###########################################################################################"
 echo "Choose an option from the menu"
@@ -38,17 +38,18 @@ echo "##########################################################################
 read -p "Option: " option_choice
 echo "###########################################################################################"
 
-    command -v $option_choice >/dev/null 2>&1 || { echo -e >&2 "\ninvalid option!!\n"; exit 1; }
+if [ -z "$option_choice" ] || ! [ "$option_choice" ]; then
+  echo 'The option cannot be empty!' >&2
+else
+  echo -e '\nOption is invalid!!\n' >&2
+fi
 
-    # if ! $option_choice 
 
-    # then 
-    # #    hash $option_choice 2>/dev/null || { echo >&2 "command not found"; exit 1; }
 
-    # fi
+
 
 function updateSystem {
-    echo -e "\nUpdating system packages...\n"
+    echo -e "\nUpdating system packages...\n" 
     sleep 1
 
     sudo apt update --fix-missing
@@ -68,8 +69,8 @@ function updateSystem {
 }
 
 function removeTracer {
-    echo
-    echo "Removing junk system files..."
+   
+    echo "\nRemoving junk system files..."
     sleep 2
     #####################################################################################################################
     echo -e "\nRemoving cache and logs files system...\n"
@@ -109,8 +110,8 @@ function removeTracer {
 
 function cleanupdateSystem {
 
-    echo
-    echo "Cleaning and updating the system..."
+    
+    echo -e "\nCleaning and updating the system...\n"
     sleep 2
     sudo /bin/fix__packages-6.0.sh
     echo
@@ -133,23 +134,22 @@ function systemPerformace {
     sudo swapoff -a && swapon -a && free -h
     echo "###########################################################################################"
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    echo
+    
 }
 function createSnapshot {
 
-    echo
-    sleep 2
     echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
+    sleep 2
     sudo timeshift --create --verbose --comments 'shell : [ shellCare ]' --tags D
     echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-    echo
+    
 }
 
 function restoreSnapshot {
 
-    echo
-    sleep 2
+   
     echo -e "\n\033[01;31mRestore snapshotlist\033[00;37m\n"
+    sleep 2
     sudo timeshift --restore
     echo -e "\n\033[00;37m[\033[01;32m done!\033[00;37m ]\033m\n"
     echo
@@ -157,20 +157,16 @@ function restoreSnapshot {
 
 function nautilusDir {
 
-    echo
-    echo " Opening Nautilus..."
-    echo
+    echo -e "\n Opening Nautilus...\n"
     sleep 2
     nautilus /mnt/EXT__CLONRAID/ && >/dev/null
     clear
-    echo
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     echo
 }
 
 function mysqlAssitent {
 
-    echo
     sudo /bin/mysql__fix-1.0.sh
 }
 
@@ -181,26 +177,26 @@ function mysqlDisableService {
     sudo systemctl disable mysql.service
     sleep 1
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    echo
+   
 }
 
 function broot {
-    echo
-    echo "Opening broot..."
+    
+    echo -e "\nOpening broot...\n"
     sleep 1
     sudo broot
     sleep 1
 }
 
 function disableNativeServicesSystem {
-    echo
-    echo "Disabling natives services system..."
+    
+    echo -e "\nDisabling natives services system...\n"
     sudo disable__services.sh
 }
 
 function showJournalctl {
-    echo
-    echo "Loading journalctl -b..."
+    
+    echo -e "\nLoading journalctl -b...\n"
     sleep 1
     journalctl -b
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
