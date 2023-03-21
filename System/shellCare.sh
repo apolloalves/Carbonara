@@ -32,23 +32,22 @@ echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Open Broot\033m"
 echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Disable services natives\033m"
 echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
 echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Swap State\033m"
+echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
+
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - Exit\033m"
 echo
 echo "###########################################################################################"
 read -p "Option: " option_choice
 echo "###########################################################################################"
 
-if [ -z "$option_choice" ] && ! [ "$option_choice" ]; then
-  echo 'Option is invalid!' >&2
+if ! $option_choice 2>/dev/null && [ -z "$option_choice" ]; then
+  echo "$option_choice"
+
 
 fi
 
-
-
-
-
 function updateSystem {
-    echo -e "\nUpdating system packages...\n" 
+    echo -e "\n Updating system packages...\n" 
     sleep 1
 
     sudo apt update --fix-missing
@@ -69,7 +68,7 @@ function updateSystem {
 
 function removeTracer {
    
-    echo "\nRemoving junk system files..."
+    echo "\n Removing junk system files..."
     sleep 2
     #####################################################################################################################
     echo -e "\nRemoving cache and logs files system...\n"
@@ -213,10 +212,18 @@ function swapState {
 
 }
 
+function gnomeGdm3 {
+
+echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
+sleep 2
+sudo apt install gdm3 -y
+
+}
+
 case "$option_choice" in
 
 
-    1)
+ 1)
     
     updateSystem
     $MENU
@@ -234,7 +241,7 @@ case "$option_choice" in
     $MENU
     ;;
 5)
-    systemPerformace
+    nautilusDir
     $MENU
     ;;
 6)
@@ -270,6 +277,10 @@ case "$option_choice" in
     ;;
 14)
     swapState
+    $MENU
+    ;;
+15)
+    gnomeGdm3
     $MENU
     ;;
 
