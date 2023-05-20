@@ -4,7 +4,7 @@
 #   info -f grub -n 'Simple configuration'
 
 #############################################################################################
-#                                                                                           #
+# PATH :  /etc/default/grub                                                                                          #
 # NÃO ESQUECER DE COLOCAR O ARQUIVO "custom.conf" em /etc/gdm3/custom.conf que se refere ao #
 # BOOLEANO DO WAYLAND PARA REDUZIR TAMBEM O TEMPO DE BOOT.                                  #
 #                                                                                           #

@@ -1,63 +1,53 @@
 #!/bin/bash
-echo -n "Montar o disco EXT__ST500LM012_RAID__BK? (y/n) "
-read -r EXT__ST500LM012_RAID__BK
 
-if test "y" = "$EXT__ST500LM012_RAID__BK"
+
+ ############################
+ # EXT@ST500LM012_S #
+ ############################
+
+echo -n "Montar o disco EXT@ST500LM012__STORAGE ? (y/n) "
+read -r EXTST500LM012__STORAGE
+
+if test "y" = "$EXTST500LM012__STORAGE"
 
     then 
-    sudo mount /dev/sdd5 /mnt/EXT__ST500LM012_RAID__BK/
+    sudo mount /dev/sdc4 /mnt/EXT@ST500LM012__STORAGE/
     echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
 
-elif test "n" = "$EXT__ST500LM012_RAID__BK"
+elif test "n" = "$EXTST500LM012__STORAGE"
     
     then
-    sudo umount /dev/sdd5 /mnt/EXT__ST500LM012_RAID__BK/ -l
+    sudo umount /dev/sdc4 /mnt/EXT@ST500LM012__STORAGE/ -l
     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-elif test "y" || "n" != "$EXT__ST500LM012_RAID__BK"
+elif test "y" || "n" != "$EXTST500LM012__STORAGE"
     then
     echo 'invalid arguments!'
 
 fi
 
-echo "Montar o disco externo do EXT__ST500LM012_TIMESHIFT__BK? (y/n)"
-read -r EXT__ST500LM012_TIMESHIFT__BK
 
-if test "y" = "$EXT__ST500LM012_TIMESHIFT__BK"
+################################
+# EXT@ST500LM012_R #
+################################
 
+echo -n "Montar o disco EXT@ST500LM012__CLONRAID ? (y/n) "
+read -r EXTST500LM012__CLONRAID
+
+if test "y" = "$EXTST500LM012__CLONRAID"
+
+    then 
+    sudo mount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/
+    echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
+
+elif test "n" = "$EXTST500LM012__CLONRAID"
+    
     then
-        sudo mount /dev/sdd6 /mnt/EXT__ST500LM012_TIMESHIFT__BK/
-        echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
-    
-    
-    elif test "n" = "$EXT__ST500LM012_TIMESHIFT__BK"
-        then
-            sudo umount /dev/sdd6 /mnt/EXT__ST500LM012_TIMESHIFT__BK -l
-            echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
+    sudo umount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/ -l
+    echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-    elif test "y" || "n" != "$EXT__ST500LM012_TIMESHIFT__BK"
+elif test "y" || "n" != "$EXTST500LM012__CLONRAID"
     then
     echo 'invalid arguments!'
 
-
 fi
-
-
-
-
-
-
-
-
-
-
-#elif test "n" = "$question
-
-#then
-#	echo -n "Deseja mountar o disco externo do  clonezilla? (y/n)"   
-#read question
-
-
-   
-
-

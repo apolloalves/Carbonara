@@ -1,5 +1,5 @@
 #!/bin/bash
-     sudo nautilus /mnt/EXT__CLONRAID/ 
+     sudo nautilus /mnt/EXT@ST500LM012__CLONRAID/
 
       if pgrep -x "nautilus" > /dev/null
       then

@@ -12,7 +12,7 @@
 # Create : 21/01/2023                                                                         #
 #                                                                                             #
 ###############################################################################################
-MENU='shellCare.sh'
+MENU='shellCare-1.2.sh'
 neofetch
 echo "###########################################################################################"
 echo "Choose an option from the menu"
@@ -23,22 +23,19 @@ echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of u
 echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Run both\033m"
 echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance\033m"
 echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Check space disks\033m"
-echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Create timeshift snapshot\033m"
-echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Restore timeshift snapshot\033m"
-echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
-echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
-echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Disable mysql"
-echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Open Broot\033m"
-echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Disable services natives\033m"
-echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
-echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Swap State\033m"
-echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
-echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Mount Disk - EXT@ST500LM012 \033m"
+echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
+echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
+echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Disable mysql"
+echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Open Broot\033m"
+echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Disable services natives\033m"
+echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
+echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Swap State\033m"
+echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
+echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - STACER \033m"
+echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Mount Disk - EXT@ST500LM012 \033m"
 
 
-
-
-echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - Exit\033m"
+echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
 echo
 echo "###########################################################################################"
 read -p "Option: " option_choice
@@ -72,7 +69,7 @@ function updateSystem {
 
 function removeTracer {
    
-    echo "\n Removing junk system files..."
+    echo -e "\n Removing junk system files..."
     sleep 2
     #####################################################################################################################
     echo -e "\nRemoving cache and logs files system...\n"
@@ -87,14 +84,16 @@ function removeTracer {
     sudo rm -rfv /var/cache/apt/archives/lock
     sudo rm -rfv ~/.cache/tracker/
     sudo rm -Rfv /var/log/*
+    
+    
+    sudo /bin/remove__oldsnaps.sh
+    sudo apt --purge autoremove -y
 
     sudo apt autoclean -y
     sudo apt -s clean
     sudo apt clean -y
     sudo apt clean all
 
-    sudo /bin/remove__oldsnaps.sh
-    sudo apt --purge autoremove -y
     sudo apt remove $(deborphan)
 
     sleep 1
@@ -107,22 +106,22 @@ function removeTracer {
     sudo rm -rfv /home/*/.local/share/Trash/*/**
     sudo rm -rfv /root/.local/share/Trash/*/**
     echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    sudo /bin/cls.sh
 
 }
 
 function cleanupdateSystem {
-
     
     echo -e "\nCleaning and updating the system...\n"
     sleep 2
-    sudo /bin/fix__packages-6.0.sh
+    sudo /bin/fix__packages-7.0.sh
     echo
 
 }
 
 function systemPerformace {
 
-    echo "Option 4 chosen"
+    echo "Option 4 choosen"
     #********************************************************************************************************************
     #PRELINK
     echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
@@ -138,24 +137,7 @@ function systemPerformace {
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     
 }
-function createSnapshot {
 
-    echo -e "\n\033[01;31mCreating snapshot...\033[00;37m\n"
-    sleep 2
-    sudo timeshift --create --verbose --comments 'shell : [ shellCare ]' --tags D
-    echo -e "\n\033[00;37m[\033[00;32m done!\033[00;37m ]\033m\n"
-    
-}
-
-function restoreSnapshot {
-
-   
-    echo -e "\n\033[01;31mRestore snapshotlist\033[00;37m\n"
-    sleep 2
-    sudo timeshift --restore
-    echo -e "\n\033[00;37m[\033[01;32m done!\033[00;37m ]\033m\n"
-    echo
-}
 
 function nautilusDir {
 
@@ -172,9 +154,14 @@ function mysqlAssitent {
     sudo /bin/mysql__fix-1.0.sh
 }
 
+function stacer {
+
+    sudo /bin/stacer.sh
+}
+
+
 function mysqlDisableService {
 
-    #mySQL Service
     echo -e "Disabling mysql service..."
     sudo systemctl disable mysql.service
     sleep 1
@@ -253,46 +240,44 @@ case "$option_choice" in
     nautilusDir
     $MENU
     ;;
-6)
-    createSnapshot
-    $MENU
-    ;;
 
-7)
-    restoreSnapshot
-    ;;
-8)
+6)
     nautilusDir
     $MENU
     ;;
-9)
+7)
     mysqlAssitent
     ;;
-10)
+8)
     mysqlDisableService
     $MENU
     ;;
-11)
+9)
     broot
     $MENU
     ;;
-12)
+10)
     disableNativeServicesSystem
     $MENU
     ;;
-13)
+11)
     showJournalctl
     $MENU
     ;;
-14)
+12)
     swapState
     $MENU
     ;;
-15)
+13)
     gnomeGdm3
     $MENU
     ;;
-16)
+
+14)
+    stacer
+    $MENU
+    ;;
+15)
     mountDisk
     $MENU
     ;;

@@ -61,6 +61,7 @@ elif [ "$NO" = "$packages_question" ]
             sudo rm -rfv /var/cache/apt/archives/lock
             sudo rm -rfv ~/.cache/tracker/
             sudo rm -Rfv /var/log/*
+            
 
             sudo apt autoclean -y
             sudo apt -s clean

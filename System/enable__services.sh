@@ -40,10 +40,10 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 # Virtualbox Services
 echo -e "ativando virtualbox services..."
 sleep 1
-sudo systemctl disable vboxautostart-service.service
-sudo systemctl disable vboxballoonctrl-service.service
-sudo systemctl disable vboxdrv.service 
-sudo systemctl disable vboxweb-service.service 
+sudo systemctl start vboxautostart-service.service
+sudo systemctl start vboxballoonctrl-service.service
+sudo systemctl start vboxdrv.service 
+sudo systemctl start vboxweb-service.service 
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
 # Network Dispatcher Services

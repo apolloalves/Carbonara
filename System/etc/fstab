@@ -7,19 +7,16 @@
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 # / was on /dev/md0p1 during installation
 #UUID=7e264692-05cd-4140-beb6-4dc8d73cf3d9 /               ext4    errors=remount-ro 0       1
-UUID=7e264692-05cd-4140-beb6-4dc8d73cf3d9 /               ext4     defaults       0	     1
+UUID=7e264692-05cd-4140-beb6-4dc8d73cf3d9 /               ext4     defaults       0          1
 # /home was on /dev/md0p2 during installation
-UUID=9bd71582-9147-4529-a72d-fb6de866714c /home           ext4    defaults        0      2
+UUID=9bd71582-9147-4529-a72d-fb6de866714c /home           ext4    defaults        0          0
 
-# EXT__STORAGE 
-UUID=d10fe425-fc33-479f-ab05-c61139b9e039 /mnt/EXT__STORAGE   ext4    defaults	  0	     0
+# EXT@ST500LM012_S 
+UUID=c3ad3034-9155-4f7a-a7e6-8d509299b357 /mnt/EXT@ST500LM012__STORAGE   btrfs    defaults    0          0
 
-# EXT__CLONRAID
-UUID=6fac7c8f-55de-466d-bd9c-39eb0f34ef09 /mnt/EXT__CLONRAID  ext4    defaults 	  0	     0
-
-# EXT__TIMESHIFT
-UUID=df80adae-9f52-4c60-ae8c-e73ea0e0e92a /mnt/EXT__TIMESHIFT ext4    defaults    0	     0
+# EXT@ST500LM012_R
+UUID=91b7b916-3a82-4db6-8c35-407f5fe2831a /mnt/EXT@ST500LM012__CLONRAID  btrfs    defaults    0          0
 
 
 # VENTOY
-#UUID=7FDA-2FE6 /mnt/VENTOY	 ext4    defaults    				   0	     0
+#UUID=7FDA-2FE6 /mnt/VENTOY      ext4    defaults                                  0         0
