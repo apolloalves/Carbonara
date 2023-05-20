@@ -51,15 +51,14 @@ function updateSystem {
     echo -e "\n Updating system packages...\n" 
     sleep 1
 
+    sudo apt update -y && sudo apt upgrade -y 
     sudo apt update --fix-missing
-    sudo apt install base-files sosreport ubuntu-server
-    sudo apt --fix-broken install
     sudo apt install -f
     sudo apt install aptitude -y
-    sudo apt upgrade -y
+    sudo apt dist-upgrade -y 
     sudo apt full-upgrade -y
-    sudo apt dist-upgrade
-    sudo aptitude safe-upgrade -y
+    sudo apt install base-files sosreport ubuntu-server
+    sudo apt --fix-broken install
 
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
