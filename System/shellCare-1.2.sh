@@ -51,15 +51,15 @@ function updateSystem {
     echo -e "\n Updating system packages...\n" 
     sleep 1
 
-    sudo apt update -y && sudo apt upgrade -y 
+    sudo apt update -y 
     sudo apt update --fix-missing
     sudo apt install -f
     sudo apt install aptitude -y
+    sudo apt upgrade -y
     sudo apt dist-upgrade -y 
     sudo apt full-upgrade -y
     sudo apt install base-files sosreport ubuntu-server
-    sudo apt --fix-broken install
-
+    sudo apt --fix-broken install 
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
@@ -129,11 +129,20 @@ function systemPerformace {
     sudo /etc/cron.daily/prelink
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     #*********************************************************************************************************************'
-    echo -e "\033[01;32mCLEANING SWAP MEMORY!\033[00;37m"
+    
     echo "###########################################################################################"
-    sudo swapoff -a && swapon -a && free -h
-    echo "###########################################################################################"
+    echo -e "\033[01;32m Opening tabs of btrfs balance instances...\033[00;37m"
+    # echo -e "\n\033[01;37m[\033[00;32m btrfs \033[00;37m ]\033m\n"
+    
+    gnome-terminal --tab -- bash -c "time sudo btrfs balance start /; exec bash"
+    gnome-terminal --tab -- bash -c "time sudo btrfs balance start /home; exec bash"
+    gnome-terminal --tab -- bash -c "time sudo btrfs balance start /mnt/EXT@ST500LM012__CLONRAID/; exec bash"
+    gnome-terminal --tab -- bash -c "time sudo btrfs balance start mnt/EXT@ST500LM012__STORAGE/; exec bash"
+    
+    echo -e "###########################################################################################"
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    echo -e "\n"
+
     
 }
 

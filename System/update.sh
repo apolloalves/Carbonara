@@ -82,7 +82,7 @@ echo -e "\033[00;32mCLEARING TRACES OF PACKAGES...\033[00;33m\n"
 	sudo apt autoclean -y
 	sudo apt clean -y 
 	sudo apt --purge autoremove -y
-	sudo apt-get install base-files sosreport ubuntu-server
-	sudo apt-get install aptitude -y
+	sudo apt install base-files sosreport ubuntu-server
+	sudo apt install aptitude -y
 	sudo aptitude safe-upgrade
 	sudo apt remove $(deborphan)
