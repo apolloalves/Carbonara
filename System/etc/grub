@@ -3,16 +3,6 @@
 # For full documentation of the options in this file, see:
 #   info -f grub -n 'Simple configuration'
 
-#############################################################################################
-# PATH :  /etc/default/grub                                                                                          #
-# NÃO ESQUECER DE COLOCAR O ARQUIVO "custom.conf" em /etc/gdm3/custom.conf que se refere ao #
-# BOOLEANO DO WAYLAND PARA REDUZIR TAMBEM O TEMPO DE BOOT.                                  #
-#                                                                                           #
-# DESCOMENTAR A LINHA 7 : #WaylandEnable=false                                              #
-#                                                                                           #
-#                                                                                           #
-#############################################################################################
-
 GRUB_DEFAULT=0
 GRUB_HIDDEN_TIMEOUT=0
 GRUB_HIDDEN_TIMEOUT_QUIET=true
@@ -24,8 +14,8 @@ GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
 GRUB_CMDLINE_LINUX=""
 
 # changed
+#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash noplymouth video=SVIDEO-1:d loglevel=3"
 GRUB_CMDLINE_LINUX_DEFAULT="noplymouth video=SVIDEO-1:d loglevel=3"
-
 # Uncomment to enable BadRAM filtering, modify to suit your needs
 # This works with Linux (no patch required) and with any kernel that obtains
 # the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)

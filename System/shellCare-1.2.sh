@@ -12,8 +12,10 @@
 # Create : 21/01/2023                                                                         #
 #                                                                                             #
 ###############################################################################################
+
 MENU='shellCare-1.2.sh'
 neofetch
+
 echo "###########################################################################################"
 echo "Choose an option from the menu"
 echo "###########################################################################################"
@@ -53,13 +55,13 @@ function updateSystem {
 
     sudo apt update -y 
     sudo apt update --fix-missing
-    sudo apt install -f
     sudo apt install aptitude -y
     sudo apt upgrade -y
+    sudo apt install base-files sosreport ubuntu-server
     sudo apt dist-upgrade -y 
     sudo apt full-upgrade -y
-    sudo apt install base-files sosreport ubuntu-server
     sudo apt --fix-broken install 
+    sudo apt install -f
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
@@ -83,7 +85,6 @@ function removeTracer {
     sudo rm -rfv /var/cache/apt/archives/lock
     sudo rm -rfv ~/.cache/tracker/
     sudo rm -Rfv /var/log/*
-    
     
     sudo /bin/remove__oldsnaps.sh
     sudo apt --purge autoremove -y
@@ -142,10 +143,16 @@ function systemPerformace {
     echo -e "###########################################################################################"
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     echo -e "\n"
-
     
 }
 
+function checkSpace {
+    echo -e "\n Check spaces...\n"
+    sleep 1 
+    df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" &&  df -h /mnt/EXT@ST500LM012__STORAGE/
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    echo
+}
 
 function nautilusDir {
 
@@ -245,7 +252,7 @@ case "$option_choice" in
     $MENU
     ;;
 5)
-    nautilusDir
+    checkSpace
     $MENU
     ;;
 

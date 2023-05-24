@@ -1,22 +1,17 @@
 # /etc/fstab: static file system information.
 #
-# Use 'blkid' to print the universally unique identifier for a
-# device; this may be used with UUID= as a more robust way to name devices
-# that works even if disks are added and removed. See fstab(5).
+# Use 'blkid' to print the universally unique identifier for a device; this may
+# be used with UUID= as a more robust way to name devices that works even if
+# disks are added and removed. See fstab(5).
 #
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
-# / was on /dev/md0p1 during installation
-#UUID=7e264692-05cd-4140-beb6-4dc8d73cf3d9 /               ext4    errors=remount-ro 0       1
-UUID=7e264692-05cd-4140-beb6-4dc8d73cf3d9 /               ext4     defaults       0          1
-# /home was on /dev/md0p2 during installation
-UUID=9bd71582-9147-4529-a72d-fb6de866714c /home           ext4    defaults        0          0
+# <file system>             <mount point>  <type>  <options>  <dump>  <pass>
+UUID=a73e7c46-6c35-47c2-9ddd-13f95e8883cc /              btrfs   subvol=/@,defaults,ssd,ssd_spread,noatime,autodefrag 0 0
+UUID=8dbb936a-8c0e-42e6-8780-e8b43e351d1a /home          btrfs   defaults,ssd,ssd_spread,noatime,autodefrag 0 
 
-# EXT@ST500LM012_S 
-UUID=c3ad3034-9155-4f7a-a7e6-8d509299b357 /mnt/EXT@ST500LM012__STORAGE   btrfs    defaults    0          0
+/swapfile none swap sw 0 0
 
-# EXT@ST500LM012_R
-UUID=91b7b916-3a82-4db6-8c35-407f5fe2831a /mnt/EXT@ST500LM012__CLONRAID  btrfs    defaults    0          0
+# EXT@ST500LM012__STORAGE 
+UUID=c3ad3034-9155-4f7a-a7e6-8d509299b357 /mnt/EXT@ST500LM012__STORAGE   btrfs    defaults,noatime,compress=no   0          0
 
-
-# VENTOY
-#UUID=7FDA-2FE6 /mnt/VENTOY      ext4    defaults                                  0         0
+# EXT@ST500LM012__CLONRAID
+UUID=91b7b916-3a82-4db6-8c35-407f5fe2831a /mnt/EXT@ST500LM012__CLONRAID  btrfs    defaults,noatime,compress=no   0          0
