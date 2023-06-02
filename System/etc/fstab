@@ -5,13 +5,13 @@
 # disks are added and removed. See fstab(5).
 #
 # <file system>             <mount point>  <type>  <options>  <dump>  <pass>
-UUID=a73e7c46-6c35-47c2-9ddd-13f95e8883cc /              btrfs   subvol=/@,defaults,ssd,ssd_spread,noatime,autodefrag 0 0
-UUID=8dbb936a-8c0e-42e6-8780-e8b43e351d1a /home          btrfs   defaults,ssd,ssd_spread,noatime,autodefrag 0 
-
-/swapfile none swap sw 0 0
-
-# EXT@ST500LM012__STORAGE 
-UUID=c3ad3034-9155-4f7a-a7e6-8d509299b357 /mnt/EXT@ST500LM012__STORAGE   btrfs    defaults,noatime,compress=no   0          0
+UUID=dbbd263b-f01c-4e14-a171-8efe8530ec91 /              btrfs   subvol=/@,defaults,noatime,compress=zstd,autodefrag,ssd 0 1
+UUID=a9d475b9-4a97-433b-a4c5-a7188ccee13a /home          btrfs  defaults,noatime,compress=zstd,autodefrag,ssd 0 1
 
 # EXT@ST500LM012__CLONRAID
-UUID=91b7b916-3a82-4db6-8c35-407f5fe2831a /mnt/EXT@ST500LM012__CLONRAID  btrfs    defaults,noatime,compress=no   0          0
+UUID=91b7b916-3a82-4db6-8c35-407f5fe2831a /mnt/EXT@ST500LM012__CLONRAID  btrfs    defaults,noatime,compress=zstd,autodefrag 0 1
+
+# EXT@ST500LM012__STORAGE 
+UUID=c3ad3034-9155-4f7a-a7e6-8d509299b357 /mnt/EXT@ST500LM012__STORAGE   btrfs    defaults,noatime,compress=zstd,autodefrag 0 1
+
+
