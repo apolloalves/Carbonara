@@ -95,6 +95,7 @@ function removeTracer {
     sudo apt clean all
 
     sudo apt remove $(deborphan)
+   
 
     sleep 1
     #####################################################################################################################
@@ -113,7 +114,7 @@ function removeTracer {
 function cleanupdateSystem {
     
     echo -e "\nCleaning and updating the system...\n"
-    sleep 2
+    sleep 1
     sudo /bin/fix__packages-7.0.sh
     echo
 
