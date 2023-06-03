@@ -154,13 +154,9 @@ function systemPerformace {
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
         
     echo -e "###########################################################################################"
-
-
     echo -e "\n\033[01;32mClearing RAM memory...\033[00;37m\n"
     sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
-    
 
 }
 
@@ -182,15 +178,8 @@ function nautilusDir {
     echo
 }
 
-function mysqlAssitent {
-
-    sudo /bin/mysql__fix-1.0.sh
-}
-
-function stacer {
-
-    sudo /bin/stacer.sh
-}
+function mysqlAssitent { sudo /bin/mysql__fix-1.0.sh }
+function stacer { sudo /bin/stacer.sh }
 
 
 function mysqlDisableService {
@@ -225,16 +214,16 @@ function showJournalctl {
 
 }
 
-function swapState {
+# function swapState {
 
-    echo -e "\033[01;37mSwap state\033[00;37m"
-    echo "###########################################################################################"
-    sleep 1
-    free -h
-    echo "###########################################################################################"
-    echo
+#     echo -e "\033[01;37mSwap state\033[00;37m"
+#     echo "###########################################################################################"
+#     sleep 1
+#     free -h
+#     echo "###########################################################################################"
+#     echo
 
-}
+# }
 
 function gnomeGdm3 {
 
