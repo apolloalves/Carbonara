@@ -34,8 +34,7 @@ echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Replays all of you
 echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Swap State\033m"
 echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
 echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - STACER \033m"
-echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Mount Disk - EXT@ST500LM012 \033m"
-echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs"
+echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
 
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
@@ -160,7 +159,8 @@ function systemPerformace {
     echo -e "\n\033[01;32mClearing RAM memory...\033[00;37m\n"
     sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-   
+
+    
 
 }
 
@@ -251,11 +251,8 @@ function mountDisk {
 
 
 function eggsCreate {
-    echo "###########################################################################################"
-    echo -e "\033[01;32m Opening new tab for Penguin1s Eggs instances...\033[00;37m"
-    sleep 1
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    gnome-terminal --tab -- bash -c "time sudo eggs produce --clone --basename=Ubuntu-22.04.2-LTS-Jammy__NicollyApollo"
+
+    /bin/btrfs_balance.sh
 }
 
 case "$option_choice" in
@@ -320,10 +317,6 @@ case "$option_choice" in
     $MENU
     ;;
 15)
-    mountDisk
-    $MENU
-    ;;
-16)
     eggsCreate
     $MENU
     ;;

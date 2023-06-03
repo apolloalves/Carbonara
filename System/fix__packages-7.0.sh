@@ -5,7 +5,7 @@
 # Script: For updates packages of system and optimizer performance. #
 #                                                                   #
 # Author: Apollo Alves                                              #
-# Date: 12/01/2023                                                  #
+# Date: 03/06/2023                                                  #
 #                                                                   #
 #####################################################################
 
@@ -70,7 +70,7 @@ elif [ "$NO" = "$packages_question" ]; then
         sudo /bin/remove__oldsnaps.sh
         echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
         sudo dpkg --configure -a
-
+        sudo apt --fix-broken install
         sleep 1
         sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
         #####################################################################################################################
@@ -89,16 +89,6 @@ elif [ "$NO" = "$packages_question" ]; then
     fi
 fi
 
-if
-    test "y" || "n" != "$removepack_kernel" 
-        then
-        echo "invalid arguments!"   
-    
-fi
-
-# if
-#     test "y" || "n" != "$packages_question" 
-#         then
-#         echo "invalid arguments!"   
-    
-# fi
+ echo "${VALIDATE}"
+        echo -e "The arguments are invalids!\n"
+        shellCare-1.2.sh
