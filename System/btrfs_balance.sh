@@ -12,7 +12,8 @@
 
     YES="y"
     NO="n"
-    echo -n '\nDo you want to balance the volume "/" (y/n)? '
+    echo 
+    echo -n 'Do you want to balance the volume "/" (y/n)? '
     read -r ROOTVOLUME
 
     if [ "$YES" = "$ROOTVOLUME" ]; then
