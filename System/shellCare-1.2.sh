@@ -34,7 +34,8 @@ echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Replays all of you
 echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Swap State\033m"
 echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
 echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - STACER \033m"
-echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
+echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start volume balancing \033m"
+echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
 
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
@@ -120,7 +121,7 @@ function cleanupdateSystem {
 
 }
 
-function systemPerformace {
+function + {
 
     echo "Option 4 choosen"
     #********************************************************************************************************************
@@ -178,8 +179,14 @@ function nautilusDir {
     echo
 }
 
-function mysqlAssitent { sudo /bin/mysql__fix-1.0.sh }
-function stacer { sudo /bin/stacer.sh }
+function mysqlAssitent { 
+    sudo /bin/mysql__fix-1.0.sh
+
+}
+
+function stacer { 
+    sudo /bin/stacer.sh 
+}
 
 
 function mysqlDisableService {
@@ -214,16 +221,9 @@ function showJournalctl {
 
 }
 
-# function swapState {
-
-#     echo -e "\033[01;37mSwap state\033[00;37m"
-#     echo "###########################################################################################"
-#     sleep 1
-#     free -h
-#     echo "###########################################################################################"
-#     echo
-
-# }
+function eggsCreate {
+     gnome-terminal --tab -- bash -c "sudo eggs produce --clone --basename=Ubuntu-jammy-22.04-LTS-NicollyApollo"
+}
 
 function gnomeGdm3 {
 
@@ -239,7 +239,7 @@ function mountDisk {
 }
 
 
-function eggsCreate {
+function balanceVolume {
 
     /bin/btrfs_balance.sh
 }
@@ -306,6 +306,10 @@ case "$option_choice" in
     $MENU
     ;;
 15)
+    balanceVolume
+    $MENU
+    ;;
+16)
     eggsCreate
     $MENU
     ;;
