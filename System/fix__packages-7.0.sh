@@ -79,16 +79,12 @@ elif [ "$NO" = "$packages_question" ]; then
         sudo rm -rfv .local/share/Trash/*
         sudo rm -rfv /home/*/.local/share/Trash/*/**
         sudo rm -rfv /root/.local/share/Trash/*/**
-        # trash-empty -f
-        # echo -e "\n\033[00;37mSwap memory has been cleared...\033[00;37m"
-        # echo '************************************************************************************************************'
-        # sudo swapoff -a && swapon -a && free -h
-        # echo '************************************************************************************************************'
-
+      
         echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
     fi
+ echo "${VALIDATE}"
+        echo -e "\nThe arguments are invalids!\n"
+        
+        shellCare-1.2.sh
 fi
 
- echo "${VALIDATE}"
-        echo -e "The arguments are invalids!\n"
-        shellCare-1.2.sh

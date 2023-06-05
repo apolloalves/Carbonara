@@ -121,9 +121,9 @@ function cleanupdateSystem {
 
 }
 
-function + {
+function systemPerformace {
 
-    echo "Option 4 choosen"
+    echo -e "Option 4 choosen"
     #********************************************************************************************************************
     #PRELINK
     echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
@@ -135,30 +135,14 @@ function + {
 	sudo sync; echo 2 > /proc/sys/vm/drop_caches
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
 
-    echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'  
-
-    
-    echo -e "\n\033[01;32mRemoving old kernels...\033[00;37m\n"
-
-	sudo dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs
-	sudo dpkg -l | awk '/^rc/ {print $2}' | xargs --no-run-if-empty sudo dpkg --purge
-	sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
-    sudo dpkg -l 'linux-*' | awk '/^ii/{print $2}' | grep -v "$(uname -r)" | xargs sudo apt remove -y
-	sudo dpkg --configure -a
-    sudo dpkg install -f
-
-    echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'  
-
-    echo -e "\n\033[01;32mPrelink is improving the performance of executables...\033[00;37m\n"
-    sudo prelink -amR
-    sudo /etc/cron.daily/prelink
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-        
-    echo -e "###########################################################################################"
-    echo -e "\n\033[01;32mClearing RAM memory...\033[00;37m\n"
+
+    echo -e "\n\033[01;32mCleaning RAM memory...\033[00;37m\n"
+    sleep 1 
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    # Limpa a memória RAM
     sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
 }
 
 function checkSpace {
@@ -222,7 +206,7 @@ function showJournalctl {
 }
 
 function eggsCreate {
-     gnome-terminal --tab -- bash -c "sudo eggs produce --clone --basename=Ubuntu-jammy-22.04-LTS-NicollyApollo"
+    gnome-terminal --tab -- bash -c "sudo eggs produce --clone --basename=Ubuntu-jammy-22.04-LTS-NicollyApollo"
 }
 
 function gnomeGdm3 {

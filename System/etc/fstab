@@ -14,4 +14,5 @@ UUID=91b7b916-3a82-4db6-8c35-407f5fe2831a /mnt/EXT@ST500LM012__CLONRAID  btrfs  
 # EXT@ST500LM012__STORAGE 
 UUID=c3ad3034-9155-4f7a-a7e6-8d509299b357 /mnt/EXT@ST500LM012__STORAGE   btrfs    defaults,noatime,compress=zstd,autodefrag 0 1
 
-
+#VENTOY
+UUID=17a558c8-dd59-49a5-8485-d07c83160169 /mnt/VENTOY   ext4    defaults 0  0
