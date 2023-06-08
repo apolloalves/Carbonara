@@ -1,25 +1,97 @@
 #!/bin/bash
+########################################################################################################################
+#                                                                                                                      #
+#                                                                                                                      #
+# THIS PROGRAM CONTAINS ROUTINE AUTOMATION SCRIPTS FOR:                                                                #
+#                                                                                                                      #
+# FULL KERNEL UPDATE;                                                                                                  #
+# COMPLETE UPDATE OF THE LIST OF REPOSITORIES;                                                                         #
+# APPLICATION UPDATE VIA FLATPAK UPDATE                                                                                #
+# COMPLETE DEVICE DRIVER UPDATE;                                                                                       #
+# GRUB UPDATE AFTER KERNEL UPDATE;                                                                                     #
+#                                                                                                                      #
+# AUTOMATIC REMOVAL AND CORRECTION OF APT/DPKG PACKAGES;                                                               #
+# REMOVAL AND CORRECTION OF TRACES OF UNUSED PACKAGES;                                                                 #
+# AUTOMATIC REMOVAL OF ORPHANED PACKAGES THAT ONLY OCCUPY SPACES;                                                      #
+#                                                                                                                      #
+# CLEANING EXCHANGE;                                                                                                   #
+# DISK USAGE SPACE SUMMARY;                                                                                            #
+#                                                                                                                      #
+# IN ADDITION, WE HAVE INCLUDED SCRIPTS TO REMOVE TRACES OF UNUSED DPKGS AND APTS PACKAGES THAT TAKE UP UNNECESSARY    #
+# SPACE AND                                                                                                         #
+# ALSO REMOVE THE ACCUMULATED KERNEL.                                                                                  #
+#                                                                                                                      #
+# AUTHOR : APOLLO ALVES                                                                                                                     #
+#                                                                                                                      #
+########################################################################################################################
+# FOR IT TO WORK EFFECTIVELY, WE RECOMMEND INSTALLING SOME DEPENDENCIES:                                               #
+########################################################################################################################
+# STACER - SYSTEM OPTIMIZER AND MONITOR      #
+# HTTPS://GITHUB.COM/OGUZHANINAN/STACER      #
+#                                            #
+# TRASH-CLI - REMOVAL RUBBISH BIN FILES      #
+# HTTPS://GITHUB.COM/ANDREAFRANCIA/TRASH-CLI #
+#                                            #
+# ORPHANER - REMOVAL OF ORPHAN PACKAGES      #
+# SUDO APT INSTALL DEBORPHAN                 #
+#                                            #
+# TIMESHIFT - SYSTEM RESTORATION             #
+# HTTPS://GITHUB.COM/TEEJEE2008/TIMESHIFT    #
+##############################################
 
-###############################################################################################
-#                                                                                             #
-# Script Name : shellCare.sh                                                                  #
-# Author : Apollo Alves                                                                       #
-#                                                                                             #
-# Description : Program responsible for updating the system's internal packages, removing and #
-# correcting useless packages that are no longer used by apt, performance correction          #
-# of the most used apps and swap cleaning.                                                    #
-#                                                                                             #
-# Create : 21/01/2023                                                                         #
-#                                                                                             #
-###############################################################################################
+# Instructions:
+
+# 1 - Download the file;
+# 2 - Give him execution privileges (X) as root;
+# 3 - Move the file to the /bin directory
+# 4 - Run the command in the terminal with sudo
+
+##################################################################################################################
+#                                                                                                                #
+# ATTENTION!                                                                                                     #
+#                                                                                                                #
+# AT YOUR OWN RISK, WE ARE NOT RESPONSIBLE FOR ANY SYSTEM FAILURES OR DAMAGES THAT MAY OCCUR WITH YOUR GNU/LINUX #
+# DISTRIBUTION.                                                                                                  #
+#                                                                                                                #
+# THE RESOURCE DEVELOPED IN THIS PROJECT IS COMPLETELY OPEN SOURCE, WE DO NOT TOLERATE IMPROPER DISTRIBUTION OR  #
+# FOR PROFIT. MODIFY IT AND DISTRIBUTE IT FOR FREE TO EVERYONE!                                                  #
+#                                                                                                                #
+# WE ENCOURAGE YOU TO FEEL FREE TO FURTHER IMPROVE OUR CODE. AFTER ALL, THAT'S WHAT THE GNU/LINUX UNIVERSE WAS   #
+# BORN FOR!                                                                                                      #
+#                                                                                                                #
+# # GOOD LUCK! GREETINGS!                                                                                        #
+##################################################################################################################
+# HIGHLIGHTS COMMANDS                                                                                            #
+##################################################################################################################
+#                                                                                                                #
+# PRINT GOOGLE                                                                                                   #
+# echo -e '\033[01;34;47mg\033[01;31mo\033[01;33mo\033[01;34mg\033[01;32ml \033[01;31me\033[00;37;40m'           #
+#                                                                                                                #
+# PRINT FATAL ERROR "RED" - "BLINK"                                                                              #
+# echo -e '\033[05;31merro fatal\033[00;37m'                                                                     #
+#                                                                                                                #
+# PRINT IN "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
+# echo -e '\033[01;37mubuntu \033[04;32mfocal fossa\033[00;37m!!!'                                               #
+#
+# OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
+# echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+#
+# DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
+# echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
+#                                                                                                                #
+##################################################################################################################
 
 MENU='shellCare-1.2.sh'
+echo
+echo
 neofetch
 
-echo "###########################################################################################"
+/bin/line.sh
 echo "Choose an option from the menu"
-echo "###########################################################################################"
+/bin/line.sh
 echo
+
+
 echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - Update all system packages\033m"
 echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of unused packages from the system\033m"
 echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Run both\033m"
@@ -40,9 +112,9 @@ echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's E
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
 echo
-echo "###########################################################################################"
+/bin/line.sh
 read -p "Option: " option_choice
-echo "###########################################################################################"
+/bin/line.sh
 
 if ! $option_choice 2>/dev/null && [ -z "$option_choice" ]; then
   echo "$option_choice"
@@ -65,7 +137,7 @@ function updateSystem {
     sudo apt install -f
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
 
 }
 
@@ -96,7 +168,7 @@ function removeTracer {
     sudo apt clean all
 
     sudo apt remove $(deborphan)
-   
+    echo -e "\n\033[01;37m[\033[00;32m \033[00;37m ]\033m\n"
 
     sleep 1
     #####################################################################################################################
@@ -107,8 +179,8 @@ function removeTracer {
     sudo rm -rfv .local/share/Trash/*
     sudo rm -rfv /home/*/.local/share/Trash/*/**
     sudo rm -rfv /root/.local/share/Trash/*/**
-    echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-    sudo /bin/cls.sh
+    echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
+    # sudo /bin/cls.sh
 
 }
 
@@ -124,33 +196,44 @@ function cleanupdateSystem {
 function systemPerformace {
 
     echo -e "Option 4 choosen"
-    #********************************************************************************************************************
-    #PRELINK
     echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
-    #********************************************************************************************************************
     
     sleep 1
     echo -e "\n\033[01;32mCleaning drop_caches...\033[00;37m\n"
-	sudo sync; echo 1 > /proc/sys/vm/drop_caches
+	
+    sudo sync; echo 1 > /proc/sys/vm/drop_caches
 	sudo sync; echo 2 > /proc/sys/vm/drop_caches
 	sudo sync; echo 3 > /proc/sys/vm/drop_caches
 
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
+    #####################################################################################################################
+    #PRELINK
+    #####################################################################################################################
+    echo -e "\n\033[01;32mExecuting prelink...\033[00;37m\n"
+    sleep 1
+    sudo prelink -amR
+    sudo /etc/cron.daily/prelink
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    sleep 1
+    
+    #####################################################################################################################
+    #RAM MEMORY
+    #####################################################################################################################
     echo -e "\n\033[01;32mCleaning RAM memory...\033[00;37m\n"
     sleep 1 
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    # Limpa a memória RAM
     sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    sleep 1 
+    echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
+    #####################################################################################################################
 }
-
+  
 function checkSpace {
+    
     echo -e "\n Check spaces...\n"
     sleep 1 
     df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" &&  df -h /mnt/EXT@ST500LM012__STORAGE/
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    echo
+    
 }
 
 function nautilusDir {
@@ -206,6 +289,10 @@ function showJournalctl {
 }
 
 function eggsCreate {
+
+    echo -e "\nOpening new tab exclusive for Eggs...\n"
+    sleep 1
+    echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
     gnome-terminal --tab -- bash -c "sudo eggs produce --clone --basename=Ubuntu-jammy-22.04-LTS-NicollyApollo"
 }
 
@@ -214,12 +301,13 @@ function gnomeGdm3 {
 echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
 sleep 2
 sudo apt install gdm3 -y
-
+echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
 }
 
 function mountDisk {
     echo -n 
     sudo /bin/ext__disk-1.0.sh
+
 }
 
 
@@ -234,6 +322,7 @@ case "$option_choice" in
  1)
     
     updateSystem
+    /bin/line.sh
     $MENU
     ;;
 2)

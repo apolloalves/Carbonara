@@ -73,6 +73,7 @@ elif [ "$NO" = "$packages_question" ]; then
         sudo apt --fix-broken install
         sleep 1
         sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
+        echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
         #####################################################################################################################
         echo -e "\nRemoving Rubbish Bin files...\n"
         #####################################################################################################################
@@ -80,7 +81,7 @@ elif [ "$NO" = "$packages_question" ]; then
         sudo rm -rfv /home/*/.local/share/Trash/*/**
         sudo rm -rfv /root/.local/share/Trash/*/**
       
-        echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+        echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
     fi
  echo "${VALIDATE}"
         echo -e "\nThe arguments are invalids!\n"
