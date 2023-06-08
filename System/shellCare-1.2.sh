@@ -194,37 +194,8 @@ function cleanupdateSystem {
 }
 
 function systemPerformace {
-
-    echo -e "Option 4 choosen"
-    echo -e "\n\033[01;32mOptimizing system performance...\033[00;37m\n"
-    
-    sleep 1
-    echo -e "\n\033[01;32mCleaning drop_caches...\033[00;37m\n"
-	
-    sudo sync; echo 1 > /proc/sys/vm/drop_caches
-	sudo sync; echo 2 > /proc/sys/vm/drop_caches
-	sudo sync; echo 3 > /proc/sys/vm/drop_caches
-
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    #####################################################################################################################
-    #PRELINK
-    #####################################################################################################################
-    echo -e "\n\033[01;32mExecuting prelink...\033[00;37m\n"
-    sleep 1
-    sudo prelink -amR
-    sudo /etc/cron.daily/prelink
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    sleep 1
-    
-    #####################################################################################################################
-    #RAM MEMORY
-    #####################################################################################################################
-    echo -e "\n\033[01;32mCleaning RAM memory...\033[00;37m\n"
-    sleep 1 
-    sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
-    sleep 1 
-    echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
-    #####################################################################################################################
+    echo "$option_choice"
+    gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
 }
   
 function checkSpace {
