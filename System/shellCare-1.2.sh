@@ -95,7 +95,7 @@ echo
 echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - Update all system packages\033m"
 echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of unused packages from the system\033m"
 echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Run both\033m"
-echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance\033m"
+echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance - required sudo\033m"
 echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Check space disks\033m"
 echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
 echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
