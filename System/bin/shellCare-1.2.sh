@@ -124,6 +124,9 @@ if ! $option_choice 2>/dev/null && [ -z "$option_choice" ]; then
 fi
 
 function updateSystem {
+   
+    echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
+    echo 
     echo -e "\n Updating system packages...\n" 
     sleep 1
 
@@ -143,8 +146,7 @@ function updateSystem {
 }
 
 function removeTracer {
-    
-    #####################################################################################################################
+echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"    #####################################################################################################################
     echo -e "\nRemoving cache and logs files system...\n"
     #####################################################################################################################
     sleep 2
@@ -185,7 +187,7 @@ function removeTracer {
 }
 
 function cleanupdateSystem {
-    
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "\nCleaning and updating the system...\n"
     sleep 1
     sudo /bin/fix__packages-7.0.sh
@@ -194,12 +196,12 @@ function cleanupdateSystem {
 }
 
 function systemPerformace {
-    echo "$option_choice"
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
 }
   
 function checkSpace {
-    
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "\n Check spaces...\n"
     sleep 1 
     df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" &&  df -h /mnt/EXT@ST500LM012__STORAGE/
@@ -208,7 +210,7 @@ function checkSpace {
 }
 
 function nautilusDir {
-
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "\n Opening Nautilus...\n"
     sleep 2
     nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
@@ -218,21 +220,26 @@ function nautilusDir {
 }
 
 function mysqlAssitent { 
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     sudo /bin/mysql__fix-1.0.sh
 
 }
 
 function stacer { 
+    
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     sudo /bin/stacer.sh 
 }
 
 function releaseUpdateVersion {
 
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     sudo do-release-upgrade
 }
 
 function mysqlDisableService {
 
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "Disabling mysql service..."
     sudo systemctl disable mysql.service
     sleep 1
@@ -241,7 +248,8 @@ function mysqlDisableService {
 }
 
 function broot {
-    
+
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "\nOpening broot...\n"
     sleep 1
     sudo broot
@@ -249,13 +257,15 @@ function broot {
 }
 
 function disableNativeServicesSystem {
-    
+
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "\nDisabling natives services system..."
     sudo disable__services.sh
 }
 
 function showJournalctl {
-    
+
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"    
     echo -e "\nLoading journalctl -b...\n"
     sleep 1
     journalctl -b
@@ -265,6 +275,7 @@ function showJournalctl {
 
 function eggsCreate {
 
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "\nOpening new tab exclusive for Eggs...\n"
     sleep 1
     echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
@@ -273,13 +284,16 @@ function eggsCreate {
 
 function gnomeGdm3 {
 
-echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
-sleep 2
-sudo apt install gdm3 -y
-echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+    echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
+    sleep 2
+    sudo apt install gdm3 -y
+    echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
 }
 
 function mountDisk {
+
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -n 
     sudo /bin/ext__disk-1.0.sh
 
@@ -288,6 +302,7 @@ function mountDisk {
 
 function balanceVolume {
 
+    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     /bin/btrfs_balance.sh
 }
 
