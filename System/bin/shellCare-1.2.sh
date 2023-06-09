@@ -88,7 +88,6 @@ neofetch
 
 /bin/line.sh
 echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"
-
 /bin/line.sh
 echo
 
@@ -109,6 +108,7 @@ echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Reinstall GNOME gd
 echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - STACER \033m"
 echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start volume balancing \033m"
 echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
+echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
 
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
@@ -179,7 +179,7 @@ function removeTracer {
     sudo rm -rfv /home/*/.local/share/Trash/*/**
     sudo rm -rfv /root/.local/share/Trash/*/**
     trash-empty -f
-    echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
+    echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
     # sudo /bin/cls.sh
 
 }
@@ -226,6 +226,10 @@ function stacer {
     sudo /bin/stacer.sh 
 }
 
+function releaseUpdateVersion {
+
+    sudo do-release-upgrade
+}
 
 function mysqlDisableService {
 
@@ -246,7 +250,7 @@ function broot {
 
 function disableNativeServicesSystem {
     
-    echo -e "\nDisabling natives services system...\n"
+    echo -e "\nDisabling natives services system..."
     sudo disable__services.sh
 }
 
@@ -355,6 +359,10 @@ case "$option_choice" in
     ;;
 16)
     eggsCreate
+    $MENU
+    ;;
+17)
+    releaseUpdateVersion
     $MENU
     ;;
 

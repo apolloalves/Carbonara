@@ -19,8 +19,12 @@
 #                                                                                                        #
 ##########################################################################################################
 echo "Disabling disable bluetooth.service"
+echo
 sudo systemctl disable bluetooth.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1 
+sudo systemctl status bluetooth.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 #systemctl status bluetooth.service
 ##########################################################################################################
 #                                                                                                        #
@@ -31,8 +35,12 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                                                                                        #
 #########################################################################################################
 echo "Disabling accounts-daemon.service..."
+echo
 sudo systemctl disable accounts-daemon.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1 
+sudo systemctl status accounts-daemon.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 #systemctl status accounts-daemon.service
 ##########################################################################################################
 #                                                                                                         #
@@ -41,9 +49,15 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                                                                                         #
 #                                                                                                         #
 ###########################################################################################################
+
 echo "Disabling disable avahi-daemon.service..."
+echo
 sudo systemctl disable avahi-daemon.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1
+sudo systemctl status avahi-daemon.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
+
 #systemctl status avahi-daemon.service
 ############################################################################################
 #                                                                                          #
@@ -51,9 +65,14 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                                                                          #
 #                                                                                          #
 ############################################################################################
+
 echo "Disabling brltty.service..."
+echo
 sudo systemctl disable brltty.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1
+sudo systemctl status brltty.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 #systemctl status brltty.service
 ###################################################################################################################
 #                                                                                                                 #
@@ -63,8 +82,12 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                                                                                                 #
 ###################################################################################################################
 echo "Disabling debug-shell.service..."
+echo
 sudo systemctl disable debug-shell.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1
+sudo systemctl status debug-shell.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 #systemctl status debug-shell.service
 ########################################################################################################################
 #                                                                                                                      #
@@ -76,8 +99,12 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                                                                                                      #
 ########################################################################################################################
 echo "Disabling ModemManager.service..."
+echo
 sudo systemctl disable ModemManager.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sudo systemctl status ModemManager.service
+sleep 1 
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 #systemctl status ModemManager.service
 ####################################################################################################################
 #                                                                                                                  #
@@ -85,10 +112,14 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                                                                                                  #
 #                                                                                                                  #
 ####################################################################################################################
-echo "Disabling pppd-dns.service..."
-sudo systemctl disable pppd-dns.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-#systemctl status pppd-dns.service
+
+# echo "Disabling pppd-dns.service..."
+# sudo systemctl disable pppd-dns.service
+# sudo systemctl status pppd-dns.service
+# sleep 1
+# echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+# line.sh
+
 #######################################################################################################
 #                                                                                                     #
 # whoopsie.service is the Ubuntu error reporting service. It collects crash reports and sends them to #
@@ -106,24 +137,24 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #                                             #
 #                                             #
 ###############################################
-echo -e "Disbling warsaw service..."        
+echo -e "Disabling warsaw service..."        
+echo
 sudo systemctl disable warsaw.service            
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1 
+sudo systemctl status warsaw.service            
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 ###############################################
-
-
 
 #mySQL Service
 echo -e "Disabling mysql service..."
+echo
 sudo systemctl disable mysql.service
 sleep 1
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
-TeamViwer Service
-echo -e "ativando teamviewer services..."
-sudo systemctl disable teamviewerd.service
-sleep 1
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sudo systemctl status mysql.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
+###############################################
 
 #################################
 #                               #
@@ -133,9 +164,22 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 #################################
 
 echo -e "Disable network-dispatcher services..."
-sleep 1
+echo
 sudo systemctl disable networkd-dispatcher.service systemd-networkd.service
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+sleep 1
+sudo systemctl status networkd-dispatcher.service systemd-networkd.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
+
+
+#TeamViwer Service
+# echo -e "Disabling teamviewer services..."
+# echo
+# sudo systemctl status teamviewerd.service
+# sleep 1
+# sudo systemctl disable teamviewerd.service
+# echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+# line.sh
 
 #########################################################################################################
 #                                                                                                       #
