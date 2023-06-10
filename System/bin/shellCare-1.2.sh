@@ -85,17 +85,18 @@
 
 ##################################################################################################################
 
+LINE='line.sh'
 echo
-echo -e "\033[1;32;02;40;100m           ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  1.2.8     "
+echo -e "\033[1;32;02;40;100m           ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  1.2.8     \033[0m"
+
 MENU='shellCare-1.2.sh'
 echo
 echo
 neofetch
-line.sh
+$LINE
 echo -e "\033[1;40;02;32;107m   Choose an option from the menu   \033[0m"
-line.sh
+$LINE
 echo
-
 
 echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - Update all system packages\033m"
 echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of unused packages from the system\033m"
@@ -117,20 +118,24 @@ echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new ver
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
 echo
-line.sh
+$LINE
 read -p "Option: " option_choice
-line.sh
+$LINE
+
 
 if ! $option_choice 2> /dev/null && [ -z "$option_choice" ]; then
   echo "$option_choice"
     
 fi
 
+
 function updateSystem {
    
     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
     echo 
+    #####################################################################################################################
     echo -e "\n Updating system packages...\n" 
+    #####################################################################################################################
     sleep 1
 
     sudo apt update -y 
@@ -149,7 +154,9 @@ function updateSystem {
 }
 
 function removeTracer {
-echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"    #####################################################################################################################
+    
+    echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"    
+    #####################################################################################################################
     echo -e "\nRemoving cache and logs files system...\n"
     #####################################################################################################################
     sleep 2
@@ -191,7 +198,9 @@ echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"    
 
 function cleanupdateSystem {
     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+    #####################################################################################################################
     echo -e "\nCleaning and updating the system...\n"
+    #####################################################################################################################
     sleep 1
     sudo /bin/fix__packages-7.0.sh
     echo
@@ -205,7 +214,9 @@ function systemPerformace {
   
 function checkSpace {
     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+    #####################################################################################################################
     echo -e "\n Check spaces...\n"
+    #####################################################################################################################
     sleep 1 
     df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" &&  df -h /mnt/EXT@ST500LM012__STORAGE/
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
@@ -214,7 +225,9 @@ function checkSpace {
 
 function nautilusDir {
     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+    #####################################################################################################################
     echo -e "\n Opening Nautilus...\n"
+    #####################################################################################################################
     sleep 2
     nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
     clear
@@ -244,6 +257,7 @@ function mysqlDisableService {
 
     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
     echo -e "Disabling mysql service..."
+    
     sudo systemctl disable mysql.service
     sleep 1
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
@@ -315,7 +329,7 @@ case "$option_choice" in
  1)
     
     updateSystem
-    line.sh
+    $LINE
     $MENU
     ;;
 2)
