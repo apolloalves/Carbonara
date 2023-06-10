@@ -86,17 +86,14 @@
 ##################################################################################################################
 
 echo
-echo -e "\033[1;32;02;40;100m           ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m       version  1.2.8        "
-#echo -e "\033[1;32;02;40;100m  ShellCare  \033[0m\033[\033[1;40;02;32;107m  Choose an option from the menu  \033[0m"
+echo -e "\033[1;32;02;40;100m           ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  1.2.8     "
 MENU='shellCare-1.2.sh'
 echo
 echo
 neofetch
-
-#echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"
-
-echo
+line.sh
 echo -e "\033[1;40;02;32;107m   Choose an option from the menu   \033[0m"
+line.sh
 echo
 
 
