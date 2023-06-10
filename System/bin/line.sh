@@ -3,7 +3,7 @@
 linha=""
 
 
-for ((i=0; i<130; i++)); do
+for ((i=0; i<90; i++)); do
     linha+="─"
 done
 
