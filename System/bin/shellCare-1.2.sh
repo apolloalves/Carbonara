@@ -87,7 +87,7 @@
 
 LINE='line.sh'
 echo
-echo -e "\033[1;32;02;40;100m           ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  1.2.8     \033[0m"
+echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  1.2.8     \033[0m"
 
 MENU='shellCare-1.2.sh'
 echo
@@ -119,12 +119,12 @@ echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new ver
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
 echo
 $LINE
-read -p "Option: " option_choice
+read -p "Chosen option : " option_choice
 $LINE
 
 
 if ! $option_choice 2> /dev/null && [ -z "$option_choice" ]; then
-  echo "$option_choice"
+  echo "teste"
     
 fi
 
@@ -323,8 +323,14 @@ function balanceVolume {
     /bin/btrfs_balance.sh
 }
 
-case "$option_choice" in
+valid_option=false
 
+
+
+
+#if [ "$valid_option" = true ]; then
+  # Executar ação correspondente à opção válida
+case "$option_choice" in
 
  1)
     
@@ -402,7 +408,19 @@ q)
     echo
     echo "Exiting the program..."
     sleep 1
+    echo "Bye!"
+    sleep 1
     clear
+    valid_option=true
     ;;
 
 esac
+if [ "$valid_option" = true ]; then
+  # Chamar a função correspondente à opção válida
+   $valid_option > /dev/null
+else
+  echo -e "\nops!"
+  echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+  sleep 2
+#   $MENU
+fi
