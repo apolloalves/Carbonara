@@ -292,11 +292,44 @@ function showJournalctl {
 
 function eggsCreate {
 
+   
+    FILEPATH="/home/eggs/*.iso"
+    TARGETPATH="/mnt/VENTOY"
+
+    DATE=$(date +"%Y-%m-%d")
+    echo 
     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    echo -e "\nOpening new tab exclusive for Eggs...\n"
-    sleep 1
-    echo -e "\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-    gnome-terminal --tab -- bash -c "sudo eggs produce --clone --basename=Ubuntu-jammy-22.04-LTS-NicollyApollo"
+    
+    arquivo="/home/eggs/*.iso"
+
+    while true; do
+    
+        length=$(find /home/eggs -maxdepth 1 -name "*.iso" | wc -l)
+
+        if [ "$length" -gt 0 ]; then
+
+            echo "Arquivo(s) .iso encontrado(s) em: "
+            find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
+            echo "movendo arquivo para $TARGETPATH ..."
+            echo 
+            sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
+            break
+
+        else
+            echo -e "\nAguarde...\n"
+            sleep 2
+            echo -e "nenhum arquivo .iso encontrado em /home/eggs/\n"
+            $LINE
+            sleep 2 
+            echo -e "\nOpening new tab exclusive for Eggs...\n"
+            sleep 1
+            gnome-terminal --tab -- bash -c "sudo eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
+            echo -e "\033[01;37m[\033[00;32m OPEN\033[01;37m ]\033m\n"
+
+            break
+        fi
+    done
+                                 
 }
 
 function gnomeGdm3 {
@@ -384,7 +417,7 @@ case "$option_choice" in
     ;;
 13)
     gnomeGdm3
-    $MENU
+   
     ;;
 
 14)
@@ -405,22 +438,23 @@ case "$option_choice" in
     ;;
 
 q)
+    valid_option=true
     echo
     echo "Exiting the program..."
     sleep 1
     echo "Bye!"
     sleep 1
     clear
-    valid_option=true
     ;;
 
 esac
+
 if [ "$valid_option" = true ]; then
   # Chamar a função correspondente à opção válida
-   $valid_option > /dev/null
+   $valid_option > 2 /dev/null
 else
   echo -e "\nops!"
-  echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
-  sleep 2
+  echo -e "\033[01;05;37m'$valid_option' command not found!\033[00m\n"
+  
 #   $MENU
 fi
