@@ -32,13 +32,7 @@ if [ "$YES" = "$packages_question" ]; then
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
     echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-
-    echo -e '\033[00;37mOptimizing the most used applications...\033[00;37m'
-    sleep 2
-    echo -e "\n"
-    sudo prelink -amR
-    sudo /etc/cron.daily/prelink
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+  
 
 elif [ "$NO" = "$packages_question" ]; then
     echo -n 'Do you want to clean system packages (y/n)? '
