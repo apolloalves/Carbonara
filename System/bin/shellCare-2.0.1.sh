@@ -89,7 +89,7 @@ LINE='line.sh'
 echo
 echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  2.0.1     \033[0m"
 
-MENU='shellCare-1.2.sh'
+MENU='shellCare-2.0.1.sh'
 echo
 echo
 neofetch
@@ -116,20 +116,14 @@ echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start volume balan
 echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
 echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
 
-echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m"
-echo
+echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
 $LINE
 read -p "Chosen option : " option_choice
 $LINE
 
-# if ! $option_choice 2>/dev/null && [ -z "$option_choice" ]; then
-#      echo "teste"
-
-# fi
-
 function updateSystem {
 
-     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
+     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
      echo
      #####################################################################################################################
      echo -e "\nUpdating system packages...\n"
