@@ -246,7 +246,7 @@ function stacer {
 
 function releaseUpdateVersion {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m\n"
      sudo do-release-upgrade
 }
 
@@ -351,100 +351,94 @@ function balanceVolume {
      /bin/btrfs_balance.sh
 }
 
-valid_option=false
-
-case "$option_choice" in
-
-1)
-
-     updateSystem
-     $LINE
-     $MENU
-     ;;
-2)
-     removeTracer
-     $MENU
-     ;;
-3)
-     cleanupdateSystem
-     $MENU
-     ;;
-4)
-     systemPerformace
-     $MENU
-     ;;
-5)
-     checkSpace
-     $MENU
-     ;;
-
-6)
-     nautilusDir
-     $MENU
-     ;;
-7)
-     mysqlAssitent
-     ;;
-8)
-     mysqlDisableService
-     $MENU
-     ;;
-9)
-     broot
-     $MENU
-     ;;
-10)
-     disableNativeServicesSystem
-     $MENU
-     ;;
-11)
-     showJournalctl
-     $MENU
-     ;;
-12)
-     swapState
-     $MENU
-     ;;
-13)
-     gnomeGdm3
-
-     ;;
-
-14)
-     stacer
-     $MENU
-     ;;
-15)
-     balanceVolume
-     $MENU
-     ;;
-16)
-     eggsCreate
-     $MENU
-     ;;
-17)
-     releaseUpdateVersion
-     $MENU
-     ;;
-
-q)
-     valid_option=true
-     echo
-     echo "Exiting the program..."
-     sleep 1
-     echo "Bye!"
-     sleep 1
-     clear
-     ;;
-
-esac
+valid_option=true
 
 if [ "$valid_option" = true ]; then
 
-     $valid_option >2 /dev/null
-
+    # $valid_option >2 /dev/null - incorrect line, removed
+    
+    case "$option_choice" in
+        1)
+            updateSystem
+            $LINE
+            $MENU
+            ;;
+        2)
+            removeTracer
+            $MENU
+            ;;
+        3)
+            cleanupdateSystem
+            $MENU
+            ;;
+        4)
+            systemPerformace
+            $MENU
+            ;;
+        5)
+            checkSpace
+            $MENU
+            ;;
+        6)
+            nautilusDir
+            $MENU
+            ;;
+        7)
+            mysqlAssitent
+            ;;
+        8)
+            mysqlDisableService
+            $MENU
+            ;;
+        9)
+            broot
+            $MENU
+            ;;
+        10)
+            disableNativeServicesSystem
+            $MENU
+            ;;
+        11)
+            showJournalctl
+            $MENU
+            ;;
+        12)
+            swapState
+            $MENU
+            ;;
+        13)
+            gnomeGdm3
+            ;;
+        14)
+            stacer
+            $MENU
+            ;;
+        15)
+            balanceVolume
+            $MENU
+            ;;
+        16)
+            eggsCreate
+            $MENU
+            ;;
+        17)
+            releaseUpdateVersion
+            $MENU
+            ;;
+        q)
+            valid_option=true
+            echo
+            echo "Exiting the program..."
+            echo "Bye!"
+            sleep 2
+            clear
+            ;;
+        *)
+            echo -e "\nops!\n"
+            echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+            ;;
+    esac
 else
-     echo -e "\nops!\n"
-     echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
-
+    echo -e "\nops!\n"
+    echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
 fi
