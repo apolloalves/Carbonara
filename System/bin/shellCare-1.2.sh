@@ -76,11 +76,11 @@
 #
 # DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
 # echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
-# 
-# BACKGROUND IN TEXT                                                                    
+#
+# BACKGROUND IN TEXT
 # echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"
 #
-# BACKGROUND WHITE IN TEXT WHITE                                                                  
+# BACKGROUND WHITE IN TEXT WHITE
 # echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"
 
 ##################################################################################################################
@@ -122,339 +122,329 @@ $LINE
 read -p "Chosen option : " option_choice
 $LINE
 
+# if ! $option_choice 2>/dev/null && [ -z "$option_choice" ]; then
+#      echo "teste"
 
-if ! $option_choice 2> /dev/null && [ -z "$option_choice" ]; then
-  echo "teste"
-    
-fi
-
+# fi
 
 function updateSystem {
-   
-    echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
-    echo 
-    #####################################################################################################################
-    echo -e "\n Updating system packages...\n" 
-    #####################################################################################################################
-    sleep 1
 
-    sudo apt update -y 
-    sudo apt update --fix-missing
-    sudo apt install aptitude -y
-    sudo apt upgrade -y
-    sudo apt install base-files sosreport ubuntu-server
-    sudo apt dist-upgrade -y 
-    sudo apt full-upgrade -y
-    sudo apt --fix-broken install 
-    sudo apt install -f
-    echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
-    flatpak update -y
-    echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
+     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
+     echo
+     #####################################################################################################################
+     echo -e "\nUpdating system packages...\n"
+     #####################################################################################################################
+     sleep 1
+     sudo apt update -y
+     sudo apt update --fix-missing
+     sudo apt install aptitude -y
+     sudo apt upgrade -y
+     sudo apt install base-files sosreport ubuntu-server
+     sudo apt dist-upgrade -y
+     sudo apt full-upgrade -y
+     sudo apt --fix-broken install
+     sudo apt install -f
+     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
+     flatpak update -y
+     echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
 
 }
 
 function removeTracer {
-    
-    echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"    
-    #####################################################################################################################
-    echo -e "\nRemoving cache and logs files system...\n"
-    #####################################################################################################################
-    sleep 2
 
-    sudo rm -rfv /var/lib/apt/lists/lock
-    sudo rm -rfv /var/lib/dpkg/lock-frontend
-    sudo rm /var/lib/apt/lists/* -vf
-    sudo rm -rfv /var/lib/dpkg/lock
-    sudo rm -rfv ~/.cache/thumbnails/*
-    sudo rm -rfv ~/.cache/thumbnails/normal/*
-    sudo rm -rfv /var/cache/apt/archives/lock
-    sudo rm -rfv ~/.cache/tracker/
-    sudo rm -Rfv /var/log/*
-    
-    sudo /bin/remove__oldsnaps.sh
-    sudo apt --purge autoremove -y
+     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
+     #####################################################################################################################
+     echo -e "\nRemoving cache and logs files system...\n"
+     #####################################################################################################################
+     sleep 2
 
-    sudo apt autoclean -y
-    sudo apt -s clean
-    sudo apt clean -y
-    sudo apt clean all
+     sudo rm -rfv /var/lib/apt/lists/lock
+     sudo rm -rfv /var/lib/dpkg/lock-frontend
+     sudo rm /var/lib/apt/lists/* -vf
+     sudo rm -rfv /var/lib/dpkg/lock
+     sudo rm -rfv ~/.cache/thumbnails/*
+     sudo rm -rfv ~/.cache/thumbnails/normal/*
+     sudo rm -rfv /var/cache/apt/archives/lock
+     sudo rm -rfv ~/.cache/tracker/
+     sudo rm -Rfv /var/log/*
 
-    sudo apt remove $(deborphan)
-    echo -e "\n\033[01;37m[\033[00;32m \033[00;37m ]\033m\n"
+     sudo /bin/remove__oldsnaps.sh
+     sudo apt --purge autoremove -y
 
-    sleep 1
-    #####################################################################################################################
-    echo -e "\nRemoving Rubbish Bin files...\n"
-    #####################################################################################################################
-    sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
-    sudo rm -rfv .local/share/Trash/*
-    sudo rm -rfv /home/*/.local/share/Trash/*/**
-    sudo rm -rfv /root/.local/share/Trash/*/**
-    trash-empty -f
-    echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
-    # sudo /bin/cls.sh
+     sudo apt autoclean -y
+     sudo apt -s clean
+     sudo apt clean -y
+     sudo apt clean all
+
+     sudo apt remove $(deborphan)
+     echo -e "\n\033[01;37m[\033[00;32m \033[00;37m ]\033m\n"
+
+     sleep 1
+     #####################################################################################################################
+     echo -e "\nRemoving Rubbish Bin files...\n"
+     #####################################################################################################################
+     sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
+     sudo rm -rfv .local/share/Trash/*
+     sudo rm -rfv /home/*/.local/share/Trash/*/**
+     sudo rm -rfv /root/.local/share/Trash/*/**
+     trash-empty -f
+     echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
+     # sudo /bin/cls.sh
 
 }
 
 function cleanupdateSystem {
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    #####################################################################################################################
-    echo -e "\nCleaning and updating the system...\n"
-    #####################################################################################################################
-    sleep 1
-    sudo /bin/fix__packages-7.0.sh
-    echo
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     #####################################################################################################################
+     echo -e "\nCleaning and updating the system...\n"
+     #####################################################################################################################
+     sleep 1
+     sudo /bin/fix__packages-7.0.sh
+     echo
 
 }
 
 function systemPerformace {
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
 }
-  
+
 function checkSpace {
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    #####################################################################################################################
-    echo -e "\n Check spaces...\n"
-    #####################################################################################################################
-    sleep 1 
-    df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" &&  df -h /mnt/EXT@ST500LM012__STORAGE/
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     #####################################################################################################################
+     echo -e "\n Check spaces...\n"
+     #####################################################################################################################
+     sleep 1
+     df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" && df -h /mnt/EXT@ST500LM012__STORAGE/
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
 }
 
 function nautilusDir {
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    #####################################################################################################################
-    echo -e "\n Opening Nautilus...\n"
-    #####################################################################################################################
-    sleep 2
-    nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
-    clear
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    echo
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     #####################################################################################################################
+     echo -e "\n Opening Nautilus...\n"
+     #####################################################################################################################
+     sleep 2
+     nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
+     clear
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+     echo
 }
 
-function mysqlAssitent { 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    sudo /bin/mysql__fix-1.0.sh
+function mysqlAssitent {
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     sudo /bin/mysql__fix-1.0.sh
 
 }
 
-function stacer { 
-    
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    sudo /bin/stacer.sh 
+function stacer {
+
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     sudo /bin/stacer.sh
 }
 
 function releaseUpdateVersion {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    sudo do-release-upgrade
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     sudo do-release-upgrade
 }
 
 function mysqlDisableService {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    echo -e "Disabling mysql service..."
-    
-    sudo systemctl disable mysql.service
-    sleep 1
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-   
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "Disabling mysql service..."
+
+     sudo systemctl disable mysql.service
+     sleep 1
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
 }
 
 function broot {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    echo -e "\nOpening broot...\n"
-    sleep 1
-    sudo broot
-    sleep 1
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\nOpening broot...\n"
+     sleep 1
+     sudo broot
+     sleep 1
 }
 
 function disableNativeServicesSystem {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    echo -e "\nDisabling natives services system..."
-    sudo disable__services.sh
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\nDisabling natives services system..."
+     sudo disable__services.sh
 }
 
 function showJournalctl {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"    
-    echo -e "\nLoading journalctl -b...\n"
-    sleep 1
-    journalctl -b
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\nLoading journalctl -b...\n"
+     sleep 1
+     journalctl -b
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
 }
 
 function eggsCreate {
 
-   
-    FILEPATH="/home/eggs/*.iso"
-    TARGETPATH="/mnt/VENTOY"
+     FILEPATH="/home/eggs/*.iso"
+     TARGETPATH="/mnt/VENTOY"
 
-    DATE=$(date +"%Y-%m-%d")
-    echo 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    
-    arquivo="/home/eggs/*.iso"
+     DATE=$(date +"%Y-%m-%d")
+     echo
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
 
-    while true; do
-    
-        length=$(find /home/eggs -maxdepth 1 -name "*.iso" | wc -l)
+     arquivo="/home/eggs/*.iso"
 
-        if [ "$length" -gt 0 ]; then
+     while true; do
 
-            echo "Arquivo(s) .iso encontrado(s) em: "
-            find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
-            echo "movendo arquivo para $TARGETPATH ..."
-            echo 
-            sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
-            break
+          length=$(find /home/eggs -maxdepth 1 -name "*.iso" | wc -l)
 
-        else
-            echo -e "\nAguarde...\n"
-            sleep 2
-            echo -e "nenhum arquivo .iso encontrado em /home/eggs/\n"
-            $LINE
-            sleep 2 
-            echo -e "\nOpening new tab exclusive for Eggs...\n"
-            sleep 1
-            gnome-terminal --tab -- bash -c "sudo eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
-            echo -e "\033[01;37m[\033[00;32m OPEN\033[01;37m ]\033m\n"
+          if [ "$length" -gt 0 ]; then
 
-            break
-        fi
-    done
-                                 
+               echo "Arquivo(s) .iso encontrado(s) em: "
+               find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
+               echo "movendo arquivo para $TARGETPATH ..."
+               echo
+               sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
+               break
+
+          else
+               echo -e "\nAguarde...\n"
+               sleep 2
+               echo -e "nenhum arquivo .iso encontrado em /home/eggs/\n"
+               $LINE
+               sleep 2
+               echo -e "\nOpening new tab exclusive for Eggs...\n"
+               sleep 1
+               gnome-terminal --tab -- bash -c "sudo eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
+               echo -e "\033[01;37m[\033[00;32m OPEN\033[01;37m ]\033m\n"
+
+               break
+          fi
+     done
+
 }
 
 function gnomeGdm3 {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
-    sleep 2
-    sudo apt install gdm3 -y
-    echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
+     sleep 2
+     sudo apt install gdm3 -y
+     echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
 }
 
 function mountDisk {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    echo -n 
-    sudo /bin/ext__disk-1.0.sh
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -n
+     sudo /bin/ext__disk-1.0.sh
 
 }
 
-
 function balanceVolume {
 
-    echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-    /bin/btrfs_balance.sh
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     /bin/btrfs_balance.sh
 }
 
 valid_option=false
 
-
-
-
-#if [ "$valid_option" = true ]; then
-  # Executar ação correspondente à opção válida
 case "$option_choice" in
 
- 1)
-    
-    updateSystem
-    $LINE
-    $MENU
-    ;;
+1)
+
+     updateSystem
+     $LINE
+     $MENU
+     ;;
 2)
-    removeTracer
-    $MENU
-    ;;
+     removeTracer
+     $MENU
+     ;;
 3)
-    cleanupdateSystem
-    $MENU
-    ;;
+     cleanupdateSystem
+     $MENU
+     ;;
 4)
-    systemPerformace
-    $MENU
-    ;;
+     systemPerformace
+     $MENU
+     ;;
 5)
-    checkSpace
-    $MENU
-    ;;
+     checkSpace
+     $MENU
+     ;;
 
 6)
-    nautilusDir
-    $MENU
-    ;;
+     nautilusDir
+     $MENU
+     ;;
 7)
-    mysqlAssitent
-    ;;
+     mysqlAssitent
+     ;;
 8)
-    mysqlDisableService
-    $MENU
-    ;;
+     mysqlDisableService
+     $MENU
+     ;;
 9)
-    broot
-    $MENU
-    ;;
+     broot
+     $MENU
+     ;;
 10)
-    disableNativeServicesSystem
-    $MENU
-    ;;
+     disableNativeServicesSystem
+     $MENU
+     ;;
 11)
-    showJournalctl
-    $MENU
-    ;;
+     showJournalctl
+     $MENU
+     ;;
 12)
-    swapState
-    $MENU
-    ;;
+     swapState
+     $MENU
+     ;;
 13)
-    gnomeGdm3
-   
-    ;;
+     gnomeGdm3
+
+     ;;
 
 14)
-    stacer
-    $MENU
-    ;;
+     stacer
+     $MENU
+     ;;
 15)
-    balanceVolume
-    $MENU
-    ;;
+     balanceVolume
+     $MENU
+     ;;
 16)
-    eggsCreate
-    $MENU
-    ;;
+     eggsCreate
+     $MENU
+     ;;
 17)
-    releaseUpdateVersion
-    $MENU
-    ;;
+     releaseUpdateVersion
+     $MENU
+     ;;
 
 q)
-    valid_option=true
-    echo
-    echo "Exiting the program..."
-    sleep 1
-    echo "Bye!"
-    sleep 1
-    clear
-    ;;
+     valid_option=true
+     echo
+     echo "Exiting the program..."
+     sleep 1
+     echo "Bye!"
+     sleep 1
+     clear
+     ;;
 
 esac
 
 if [ "$valid_option" = true ]; then
-  # Chamar a função correspondente à opção válida
-   $valid_option > 2 /dev/null
+
+     $valid_option >2 /dev/null
+
 else
-  echo -e "\nops!"
-  echo -e "\033[01;05;37m'$valid_option' command not found!\033[00m\n"
-  
-#   $MENU
+     echo -e "\nops!\n"
+     echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+
 fi
