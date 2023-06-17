@@ -163,7 +163,7 @@ line.sh
 #                               #
 #################################
 
-echo -e "Disable network-dispatcher services..."
+echo -e "Disabling network-dispatcher services..."
 echo
 sudo systemctl disable networkd-dispatcher.service systemd-networkd.service
 sleep 1
@@ -171,6 +171,74 @@ sudo systemctl status networkd-dispatcher.service systemd-networkd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
+#################################
+#                               #
+# # cups.service                #
+#                               #
+#################################
+
+echo -e "Disabling cups.service..."
+echo
+sudo systemctl disable cups.service
+sleep 1
+sudo systemctl status systemctl disable cups.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
+
+#################################
+#                               #
+# #  apport.service             #
+#                               #
+#################################
+
+
+echo -e "Disabling cups.service..."
+echo
+sudo systemctl disable apport.service
+sleep 1
+sudo systemctl status systemctl apport.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
+
+
+
+#################################
+#                               #
+# #  apport.service             #
+#                               #
+#################################
+
+
+echo -e "Disabling disable openvpn.service..."
+echo
+sudo systemctl disable openvpn.service
+sleep 1
+sudo systemctl status systemctl openvpn.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
+
+#################################
+#                               #
+#   virtual box services        #
+#                               #
+#################################
+
+echo -e "Disabling cups.service..."
+echo
+sudo systemctl disable vboxautostart-service.service
+sudo systemctl disable vboxballoonctrl-service.service 
+sudo systemctl disable vboxdrv.service  
+sudo systemctl disable vboxweb-service.service  
+sleep 1
+sudo systemctl status vboxautostart-service.service
+echo 
+sudo systemctl status vboxballoonctrl-service.service 
+echo 
+sudo systemctl status vboxdrv.service  
+echo 
+sudo systemctl status vboxweb-service.service  
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 
 #TeamViwer Service
 # echo -e "Disabling teamviewer services..."
