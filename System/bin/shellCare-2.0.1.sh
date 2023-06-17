@@ -87,7 +87,7 @@
 
 LINE='line.sh'
 echo
-echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  1.2.8     \033[0m"
+echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  2.0.1     \033[0m"
 
 MENU='shellCare-1.2.sh'
 echo
@@ -293,8 +293,8 @@ function eggsCreate {
      TARGETPATH="/mnt/VENTOY"
 
      DATE=$(date +"%Y-%m-%d")
-     echo
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+
+     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
 
      arquivo="/home/eggs/*.iso"
 
@@ -304,17 +304,16 @@ function eggsCreate {
 
           if [ "$length" -gt 0 ]; then
 
-               echo "Arquivo(s) .iso encontrado(s) em: "
+               echo ".iso file(s) found in: "
                find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
-               echo "movendo arquivo para $TARGETPATH ..."
-               echo
+               echo -e "moving file to $TARGETPATH ...\n"
                sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
                break
 
           else
-               echo -e "\nAguarde...\n"
+               echo -e "\nWait...\n"
                sleep 2
-               echo -e "nenhum arquivo .iso encontrado em /home/eggs/\n"
+               echo -e "no .iso file found in /home/eggs/\n"
                $LINE
                sleep 2
                echo -e "\nOpening new tab exclusive for Eggs...\n"
@@ -355,90 +354,90 @@ valid_option=true
 
 if [ "$valid_option" = true ]; then
 
-    # $valid_option >2 /dev/null - incorrect line, removed
-    
-    case "$option_choice" in
-        1)
-            updateSystem
-            $LINE
-            $MENU
-            ;;
-        2)
-            removeTracer
-            $MENU
-            ;;
-        3)
-            cleanupdateSystem
-            $MENU
-            ;;
-        4)
-            systemPerformace
-            $MENU
-            ;;
-        5)
-            checkSpace
-            $MENU
-            ;;
-        6)
-            nautilusDir
-            $MENU
-            ;;
-        7)
-            mysqlAssitent
-            ;;
-        8)
-            mysqlDisableService
-            $MENU
-            ;;
-        9)
-            broot
-            $MENU
-            ;;
-        10)
-            disableNativeServicesSystem
-            $MENU
-            ;;
-        11)
-            showJournalctl
-            $MENU
-            ;;
-        12)
-            swapState
-            $MENU
-            ;;
-        13)
-            gnomeGdm3
-            ;;
-        14)
-            stacer
-            $MENU
-            ;;
-        15)
-            balanceVolume
-            $MENU
-            ;;
-        16)
-            eggsCreate
-            $MENU
-            ;;
-        17)
-            releaseUpdateVersion
-            $MENU
-            ;;
-        q)
-            valid_option=true
-            echo
-            echo "Exiting the program..."
-            echo "Bye!"
-            sleep 2
-            clear
-            ;;
-        *)
-            echo -e "\nops!\n"
-            echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
-            ;;
-    esac
+     # $valid_option >2 /dev/null - incorrect line, removed
+
+     case "$option_choice" in
+     1)
+          updateSystem
+          $LINE
+          $MENU
+          ;;
+     2)
+          removeTracer
+          $MENU
+          ;;
+     3)
+          cleanupdateSystem
+          $MENU
+          ;;
+     4)
+          systemPerformace
+          $MENU
+          ;;
+     5)
+          checkSpace
+          $MENU
+          ;;
+     6)
+          nautilusDir
+          $MENU
+          ;;
+     7)
+          mysqlAssitent
+          ;;
+     8)
+          mysqlDisableService
+          $MENU
+          ;;
+     9)
+          broot
+          $MENU
+          ;;
+     10)
+          disableNativeServicesSystem
+          $MENU
+          ;;
+     11)
+          showJournalctl
+          $MENU
+          ;;
+     12)
+          swapState
+          $MENU
+          ;;
+     13)
+          gnomeGdm3
+          ;;
+     14)
+          stacer
+          $MENU
+          ;;
+     15)
+          balanceVolume
+          $MENU
+          ;;
+     16)
+          eggsCreate
+          $MENU
+          ;;
+     17)
+          releaseUpdateVersion
+          $MENU
+          ;;
+     q)
+          valid_option=true
+          echo
+          echo "Exiting the program..."
+          echo "Bye!"
+          sleep 2
+          clear
+          ;;
+     *)
+          echo -e "\nops!\n"
+          echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+          ;;
+     esac
 else
-    echo -e "\nops!\n"
-    echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+     echo -e "\nops!\n"
+     echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
 fi
