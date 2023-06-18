@@ -298,11 +298,20 @@ function eggsCreate {
 
           if [ "$length" -gt 0 ]; then
 
-               echo ".iso file(s) found in: "
+                echo ".iso file(s) found in: "
                find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
+
+               echo -e "\nRenomenado o arquivo iso..\n"
+               sudo mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
+
+               echo renomeado a "Ubuntu-22.0.4-LTS_$DATE.iso preparando para mover..."
+               sleep 1
                echo -e "moving file to $TARGETPATH ...\n"
-               sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
+               sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
+
+               echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
                break
+               # sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
 
           else
                echo -e "\nWait...\n"
