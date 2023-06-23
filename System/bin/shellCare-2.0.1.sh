@@ -1,7 +1,7 @@
 #!/bin/bash
 ########################################################################################################################
 #                                                                                                                      #
-#                                                                                                                      #
+# SHELLCARE-1.2.1                                                                                                                     #
 # THIS PROGRAM CONTAINS ROUTINE AUTOMATION SCRIPTS FOR:                                                                #
 #                                                                                                                      #
 # FULL KERNEL UPDATE;                                                                                                  #
@@ -138,6 +138,11 @@ function updateSystem {
      sudo apt full-upgrade -y
      sudo apt --fix-broken install
      sudo apt install -f
+     
+     echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
+     sudo ubuntu-drivers autoinstall
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
      echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
      flatpak update -y
      echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
@@ -304,12 +309,14 @@ function eggsCreate {
                echo -e "\nRenomenado o arquivo iso..\n"
                sudo mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
 
-               echo renomeado a "Ubuntu-22.0.4-LTS_$DATE.iso preparando para mover..."
+               echo Renoemado o arquivo: "Ubuntu-22.0.4-LTS_$DATE.iso"
+               echo "Preparando para mover..."
                sleep 1
                echo -e "moving file to $TARGETPATH ...\n"
                sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
 
                echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+               $LINE
                break
                # sudo time mv -v /home/eggs/*.iso /mnt/VENTOY/
 
@@ -339,6 +346,14 @@ function gnomeGdm3 {
      echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
 }
 
+function swapState {
+
+     echo -e "\nSwap Sate\n"
+     free -h
+     $LINE
+     echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
+     sleep 2
+}
 function mountDisk {
 
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
