@@ -23,7 +23,7 @@ echo -n 'Do you want to plot result of system-analyze (y/n)? '
 read -r SystemAnalyse_question
 
 if [ "$YES" = "$SystemAnalyse_question" ]; then
-    echo "Wait..."
+    echo -e "\nWait...\n"
     sleep 1
     echo "Generating plot..."
     sleep 2
