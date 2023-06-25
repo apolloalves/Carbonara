@@ -1,0 +1,34 @@
+1
+Startup finished in 6.042s (kernel) + 27.525s (userspace) = 33.568s 
+graphical.target reached after 27.498s in userspace
+
+2
+Startup finished in 6.361s (kernel) + 24.289s (userspace) = 30.651s 
+graphical.target reached after 24.280s in userspace
+
+3
+Startup finished in 8.553s (kernel) + 16.534s (userspace) = 25.088s 
+graphical.target reached after 16.526s in userspace
+
+4
+Startup finished in 9.132s (kernel) + 16.337s (userspace) = 25.469s 
+
+5
+graphical.target reached after 16.328s in userspace
+Startup finished in 5.146s (kernel) + 13.963s (userspace) = 19.109s 
+graphical.target reached after 13.956s in userspace
+
+6
+Startup finished in 4.982s (kernel) + 13.991s (userspace) = 18.974s 
+graphical.target reached after 13.984s in userspace
+
+7
+Startup finished in 5.301s (kernel) + 14.019s (userspace) = 19.321s 
+graphical.target reached after 14.012s in userspace
+
+8
+Startup finished in 5.087s (kernel) + 13.941s (userspace) = 19.028s 
+
+9
+Startup finished in 4.432s (kernel) + 8.940s (userspace) = 13.373s 
+graphical.target reached after 8.889s in userspace
