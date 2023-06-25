@@ -16,8 +16,10 @@ read -r packages_question
 
 if [ "$YES" = "$packages_question" ]; then
     sleep 1
-
     echo -e "\nUpdating system packages...\n"
+    #####################################################################################################################
+    echo -e "\nCleaning and updating the system...\n"
+    #####################################################################################################################
 
     sudo apt update --fix-missing
     sudo apt install base-files sosreport ubuntu-server
@@ -32,7 +34,6 @@ if [ "$YES" = "$packages_question" ]; then
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
     echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-  
 
 elif [ "$NO" = "$packages_question" ]; then
     echo -n 'Do you want to clean system packages (y/n)? '
@@ -74,12 +75,17 @@ elif [ "$NO" = "$packages_question" ]; then
         sudo rm -rfv .local/share/Trash/*
         sudo rm -rfv /home/*/.local/share/Trash/*/**
         sudo rm -rfv /root/.local/share/Trash/*/**
-      
+
         echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
     fi
- echo "${VALIDATE}"
-        echo -e "\nThe arguments are invalids!\n"
-        
-        shellCare-1.2.sh
+
 fi
 
+if
+    echo "${VALIDATE}"
+then
+
+    echo -e "command not found!\n"
+    $MENU
+
+fi

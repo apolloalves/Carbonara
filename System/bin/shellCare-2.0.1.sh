@@ -194,9 +194,6 @@ function removeTracer {
 
 function cleanupdateSystem {
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     #####################################################################################################################
-     echo -e "\nCleaning and updating the system...\n"
-     #####################################################################################################################
      sleep 1
      sudo /bin/fix__packages-7.0.sh
      echo
