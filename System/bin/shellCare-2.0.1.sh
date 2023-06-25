@@ -115,6 +115,7 @@ echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - STACER \033m"
 echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start volume balancing \033m"
 echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
 echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
+echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Verify Startup time System \033m"
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
 $LINE
@@ -365,6 +366,13 @@ function balanceVolume {
      /bin/btrfs_balance.sh
 }
 
+function systemAnalyze {
+
+     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     /bin/systemAnalyse.sh
+
+}
+
 valid_option=true
 
 if [ "$valid_option" = true ]; then
@@ -439,6 +447,10 @@ if [ "$valid_option" = true ]; then
           releaseUpdateVersion
           $MENU
           ;;
+     18)
+          systemAnalyze
+          $MENU
+          ;;
      q)
           valid_option=true
           echo
@@ -450,9 +462,11 @@ if [ "$valid_option" = true ]; then
      *)
           echo -e "\nops!\n"
           echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+          echo -e "Invalid input! Please enter 'y' or 'n'.\n"
           ;;
      esac
 else
      echo -e "\nops!\n"
      echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi
