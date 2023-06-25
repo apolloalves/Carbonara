@@ -61,7 +61,6 @@ if [ "$YES" = "$packages_question" ]; then
     flatpak update -y
     echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
-elif [ "$NO" = "$packages_question" ]; then
     echo -n 'Do you want to clean system packages (y/n)? '
     read -r removepack_kernel
 
@@ -104,7 +103,10 @@ elif [ "$NO" = "$packages_question" ]; then
 
         echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
     fi
-
+    if [ "$NO" = "$removepack_kernel" ]; then
+    sleep 1
+    echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+    fi
 fi
 
 if ! { [ "$packages_question" = "$YES" ] || [ "$packages_question" = "$NO" ]; }; then
