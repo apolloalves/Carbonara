@@ -87,8 +87,12 @@
 
 LINE='line.sh'
 echo
+echo "Welcome!"
+echo 
 echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  2.0.1     \033[0m"
 ########################################################################################################################
+
+
 MENU='shellCare-2.0.1.sh'
 echo
 echo
@@ -116,6 +120,7 @@ echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start volume balan
 echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
 echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
 echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Verify Startup time System \033m"
+echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Reboot System \033m"
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
 $LINE
@@ -375,6 +380,10 @@ function systemAnalyze {
 
 }
 
+function rebootSystem {
+     sudo init 6
+}
+
 valid_option=true
 
 if [ "$valid_option" = true ]; then
@@ -451,6 +460,10 @@ if [ "$valid_option" = true ]; then
           ;;
      18)
           systemAnalyze
+          $MENU
+          ;;
+     19)
+          rebootSystem
           $MENU
           ;;
      q)
