@@ -9,7 +9,35 @@
 #                                                                   #
 #####################################################################
 
-MENU='shellCare-2.0.1.sh'
+##########################################################################################################################
+#                                                                                                                        #
+# This Bash script is used to balance BTRFS partitions. It features an interactive menu that allows the user to select   #
+# the partitions they want to balance.                                                                                   #
+#                                                                                                                        #
+# Here is a step-by-step explanation of what the code does:                                                              #
+#                                                                                                                        #
+# Defines some variables, including a variable that stores the name of the menu.                                         #
+# Prompts the user to respond if they want to balance the root ("/") volume.                                             #
+# If the user enters "y" for the root volume, the script opens a GNOME terminal with the command "sudo btrfs balance     #
+# start /", which starts balancing the root volume.                                                                      #
+# If the user enters "n" for the root volume, the script will ask if they want to balance the "/home" volume.            #
+# If the user types "y" for the "/home" volume, the script opens a GNOME terminal with the command "sudo btrfs balance   #
+# start /home", which starts balancing the "/home" volume.                                                               #
+# If the user enters "n" for the "/home" volume, the script will ask if they want to balance the                         #
+# "/EXT@ST500LM012__CLONRAID/" volume.                                                                                   #
+# If the user types "y" for the volume "/EXT@ST500LM012__CLONRAID/", the script opens a GNOME terminal with the          #
+# command "sudo btrfs balance start /mnt/EXT@ST500LM012__CLONRAID/", which starts balancing the volume                   #
+# "/ EXT@ST500LM012__CLONRAID/".                                                                                         #
+# If the user enters "n" for the volume "/EXT@ST500LM012__CLONRAID/", the script will display a confirmation             #
+# message and return to the main menu.                                                                                   #
+# If the user enters an invalid command, the script will display an error message and return to the main menu.           #
+# The script uses the "gnome-terminal" command to open GNOME terminals and start balancing the selected partitions. It's #
+# important to note that this script was likely designed to run in a specific environment, as it references specific     #
+# partitions and specific commands.                                                                                      #
+# MENU='shellCare-2.0.1.sh'                                                                                              #
+#                                                                                                                        #
+#                                                                                                                        #
+##########################################################################################################################
 
 YES="y"
 NO="n"

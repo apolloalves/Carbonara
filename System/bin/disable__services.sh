@@ -9,6 +9,46 @@
 #                                           #
 #############################################
 
+####################################################################################################################################################
+#                                                                                                                                                  #
+# This is a bash script that disables some system services at boot. I'll explain what each part does:                                              #
+#                                                                                                                                                  #
+# The script starts with a header that contains information about the author and creation date.                                                    #
+#                                                                                                                                                  #
+# Then there is an annotated section that explains the reasons for disabling each service. These services are considered                           #
+# potential security risks or are not needed in certain scenarios.                                                                                 #
+#                                                                                                                                                  #
+# After explanatory comments, the script disables each service using the command systemctl disable <service_name>. It then                         #
+# checks the status of the service using systemctl status <service_name> and displays a message indicating whether the                             #
+# service was successfully disabled.                                                                                                               #
+#                                                                                                                                                  #
+# Between each section of disabling the service, the script calls the line.sh file, which is likely responsible for                                #
+# displaying a separator line in the terminal output.                                                                                              #
+#                                                                                                                                                  #
+# Here is a brief explanation of the disabled services:                                                                                            #
+#                                                                                                                                                  #
+# bluetooth.service: Bluetooth service.                                                                                                            #
+# accounts-daemon.service: User account management service.                                                                                        #
+# avahi-daemon.service: service for zero-configuration network discovery (mDNS).                                                                   #
+# brltty.service: Braille device support service.                                                                                                  #
+# debug-shell.service: systemd debug shell service.                                                                                                #
+# ModemManager.service: mobile broadband interface control service.                                                                                #
+# warsaw.service: service related to ITAU Bank.                                                                                                    #
+# mysql.service: MySQL service.                                                                                                                    #
+# networkd-dispatcher.service: systemd network dispatcher service.                                                                                 #
+# systemd-networkd.service: systemd network management service.                                                                                    #
+# cups.service: printing service.                                                                                                                  #
+# apport.service: Ubuntu bug reporting service.                                                                                                    #
+# openvpn.service: OpenVPN service.                                                                                                                #
+# vboxautostart-service.service: VirtualBox autostart service.                                                                                     #
+# vboxballoonctrl-service.service: VirtualBox balloon control service.                                                                             #
+# vboxdrv.service: VirtualBox driver service.                                                                                                      #
+# vboxweb-service.service: VirtualBox web service.                                                                                                 #
+# Note: Some parts of the script are commented out, which means that these parts are not executed. Therefore, these                                # 
+# services will not be disabled.                                                                                                                     #
+#                                                                                                                                                  #
+####################################################################################################################################################
+
 ##########################################################################################################
 #                                                                                                        #
 #                                                                                                        #

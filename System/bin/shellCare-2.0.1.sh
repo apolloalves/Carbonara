@@ -196,7 +196,9 @@ function removeTracer {
 function cleanupdateSystem {
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      sleep 1
-     sudo /bin/fix__packages-7.0.sh
+     sudo /bin/updatepack.sh
+     sleep 1
+     sudo /bin/removepack.sh
      echo
 
 }
