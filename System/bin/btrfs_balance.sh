@@ -72,16 +72,6 @@ elif [ "$NO" = "$ROOTVOLUME" ]; then
             echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
         elif [ "$NO" = "$CLONRAID" ]; then
-            # echo -n 'Do you want to balance the volume "/EXT@ST500LM012__STORAGE/" (y/n)? '
-            # read -r STORAGE
-
-            # if [ "$YES" = "$STORAGE" ]; then
-
-            #     gnome-terminal --tab -- bash -c "time sudo btrfs balance start /mnt/EXT@ST500LM012__STORAGE/; exec bash"
-            #     echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-
-            # elif [ "$NO" = "$STORAGE" ]; then
-
             echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
             $MENU
 

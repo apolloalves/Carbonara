@@ -2,15 +2,12 @@
 
 #####################################################################
 #                                                                   #
-# Script: For updates packages of system and optimizer performance. #
-#                                                                   #
+# Script: remove__oldsnaps.sh                                       #
 # Author: Apollo Alves                                              #
 # Date: 25/06/2023                                                  #
 #                                                                   #
 #####################################################################
 
-
-#remove old snaps
 echo -e "\nRemoving open recents files...\n"
 sleep 2 
 set -eu
