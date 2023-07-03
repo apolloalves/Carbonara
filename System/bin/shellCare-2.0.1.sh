@@ -110,7 +110,7 @@ echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Check space disks\
 echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
 echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
 echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Disable mysql"
-echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Open Broot\033m"
+echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Open my Eggs Files - broot \033m"
 echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Disable services natives\033m"
 echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
 echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Swap State\033m"
@@ -269,8 +269,7 @@ function broot {
 
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "\nOpening broot...\n"
-     sleep 1
-     sudo broot
+     sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/'
      sleep 1
 }
 
