@@ -251,6 +251,7 @@ line.sh
 
 echo -e "Disabling disable openvpn.service..."
 echo
+sudo systemctl stop openvpn.service
 sudo systemctl disable openvpn.service
 sleep 1
 sudo systemctl status systemctl openvpn.service

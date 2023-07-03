@@ -106,27 +106,29 @@ echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - Update all system 
 echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of unused packages from the system\033m"
 echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Run both\033m"
 echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance - required sudo\033m"
-echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Check space disks\033m"
-echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
-echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
-echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Disable mysql"
-echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Open my Eggs Files - broot \033m"
-echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Disable services natives\033m"
-echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
-echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Swap State\033m"
-echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
-echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - STACER \033m"
-echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start volume balancing \033m"
-echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
-echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
-echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Verify Startup time System \033m"
-echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Reboot System \033m"
+echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Swap State\033m"
+echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Disable services natives\033m"
+echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Verify Startup time System \033m"
+echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
+echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot \033m"
+echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Start volume balancing \033m"
+echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
+echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Open STACER \033m"
+echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
+echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Check space disks\033m"
+echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
+echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Disable mysql"
+echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
+echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Mount Externl Disks"
+echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
+echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Reboot System \033m"
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
 $LINE
 read -p "Chosen option : " option_choice
 $LINE
 
+# 1
 function updateSystem {
 
      echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
@@ -154,7 +156,7 @@ function updateSystem {
      echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
 
 }
-
+# 2
 function removeTracer {
 
      echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
@@ -194,10 +196,10 @@ function removeTracer {
      sudo rm -rfv /root/.local/share/Trash/*/**
      trash-empty -f
      echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
-     # sudo /bin/cls.sh
+    
 
 }
-
+# 3
 function cleanupdateSystem {
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      sleep 1
@@ -207,89 +209,35 @@ function cleanupdateSystem {
      echo
 
 }
-
+# 4
 function systemPerformace {
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
 }
+# 5
+function swapState {
 
-function checkSpace {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     #####################################################################################################################
-     echo -e "\n Check spaces...\n"
-     #####################################################################################################################
-     sleep 1
-     df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID
-     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
-}
-
-function nautilusDir {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     #####################################################################################################################
-     echo -e "\n Opening Nautilus...\n"
-     #####################################################################################################################
+     echo -e "\nSwap Sate\n"
+     free -h
+     $LINE
+     echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
      sleep 2
-     nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
-     clear
-     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-     echo
 }
-
-function mysqlAssitent {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     sudo /bin/mysql__fix-1.0.sh
-
-}
-
-function stacer {
-
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     sudo /bin/stacer.sh
-}
-
-function releaseUpdateVersion {
-
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m\n"
-     sudo do-release-upgrade
-}
-
-function mysqlDisableService {
-
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     echo -e "Disabling mysql service..."
-
-     sudo systemctl disable mysql.service
-     sleep 1
-     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
-}
-
-function broot {
-
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     echo -e "\nOpening broot...\n"
-     sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/'
-     sleep 1
-}
-
+# 6
 function disableNativeServicesSystem {
 
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "\nDisabling natives services system..."
      sudo disable__services.sh
 }
+# 7
+function systemAnalyze {
 
-function showJournalctl {
-
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     echo -e "\nLoading journalctl -b...\n"
-     sleep 1
-     journalctl -b
-     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     /bin/systemAnalyse.sh
 
 }
-
+# 8
 function eggsCreate {
 
      FILEPATH="/home/eggs/*.iso"
@@ -339,7 +287,77 @@ function eggsCreate {
      done
 
 }
+# 9
+function broot {
 
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\nOpening broot...\n"
+     sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/'
+     sleep 1
+}
+# 10
+function balanceVolume {
+
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     /bin/btrfs_balance.sh
+}
+# 11
+function nautilusDir {
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     #####################################################################################################################
+     echo -e "\n Opening Nautilus...\n"
+     #####################################################################################################################
+     sleep 2
+     nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
+     clear
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+     echo
+}
+# 12
+function stacer {
+
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     sudo /bin/stacer.sh
+}
+# 13
+function showJournalctl {
+
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "\nLoading journalctl -b...\n"
+     sleep 1
+     journalctl -b
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+}
+# 14
+function checkSpace {
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     #####################################################################################################################
+     echo -e "\n Check spaces...\n"
+     #####################################################################################################################
+     sleep 1
+     df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
+}
+# 15
+function mysqlAssitent {
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     sudo /bin/mysql__fix-1.0.sh
+
+}
+# 16
+function mysqlDisableService {
+
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+     echo -e "Disabling mysql service..."
+
+     sudo systemctl disable mysql.service
+     sleep 1
+     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
+}
+
+# 17
 function gnomeGdm3 {
 
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
@@ -348,15 +366,7 @@ function gnomeGdm3 {
      sudo apt install gdm3 -y
      echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
 }
-
-function swapState {
-
-     echo -e "\nSwap Sate\n"
-     free -h
-     $LINE
-     echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
-     sleep 2
-}
+# 18
 function mountDisk {
 
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
@@ -364,20 +374,13 @@ function mountDisk {
      sudo /bin/ext__disk-1.0.sh
 
 }
+# 19
+function releaseUpdateVersion {
 
-function balanceVolume {
-
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     /bin/btrfs_balance.sh
+     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m\n"
+     sudo do-release-upgrade
 }
-
-function systemAnalyze {
-
-     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     /bin/systemAnalyse.sh
-
-}
-
+# 20
 function rebootSystem {
      sudo init 6
 }
@@ -389,78 +392,86 @@ if [ "$valid_option" = true ]; then
      # $valid_option >2 /dev/null - incorrect line, removed
 
      case "$option_choice" in
-     1)
+     01)
           updateSystem
           $LINE
           $MENU
           ;;
-     2)
+     02)
           removeTracer
           $MENU
           ;;
-     3)
+     03)
           cleanupdateSystem
           $MENU
           ;;
-     4)
+     04)
           systemPerformace
           $MENU
           ;;
-     5)
-          checkSpace
+      
+     05)
+          swapState
           $MENU
           ;;
-     6)
-          nautilusDir
+     
+     06)
+          disableNativeServicesSystem
           $MENU
           ;;
-     7)
-          mysqlAssitent
+     
+     07)
+          systemAnalyze
           ;;
-     8)
-          mysqlDisableService
+     08)
+          eggsCreate
           $MENU
           ;;
-     9)
+     09)
           broot
           $MENU
           ;;
      10)
-          disableNativeServicesSystem
-          $MENU
-          ;;
-     11)
-          showJournalctl
-          $MENU
-          ;;
-     12)
-          swapState
-          $MENU
-          ;;
-     13)
-          gnomeGdm3
-          ;;
-     14)
-          stacer
-          $MENU
-          ;;
-     15)
           balanceVolume
           $MENU
           ;;
+     11)
+          nautilusDir
+          $MENU
+          ;;
+     12)
+          stacer
+          $MENU
+          ;;
+     13)
+          showJournalctl
+          ;;
+     14)
+          checkSpace
+          $MENU
+          ;;
+    
+     15)
+          mysqlAssitent
+          $MENU
+          ;;
      16)
-          eggsCreate
+          mysqlDisableService
           $MENU
           ;;
      17)
-          releaseUpdateVersion
+          gnomeGdm3
           $MENU
           ;;
      18)
-          systemAnalyze
+          mountDisk
           $MENU
           ;;
      19)
+          releaseUpdateVersion
+          $MENU
+          ;;
+     20)
           rebootSystem
           $MENU
           ;;
