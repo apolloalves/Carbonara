@@ -34,6 +34,7 @@
 #                                                                                                                       #
 #########################################################################################################################
 
+LINE='/bin/line.sh'
     echo -e "\n Optiminzing performance system...\n"
     sleep 2
     echo -e "\n\033[01;32mCleaning drop_caches...\033[00;37m\n"
@@ -63,4 +64,16 @@
     sleep 1 
     echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
     #####################################################################################################################
-  
+    # CLEAN SWAP
+    echo -e "wait...\n"
+    sleep 1 
+    free -h
+    sudo swapoff -a
+    echo -e "\n\033[01;37m[\033[00;32m swap data was clean\033[01;37m ]\033m\n"
+    sleep 1 
+    echo -e "\n\033[01;37m[\033[00;32m swap is active now!\033[01;37m ]\033m\n"
+    sudo swapon -a
+    free -h
+    $LINE
+    echo -e "\n\033[01;37m[\033[00;32m OK!\033[01;37m ]\033m\n"
+    

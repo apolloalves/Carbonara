@@ -392,42 +392,42 @@ if [ "$valid_option" = true ]; then
      # $valid_option >2 /dev/null - incorrect line, removed
 
      case "$option_choice" in
-     01)
+     1)
           updateSystem
           $LINE
           $MENU
           ;;
-     02)
+     2)
           removeTracer
           $MENU
           ;;
-     03)
+     3)
           cleanupdateSystem
           $MENU
           ;;
-     04)
+     4)
           systemPerformace
           $MENU
           ;;
       
-     05)
+     5)
           swapState
           $MENU
           ;;
      
-     06)
+     6)
           disableNativeServicesSystem
           $MENU
           ;;
      
-     07)
+     7)
           systemAnalyze
           ;;
-     08)
+     8)
           eggsCreate
           $MENU
           ;;
-     09)
+     9)
           broot
           $MENU
           ;;
