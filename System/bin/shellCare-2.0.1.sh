@@ -197,8 +197,8 @@ function removeTracer {
      trash-empty -f
      echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
     
-
 }
+
 # 3
 function cleanupdateSystem {
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"

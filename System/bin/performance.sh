@@ -51,7 +51,6 @@ LINE='/bin/line.sh'
     sleep 1
     sudo prelink -amR
     sudo /etc/cron.daily/prelink
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     sleep 1
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     
@@ -68,12 +67,16 @@ LINE='/bin/line.sh'
     echo -e "wait...\n"
     sleep 1 
     free -h
-    sudo swapoff -a
+    sudo swapoff -a -v
     echo -e "\n\033[01;37m[\033[00;32m swap data was clean\033[01;37m ]\033m\n"
     sleep 1 
-    echo -e "\n\033[01;37m[\033[00;32m swap is active now!\033[01;37m ]\033m\n"
-    sudo swapon -a
+    sudo swapon -a -v
+    echo 
     free -h
+    echo 
+    echo -e 'swappiness set :' && cat /proc/sys/vm/swappiness
+    # sudo sysctl -w vm.swappiness=10
+    echo -e "\n\033[01;37m[\033[00;32m swap is active now!\033[01;37m ]\033m\n"
     $LINE
-    echo -e "\n\033[01;37m[\033[00;32m OK!\033[01;37m ]\033m\n"
+    
     
