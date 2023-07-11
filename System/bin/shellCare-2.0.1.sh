@@ -325,6 +325,7 @@ function rebootSystem {
      sudo init 6
 }
 
+MENU='shellCare-2.0.1.sh'
 valid_option=true
 
 if [ "$valid_option" = true ]; then
