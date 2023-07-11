@@ -58,10 +58,12 @@ NO="n"
         echo -e '\n\033[01;37m[\033[00;32m all clean!\033[01;37m ]\033m\n'
 
     fi 
+    
 if [ "$removepack_kernel" = "$no" ]; then 
      $SHELLCARE
 
 
     elif [ "$removepack_kernel" != "$YES" ] && [ "$removepack_kernel" != "$NO" ]; then
     echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
+    sleep 2
 fi

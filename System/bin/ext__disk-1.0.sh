@@ -58,26 +58,26 @@
 # EXT@ST500LM012_S                                                                                               #
  #################################################################################################################
 
-echo -n "Montar o disco EXT@ST500LM012__STORAGE ? (y/n) "
-read -r EXTST500LM012__STORAGE
+# echo -n "Montar o disco EXT@ST500LM012__STORAGE ? (y/n) "
+# read -r EXTST500LM012__STORAGE
 
-if test "y" = "$EXTST500LM012__STORAGE"
+# if test "y" = "$EXTST500LM012__STORAGE"
 
-    then 
-    sudo mount /dev/sdc4 /mnt/EXT@ST500LM012__STORAGE/
-    echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
+#     then 
+#     sudo mount /dev/sdc4 /mnt/EXT@ST500LM012__STORAGE/
+#     echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
 
-elif test "n" = "$EXTST500LM012__STORAGE"
+# elif test "n" = "$EXTST500LM012__STORAGE"
     
-    then
-    sudo umount /dev/sdc4 /mnt/EXT@ST500LM012__STORAGE/ -l
-    echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
+#     then
+#     sudo umount /dev/sdc4 /mnt/EXT@ST500LM012__STORAGE/ -l
+#     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-elif test "y" || "n" != "$EXTST500LM012__STORAGE"
-    then
-    echo 'invalid arguments!'
+# elif test "y" || "n" != "$EXTST500LM012__STORAGE"
+#     then
+#     echo 'invalid arguments!'
 
-fi
+# fi
 
 #################################################################################################################
 # EXT@ST500LM012_R                                                                                              #
@@ -99,6 +99,30 @@ elif test "n" = "$EXTST500LM012__CLONRAID"
     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
 elif test "y" || "n" != "$EXTST500LM012__CLONRAID"
+    then
+    echo 'invalid arguments!'
+
+fi
+#################################################################################################################
+# VENTOY                                                                                              #
+#################################################################################################################
+
+echo -n "Montar o disco VENTOY ? (y/n) "
+read -r EXTST500LM012__VENTOY
+
+if test "y" = "$EXTST500LM012__VENTOY"
+
+    then 
+    sudo mount /dev/sdc1 /mnt/VENTOY
+    echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
+
+elif test "n" = "$EXTST500LM012__VENTOY"
+    
+    then
+    sudo umount /dev/sdc1 /mnt/VENTOY -l
+    echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
+
+elif test "y" || "n" != "$EXTST500LM012__VENTOY"
     then
     echo 'invalid arguments!'
 

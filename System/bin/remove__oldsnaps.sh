@@ -8,7 +8,7 @@
 #                                                                   #
 #####################################################################
 
-echo -e "\nRemoving open recents files...\n"
+echo -e "\n\033[01;32mRemoving open recents files...\033[00;37m\n"
 sleep 2 
 set -eu
 snap list --all | awk '/disabled/{print $1, $3}' |
@@ -16,7 +16,6 @@ snap list --all | awk '/disabled/{print $1, $3}' |
         sudo snap remove "$snapname" --revision="$revision"
     done
 
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 echo -e "\033[01;05;37mOLD SNAPS HAS BEEN REMOVED!!\033[00;37m\n"
 
 

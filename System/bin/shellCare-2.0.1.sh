@@ -87,14 +87,11 @@
 
 LINE='line.sh'
 echo
-echo "Welcome!"
-echo 
 echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  2.0.1     \033[0m"
 ########################################################################################################################
 
 
 MENU='shellCare-2.0.1.sh'
-echo
 echo
 neofetch
 $LINE
@@ -132,82 +129,25 @@ $LINE
 function updateSystem {
 
      echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
-     echo
-     #####################################################################################################################
-     echo -e "\nUpdating system packages...\n"
-     #####################################################################################################################
-     sleep 1
-     sudo apt update -y
-     sudo apt update --fix-missing
-     sudo apt install aptitude -y
-     sudo apt upgrade -y
-     sudo apt install base-files sosreport ubuntu-server
-     sudo apt dist-upgrade -y
-     sudo apt full-upgrade -y
-     sudo apt --fix-broken install
-     sudo apt install -f
-     
-     echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
-     sudo ubuntu-drivers autoinstall
-     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
-     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
-     flatpak update -y
-     echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
+     update.sh
 
 }
+
 # 2
-function removeTracer {
+function removePack {
 
      echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
-     #####################################################################################################################
-     echo -e "\nRemoving cache and logs files system...\n"
-     #####################################################################################################################
-     sleep 2
+     remove.sh
+     remove__oldsnaps.sh
 
-     sudo rm -rfv /var/lib/apt/lists/lock
-     sudo rm -rfv /var/lib/dpkg/lock-frontend
-     sudo rm /var/lib/apt/lists/* -vf
-     sudo rm -rfv /var/lib/dpkg/lock
-     sudo rm -rfv ~/.cache/thumbnails/*
-     sudo rm -rfv ~/.cache/thumbnails/normal/*
-     sudo rm -rfv /var/cache/apt/archives/lock
-     sudo rm -rfv ~/.cache/tracker/
-     sudo rm -Rfv /var/log/*
-
-     sudo /bin/remove__oldsnaps.sh
-     sudo apt --purge autoremove -y
-
-     sudo apt autoclean -y
-     sudo apt -s clean
-     sudo apt clean -y
-     sudo apt clean all
-
-     sudo apt remove $(deborphan)
-     echo -e "\n\033[01;37m[\033[00;32m \033[00;37m ]\033m\n"
-
-     sleep 1
-     #####################################################################################################################
-     echo -e "\nRemoving Rubbish Bin files...\n"
-     #####################################################################################################################
-     sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
-     sudo rm -rfv .local/share/Trash/*
-     sudo rm -rfv /home/*/.local/share/Trash/*/**
-     sudo rm -rfv /root/.local/share/Trash/*/**
-     trash-empty -f
-     echo -e "\n\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
-    
 }
 
 # 3
-function cleanupdateSystem {
+function cleanUpdateSystem {
      echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-     sleep 1
-     sudo /bin/updatepack.sh
-     sleep 1
-     sudo /bin/removepack.sh
      echo
-
+     updateSystem.sh
+    
 }
 # 4
 function systemPerformace {
@@ -398,11 +338,11 @@ if [ "$valid_option" = true ]; then
           $MENU
           ;;
      2)
-          removeTracer
+          removePack
           $MENU
           ;;
      3)
-          cleanupdateSystem
+          cleanUpdateSystem
           $MENU
           ;;
      4)

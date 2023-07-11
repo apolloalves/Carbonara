@@ -34,44 +34,25 @@
 #                                                                                                                     #
 # It is important to note that this script contains commands that require superuser (sudo) privileges, so it is       #
 # recommended to run it carefully and verify the actions that will be performed before proceeding.                    #
-#######################################################################################################################
-
-YES="y"
-NO="n"
-SHELLCARE='shellCare-2.0.1.sh'
-removepack='removepack.sh'
-
-echo -n 'Do you want to update system packages (y/n)? '
-read -r packages_question
-
-
-if [ "$packages_question" = "$YES" ]; then
-    sleep 1
+  
+    #####################################################################################################################
     echo -e "\nUpdating system packages...\n"
     #####################################################################################################################
-    echo -e "\nCleaning and updating the system...\n"
-    #####################################################################################################################
-
+    sleep 1
+    sudo apt update -y
     sudo apt update --fix-missing
+    sudo apt install aptitude -y
     sudo apt install base-files sosreport ubuntu-server
+    sudo apt upgrade -y
+    sudo apt dist-upgrade -y
+    sudo apt full-upgrade -y
     sudo apt --fix-broken install
     sudo apt install -f
-    sudo apt install aptitude -y
-    sudo apt upgrade -y
-    sudo apt full-upgrade -y
-    sudo apt dist-upgrade
-    sudo aptitude safe-upgrade -y
+    
+    echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
+    sudo ubuntu-drivers autoinstall
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
-    echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
-fi
-
-if [ "$packages_question" = "$NO" ]; then
-
-    
-    $removepack
-    
-   elif [ "$packages_question" != "$YES" ] && [ "$packages_question" != "$NO" ]; then
-    echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
-fi
+    echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
