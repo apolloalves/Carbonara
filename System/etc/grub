@@ -1,41 +1,40 @@
-  1 # If you change this file, run 'update-grub' afterwards to update
-  2 # /boot/grub/grub.cfg.
-  3 # For full documentation of the options in this file, see:
-  4 #   info -f grub -n 'Simple configuration'
-  5 
-  6 GRUB_DEFAULT=0
-  7 GRUB_HIDDEN_TIMEOUT=0
-  8 GRUB_HIDDEN_TIMEOUT_QUIET=true
-  9 GRUB_TIMEOUT=0
- 10 GRUB_DISABLE_OS_PROBER=true
- 11 GRUB_TIMEOUT_STYLE=hidden
- 12 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
- 13 #GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
- 14 GRUB_CMDLINE_LINUX=""
- 15 
- 16 # changed
- 17 #GRUB_CMDLINE_LINUX_DEFAULT="quiet splash noplymouth video=SVIDEO-1:d loglevel=3"
- 18 GRUB_CMDLINE_LINUX_DEFAULT="noplymouth video=SVIDEO-1:d loglevel=3"
- 19 
- 20 # Uncomment to enable BadRAM filtering, modify to suit your needs
- 21 # This works with Linux (no patch required) and with any kernel that obtains
- 22 # the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
- 23 #GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
- 24 
- 25 # Uncomment to disable graphical terminal (grub-pc only)
- 26 #GRUB_TERMINAL=console
- 27 
- 28 # The resolution used on graphical terminal
- 29 # note that you can use only modes which your graphic card supports via VBE
- 30 # you can see them in real GRUB with the command `vbeinfo'
- 31 #GRUB_GFXMODE=640x480
- 32 
- 33 # Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
- 34 #GRUB_DISABLE_LINUX_UUID=true
- 35 
- 36 # Uncomment to disable generation of recovery mode menu entries
- 37 #GRUB_DISABLE_RECOVERY="true"
- 38 
- 39 # Uncomment to get a beep at grub start
- 40 #GRUB_INIT_TUNE="480 440 1"
-~                                    
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+# For full documentation of the options in this file, see:
+#   info -f grub -n 'Simple configuration'
+
+GRUB_DEFAULT=0
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=0
+GRUB_DISABLE_OS_PROBER=true
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash elevator=deadline"
+GRUB_CMDLINE_LINUX=""
+ 
+# changed
+#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash noplymouth video=SVIDEO-1:d loglevel=3"
+GRUB_CMDLINE_LINUX_DEFAULT="noplymouth video=SVIDEO-1:d loglevel=3"
+
+# Uncomment to enable BadRAM filtering, modify to suit your needs
+# This works with Linux (no patch required) and with any kernel that obtains
+# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+#GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+
+# Uncomment to disable graphical terminal (grub-pc only)
+#GRUB_TERMINAL=console
+
+# The resolution used on graphical terminal
+# note that you can use only modes which your graphic card supports via VBE
+# you can see them in real GRUB with the command `vbeinfo'
+#GRUB_GFXMODE=640x480
+
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+#GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+#GRUB_DISABLE_RECOVERY="true"
+
+# Uncomment to get a beep at grub start
+#GRUB_INIT_TUNE="480 440 1"
