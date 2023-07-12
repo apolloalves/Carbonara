@@ -34,7 +34,9 @@
 #                                                                                                                     #
 # It is important to note that this script contains commands that require superuser (sudo) privileges, so it is       #
 # recommended to run it carefully and verify the actions that will be performed before proceeding.                    #
-  
+    
+# read -p "Chosen option : " option_choice
+
     #####################################################################################################################
     echo -e "\nUpdating system packages...\n"
     #####################################################################################################################

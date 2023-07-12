@@ -90,7 +90,6 @@ echo
 echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  2.0.1     \033[0m"
 ########################################################################################################################
 
-
 MENU='shellCare-2.0.1.sh'
 echo
 neofetch
@@ -122,21 +121,18 @@ echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Reboot System \033
 
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
 $LINE
+
 read -p "Chosen option : " option_choice
 $LINE
 
 # 1
 function updateSystem {
-
-     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
      update.sh
-
 }
 
 # 2
 function removePack {
 
-     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m"
      remove.sh
      remove__oldsnaps.sh
 
@@ -144,14 +140,14 @@ function removePack {
 
 # 3
 function cleanUpdateSystem {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+
      echo
      updateSystem.sh
-    
+
 }
 # 4
 function systemPerformace {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+
      gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
 }
 # 5
@@ -166,71 +162,23 @@ function swapState {
 # 6
 function disableNativeServicesSystem {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "\nDisabling natives services system..."
      sudo disable__services.sh
 }
 # 7
 function systemAnalyze {
 
-     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      /bin/systemAnalyse.sh
 
 }
 # 8
 function eggsCreate {
 
-     FILEPATH="/home/eggs/*.iso"
-     TARGETPATH="/mnt/VENTOY"
-
-     DATE=$(date +"%Y-%m-%d")
-
-     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-
-     arquivo="/home/eggs/*.iso"
-
-     while true; do
-
-          length=$(find /home/eggs -maxdepth 1 -name "*.iso" | wc -l)
-
-          if [ "$length" -gt 0 ]; then
-
-               echo ".iso file(s) found in: "
-               echo 
-               find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
-
-               # echo -e "\nRenomeando o arquivo iso..\n"
-               sudo mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
-
-               echo Renaming your iso file to : "Ubuntu-22.0.4-LTS_$DATE.iso"
-               echo "Preparing to move..."
-               sleep 1
-               echo -e "Moving file to $TARGETPATH ...\n"
-               sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
-
-               echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-               $LINE
-               break
-
-          else
-               echo -e "\nWait...\n"
-               sleep 2
-               echo -e "No .iso file found in /home/eggs/\n"
-               $LINE
-               sleep 2
-               echo -e "\nOpening new tab exclusive for Eggs...\n"
-               sleep 1
-               gnome-terminal --tab -- bash -c "sudo eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
-               echo -e "\033[01;37m[\033[00;32m OPEN\033[01;37m ]\033m\n"
-               break
-          fi
-     done
-
+     eggsCreate.sh
 }
 # 9
 function broot {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "\nOpening broot...\n"
      sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/'
      sleep 1
@@ -238,12 +186,11 @@ function broot {
 # 10
 function balanceVolume {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      /bin/btrfs_balance.sh
 }
 # 11
 function nautilusDir {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+
      #####################################################################################################################
      echo -e "\n Opening Nautilus...\n"
      #####################################################################################################################
@@ -256,13 +203,11 @@ function nautilusDir {
 # 12
 function stacer {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      sudo /bin/stacer.sh
 }
 # 13
 function showJournalctl {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "\nLoading journalctl -b...\n"
      sleep 1
      journalctl -b
@@ -270,7 +215,7 @@ function showJournalctl {
 }
 # 14
 function checkSpace {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+
      #####################################################################################################################
      echo -e "\n Check spaces...\n"
      #####################################################################################################################
@@ -281,16 +226,14 @@ function checkSpace {
 }
 # 15
 function mysqlAssitent {
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
+
      sudo /bin/mysql__fix-1.0.sh
 
 }
 # 16
 function mysqlDisableService {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "Disabling mysql service..."
-
      sudo systemctl disable mysql.service
      sleep 1
      echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
@@ -300,7 +243,6 @@ function mysqlDisableService {
 # 17
 function gnomeGdm3 {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
      sleep 2
      sudo apt install gdm3 -y
@@ -309,7 +251,6 @@ function gnomeGdm3 {
 # 18
 function mountDisk {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
      echo -n
      sudo /bin/ext__disk-1.0.sh
 
@@ -317,7 +258,6 @@ function mountDisk {
 # 19
 function releaseUpdateVersion {
 
-     echo -e "\033[05;31mThe option: will be executed: $option_choice\033[00;37m\n"
      sudo do-release-upgrade
 }
 # 20
@@ -329,11 +269,11 @@ MENU='shellCare-2.0.1.sh'
 valid_option=true
 
 if [ "$valid_option" = true ]; then
-
-     # $valid_option >2 /dev/null - incorrect line, removed
+     echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
 
      case "$option_choice" in
      1)
+
           updateSystem
           $LINE
           $MENU
@@ -350,19 +290,20 @@ if [ "$valid_option" = true ]; then
           systemPerformace
           $MENU
           ;;
-      
+
      5)
           swapState
           $MENU
           ;;
-     
+
      6)
           disableNativeServicesSystem
           $MENU
           ;;
-     
+
      7)
           systemAnalyze
+          $MENU
           ;;
      8)
           eggsCreate
@@ -391,7 +332,7 @@ if [ "$valid_option" = true ]; then
           checkSpace
           $MENU
           ;;
-    
+
      15)
           mysqlAssitent
           $MENU
@@ -429,7 +370,9 @@ if [ "$valid_option" = true ]; then
           echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
           echo -e "Invalid input! Please enter 'y' or 'n'.\n"
           ;;
+
      esac
+     
 else
      echo -e "\nops!\n"
      echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
