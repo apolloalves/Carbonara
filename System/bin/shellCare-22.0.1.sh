@@ -33,7 +33,7 @@
 # HTTPS://GITHUB.COM/ANDREAFRANCIA/TRASH-CLI #
 #                                            #
 # ORPHANER - REMOVAL OF ORPHAN PACKAGES      #
-# SUDO APT INSTALL DEBORPHAN                 #
+# sudo apt install deborphan                 #
 #                                            #
 ##############################################
 
@@ -90,7 +90,6 @@ echo
 echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  22.0.1     \033[0m"
 ######################################################################################################################################################################################
 
-
 echo
 neofetch
 $LINE
@@ -137,70 +136,72 @@ if [ "$option_choice" != "q" ]; then
         echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
 
         case "$option_choice" in
-            1)
-                update.sh
-                ;;
-            2)
-                remove.sh
-                remove__oldsnaps.sh
-                ;;
-            3)
-                updateSystem.sh
-                ;;
-            4)
-                gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
-                ;;
-            5)
-                swapState.sh
-                ;;
-            6)
-                disable__services.sh
-                ;;
-            7)
-                systemAnalyse.sh
-                ;;
-            8)
-                eggsCreate.sh
-                ;;
-            9)
-                echo -e "\nOpening broot...\n"
-                sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/'
-                sleep 1
-                ;;
-            10)
-                btrfs_balance.sh
-                ;;
-            11)
-                clonraidBackups.sh
-                ;;
-            12)
-                stacer.sh
-                ;;
-            13)
-                gnome-terminal --tab -- bash -c "showJournalctl.sh /; exec bash"
-                ;;
-            14)
-                checkSpace
-                ;;
-            15)
-                mysql__fix-1.0.sh
-                ;;
-            16)
-                mysqlDisableService.sh
-                ;;
-            17)
-                reinstallGnomeGdm3
-                ;;
-            18)
-                ext__disk-1.0.sh
-                ;;
-            19)
-                sudo do-release-upgrade
-                ;;
-            20)
-                sudo init 6
-                ;;
-            *)
+
+          1)
+              update.sh
+              ;;
+          2)
+              remove.sh
+              remove__oldsnaps.sh
+              ;;
+          3)
+              updateSystem.sh
+              ;;
+          4)
+              gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
+              ;;
+          5)
+              swapState.sh
+              ;;
+          6)
+              disable__services.sh
+              ;;
+          7)
+              systemAnalyse.sh
+              ;;
+          8)
+              eggsCreate.sh
+              ;;
+          9)
+              echo -e "\nOpening broot...\n"
+              sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/'
+              sleep 1
+              ;;
+
+          10)
+              btrfs_balance.sh
+              ;;
+          11)
+              clonraidBackups.sh
+              ;;
+          12)
+              stacer.sh
+              ;;
+          13)
+              gnome-terminal --tab -- bash -c "showJournalctl.sh /; exec bash"
+              ;;
+          14)
+              checkSpace
+              ;;
+          15)
+              mysql__fix-1.0.sh
+              ;;
+          16)
+              mysqlDisableService.sh
+              ;;
+          17)
+              reinstallGnomeGdm3
+              ;;
+          18)
+              ext__disk-1.0.sh
+              ;;
+          19)
+              sudo do-release-upgrade
+              ;;
+          20)
+              sudo init 6
+              ;;
+          *)
                 echo -e "\nops!\n"
                 echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
                 echo -e "Invalid input! Please enter 'y' or 'n'.\n"

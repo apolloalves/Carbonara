@@ -2,9 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: fix__packages-7.0.sh For updates packages of system and   #
-# optimizer performance.                                            #
-#                                                                   #
+# Script: update.sh                                                 #
 # Author: Apollo Alves                                              #
 # Date: 25/06/2023                                                  #
 #                                                                   #
@@ -37,25 +35,25 @@
     
 # read -p "Chosen option : " option_choice
 
-    #####################################################################################################################
-    echo -e "\nUpdating system packages...\n"
-    #####################################################################################################################
-    sleep 1
-    sudo apt update -y
-    sudo apt update --fix-missing
-    sudo apt install aptitude -y
-    sudo apt install base-files sosreport ubuntu-server
-    sudo apt upgrade -y
-    sudo apt dist-upgrade -y
-    sudo apt full-upgrade -y
-    sudo apt --fix-broken install
-    sudo apt install -f
-    
-    echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
-    sudo ubuntu-drivers autoinstall
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+#####################################################################################################################
+echo -e "\nUpdating system packages...\n"
+#####################################################################################################################
+sleep 1
+sudo apt update -y
+sudo apt update --fix-missing
+sudo apt install aptitude -y
+sudo apt install base-files sosreport ubuntu-server
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
+sudo apt --fix-broken install
+sudo apt install -f
 
-    echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
-    flatpak update -y
-    echo -e "\nSystem packages have been updated successfully!\n"
-    # echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
+echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
+sudo ubuntu-drivers autoinstall
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+
+echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
+flatpak update -y
+echo -e "\n\033[01;05;37mSystem packages have been updated successfully!!\033[00;37m\n"
+sleep 3
