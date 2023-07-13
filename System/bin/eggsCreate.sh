@@ -14,9 +14,6 @@ FILEPATH="/home/eggs/*.iso"
      TARGETPATH="/mnt/VENTOY"
 
      DATE=$(date +"%Y-%m-%d")
-
-     echo -e "\n\033[05;31mThe option: will be executed: $option_choice\033[00;37m"
-
      arquivo="/home/eggs/*.iso"
 
      while true; do

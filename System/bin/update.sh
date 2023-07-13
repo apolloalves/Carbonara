@@ -53,8 +53,9 @@
     
     echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
     sudo ubuntu-drivers autoinstall
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 
     echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
     flatpak update -y
-    echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
+    echo -e "\nSystem packages have been updated successfully!\n"
+    # echo -e "\n\033[01;37m[\033[00;32m all done!\033[00;37m ]\033m\n"
