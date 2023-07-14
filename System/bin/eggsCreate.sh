@@ -12,12 +12,11 @@
 
 FILEPATH="/home/eggs/*.iso"
 TARGETPATH="/mnt/VENTOY"
+LINE='line.sh'
 
 echo "Checking device..."
 sleep 2
 sudo mount /dev/sdc1 $TARGETPATH
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-
 
      DATE=$(date +"%Y-%m-%d")
      arquivo="/home/eggs/*.iso"
@@ -41,20 +40,19 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
                echo -e "Moving file to $TARGETPATH ...\n"
                sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
 
-               echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+               echo -e "\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
                $LINE
                break
 
           else
                echo -e "\nWait...\n"
                sleep 2
-               echo -e "No .iso file found in /home/eggs/\n"
-               $LINE
+               echo -e "No .iso file found in /home/eggs/"
                sleep 2
                echo -e "\nOpening new tab exclusive for Eggs...\n"
                sleep 1
                gnome-terminal --tab -- bash -c "sudo eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
-               echo -e "\033[01;37m[\033[00;32m OPEN\033[01;37m ]\033m\n"
+               echo -e '\033[01;06;37mThe new tab is open!\033[00;37m'
                break
           fi
      done

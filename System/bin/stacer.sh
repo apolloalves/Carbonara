@@ -9,10 +9,13 @@
 #                                                                   #
 #####################################################################
 
-MENU='shellCare-1.2.sh'
+MENU="shellCare-22.0.1.sh"
+YES="y"
+NO="n"
 
-VALIDATE=$(test "y" || "n" != "$stacer_question")     
- echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '
+
+
+ echo -n 'Do you want to open stacer ( y/n ) ? '
  read -r stacer_question
 
  if test "y" = "$stacer_question"
@@ -40,11 +43,11 @@ fi
             then 
             $MENU;
 
-fi
 
-if
-      echo "${VALIDATE}"
-      then
-      echo -e "The operation was canceled by the user\n"   
+elif [ "$stacer_question" != "$YES" ] && [ "$stacer_question" != "$NO" ]; then
+    
+    echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
+    sleep 2
+    $MENU
 
 fi

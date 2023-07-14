@@ -36,11 +36,11 @@ sudo apt clean -y
 sudo apt clean all
 sudo apt purge --autoremove
 sudo apt remove "$(deborphan)"
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 sudo dpkg --configure -a
 sudo apt --fix-broken install
 sleep 1
 sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 sleep 1
 
 #####################################################################################################################
@@ -51,7 +51,7 @@ sudo rm -rfv .local/share/Trash/*
 sudo rm -rfv /home/*/.local/share/Trash/*/**
 sudo rm -rfv /root/.local/share/Trash/*/**
 trash-empty -f
-echo -e '\n\033[01;37m[\033[00;32m rubbish bin files was clean!\033[01;37m ]\033m\n'
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
 #####################################################################################################################
 echo -e "\033[01;32mRemoving old snaps of system...\033[00;37m"

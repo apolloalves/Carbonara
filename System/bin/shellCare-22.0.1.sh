@@ -133,7 +133,8 @@ valid_option=true
 if [ "$option_choice" != "q" ]; then
 
     if [ "$valid_option" = true ]; then
-        echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
+        echo -e "\033[01;05;37mThe option: $option_choice will be executed:\033[00;37m\n"
+        # echo -e "\033[01;06;37mThe option: $option_choice will be executed:\033[00;37m"
 
         case "$option_choice" in
 
@@ -202,6 +203,14 @@ if [ "$option_choice" != "q" ]; then
           20)
               sudo init 6
               ;;
+          q)
+                valid_option=true
+                echo
+                echo "Exiting the program..."
+                echo "Bye!"
+                sleep 2
+                clear
+                ;;
           *)
                 echo -e "\nops!\n"
                 echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
