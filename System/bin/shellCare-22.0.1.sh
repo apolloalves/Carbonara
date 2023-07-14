@@ -72,10 +72,10 @@
 # echo -e '\033[01;37mubuntu \033[04;32mfocal fossa\033[00;37m!!!'                                               #
 #
 # OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
-# echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+# echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 #
 # DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
-# echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
+# echo -e "\n\033[01;37m[\033[00;32m done\033[01;37m ]\033m\n"
 #
 # BACKGROUND IN TEXT
 # echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"
@@ -142,7 +142,6 @@ if [ "$option_choice" != "q" ]; then
               ;;
           2)
               remove.sh
-              remove__oldsnaps.sh
               ;;
           3)
               updateSystem.sh
@@ -169,7 +168,8 @@ if [ "$option_choice" != "q" ]; then
               ;;
 
           10)
-              btrfs_balance.sh
+            #   btrfs_balance.sh
+            echo "This is disabled!"
               ;;
           11)
               clonraidBackups.sh
