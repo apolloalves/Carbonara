@@ -142,12 +142,13 @@ if [ "$option_choice" != "q" ]; then
               ;;
           2)
               remove.sh
+              stacer.sh
               ;;
           3)
               updateSystem.sh
               ;;
           4)
-              gnome-terminal --tab -- bash -c "sudo /bin/performance.sh /; exec bash"
+              gnome-terminal --tab -- bash -c "sudo performance.sh /; exec bash"
               ;;
           5)
               swapState.sh

@@ -11,7 +11,13 @@
 #####################################################################
 
 FILEPATH="/home/eggs/*.iso"
-     TARGETPATH="/mnt/VENTOY"
+TARGETPATH="/mnt/VENTOY"
+
+echo "Checking device..."
+sleep 2
+sudo mount /dev/sdc1 $TARGETPATH
+echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+
 
      DATE=$(date +"%Y-%m-%d")
      arquivo="/home/eggs/*.iso"
