@@ -16,7 +16,8 @@ REMOVEPACK='remove.sh'
 YES="y"
 NO="n"
 
-    echo -n 'Do you want to clean system packages (y/n)? '
+    echo
+    echo -n 'Do you want to clean system packages (y/n) ? '
     read -r removepack
 
 if [ "$removepack" = "$YES" ]; then 
@@ -24,8 +25,9 @@ if [ "$removepack" = "$YES" ]; then
     $REMOVEPACK
     
 fi
-if [ "$removepack" = "$no" ]; then 
-        
+if [ "$removepack" = "$NO" ]; then 
+
+    echo "skipped!"
     $MENU
 
     elif [ "$removepack" != "$YES" ] && [ "$removepack" != "$NO" ]; then

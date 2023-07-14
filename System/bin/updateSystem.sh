@@ -44,18 +44,19 @@ NO="n"
 updatePack="updatePack.sh"
 removePack="removePack.sh"
 
+echo
 echo -n 'Do you want to update system packages (y/n) ? '
 read -r updateSytemPackages
 
 
 if [ "$updateSytemPackages" = "$YES" ]; then
-    
+     
      $updatePack
 
 fi
 
 if [ "$updateSytemPackages" = "$NO" ]; then
-
+     echo "skipped!"
      $removePack
 
     
