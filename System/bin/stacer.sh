@@ -55,8 +55,8 @@ NO="n"
       until ! pgrep -x "stacer" > /dev/null
       
       do
-            echo -e '\cAguardando o encerramento do stacer pelo usuário...'
-            sleep 2
+      echo -e '\cAguardando o encerramento do stacer pelo usuário...'
+      sleep 2
       done
     
       $MENU;
