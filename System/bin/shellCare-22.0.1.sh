@@ -166,7 +166,7 @@ if [ "$option_choice" != "q" ]; then
               gnome-terminal --tab -- bash -c "showJournalctl.sh /; exec bash"
               ;;
           14)
-              checkSpace
+              checkSpace.sh
               ;;
           15)
               mysql__fix-1.0.sh
