@@ -51,11 +51,9 @@
 echo -e "\nDisabling natives services system..."
 ##########################################################################################################
 #                                                                                                        #
-#                                                                                                        #
 # Disable Bluetooth : is a potential security risk. It is part of AccountsService, which allows programs #
 # to get and manipulate user account information. I can’t think of a good reason to allow this kind of   #
 # behind-my-back operations, so I mask it.                                                               #
-#                                                                                                        #
 #                                                                                                        #
 ##########################################################################################################
 echo "Disabling disable bluetooth.service"
@@ -145,20 +143,17 @@ sudo systemctl status ModemManager.service
 sleep 1 
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
-#systemctl status ModemManager.service
+
 ####################################################################################################################
-#                                                                                                                  #
 # pppd-dns.service is a relic of the dim past. If you use dial-up Internet, keep it. Otherwise, you don’t need it. #
-#                                                                                                                  #
-#                                                                                                                  #
 ####################################################################################################################
 
-# echo "Disabling pppd-dns.service..."
-# sudo systemctl disable pppd-dns.service
-# sudo systemctl status pppd-dns.service
-# sleep 1
-# echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-# line.sh
+echo "Disabling pppd-dns.service..."
+sudo systemctl disable pppd-dns.service
+sudo systemctl status pppd-dns.service
+sleep 1
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
 
 #######################################################################################################
 #                                                                                                     #
@@ -172,11 +167,9 @@ line.sh
 #######################################################################################################
 
 ###############################################
-#                                             #
 # Warsaw Service : Remove service ITAU Bank # #
-#                                             #
-#                                             #
 ###############################################
+
 echo -e "Disabling warsaw service..."        
 echo
 sudo systemctl disable warsaw.service            
@@ -184,9 +177,11 @@ sleep 1
 sudo systemctl status warsaw.service            
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
+
+###############################################
+# mysql.service                               #
 ###############################################
 
-#mySQL Service
 echo -e "Disabling mysql service..."
 echo
 sudo systemctl disable mysql.service
@@ -194,13 +189,9 @@ sleep 1
 sudo systemctl status mysql.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
-###############################################
 
 #################################
-#                               #
-# # Network Dispatcher Services #
-#                               #
-#                               #
+# Network Dispatcher Services   #
 #################################
 
 echo -e "Disabling network-dispatcher services..."
@@ -212,9 +203,7 @@ echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
 #################################
-#                               #
-# # cups.service                #
-#                               #
+# cups.service                  #
 #################################
 
 echo -e "Disabling cups.service..."
@@ -226,11 +215,8 @@ echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
 #################################
-#                               #
 # #  apport.service             #
-#                               #
 #################################
-
 
 echo -e "Disabling cups.service..."
 echo
@@ -240,14 +226,9 @@ sudo systemctl status systemctl apport.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
-
-
 #################################
-#                               #
-# #  apport.service             #
-#                               #
+#   openvpn.service             #
 #################################
-
 
 echo -e "Disabling disable openvpn.service..."
 echo
@@ -259,9 +240,7 @@ echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
 #################################
-#                               #
-#   virtual box services        #
-#                               #
+#   virtualbox services         #
 #################################
 
 echo -e "Disabling cups.service..."
@@ -281,20 +260,15 @@ sudo systemctl status vboxweb-service.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
-#TeamViwer Service
-# echo -e "Disabling teamviewer services..."
-# echo
-# sudo systemctl status teamviewerd.service
-# sleep 1
-# sudo systemctl disable teamviewerd.service
-# echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-# line.sh
+#################################
+#   teamviewerd.service         #
+#################################
 
-#########################################################################################################
-#                                                                                                       #
-# journalctl -b : Systemd has some commands to help debug boot issues. This command replays all of your #
-# boot messages:                                                                                        #
-#                                                                                                       #
-#                                                                                                       #
-#########################################################################################################
-#journalctl -b
+TeamViwer Service
+echo -e "Disabling teamviewer services..."
+echo
+sudo systemctl status teamviewerd.service
+sleep 1
+sudo systemctl disable teamviewerd.service
+echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+line.sh
