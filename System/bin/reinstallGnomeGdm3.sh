@@ -6,9 +6,25 @@
 # optimizer performance.                                            #
 #                                                                   #
 # Author: Apollo Alves                                              #
-# Date: 25/06/2023                                                  #
+# Date: 14/07/2023                                                  #
 #                                                                   #
 #####################################################################
+
+#####################################################################################################################
+#                                                                                                                   #
+# Description : This shell script named "checkSpace.sh" performs the following actions:                             #
+#                                                                                                                   #
+# 1. Displays a message that gdm3 is being reinstalled.                                                             #
+# 2. Wait 2 seconds.                                                                                                #
+# 3. Use the command "sudo apt install gdm3 -y" to reinstall the gdm3 package. The "-y" parameter is used to        #
+# automatically confirm installation questions.                                                                     #
+# 4. Displays a message indicating that the reinstallation completed successfully.                                  #
+#                                                                                                                   #
+# In short, the script reinstalls the gdm3 package using the apt package manager. gdm3 is a display manager used on #
+# Linux systems, and this reinstallation can be useful to optimize performance or fix problems related to gdm3 if   #
+# necessary.                                                                                                        #
+#                                                                                                                   #
+#####################################################################################################################
 
 echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
 sleep 2
