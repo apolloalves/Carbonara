@@ -12,7 +12,8 @@
 # 2. Checks the device and mounts the mount point specified in $TARGETPATH.                                                #
 # 3. Gets the current date and stores it in the $DATE variable.                                                            #
 # 4. Checks for .iso files in the /home/eggs directory.                                                                    #
-# 5. If there are .iso files, displays the files found, renames the first file to "Ubuntu-22.0.4-LTS_current_data.iso" and #
+# 5. If there are .iso files, displays the files found, renames the first file to "Ubuntu-22.0.4-LTS_current_data.iso"     #
+# and                                                                                                                      #
 # moves it to $TARGETPATH.                                                                                                 #
 # 6. If there are no .iso files, displays a message that no files were found and opens a new terminal to run a command     #
 # called "sudo eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename= _current date".                                #
@@ -20,7 +21,6 @@
 # In short, this script checks for .iso files in the /home/eggs directory. If so, it renames the first file found and      #
 # moves it to a specified destination. If there are no .iso files, execute another specific command. It is important       #
 # to mention that the script contains some commands that require superuser (sudo) privileges.                              #
-#                                                                                                                          #
 #                                                                                                                          #
 ############################################################################################################################
 
