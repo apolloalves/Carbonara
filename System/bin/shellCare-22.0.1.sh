@@ -1,63 +1,46 @@
 #!/bin/bash
-########################################################################################################################
-#                                                                                                                      #
-# SHELLCARE-22.1.sh                                                                                                                #
-# THIS PROGRAM CONTAINS ROUTINE AUTOMATION SCRIPTS FOR:                                                                #
-#                                                                                                                      #
-# FULL KERNEL UPDATE;                                                                                                  #
-# COMPLETE UPDATE OF THE LIST OF REPOSITORIES;                                                                         #
-# APPLICATION UPDATE VIA FLATPAK UPDATE                                                                                #
-# COMPLETE DEVICE DRIVER UPDATE;                                                                                       #
-# GRUB UPDATE AFTER KERNEL UPDATE;                                                                                     #
-#                                                                                                                      #
-# AUTOMATIC REMOVAL AND CORRECTION OF APT/DPKG PACKAGES;                                                               #
-# REMOVAL AND CORRECTION OF TRACES OF UNUSED PACKAGES;                                                                 #
-# AUTOMATIC REMOVAL OF ORPHANED PACKAGES THAT ONLY OCCUPY SPACES;                                                      #
-#                                                                                                                      #
-# CLEANING EXCHANGE;                                                                                                   #
-# DISK USAGE SPACE SUMMARY;                                                                                            #
-#                                                                                                                      #
-# IN ADDITION, WE HAVE INCLUDED SCRIPTS TO REMOVE TRACES OF UNUSED DPKGS AND APTS PACKAGES THAT TAKE UP UNNECESSARY    #
-# SPACE AND                                                                                                         #
-# ALSO REMOVE THE ACCUMULATED KERNEL.                                                                                  #
-#                                                                                                                      #
-# AUTHOR : APOLLO ALVES                                                                                                                     #
-#                                                                                                                      #
-########################################################################################################################
-# FOR IT TO WORK EFFECTIVELY, WE RECOMMEND INSTALLING SOME DEPENDENCIES:                                               #
-########################################################################################################################
-# STACER - SYSTEM OPTIMIZER AND MONITOR      #
-# HTTPS://GITHUB.COM/OGUZHANINAN/STACER      #
-#                                            #
-# TRASH-CLI - REMOVAL RUBBISH BIN FILES      #
-# HTTPS://GITHUB.COM/ANDREAFRANCIA/TRASH-CLI #
-#                                            #
-# ORPHANER - REMOVAL OF ORPHAN PACKAGES      #
-# sudo apt install deborphan                 #
-#                                            #
-##############################################
 
-# Instructions:
+#############################################
+#                                           #
+# Script: shellCare-22.0.1,sh               #
+# Author : Apollo Alves                     #
+# Date : 14/07/2023                         #
+#############################################
 
-# 1 - Download the file;
-# 2 - Give him execution privileges (X) as root;
-# 3 - Move the file to the /bin directory
-# 4 - Run the command in the terminal with sudo
+##########################################################################################################################
+#                                                                                                                        #
+# Description : This script is an interactive menu that allows the user to select an option and execute different        #
+# commands based on                                                                                                      #
+# the choice made. Here is a summary of what it does:                                                                    #
+#                                                                                                                        #
+# 1. Define some variables like LINE, MENU and REMOVEPACK.                                                               #
+# 2. Displays an informative header with information about the ShellCare System.                                         #
+# 3. Display system information using the "neofetch" command.                                                            #
+# 4. Displays menu options numbered 1 through 20.                                                                        #
+# 5. Prompts the user to choose an option by typing the corresponding number.                                            #
+# 6. Based on the chosen option, the script executes different commands corresponding to each case:                      #
+# - Each option has an associated number and a corresponding action defined in a "case" block.                           #
+# - Commands can include running other shell scripts, opening applications, or performing specific actions.              #
+# 7. After executing the action corresponding to the selected option, the script returns to the main menu to allow the   #
+# user to choose another option or exit the program.                                                                     #
+#                                                                                                                        #
+# In short, this shell script is an interactive menu that provides various options and executes different commands based #
+# on the user's choice. It offers features such as updating system packages, cleaning files, optimizing performance,     #
+# handling external disks, among other features related to system administration and configuration.                      #
+#                                                                                                                        #
+# ATTENTION!                                                                                                             #
+#                                                                                                                        #
+# AT YOUR OWN RISK, WE ARE NOT RESPONSIBLE FOR ANY SYSTEM FAILURES OR DAMAGES THAT MAY OCCUR WITH YOUR GNU/LINUX         #
+# DISTRIBUTION.                                                                                                          #
+#                                                                                                                        #
+# THE RESOURCE DEVELOPED IN THIS PROJECT IS COMPLETELY OPEN SOURCE, WE DO NOT TOLERATE IMPROPER DISTRIBUTION OR          #
+# FOR PROFIT. MODIFY IT AND DISTRIBUTE IT FOR FREE TO EVERYONE!                                                          #
+#                                                                                                                        #
+# WE ENCOURAGE YOU TO FEEL FREE TO FURTHER IMPROVE OUR CODE. AFTER ALL, THAT'S WHAT THE GNU/LINUX UNIVERSE WAS           #
+# BORN FOR!                                                                                                              #
+#                                                                                                                        #
+# GOOD LUCK! GREETINGS!                                                  
 
-##################################################################################################################
-#                                                                                                                #
-# ATTENTION!                                                                                                     #
-#                                                                                                                #
-# AT YOUR OWN RISK, WE ARE NOT RESPONSIBLE FOR ANY SYSTEM FAILURES OR DAMAGES THAT MAY OCCUR WITH YOUR GNU/LINUX #
-# DISTRIBUTION.                                                                                                  #
-#                                                                                                                #
-# THE RESOURCE DEVELOPED IN THIS PROJECT IS COMPLETELY OPEN SOURCE, WE DO NOT TOLERATE IMPROPER DISTRIBUTION OR  #
-# FOR PROFIT. MODIFY IT AND DISTRIBUTE IT FOR FREE TO EVERYONE!                                                  #
-#                                                                                                                #
-# WE ENCOURAGE YOU TO FEEL FREE TO FURTHER IMPROVE OUR CODE. AFTER ALL, THAT'S WHAT THE GNU/LINUX UNIVERSE WAS   #
-# BORN FOR!                                                                                                      #
-#                                                                                                                #
-# # GOOD LUCK! GREETINGS!                                                                                        #
 ##################################################################################################################
 # HIGHLIGHTS COMMANDS                                                                                            #
 ##################################################################################################################
