@@ -38,8 +38,9 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;32minstalling neofetch...\033[00;37m\n"
     
     sudo apt install neofetch -y
+    echo ""
     neofetch
-    echo
+    echo ""
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling deborphan...\033[00;37m\n"
@@ -91,7 +92,7 @@ if [ -n "$path" ]; then
     
     echo -e "\n\033[01;37m\033[01mremoving previous versions broot...\033[00;37m\033[00m\n"
     
-    sudo rm -rfv/usr/local/bin/broot/conf-new-style.hjson
+    sudo rm -rfv /usr/local/bin/broot/conf-new-style.hjson
     sudo rm -rfv /usr/local/bin/broot/system.conf
     sudo rm -rfv /usr/local/bin/broot
     
