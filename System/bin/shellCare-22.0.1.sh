@@ -84,13 +84,13 @@ echo
 echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - Update all system packages\033m"
 echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of unused packages from the system\033m"
 echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Run both\033m"
-echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance - required sudo\033m"
+echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance - ( root user required )\033m"
 echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Swap State\033m"
 echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Disable services natives\033m"
 echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Verify Startup time System \033m"
 echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
 echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot \033m"
-echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Start volume balancing \033m"
+echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Remove unwanted packages of system - ( root user required )\033m"
 echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
 echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Open STACER \033m"
 echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
@@ -130,6 +130,7 @@ if [ "$option_choice" != "q" ]; then
               ;;
           3)
               updateSystem.sh
+              removePack.sh
               ;;
           4)
               gnome-terminal --tab -- bash -c "sudo performance.sh /; exec bash"
@@ -153,8 +154,7 @@ if [ "$option_choice" != "q" ]; then
               ;;
 
           10)
-            #   btrfs_balance.sh
-            echo "This is disabled!"
+              unwanted__pack.sh
               ;;
           11)
               clonraidBackups.sh

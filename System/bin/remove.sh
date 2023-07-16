@@ -66,7 +66,13 @@ sudo apt -s clean
 sudo apt clean -y
 sudo apt clean all
 sudo apt purge --autoremove
+
+echo -e "\n\033[01;32mRemove orphaned libraries...\033[00;37m\n"
 sudo apt remove "$(deborphan)"
+sudo deborphan --guess-data | xargs sudo apt-get -y remove --purge
+sudo deborphan | xargs sudo apt-get -y remove --purge
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+
 sudo dpkg --configure -a
 sudo apt --fix-broken install
 sleep 1

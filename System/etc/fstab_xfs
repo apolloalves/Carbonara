@@ -17,12 +17,10 @@ UUID=06f484b2-d9be-4c58-89c6-436194b4fa3f /home          xfs   defaults 0 0
 UUID=d1485f27-234e-4b1e-8cc3-dbb7c58838ec /mnt/EXT@ST500LM012__CLONRAID  btrfs    defaults,noatime,compress=zstd,autodefrag 0 1
 
 #VENTOY
-UUID=F283-E755 /mnt/VENTOY  exfat       defaults        0       0
+#UUID=F283-E755 /mnt/VENTOY  exfat       defaults        0       0
 
-
-#REMOVE UNNECESSARY WRITES TO SSD
+#REMOVE escritas desnecessárias no SSD
 tmpfs /tmp tmpfs noexec,nosuid,nodev,noatime,mode=1777,size=512M 0 0
 tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
 tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
 tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
-

@@ -96,6 +96,7 @@ alias fix='sudo /bin/shellCare.sh'
 alias rb='trash-empty --all -f'
 alias cls='clear'
 #alias fixp='/bin/fix__packages-7.0.sh'
+alias lt='ls -lsht'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

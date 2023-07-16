@@ -52,7 +52,7 @@ LINE='/bin/line.sh'
     #####################################################################################################################
     echo -e "\033[01;32mExecuting prelink...\033[00;37m\n"
     sleep 1
-    sudo prelink -amR
+    sudo prelink -amvR
     sudo /etc/cron.daily/prelink
     sleep 1
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"

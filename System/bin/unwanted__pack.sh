@@ -1,17 +1,18 @@
 #!/bin/bash
-
- VALIDATE=$(test "y" || "n" != "$pack")
  
- echo -n 'Do you want remove unwanted packs of system ( y/n ) ? or press any key to exit '
- read -r pack
+ MENU="shellCare-22.0.1.sh"
 
+YES="y"
+NO="n"
 
+ echo
+ echo -n 'Do you want remove unwanted packs of system ( y/n ) ? '
+ read -r removeunwanted
 
- if test "y" = "$pack"
-
-      then
+if [ "$removeunwanted" = "$YES" ]; then
 
       #REMOVE PACKAGES UNWANTED
+      echo
       echo -e '************************************************************************************************************'
       echo -e "\033[01;05;31mREMOVING UNWANTED PACKAGES AND PURGE LEFTOVER CONFIGURATION...\033[00;37m"
       sleep 2
@@ -34,35 +35,20 @@
       }
 
       purge-unwanted
-
-elif test "n" = "$pack"
-   
-      then
-
-      #OK
       echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 
-	echo -e "\033[01;37m\nRemoving Rubbish Bin files...\033[01;33m"
-        sleep 1 
-        sudo rm -rfv .local/share/Trash/*
-        sudo rm -rfv /home/*/.local/share/Trash/*/**
-        sudo rm -rfv /root/.local/share/Trash/*/**
-      
-      #OK
-      echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-	
-	echo 'Removing open recents files...'
-	sleep 1
-	sudo rm -rf /home/apollo__nicolly/.local/share/recently-used.xbel
-	
-      #OK
-      echo -e '\n\033[01;37m[\033[01;32m OK\033[01;37m ]\033m\n'	
+fi
 
+if [ "$removeunwanted" = "$NO" ]; then
 
-elif
-       echo "${VALIDATE}"
-        then
-        echo -e "Operation canceled by the user\n"   
+      $MENU
+    
+elif [ "$removeunwanted" != "$YES" ] && [ "$removeunwanted" != "$NO" ]; then
+    
+    echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
+    sleep 2
+    $MENU
+
 fi
 
 
