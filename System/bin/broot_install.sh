@@ -24,5 +24,4 @@
     sleep 5
     sudo mv -v broot /usr/local/bin
     sudo chmod +x /usr/local/bin/broot
-    source ~/.bashrc
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
