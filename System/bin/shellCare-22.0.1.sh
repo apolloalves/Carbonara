@@ -154,7 +154,7 @@ if [ "$option_choice" != "q" ]; then
               ;;
           9)
               echo -e "\nOpening broot...\n"
-              sudo broot -s -p -d --sort-by-date '/'
+              gnome-terminal --tab -- bash -c "sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/' ; exec bash"
               sleep 1
               ;;
 
