@@ -23,7 +23,7 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;32mcopying the executables to the /bin folder...\033[00;37m\n"
     sleep 2
     sudo rsync -avh $path/System/bin/*.sh /bin/
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     # arrumar que bra de linmha
     echo -e "\n\033[01;32mupdate packages of system...\033[00;37m\n"
@@ -32,7 +32,7 @@ if [ -n "$path" ]; then
     sudo apt update -y && sudo apt upgrade -y
     sudo dpkg --configure -a
     sudo apt install -f
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
     echo -e "\n\033[01;32minstalling dependencies...\033[00;37m\n"
     sleep 3
     echo -e "\n\033[01;32minstalling neofetch...\033[00;37m\n"
@@ -40,34 +40,34 @@ if [ -n "$path" ]; then
     sudo apt install neofetch -y
     neofetch
     echo
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling deborphan...\033[00;37m\n"
     
     sudo apt install deborphan -y
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling preload...\033[00;37m\n"
     sleep 2
     sudo apt install preload
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling prelink...\033[00;37m\n"
     sleep 2
     sudo apt install prelink -y
     sed 's/PRELINKING=unknown/PRELINKING=yes/g' prelink-sed >/dev/null
     sudo prelink -amvR
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling trash-cli...\033[00;37m\n"
     sleep 2
     sudo apt-get install trash-cli
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling stacer...\033[00;37m\n"
     sleep 2
     sudo apt install stacer -y
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
     curl -fsSL https://pieroproietti.github.io/penguins-eggs-ppa/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/penguins-eggs.gpg
@@ -76,17 +76,17 @@ if [ -n "$path" ]; then
     sleep 2
     sudo apt install eggs=9.4.15 -y
     sudo apt-mark hold eggs=9.4.15
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling flatpak...\033[00;37m\n"
     sleep 2
     sudo apt install flatpak -y
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minserting history format in ~/.bashrc\033[00;37m\n"
     sed -i "14s/.*/HISTTIMEFORMAT='%Y-%m-%d%T '/" ~/.bashrc
     source ~/.bashrc
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
     echo
     
     echo -e "\n\033[01;32minstalling broot...\033[00;37m\n"
@@ -95,7 +95,7 @@ if [ -n "$path" ]; then
     sudo mv broot /usr/local/bin
     sudo chmod +x /usr/local/bin/broot
     source ~/.bashrc
-    echo -e "\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
     sleep 3
     shellCare-22.0.1.sh
 
