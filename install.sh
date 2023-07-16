@@ -81,9 +81,25 @@ if [ -n "$path" ]; then
     echo "deb [arch=$(dpkg --print-architecture)] https://pieroproietti.github.io/penguins-eggs-ppa ./" | sudo tee /etc/apt/sources.list.d/penguins-eggs.list > /dev/null
     sudo apt update -y 
     sleep 2 
-    sudo apt install eggs=9.4.15
+    sudo apt install eggs=9.4.15 -y
     sudo apt-mark hold eggs=9.4.15
     echo "done!"
+
+    echo "installing broot..."
+    sleep 2 
+    wget https://dystroy.org/broot/download/x86_64-linux/broot
+    sudo install broot /usr/local/bin
+    broot --install
+    br
+    echo "done!"
+
+    echo "installing flatpak..."
+    sleep 2 
+    sudo apt install flatpak -y
+    echo "done!"
+
+
+
 
     echo "inserting history format in .bashrc"
     sed -i "14s/.*/HISTTIMEFORMAT='%Y-%m-%d%T '/" ~/.bashrc
