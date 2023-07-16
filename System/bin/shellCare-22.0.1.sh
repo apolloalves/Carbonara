@@ -44,7 +44,6 @@
 ##################################################################################################################
 # HIGHLIGHTS COMMANDS                                                                                            #
 ##################################################################################################################
-#                                                                                                                #
 # PRINT GOOGLE                                                                                                   #
 # echo -e '\033[01;34;47mg\033[01;31mo\033[01;33mo\033[01;34mg\033[01;32ml \033[01;31me\033[00;37;40m'           #
 #                                                                                                                #
@@ -53,21 +52,27 @@
 #                                                                                                                #
 # PRINT IN "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
 # echo -e '\033[01;37mubuntu \033[04;32mfocal fossa\033[00;37m!!!'                                               #
-#
-# OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
-# echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-#
-# DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
-# echo -e "\n\033[01;37m[\033[00;32m done\033[01;37m ]\033m\n"
-#
-# BACKGROUND IN TEXT
-# echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"
-#
-# BACKGROUND WHITE IN TEXT WHITE
-# echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"
-
+#                                                                                                                #  
+# OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                            #
+# echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"                               #                      #
+#                                                                                                                #
+# DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                                              #
+#                                                                                                                #
+# echo -e "\n\033[01;37m[\033[00;32m \033[01mdone\033[00;32m\033[01;37m ]\033[00m\n"                             #
+# echo -e "\n\033[01;37m\033[01;32m done\033[00;37m\033m\n"                                                      #                                                         #
+#                                                                                                                #
+# BACKGROUND IN TEXT                                                                                             #
+# echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"                                            #
+#                                                                                                                #
+# WAIT                                                                                                           #
+# echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"                                                    #                                                           #
+#                                                     #                                                          #
+# BACKGROUND WHITE IN TEXT WHITE                                                                                 #
+# echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"                                       #
+#                                                                                                                #
 ######################################################################################################################################################################################
 
+source ~/.bashrc
 LINE='line.sh'
 echo
 echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  22.0.1     \033[0m"

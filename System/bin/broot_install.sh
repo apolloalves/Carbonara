@@ -15,9 +15,6 @@ curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
 sudo mv broot /usr/local/bin
 sudo chmod +x /usr/local/bin/broot
 source ~/.bashrc
-
-broot
-source ~/.bashrc
 echo "broot was installed!"
 
 
