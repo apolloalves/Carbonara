@@ -180,10 +180,10 @@ if [ "$option_choice" != "q" ]; then
               mysqlDisableService.sh
               ;;
           17)
-              reinstallGnomeGdm3
+              reinstallGnomeGdm3.sh
               ;;
           18)
-              ext__disk-1.0.sh
+              ext__disk-2.1.sh
               ;;
           19)
               sudo do-release-upgrade
