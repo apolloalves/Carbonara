@@ -1,31 +1,31 @@
 #!/bin/bash
 
-
-
-# Define o diretório raiz a partir do qual o find será executado
+# Defines the root directory from which find will be run
 ROOT_DIR="/"
+echo -e "\nwait...\n"
 
-echo "wait..."
-# Utiliza o comando find para localizar a pasta "gnu-bash"
+# Use the find command to locate the "gnu-bash" folder
 path=$(find "$ROOT_DIR" -type d -name "gnu-bash" 2>/dev/null)
 
-# Verifica se a pasta foi encontrada
+# Checks if the folder was found
 
 if [ -n "$path" ]; then
-    sleep 3
-    echo "A pasta 'gnu-bash' clonada foi encontrada em: $path"
+
+    sleep 2
+    echo "The cloned 'gnu-bash' folder was found in: $path"
 
     ls -lsht $path/System/bin/*.sh
     find $path/System/bin/ -ls | wc -l
-    echo "Definindo permissões de execução nos arquivos shell..."
+
+    echo -e "\nsetting execute permissions on shell files...\n"
     sleep 2
     sudo chmod +x $path/System/bin/*.sh
-    echo "copiando os executáveis para a pasta /bin"
+    echo -e "copying the executables to the /bin folder...\n"
     sleep 2
     sudo rsync -avh $path/System/bin/*.sh /bin/
     echo "done!"
-    echo "open..."
 
+    # arrumar que bra de linmha
     echo "update packages of system..."
     echo "wait..."
     sleep 2
@@ -35,7 +35,7 @@ if [ -n "$path" ]; then
     echo "done!"
     echo "installing dependencies..."
     sleep 3
-
+    echo
     echo "installing neofetch..."
     sudo apt install neofetch -y
     neofetch
@@ -77,16 +77,6 @@ if [ -n "$path" ]; then
     sudo apt-mark hold eggs=9.4.15
     echo "done!"
 
-    echo "installing broot..."
-    sleep 2
-    curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
-    sudo mv broot /usr/local/bin
-    sudo chmod +x /usr/local/bin/broot
-    broot
-    source ~/.bashrc
-    br --version
-    echo "done!"
-
     echo "installing flatpak..."
     sleep 2
     sudo apt install flatpak -y
@@ -96,10 +86,19 @@ if [ -n "$path" ]; then
     sed -i "14s/.*/HISTTIMEFORMAT='%Y-%m-%d%T '/" ~/.bashrc
     source ~/.bashrc
     echo done
-    echo 
+    echo
+    
+    echo "installing broot..."
+    curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
+
+    sudo mv broot /usr/local/bin
+    sudo chmod +x /usr/local/bin/broot
+    source ~/.bashrc
+    broot
+    source ~/.bashrc
+    echo "broot was installed!"
+    
     sleep 2
     shellCare-22.0.1.sh
 
-else
-    echo "por favor acesso o dir correto que clonou para executar o instal.sh"
 fi
