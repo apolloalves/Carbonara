@@ -17,9 +17,9 @@ sudo chmod +x /usr/local/bin/broot
 source ~/.bashrc
 
 broot
-sleep 3
-echo "broot was installed!"
 source ~/.bashrc
+echo "broot was installed!"
+sleep 10
 br --version
 
 
