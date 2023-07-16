@@ -19,8 +19,6 @@ source ~/.bashrc
 broot
 source ~/.bashrc
 echo "broot was installed!"
-sleep 5
-source ~/.bashrc
-br --version
+
 
 
