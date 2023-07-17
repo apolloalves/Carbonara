@@ -56,7 +56,8 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;32minstalling prelink...\033[00;37m\n"
     sleep 2
     sudo apt install prelink -y
-    sed 's/PRELINKING=unknown/PRELINKING=yes/g' prelink-sed >/dev/null
+    sudo sed -i '6s/PRELINKING=.*/PRELINKING=yes/' /etc/default/prelink >/dev/null
+    sudo chmod 666 /etc/prelink.conf
     sudo prelink -amvR
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
