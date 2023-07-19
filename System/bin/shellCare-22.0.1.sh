@@ -147,7 +147,7 @@ if [ "$option_choice" != "q" ]; then
               disable__services.sh
               ;;
           7)
-              sudo su -c "bash /bin/remove_unused_ppa.sh"
+              sudo su -c "bash /bin/remove__unused_ppa.sh"
               
               ;;
           8)

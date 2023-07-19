@@ -1,45 +1,5 @@
 #!/bin/bash
 
-
-#####################################################################
-#                                                                   #
-# Script: remove_unused_ppa.sh                                      #
-#                                                                   #
-# Author: Apollo Alves                                              #
-# Date: 17/07/2023                                                  #
-#                                                                   #
-#####################################################################
-
-
-############################################################################################################################
-#                                                                                                                          #
-#                                                                                                                          #
-# The "remove_unused_ppas.sh" script is a tool designed to identify and remove unused PPAs on an Ubuntu or Debian          #
-# based system. PPAs (Personal Package Archives) are third-party repositories that can be added to the system to           #
-# provide additional packages not available in the official repositories.                                                  #
-#                                                                                                                          #
-# The purpose of the script is to help clean and optimize the system by removing PPAs that are no longer used. These PPAs  #
-# may have been added earlier to install specific packages, but if those packages are no longer installed or available,    #
-# the PPAs become unnecessary.                                                                                             #
-#                                                                                                                          #
-# The script works as follows:                                                                                             #
-#                                                                                                                          #
-# 1. Identifies all PPAs installed on the system.                                                                          #
-# 2. Checks which PPAs don't have packages installed from them.                                                            #
-# 3. Displays a list of unused PPAs.                                                                                       #
-# 4. Asks the user if they want to remove unused PPAs.                                                                     #
-# 5. If yes, remove selected PPAs.                                                                                         #
-# 6. Updates the APT cache to reflect the changes.                                                                         #
-#                                                                                                                          #
-# The script is useful for keeping a clean and tidy system by removing unused PPAs that can take up disk space and         #
-# potentially cause package conflicts on the system.                                                                       #
-#                                                                                                                          #
-# I hope this description is helpful to understand the purpose and functionality of "remove_unused_ppas.sh" script. If you #
-# have more questions, please let me know.                                                                                 #
-#                                                                                                                          #
-#                                                                                                                          #
-############################################################################################################################
-
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
    echo "This script needs to be run as root." 
@@ -47,7 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Get the list of all PPAs installed on the system
-installed_ppas=$(find /etc/apt/sources.list.d/ -type f -name "*.list" -exec awk -F'/' '/^deb / {print $NF}' {} \; | cut -d: -f1)
+installed_ppas=$(find /etc/apt/sources.list.d/ -type f -name "*.list" -exec awk -F'/' '/^deb / {print $NF}' {} \; | cut -d: -f1 | sort -u)
 
 # Check unused PPAs
 unused_ppas=()
@@ -58,24 +18,56 @@ for ppa in $installed_ppas; do
     fi
 done
 
-# Remove unused PPAs
+# Check if there are unused PPAs
 if [[ ${#unused_ppas[@]} -gt 0 ]]; then
-    echo "The following PPAs are not being used:"
+    echo "The following unused PPAs were found:"
     for ppa in "${unused_ppas[@]}"; do
         echo "  $ppa"
     done
     read -p "Do you want to remove unused PPAs? (y/n): " choice
     if [[ $choice =~ ^[Yy]$ ]]; then
+        # Create backups of the files
+        backup_files=()
         for ppa in "${unused_ppas[@]}"; do
-            sed -i "/^deb.*$ppa/d" /etc/apt/sources.list /etc/apt/sources.list.d/*.list
+            backup_file="/etc/apt/sources.list.d/$ppa.list.bak"
+            echo "Creating backup: $backup_file"
+            cp "/etc/apt/sources.list.d/$ppa.list" "$backup_file" > /dev/null 2>&1
+            backup_files+=("$backup_file")
         done
+
+        # Remove unused PPAs
+        for ppa in "${unused_ppas[@]}"; do
+            echo "Removing PPA: $ppa"
+            rm -f "/etc/apt/sources.list.d/$ppa.list" > /dev/null 2>&1
+        done
+
         apt update -y 
-        echo "Unused PPAs have been successfully removed."
+        echo -e "\nUnused PPAs have been successfully removed."
+
+        echo -e "\nRemaining PPAs:"
+        apt-cache policy | awk '/ppa.launchpad.net/ && /install/ {print $2}'
+
+        # Display backup files
+        echo -e "\nBackup files created:"
+        for file in "${backup_files[@]}"; do
+            echo "  $file"
+        done
+
+        # Restore backups if desired
+        read -p "Do you want to restore the backups? (y/n): " restore_choice
+        if [[ $restore_choice =~ ^[Yy]$ ]]; then
+            for file in "${backup_files[@]}"; do
+                echo "Restoring backup: $file"
+                cp "$file" "/etc/apt/sources.list.d/$(basename "$file" .bak)" > /dev/null 2>&1
+            done
+            apt update -y
+            echo -e "\nBackups have been successfully restored."
+        fi
     else
-        echo "No PPA has been removed."
+        echo "No PPAs were removed."
+        sleep 3 
+       
     fi
 else
     echo -e "\nNo unused PPAs were found."
 fi
-
-
