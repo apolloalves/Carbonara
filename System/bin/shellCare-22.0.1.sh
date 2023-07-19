@@ -105,7 +105,8 @@ echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Open CLONRAID back
 echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
 echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
 echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
-echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Reboot System \033m"
+echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Manage packages with aptitude \033m"
+echo -e "\033[01;32m[\033[01;37m 21\033[01;32m ]\033[00;37m - Reboot System \033m"
 
 ######################################################################################################################################################################################
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
@@ -176,8 +177,10 @@ if [ "$option_choice" != "q" ]; then
           14)
               eggs__create.sh
               ;;
+          
           15)
-              gnome-terminal --tab -- bash -c "showJournalctl.sh /; exec bash"
+
+              sudo show__journalctl.sh 
               ;;
               
           16)
@@ -194,6 +197,18 @@ if [ "$option_choice" != "q" ]; then
               sudo do-release-upgrade
               ;;
           20)
+              echo "wait..."
+              echo "verificando a existencia do aptitude..."
+              sudo apt install aptitude -y 
+              echo "instalação concluida"
+              echo -e "\nabrindo aptitude..."
+              sleep 2
+              sudo aptitude 
+
+              echo "done"
+
+              ;;
+          21)
               sudo init 6
               ;;
           q)
