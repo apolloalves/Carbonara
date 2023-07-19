@@ -2,7 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: removepack.sh For updates packages of system and   #
+# Script: removepack.sh For updates packages of system and          #
 # optimizer performance.                                            #
 #                                                                   #
 # Author: Apollo Alves                                              #

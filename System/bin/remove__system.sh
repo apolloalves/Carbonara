@@ -2,7 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: removepack.sh                                             #
+# Script: REMOVETRACES.sh                                             #
 # Author: Apollo Alves                                              #
 # Date: 14/07/2023                                                  #
 #                                                                   #
@@ -10,15 +10,15 @@
 
 ########################################################################################################################
 #                                                                                                                      #
-# This shell script called "removepack.sh" presents a menu for cleaning up packages from the system. Here is a summary #
+# This shell script called "REMOVETRACES.sh" presents a menu for cleaning up packages from the system. Here is a summary #
 # of what it does:                                                                                                     #
 #                                                                                                                      #
-# 1. Define some variables, like MENU and REMOVEPACK, which are the names of other shell scripts.                      #
+# 1. Define some variables, like MENU and REMOVETRACES, which are the names of other shell scripts.                      #
 #                                                                                                                      #
 # 2. Asks the user if he wants to clean up system packages.                                                            #
 # - The user can answer "y" (yes) or "n" (no).                                                                         #
 #                                                                                                                      #
-# 3. If the user answers "y", the script executes the "$REMOVEPACK" script, which is responsible for cleaning up the   #
+# 3. If the user answers "y", the script executes the "$REMOVETRACES" script, which is responsible for cleaning up the   #
 # system packages.                                                                                                     #
 #                                                                                                                      #
 # 4. If the user answers "n", the script displays the message "skipped!" and runs the "$MENU" script, which is         #
@@ -34,26 +34,26 @@
 
 
 MENU='shellCare-22.0.1.sh'
-REMOVEPACK='remove.sh'
+REMOVETRACES='remove__traces.sh'
 
 YES="y"
 NO="n"
 
     echo
     echo -n 'Do you want to clean system packages (y/n) ? '
-    read -r removepack
+    read -r REMOVETRACES
 
-if [ "$removepack" = "$YES" ]; then 
+if [ "$REMOVETRACES" = "$YES" ]; then 
         
-    $REMOVEPACK
+    $REMOVETRACES
     
 fi
-if [ "$removepack" = "$NO" ]; then 
+if [ "$REMOVETRACES" = "$NO" ]; then 
 
     echo "skipped!"
     $MENU
 
-    elif [ "$removepack" != "$YES" ] && [ "$removepack" != "$NO" ]; then
+    elif [ "$REMOVETRACES" != "$YES" ] && [ "$REMOVETRACES" != "$NO" ]; then
 
     echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
     sleep 2

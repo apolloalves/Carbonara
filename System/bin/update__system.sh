@@ -41,8 +41,8 @@ MENU="shellCare-22.0.1.sh"
 YES="y"
 NO="n"
 
-updatePack="updatePack.sh"
-removePack="removePack.sh"
+updatePack="update__pack.sh"
+removeTraces="remove__traces.sh"
 
 echo
 echo -n 'Do you want to update system packages (y/n) ? '
@@ -57,7 +57,7 @@ fi
 
 if [ "$updateSytemPackages" = "$NO" ]; then
      echo "skipped!"
-     $removePack
+     $removeTraces
 
     
 elif [ "$updateSytemPackages" != "$YES" ] && [ "$updateSytemPackages" != "$NO" ]; then

@@ -52,6 +52,7 @@ YES="y"
 NO="n"
 LINE='/bin/line.sh'
 PLOT='/home/apollo/plot/Analyse.svg'
+LOG='/home/apollo/plot/systemd-analize.txt'
 
 echo -e "\nWait...\n"
 sleep 2
@@ -67,6 +68,12 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
     echo "Generating plot..."
     sleep 2
     systemd-analyze plot >"$PLOT"
+    echo "Generating file log..."
+    systemd-analyze >> $LOG
+    echo -e "\nFile created in: $LOG"
+
+    sleep 2
+
     echo -e "\nFile created in: $PLOT"
     echo -e "\nOpening the file..."
     sleep 2
