@@ -41,19 +41,19 @@ NO="n"
 
     echo
     echo -n 'Do you want to clean system packages (y/n) ? '
-    read -r REMOVETRACES
+    read -r removetraces
 
-if [ "$REMOVETRACES" = "$YES" ]; then 
+if [ "$removetraces" = "$YES" ]; then 
         
     $REMOVETRACES
     
 fi
-if [ "$REMOVETRACES" = "$NO" ]; then 
+if [ "$removetraces" = "$NO" ]; then 
 
     echo "skipped!"
     $MENU
 
-    elif [ "$REMOVETRACES" != "$YES" ] && [ "$REMOVETRACES" != "$NO" ]; then
+    elif [ "$removetraces" != "$YES" ] && [ "$removetraces" != "$NO" ]; then
 
     echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
     sleep 2

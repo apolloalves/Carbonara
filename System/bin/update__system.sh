@@ -42,7 +42,7 @@ YES="y"
 NO="n"
 
 updatePack="update__pack.sh"
-removeTraces="remove__traces.sh"
+removeSystem="remove__system.sh"
 
 echo
 echo -n 'Do you want to update system packages (y/n) ? '
@@ -57,7 +57,7 @@ fi
 
 if [ "$updateSytemPackages" = "$NO" ]; then
      echo "skipped!"
-     $removeTraces
+     $removeSystem
 
     
 elif [ "$updateSytemPackages" != "$YES" ] && [ "$updateSytemPackages" != "$NO" ]; then
