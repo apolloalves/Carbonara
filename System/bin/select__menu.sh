@@ -2,7 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: show__journalctl.sh                                       #
+# Script: select__menu.sh                                           #
 # Author: Apollo Alves                                              #
 # Date: 19/07/2023                                                  #
 #                                                                   #
