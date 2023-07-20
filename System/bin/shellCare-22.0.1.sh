@@ -85,31 +85,8 @@ echo -e "\033[1;40;02;32;107m   Choose an option from the menu   \033[0m"
 $LINE
 echo
 ######################################################################################################################################################################################
-
-echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - Update all system packages\033m"
-echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Remove traces of unused packages from the system\033m"
-echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Run both\033m"
-echo -e "\033[01;32m[\033[01;37m 04\033[01;32m ]\033[00;37m - Optimize system performance - ( root user required )\033m"
-echo -e "\033[01;32m[\033[01;37m 05\033[01;32m ]\033[00;37m - Remove unwanted packages of system - ( root user required )\033m"
-echo -e "\033[01;32m[\033[01;37m 06\033[01;32m ]\033[00;37m - Disable services natives\033m"
-echo -e "\033[01;32m[\033[01;37m 07\033[01;32m ]\033[00;37m - Remove unused PPA on system - ( root user required )\033m"
-echo -e "\033[01;32m[\033[01;37m 08\033[01;32m ]\033[00;37m - Verify Startup time System \033m"
-echo -e "\033[01;32m[\033[01;37m 09\033[01;32m ]\033[00;37m - Swap State\033m"
-echo -e "\033[01;32m[\033[01;37m 10\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot file manager\033m"
-echo -e "\033[01;32m[\033[01;37m 11\033[01;32m ]\033[00;37m - Check space disks\033m"
-echo -e "\033[01;32m[\033[01;37m 12\033[01;32m ]\033[00;37m - Open STACER \033m"
-echo -e "\033[01;32m[\033[01;37m 13\033[01;32m ]\033[00;37m - Mount External Disks"
-echo -e "\033[01;32m[\033[01;37m 14\033[01;32m ]\033[00;37m - Create Penguin's Eggs \033m"
-echo -e "\033[01;32m[\033[01;37m 15\033[01;32m ]\033[00;37m - Replays all of your boot messages 'journalctl -b'"
-echo -e "\033[01;32m[\033[01;37m 16\033[01;32m ]\033[00;37m - Open CLONRAID backups\033m"
-echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Reinstall GNOME gdm3 \033m"
-echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Start mysql assistent\033m"
-echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available \033m"
-echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Manage packages with aptitude \033m"
-echo -e "\033[01;32m[\033[01;37m 21\033[01;32m ]\033[00;37m - Reboot System \033m"
-
+select__menu.sh
 ######################################################################################################################################################################################
-echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
 $LINE
 
 read -p "Chosen option : " option_choice
@@ -209,6 +186,10 @@ if [ "$option_choice" != "q" ]; then
 
               ;;
           21)
+              software-properties-gtk --open-tab=4
+              echo -e "\n\033[01;37m\033[01;32mdone!\033[00;37m\033m\n"
+              ;;
+          22)
               sudo init 6
               ;;
           q)
