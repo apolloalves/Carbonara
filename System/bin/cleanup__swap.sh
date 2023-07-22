@@ -42,6 +42,10 @@ case "$removeSwap" in
 
         case "$proceed" in
             "$YES")
+
+                echo -e "\nState:"
+                free -h 
+                $LINE
                 echo -e "\n\033[01;32mCleaning Swap...\033[00;37m\n"
                 # Get the occupied space before cleaning
                 used_before=$(free -k | awk '/^Swap:/ {print $3}')
@@ -62,6 +66,7 @@ case "$removeSwap" in
                 sudo sysctl -w vm.swappiness=10
                 echo 
                 free -h
+                $LINE
                 echo 
                 echo -e "swappiness set: $SWAPPINESS"
                 echo -e "\n\033[01;37m[\033[00;32m Swap is active now!\033[01;37m ]\033m\n"
