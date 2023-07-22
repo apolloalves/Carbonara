@@ -136,6 +136,10 @@ if [ "$option_choice" != "q" ]; then
           swap__state.sh
           ;;
         10)
+          TARGETPATH="/mnt/VENTOY"
+          echo "Checking device..."
+          sleep 2
+          sudo mount /dev/sdc1 $TARGETPATH
           echo -e "\nOpening broot...\n"
           gnome-terminal --tab -- bash -c "sudo broot -s -p -d --sort-by-date '/mnt/VENTOY/' ; exec bash"
           sleep 1

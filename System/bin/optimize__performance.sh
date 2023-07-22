@@ -72,27 +72,7 @@ LINE='/bin/line.sh'
     sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
     #####################################################################################################################
     # CLEAN SWAP
-    echo -e "\n\033[01;32mCleaning Swap...\033[00;37m\n"
-    echo -e "wait...\n"
-    sleep 1 
-    free -h
-    echo
-    sudo swapoff -a -v
-    echo -e "\n\033[01;37m[\033[00;32m swap data was clean\033[01;37m ]\033m\n"
-    $LINE
-    sleep 1 
-    echo -e "\n\033[01;32mActivating swap...\033[00;37m\n"
-    sleep 1
-    echo
-    sudo swapon -a -v
-    $LINE
-    sudo sysctl -w vm.swappiness=10
-    echo 
-    free -h
-    echo 
-    echo -e "swappiness set :" $SWAPPINESS
-    echo -e "\n\033[01;37m[\033[00;32m swap is active now!\033[01;37m ]\033m\n"
-    sleep 1 
+    cleanup__swap.sh
     echo -e "\n\033mall done!\033m\n"
     
     
