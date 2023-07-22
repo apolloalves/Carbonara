@@ -1,10 +1,9 @@
 #!/bin/bash
 #####################################################################
 #                                                                   #
-# Script: For updates packages of system and optimizer performance. #
-#                                                                   #-
+# Script: optmize__performance.sh                                   #
 # Author: Apollo Alves                                              #
-# Date: 25/06/2023                                                  #
+# Date: 22/07/2023                                                  #
 #                                                                   #
 #####################################################################
 
