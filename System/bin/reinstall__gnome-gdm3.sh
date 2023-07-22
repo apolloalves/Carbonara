@@ -25,6 +25,11 @@
 # necessary.                                                                                                        #
 #                                                                                                                   #
 #####################################################################################################################
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script needs to be run as root." 
+   exit 1
+fi
 
 echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
 sleep 2
