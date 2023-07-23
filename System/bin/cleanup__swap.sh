@@ -1,21 +1,23 @@
 #!/bin/bash
 
-#####################################################################
-#                                                                   #
-# Script: cleanup__swap.sh                                          #
-# Author: Apollo Alves                                              #
-# Date: 22/07/2023                                                  #
-#                                                                   #
-#####################################################################
+#############################################################
+# ARQUIVO RESPONSAVEL PELA REMOÇÃO DOS ARQUIVOS CONTIDOS NA #
+# RUBBISH BIN                                               #
+#                                                           #
+# AUTHOR : APOLLO ALVES                                     #
+# DATE : 09/01/2022                                         #
+#                                                           #
+#                                                           #
+#############################################################
 
-
+# Variáveis
 MENU="shellCare-22.0.1.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE='line.sh'
 YES="y"
 NO="n"
 
-# Function to calculate size in GiB or MB
+# Função para calcular tamanho em GiB ou MB
 function calculate_size() {
     local size_in_kb=$1
     if (( size_in_kb >= 1024 )); then
@@ -42,19 +44,22 @@ case "$removeSwap" in
 
         case "$proceed" in
             "$YES")
-
                 echo -e "\nState:"
                 free -h 
                 $LINE
                 echo -e "\n\033[01;32mCleaning Swap...\033[00;37m\n"
-                # Get the occupied space before cleaning
+                # Obter o espaço ocupado antes da limpeza
                 used_before=$(free -k | awk '/^Swap:/ {print $3}')
                 echo "Used swap space before: $(calculate_size $used_before)"
                 
-                sudo swapoff -a 
-                echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
-                sudo dd if=/dev/zero of=/dev/md127p4 bs=1M 
+                sudo swapoff -a
+                # Não apagamos a partição swap, apenas ativamos e desativamos para liberar o espaço
+                
                 sudo swapon -a
+                
+                # Obter o espaço ocupado depois da limpeza
+                used_after=$(free -k | awk '/^Swap:/ {print $3}')
+                echo "Used swap space after: $(calculate_size $used_after)"
                 
                 removed_space=$((used_before - used_after))
                 echo "Removed swap space: $(calculate_size $removed_space)"
@@ -66,10 +71,9 @@ case "$removeSwap" in
                 sudo sysctl -w vm.swappiness=10
                 echo 
                 free -h
-                $LINE
                 echo 
                 echo -e "swappiness set: $SWAPPINESS"
-                echo -e "\n\033[01;37m[\033[00;32m Swap is active now!\033[01;37m ]\033m\n"
+                echo -e "\n\033[01;37m[\033[00;32m Swap is active now! \033[01;37m ]\033m\n"
                 ;;
             "$NO")
                 echo "Operation aborted!"

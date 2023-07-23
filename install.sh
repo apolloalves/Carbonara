@@ -42,7 +42,7 @@ if [ -n "$path" ]; then
     neofetch
     echo ""
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
-
+    
     echo -e "\n\033[01;32minstalling deborphan...\033[00;37m\n"
     
     sudo apt install deborphan -y
