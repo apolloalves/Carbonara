@@ -35,8 +35,11 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
     echo -e "\n\033[01;32minstalling dependencies...\033[00;37m\n"
     sleep 3
+    echo -e "\n\033[01;32mCreating folder plot in: $HOME...\033[00;37m\n"
+    sudo mkfir $HOME/plot
+    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
+
     echo -e "\n\033[01;32minstalling neofetch...\033[00;37m\n"
-    
     sudo apt install neofetch -y
     echo ""
     neofetch

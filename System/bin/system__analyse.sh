@@ -51,8 +51,8 @@
 YES="y"
 NO="n"
 LINE='/bin/line.sh'
-PLOT='/home/apollo/Analyse.svg'
-LOG='/home/apollo/systemd-analize.txt'
+PLOT='/home/apollo/plot/Analyse.svg'
+LOG='/home/apollo/plot/systemd-analize.txt'
 
 echo -e "\nWait...\n"
 sleep 2
