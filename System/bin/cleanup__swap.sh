@@ -44,9 +44,6 @@ case "$removeSwap" in
 
         case "$proceed" in
             "$YES")
-                echo -e "\nState:"
-                free -h 
-                $LINE
                 echo -e "\n\033[01;32mCleaning Swap...\033[00;37m\n"
                 # Obter o espaço ocupado antes da limpeza
                 used_before=$(free -k | awk '/^Swap:/ {print $3}')
