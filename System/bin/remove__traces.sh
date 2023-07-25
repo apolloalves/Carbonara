@@ -42,7 +42,7 @@
 #                                                                                                                            #
 #                                                                                                                            #
 ##############################################################################################################################
-echo -e "\nRemoving cache and logs files system...\n"
+echo -e "\n\033[01;32mRemoving cache and logs files system...\033[00;37m\n"
 ##############################################################################################################################
     
 sleep 2
@@ -56,7 +56,7 @@ sudo rm -rf ~/.cache/icon*
 sudo rm -rfv /var/cache/apt/archives/lock
 sudo rm -rfv ~/.cache/tracker/
 sudo rm -Rfv /var/log/*
-
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
 #####################################################################################################################
 echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n"
 #####################################################################################################################
@@ -66,32 +66,33 @@ sudo apt -s clean
 sudo apt clean -y
 sudo apt clean all
 sudo apt purge --autoremove
-
+sudo apt autoremove -y 
+#####################################################################################################################
 echo -e "\n\033[01;32mRemove orphaned libraries...\033[00;37m\n"
+#####################################################################################################################
 sudo apt remove "$(deborphan)"
 sudo deborphan --guess-data | xargs sudo apt-get -y remove --purge
 sudo deborphan | xargs sudo apt-get -y remove --purge
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
 sudo dpkg --configure -a
 sudo apt --fix-broken install
 sleep 1
-sudo rm -rfv /home/apollo__nicolly/.local/share/recently-used.xbel
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 sleep 1
-
 #####################################################################################################################
-echo -e "\nRemoving Rubbish Bin files...\n"
+echo -e "\n\033[01;32mRemoving Rubbish Bin files...\033[00;37m\n"
 #####################################################################################################################
 
 sudo rm -rfv .local/share/Trash/*
 sudo rm -rfv /home/*/.local/share/Trash/*/**
 sudo rm -rfv /root/.local/share/Trash/*/**
+sudo rm -rf ~/.local/share/Trash/*i
+sudo rm -rfv  /home/apollo/.local/share/recently-used.xbel
 trash-empty -f
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
 #####################################################################################################################
-echo -e "\033[01;32mRemoving old snaps of system...\033[00;37m"
+echo -e "\n\033[01;32mRemoving old snaps of system...\033[00;37m\n"
 #####################################################################################################################
 
 sleep 2 

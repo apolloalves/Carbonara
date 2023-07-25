@@ -1,24 +1,23 @@
 #!/bin/bash
 
 #############################################################
-# ARQUIVO RESPONSAVEL PELA REMOÇÃO DOS ARQUIVOS CONTIDOS NA #
-# RUBBISH BIN                                               #
 #                                                           #
 # AUTHOR : APOLLO ALVES                                     #
-# DATE : 09/01/2022                                         #
-#                                                           #
+# DATE : 27/07/2022                                         #
 #                                                           #
 #############################################################
 
-# Variáveis
+
 MENU="shellCare-22.0.1.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE='line.sh'
 YES="y"
 NO="n"
 
-# Função para calcular tamanho em GiB ou MB
+# Function to calculate size in GiB or MB
+
 function calculate_size() {
+
     local size_in_kb=$1
     if (( size_in_kb >= 1024 )); then
         echo "$(( size_in_kb / 1024 )) GiB"
@@ -45,16 +44,15 @@ case "$removeSwap" in
         case "$proceed" in
             "$YES")
                 echo -e "\n\033[01;32mCleaning Swap...\033[00;37m\n"
-                # Obter o espaço ocupado antes da limpeza
+                # Get occupied space before cleaning
                 used_before=$(free -k | awk '/^Swap:/ {print $3}')
                 echo "Used swap space before: $(calculate_size $used_before)"
                 
                 sudo swapoff -a
-                # Não apagamos a partição swap, apenas ativamos e desativamos para liberar o espaço
-                
+                # We don't delete the swap partition, we just turn it on and off to free up the space
                 sudo swapon -a
                 
-                # Obter o espaço ocupado depois da limpeza
+                # Get occupied space after cleaning
                 used_after=$(free -k | awk '/^Swap:/ {print $3}')
                 echo "Used swap space after: $(calculate_size $used_after)"
                 
