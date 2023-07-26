@@ -197,6 +197,18 @@ if [ "$option_choice" != "q" ]; then
           sudo init 6
           ;;
 
+        23)
+          echo -e "\nGerando lista..\n"
+          sleep 2
+          
+          # systemctl list-unit-files --type=service | grep disable
+          systemctl list-unit-files --type=service | grep disable > services && cat -n services
+          # echo -e "\n\033[01;37m\033[01;32mdone!\033[00;37m\033m\n"                    
+          echo ""
+          $LINE
+          sleep 10
+          ;;
+
         q)
             valid_option=true
             echo

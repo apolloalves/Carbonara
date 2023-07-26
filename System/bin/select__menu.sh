@@ -69,4 +69,5 @@ echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Check if a new ver
 echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Manage packages with aptitude \033m"
 echo -e "\033[01;32m[\033[01;37m 21\033[01;32m ]\033[00;37m - Manage packages and drivers  \033m"
 echo -e "\033[01;32m[\033[01;37m 22\033[01;32m ]\033[00;37m - Reboot System \033m"
+echo -e "\033[01;32m[\033[01;37m 23\033[01;32m ]\033[00;37m - Show disable services list \033m"
 echo -e "\033[01;32m[\033[01;37m q\033[01;32m ]\033[00;37m  - QUIT\033m\n"
