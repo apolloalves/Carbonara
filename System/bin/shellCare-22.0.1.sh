@@ -194,10 +194,6 @@ if [ "$option_choice" != "q" ]; then
           ;;
 
         22)
-          sudo init 6
-          ;;
-
-        23)
           echo -e "\nGerando lista..\n"
           sleep 2
           
@@ -207,6 +203,11 @@ if [ "$option_choice" != "q" ]; then
           echo ""
           $LINE
           sleep 10
+          ;;
+
+        23)
+          
+          reboot__system.sh
           ;;
 
         q)
