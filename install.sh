@@ -22,7 +22,7 @@ if [ -n "$path" ]; then
     sudo chmod +x $path/System/bin/*.sh
     echo -e "\n\033[01;32mcopying the executables to the /bin folder...\033[00;37m\n"
     sleep 2
-    sudo rsync -avh $path/System/bin/*.sh /bin/
+    sudo rsync -avh --progress $path/System/bin/*.sh /bin/
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     # arrumar que bra de linmha
@@ -81,6 +81,9 @@ if [ -n "$path" ]; then
     sleep 2
     sudo apt install eggs=9.4.15 -y
     sudo apt-mark hold eggs=9.4.15
+    sleep 2
+    echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
+    sudo eggs calamares --install
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling flatpak...\033[00;37m\n"
