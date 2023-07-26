@@ -47,18 +47,16 @@ sudo mount /dev/sdc1 $TARGETPATH
                find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
                sudo mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
-               echo -e "\nRenaming your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'"
-               echo -e "\nPreparing to move...\n"
+               echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
+               echo -e "\npreparing to move...\n"
                sleep 1
                echo -e "Moving file to $TARGETPATH ...\n"
                sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
-               echo -e "\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-               echo "criando uma cópia de segurança para : '$CLONRAID'"
+               echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+               echo "creating a backup for : '$CLONRAID'"
                echo "wait..."
-               
-               sudo rsync -avh $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
 
-
+               sudo rsync -avh --progress $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
                $LINE
                break
 
