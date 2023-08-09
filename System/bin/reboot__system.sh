@@ -13,7 +13,6 @@ MENU="shellCare-22.0.1.sh"
 YES="y"
 NO="n"
 
-
 echo
 echo -n 'Do you want to restart the system now? (y/n) ? '
 read -r rebootSystem
