@@ -98,7 +98,7 @@ valid_option=true
 if [ "$option_choice" != "q" ]; then
 
     if [ "$valid_option" = true ]; then
-        echo -e "\n\033[01;05;37mThe option: $option_choice is running...\033[00;37m"
+        echo -e "\n\033[01;05;37mThe option: $option_choice is running...\033[00;37m\n"
        
         case "$option_choice" in
 
