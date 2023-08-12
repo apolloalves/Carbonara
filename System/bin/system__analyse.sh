@@ -55,7 +55,10 @@ PLOT='/home/apollo/plot/Analyse.svg'
 LOG='/home/apollo/plot/systemd-analize.log'
 DATE=$(date +"%Y-%m-%d")
 
-
+echo 
+systemd-analyze
+sleep 1 
+echo 
 
 echo -n 'Do you want to plot result of system-analyze (y/n)? '
 read -r SystemAnalyse_question

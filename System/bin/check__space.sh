@@ -23,8 +23,11 @@
 #                                                                                                                   #
 #####################################################################################################################
 
-echo -e "\n Check spaces...\n"                                      
-
-sleep 1
+LINE='line.sh'
+echo -e "\nChecking spaces...\n"                                      
+sleep 2
 df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID
+echo ""
+$LINE
+sleep 10
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
