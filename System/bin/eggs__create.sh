@@ -32,7 +32,7 @@ LINE='line.sh'
 echo -e "\nChecking devices..."
 sleep 2
 sudo mount /dev/sdc1 $TARGETPATH
-sudo mount /dev/sdc3 $CLONRAID
+sudo mount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/
 
      DATE=$(date +"%Y-%m-%d")
      arquivo="/home/eggs/*.iso"
@@ -55,7 +55,7 @@ sudo mount /dev/sdc3 $CLONRAID
                sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
                echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
                echo "creating a backup for : '$CLONRAID'"
-               echo "wait..."
+               echo -e "\nwait...\n"
 
                sudo rsync -avh --progress $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
                $LINE
