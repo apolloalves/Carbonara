@@ -7,3 +7,5 @@ Name=Painel | EC2 Management Console
 Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=nplooolfkjonoifnaaoajbincaakojnb
 Icon=brave-lamaddiodmblflgbiibgfmadjcjniijj-Default
 StartupWMClass=crx_nplooolfkjonoifnaaoajbincaakojnb
+
+

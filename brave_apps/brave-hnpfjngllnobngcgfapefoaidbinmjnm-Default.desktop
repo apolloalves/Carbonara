@@ -3,7 +3,7 @@
 Version=1.0
 Terminal=false
 Type=Application
-Name=WhatsApp
+Name=WhatsApp Web
 Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
 Icon=brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default
 StartupWMClass=crx_hnpfjngllnobngcgfapefoaidbinmjnm

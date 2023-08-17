@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Conceitos básicos da Amazon Web Services | AWS
-Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=lamaddiodmblflgbiibgfmadjcjniijj
-Icon=brave-lamaddiodmblflgbiibgfmadjcjniijj-Default
-StartupWMClass=crx_lamaddiodmblflgbiibgfmadjcjniijj
