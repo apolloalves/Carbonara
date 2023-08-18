@@ -40,7 +40,6 @@
 # and files, empties the recycle bin, and removes old versions of snap packages. These actions are performed with            #
 # the aim of freeing up disk space, optimizing performance and removing unwanted files from the system.                      #
 #                                                                                                                            #
-#                                                                                                                            #
 ##############################################################################################################################
 echo -e "\n\033[01;32mRemoving cache and logs files system...\033[00;37m\n"
 ##############################################################################################################################
@@ -57,19 +56,22 @@ sudo rm -rfv /var/cache/apt/archives/lock
 sudo rm -rfv ~/.cache/tracker/
 sudo rm -Rfv /var/log/*
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
+
 #####################################################################################################################
 echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n"
 #####################################################################################################################
-   
+
 sudo apt autoclean -y
 sudo apt -s clean
 sudo apt clean -y
 sudo apt clean all
 sudo apt purge --autoremove
 sudo apt autoremove -y 
+
 #####################################################################################################################
 echo -e "\n\033[01;32mRemove orphaned libraries...\033[00;37m\n"
 #####################################################################################################################
+
 sudo apt remove "$(deborphan)"
 sudo deborphan --guess-data | xargs sudo apt-get -y remove --purge
 sudo deborphan | xargs sudo apt-get -y remove --purge
@@ -79,6 +81,7 @@ sudo apt --fix-broken install
 sleep 1
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 sleep 1
+
 #####################################################################################################################
 echo -e "\n\033[01;32mRemoving Rubbish Bin files...\033[00;37m\n"
 #####################################################################################################################
@@ -101,5 +104,5 @@ snap list --all | awk '/disabled/{print $1, $3}' |
     while read snapname revision; do
         sudo snap remove "$snapname" --revision="$revision"
     done
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+echo -e "\n\033[01;37m[\033[00;32m done!\033[01;37m ]\033m\n"
 sleep 5

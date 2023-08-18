@@ -26,7 +26,7 @@
 LINE='line.sh'
 echo -e "\nChecking spaces...\n"                                      
 sleep 2
-df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID
+df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" && df -h /mnt/VENTOY
 echo ""
 $LINE
 sleep 10

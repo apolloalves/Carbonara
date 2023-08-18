@@ -52,6 +52,7 @@ sudo mount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/
                echo -e "\npreparing to move...\n"
                sleep 1
                echo -e "Moving file to $TARGETPATH ...\n"
+               
                sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
                echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
                echo "creating a backup for : '$CLONRAID'"
