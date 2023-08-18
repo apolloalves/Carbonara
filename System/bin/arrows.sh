@@ -1,39 +1,43 @@
 #!/bin/bash
+source ~/.bashrc
+. ~/.bashrc
 
-options=("Update all system packages"
-    "Remove traces of unused packages from the system"
-    "Run both"
-    "Optimize system performance - ( root user required )"
-    "Remove unwanted packages of system - ( root user required )"
-    "Disable services natives"
-    "Remove unused PPA on system - ( root user required )"
-    "Verify Startup time System"
-    "Swap State"
-    "Open my Penguin's Eggs Files - broot file manager"
-    "Check space disks"
-    "Open STACER"
-    "Mount External Disks"
-    "Create Penguin's Eggs"
-    "Replays all of your boot messages 'journalctl -b'"
-    "Open CLONRAID backups"
-    "Reinstall GNOME gdm3"
-    "Start mysql assistent"
-    "Check if a new version of Ubuntu is available"
-    "Manage packages with aptitude"
-    "Manage packages and drivers"
-    "Show disable services list"
-    "Reboot System"
-    "QUIT")
+options=("Update all system packages    "
+    "Remove traces of unused packages from the system   "
+    "Run both   "
+    "Optimize system performance - ( root user required )   "
+    "Remove unwanted packages of system - ( root user required )    "
+    "Disable services natives   "
+    "Remove unused PPA on system - ( root user required )   "
+    "Verify Startup time System "
+    "Swap State "
+    "Open my Penguin's Eggs Files - broot file manager  "
+    "Check space disks  "
+    "Open STACER    "
+    "Mount External Disks   "
+    "Create Penguin's Eggs  "
+    "Replays all of your boot messages 'journalctl -b'  "
+    "Open CLONRAID backups  "
+    "Reinstall GNOME gdm3   "
+    "Start mysql assistent  "
+    "Check if a new version of Ubuntu is available  "
+    "Manage packages with aptitude  "
+    "Manage packages and drivers    "
+    "Show disable services list "
+    "Reboot System  "
+    "QUIT   ")
+    
 selected=0
 
 # Função para imprimir texto com cor de fundo
+
 print_with_bg_color() {
     local text="$1"
-    local color_code="$2"
-    echo -e "\033[48;5;${color_code}m${text}\033[m"
+    echo -e "\033[1;30;107m${text}\033[m"
 }
 
-NEOFETCH='neofetch'
+
+NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
 neofetch_output=$($NEOFETCH)
 
 clear_screen() {
@@ -46,21 +50,22 @@ while true; do
     ######################################################################################################################################################################################
     LINE='line.sh'
     echo
-    echo -e "\033[1;32;02;40;100m         ShellCare System          \033[0m\033[\033[1;40;02;32;107m          Apollo Alves        \033[1;32;02;40;100m     version  22.0.1     \033[0m"
+    echo -e "\033[1;97;02;40;100m         ShellCare System          \033[0m\033[\033[1;30;02;107m        Apollo Alves        \033[1;97;02;40;100m     version  22.0.1     \033[0m"
     ######################################################################################################################################################################################
     echo
     echo -e "$neofetch_output"
     $LINE
-    echo -e "\033[1;40;02;32;107m   Select an option from the menu   \033[0m"
+    echo -e "\033[01;97m   Select an option from the menu   \033[m"
+    
     $LINE
+    echo
 
     for i in "${!options[@]}"; do
         option_number=$((i + 1))
         if [ $i -eq $selected ]; then
-            print_with_bg_color "> [$option_number] ${options[$i]}" 4
+            print_with_bg_color "* [$option_number] ${options[$i]}" 4
         else
             echo "  [$option_number] ${options[$i]}"
-
         fi
     done
 
