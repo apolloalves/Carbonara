@@ -74,6 +74,7 @@ source ~/.bashrc
 # echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"                                       #
 #                                                                                                                #
 ######################################################################################################################################################################################
+
 options=("Update all system packages    "
         "Remove traces of unused packages from the system   "
         "Run both   "
@@ -122,7 +123,7 @@ while true; do
     ######################################################################################################################################################################################
     LINE='line.sh'
     echo
-    echo -e "\033[1;97;02;40;100m         ShellCare System          \033[0m\033[\033[1;30;02;107m        Apollo Alves        \033[1;97;02;40;100m     version  22.0.1     \033[0m"
+    echo -e "\033[1;97;02;40;100m         ShellCare System          \033[0m\033[\033[1;30;02;107m        Apollo Alves        \033[1;97;02;40;100m     version  23.04     \033[0m"
     ######################################################################################################################################################################################
     echo
     echo -e "$neofetch_output"
@@ -135,9 +136,9 @@ while true; do
     for i in "${!options[@]}"; do
         option_number=$((i + 1))
         if [ $i -eq $selected ]; then
-            print_with_bg_color "* [$option_number] ${options[$i]}" 4
+            print_with_bg_color "[ $option_number ] ${options[$i]}" 4
         else
-            echo "  [$option_number] ${options[$i]}"
+            echo -e "\033[01;32m[\033[01;37m $option_number\033[01;32m ]\033[00;37m - ${options[$i]}"
         fi
     done
 
@@ -170,11 +171,12 @@ while true; do
             break
         else
             clear_screen
-            echo "Option selected: ${options[$selected]}"
+            echo -e Option selected: $selected - "\033[01;97m${options[$selected]}  \033[m"
             sleep 1
 
             option_choice=$((selected + 1)) # Convert to option number
             case "$option_choice" in
+
             1)
                 update__pack.sh
                 ;;
