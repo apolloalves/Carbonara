@@ -98,6 +98,6 @@ if [ -n "$path" ]; then
     echo
     broot_install.sh  
     sleep 3
-    shellCare-22.0.1.sh
+    shellCare-23.0.4.sh
 
 fi
