@@ -101,7 +101,7 @@ options=("Update all system packages    "
     "QUIT   ")
 
 selected=0
-
+last_selected=-1
 # Função para imprimir texto com cor de fundo
 
 print_with_bg_color() {
@@ -125,10 +125,10 @@ while true; do
     echo -e "\033[1;97;02;40;100m         ShellCare System          \033[0m\033[\033[1;30;02;107m       Apollo Alves         \033[1;97;02;40;100m     version  23.04.1      \033[0m"
     ######################################################################################################################################################################################
     echo
-    # echo "$neofetch_output"
+    echo "$neofetch_output"
     $LINE
-    echo -e "\033[01;97m SELECT AN OPTION FROM THE MENU   \033[m"
-
+    echo -e "\033[01;97m SELECT AN OPTION FROM THE MENU\033[m : ${options[$selected]}"
+    # echo -e "\033[00;97m   \033[m"
     $LINE
     echo
 
@@ -158,6 +158,7 @@ while true; do
             ;;
         esac
         ;;
+        
     [1-9])
         if [ "$key" -ge 1 ] && [ "$key" -le ${#options[@]} ]; then
             selected=$((key - 1))
@@ -309,4 +310,10 @@ while true; do
         ;;
 
     esac
+    $last_selected=$selected
+        # Imprime a última opção selecionada, se existir
+    if [ $last_selected -ne -1 ]; then
+        echo -e "\nLast option selected: \033[01;97m${options[$last_selected]}  \033[m"
+        $LINE
+    fi
 done

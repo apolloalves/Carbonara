@@ -36,7 +36,7 @@
 # recommended to run it carefully and verify the actions that will be performed before proceeding.                    #
 #######################################################################################################################
 
-MENU="shellCare-22.0.1.sh"
+MENU="shellCare-23.0.4.sh"
 
 YES="y"
 NO="n"
