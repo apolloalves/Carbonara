@@ -59,6 +59,7 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
     sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
     sudo apt purge eggs=* 
+    sudo add-apt-repository --remove ppa:https://pieroproietti.github.io/penguins-eggs-ppa
     echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
