@@ -70,6 +70,7 @@ if [ -n "$path" ]; then
 
     find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
     find '/bin/' -name "shellCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
+    sudo rm -rfv $HOME/ShellCare
     cd $HOME
     echo 'ShellCare foi removido com sucesso!'
     echo 'atualizado seus pacotes...'
