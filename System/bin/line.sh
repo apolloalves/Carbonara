@@ -22,7 +22,7 @@
 
 line=""
 
-for ((i=0; i<90; i++)); do
+for ((i=0; i<96; i++)); do
     line+="─"
 done
 
