@@ -60,6 +60,8 @@ if [ -n "$path" ]; then
     sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
     sudo apt purge eggs=* 
     sudo add-apt-repository --remove ppa:https://pieroproietti.github.io/penguins-eggs-ppa
+    sudo apt-key del 45B10F271525403F
+    
     echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
