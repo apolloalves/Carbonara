@@ -102,6 +102,10 @@ options=("Update all system packages    "
 
 selected=0
 last_selected=-1
+
+clear_screen() {
+    printf "\033c"
+}
 # Função para imprimir texto com cor de fundo
 
 print_with_bg_color() {
@@ -111,13 +115,11 @@ print_with_bg_color() {
 
 NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
 neofetch_output=$($NEOFETCH)
-
-clear_screen() {
-    printf "\033c"
-}
-
 while true; do
+
+
     clear_screen
+    
     
     LINE='line.sh'
     ######################################################################################################################################################################################
@@ -138,7 +140,7 @@ while true; do
         if [ $i -eq $selected ]; then
             print_with_bg_color "[ $formatted_number ] - ${options[$i]}" 4
         else
-            echo -e "\033[01;32m[\033[01;97;40m $formatted_number\033[01;32m ]\033[00;37m - ${options[$i]}"
+            echo -e "\033[01;32m[\033[01;97m $formatted_number\033[01;32m ]\033[00;37m - ${options[$i]}"
         fi
     done
 

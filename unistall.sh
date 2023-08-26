@@ -16,22 +16,20 @@ if [ -n "$path" ]; then
 
     ls -lsht $path/System/bin/*.sh
     find $path/System/bin/ -ls | wc -l
-
-
-    # echo -e "\n\033[01;32msetting execute permissions on shell files...\033[00;37m"
-    # sleep 2
+    
     sudo rm -rfv $path
-    echo -e "\n\033[01;32mremove Shellcare folder...\033[00;37m\n"
+    echo -e "\n\033[01;32mremove Shellcare folders...\033[00;37m\n"
     sleep 2
+    find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
+    find '/bin/' -name "shellCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
+    sudo rm -rfv $HOME/ShellCare
+    cd $HOME
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
-   
-
 
     echo -e "\n\033[01;32munistalling neofetch...\033[00;37m\n"
     sudo apt purge neofetch -y
-    echo ""
     echo -e "\n\033[01;37m\033[01;32mremoved\033[00;37m\033m"
-    echo ""
+
     echo -e "\n\033[01;32munistalling deborphan...\033[00;37m\n"
     sudo apt purge deborphan -y
     echo -e "\n\033[01;37m\033[01;32mremoved\033[00;37m\033m"
@@ -57,12 +55,10 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
-    sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
+    # sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
     sudo apt purge eggs=* 
-    sudo add-apt-repository --remove ppa:https://pieroproietti.github.io/penguins-eggs-ppa
-    sudo apt-key del 45B10F271525403F
-    
-    echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
+    sudo rm -rfv /etc/apt/sources.list.d/penguins-eggs.list
+    sudo apt update
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling flatpak...\033[00;37m\n"
@@ -70,10 +66,7 @@ if [ -n "$path" ]; then
     sudo apt purge --autoremove flatpak -y
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
-    find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
-    find '/bin/' -name "shellCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
-    sudo rm -rfv $HOME/ShellCare
-    cd $HOME
+    
     echo 'ShellCare foi removido com sucesso!'
     echo 'atualizado seus pacotes...'
     sleep 2 
