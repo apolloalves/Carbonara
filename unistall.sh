@@ -56,7 +56,7 @@ if [ -n "$path" ]; then
 
     echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
     # sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
-    sudo apt purge eggs=* 
+    sudo apt purge -y eggs=* 
     sudo rm -rfv /etc/apt/sources.list.d/penguins-eggs.list
     sudo apt update
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
@@ -66,8 +66,10 @@ if [ -n "$path" ]; then
     sudo apt purge --autoremove flatpak -y
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
-    
+    cd $HOME
+    pwd
     echo 'ShellCare foi removido com sucesso!'
+
     echo 'atualizado seus pacotes...'
     sleep 2 
     sudo apt update -y && sudo apt upgrade -y
