@@ -24,7 +24,7 @@ if [ -n "$path" ]; then
     sleep 2
     find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
     find '/bin/' -name "shellCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
-    sudo rm -rfv $HOME/ShellCare && cd ~
+    sudo rm -rfv $HOME/ShellCare && sudo rm -rfv $HOME/plot
     echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
         
 ####################################################################################
