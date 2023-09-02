@@ -86,7 +86,7 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;32muninstalling Penguins-eggs...\033[00;37m\n"
     sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
     sudo rm -rfv /etc/apt/sources.list.d/penguins-eggs.list
-    sudo apt purge eggs=*  -y
+    sudo apt purge eggs=* 
     echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
 
 ####################################################################################
