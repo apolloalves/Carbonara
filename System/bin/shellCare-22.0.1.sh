@@ -123,13 +123,13 @@ echo -e "\033[01;32m[\033[01;37m 17\033[01;32m ]\033[00;37m - Reinstall GNOME gd
 echo -e "\033[01;32m[\033[01;37m 18\033[01;32m ]\033[00;37m - Start mysql assistent  "
 echo -e "\033[01;32m[\033[01;37m 19\033[01;32m ]\033[00;37m - Check if a new version of Ubuntu is available  "
 echo -e "\033[01;32m[\033[01;37m 20\033[01;32m ]\033[00;37m - Manage packages with aptitude"
-echo -e "\033[01;32m[\033[01;37m 22\033[01;32m ]\033[00;37m - Manage packages and drivers"
-echo -e "\033[01;32m[\033[01;37m 23\033[01;32m ]\033[00;37m - Show disable services list"
+echo -e "\033[01;32m[\033[01;37m 21\033[01;32m ]\033[00;37m - Manage packages and drivers"
+echo -e "\033[01;32m[\033[01;37m 22\033[01;32m ]\033[00;37m - Show disable services list"
 echo -e "\033[01;32m[\033[01;37m 23\033[01;32m ]\033[00;37m - Reboot System"
 
 ######################################################################################################################################################################################
 
-echo -e "\033[01;32m[\033[01;37m e\033[01;32m ]\033[00;37m  - EXIT\033m"
+echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m  - EXIT\033m"
 echo
 $LINE
 read -p "Input option : " option_choice
@@ -138,7 +138,7 @@ $LINE
 
 valid_option=true
 
-if [ "$option_choice" != "e" ]; then
+if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
     if [ "$valid_option" = true ]; then
         echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
