@@ -29,6 +29,9 @@ TARGETPATH="/mnt/VENTOY"
 CLONRAID="/mnt/EXT@ST500LM012__CLONRAID/UBUNTU_EGGS/"
 LINE='line.sh'
 
+update__system.sh
+remove__system.sh
+
 echo -e "\nChecking devices..."
 sleep 2
 sudo mount /dev/sdc1 $TARGETPATH
