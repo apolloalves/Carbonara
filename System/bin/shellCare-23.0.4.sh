@@ -112,6 +112,8 @@ print_with_bg_color() {
 NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
 neofetch_output=$($NEOFETCH)
 
+PLOT='/home/apollo/plot/Disable-ServicesList.log'
+
 clear_screen() {
     printf "\033c"
 }
@@ -271,15 +273,19 @@ while true; do
                 ;;
 
             22)
-                echo -e "\nGerando lista..\n"
-                sleep 2
 
-                # systemctl list-unit-files --type=service | grep disable
-                systemctl list-unit-files --type=service | grep disable >services && cat -n services
-                # echo -e "\n\033[01;37m\033[01;32mdone!\033[00;37m\033m\n"
-                echo ""
+                echo -e "\nGenerating list..\n"
+                # $LINE
+                echo "File Path: " $PLOT
                 $LINE
-                sleep 10
+                echo
+                sleep 1
+                
+                # systemctl list-unit-files --type=service | grep disable
+                systemctl list-unit-files --type=service | grep disable >$PLOT && cat -n $PLOT
+                echo
+                $LINE
+                echo
                 ;;
 
             23)
