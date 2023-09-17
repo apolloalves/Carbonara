@@ -166,17 +166,19 @@ while true; do
     "")
         if [ $selected -eq $((${#options[@]} - 1)) ]; then
             clear_screen
-            echo "Saindo do programa..."
+            echo "Bye!"
             sleep 1
             break
         else
             clear_screen
-            echo "Option selected: ${options[$selected]}"
-            sleep 1
+            $LINE
+            echo -e "Option selected: \033[01;97m ${options[$selected]}"
+            $LINE
+            sleep 2
 
             option_choice=$((selected + 1)) # Convert to option number
             case "$option_choice" in
-            echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
+            # echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
             1)
                 update__pack.sh
                 ;;
@@ -235,7 +237,7 @@ while true; do
                 ;;
 
             15)
-                sudo show__journalctl.sh
+                show__journalctl.sh
                 ;;
 
             16)
