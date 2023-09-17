@@ -2,14 +2,6 @@
 source ~/.bashrc
 . ~/.bashrc
 clear
-#####################################################################
-#                                                                   #
-# Script: show__journalctl.sh                                       #
-# Author: Apollo Alves                                              #
-# Date: 19/07/2023                                                  #
-#                                                                   #
-#####################################################################
-
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
     echo "This script needs to be run as root."
@@ -25,7 +17,7 @@ echo -e "\033[1;97;100m        ShellCare System          \033[0m\033[1;30;107m  
 ######################################################################################################################################################################################
 echo
 # $LINE
-echo -e "\033[01;97m Input an option from the menu: \033[0m"
+echo -e "\033[01;97m Select an option from the menu: \033[0m"
 $LINE
 echo
 ######################################################################################################################################################################################
@@ -67,16 +59,16 @@ if [ "$option_choice" != "e" ]; then
 
             ;;
         4)
-            gnome-terminal --tab -- bash -c "dmesg | grep -i error /'; exec bash"
-
+           gnome-terminal --tab -- bash -c "dmesg | grep -i error /'; exec bash"
+            
             $JORNALMENU
 
             ;;
-
+       
         *)
-
+            
             echo -e "Invalid input! Please enter the number contained in the menu!.\n"
-
+            
             ;;
         esac
         read -rsn1 -p "Press any key to continue..."
@@ -89,5 +81,5 @@ if [ "$option_choice" != "e" ]; then
 
     fi
 else
-    $MENU
+        $MENU
 fi

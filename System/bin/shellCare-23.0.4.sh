@@ -79,7 +79,7 @@ options=("Update all system packages    "
         "Run both   "
         "Optimize system performance - ( root user required )   "
         "Remove unwanted packages of system - ( root user required )    "
-        "Disable services natives   "
+        "Disable services natives - ( root user required )    "
         "Remove unused PPA on system - ( root user required )   "
         "Verify Startup time System "
         "Swap State "
@@ -127,7 +127,7 @@ while true; do
     echo
     echo -e "$neofetch_output"
     $LINE
-    echo -e "\033[01;97m Select an option from the menu:\033[m ${options[$selected]}"
+    echo -e "Select an option from the menu: \033[01;97m ${options[$selected]}"
     
     $LINE
     echo
@@ -176,6 +176,7 @@ while true; do
 
             option_choice=$((selected + 1)) # Convert to option number
             case "$option_choice" in
+            echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
             1)
                 update__pack.sh
                 ;;
@@ -187,8 +188,8 @@ while true; do
                 remove__system.sh
                 ;;
             4)
-                gnome-terminal --tab -- bash -c "sudo su -c '/bin/optimize__performance.sh /'; exec bash"
-                #   new window
+                sudo su -coptimize__performance.sh
+                # gnome-terminal --tab -- bash -c "sudo su -c '/bin/optimize__performance.sh /'; exec bash"
                 #   gnome-terminal -- bash -c "sudo su -c '/bin/performance.sh /'; exec bash"
                 ;;
             5)

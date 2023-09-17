@@ -27,4 +27,4 @@ echo -e "\nSwap Sate\n"
 free -h
 $LINE
 echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
-sleep 4
+# sleep 4

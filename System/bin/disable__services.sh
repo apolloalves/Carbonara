@@ -46,7 +46,13 @@
 # vboxweb-service.service: VirtualBox web service.                                                                                                 #
 # Note: Some parts of the script are commented out, which means that these parts are not executed. Therefore, these                                # 
 # services will not be disabled.                                                                                                                     #
-#                                                                                                                                                  #
+#                 
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script needs to be run as root." 
+   exit 1
+fi                                                                                                                                 #
 ####################################################################################################################################################
 echo -e "\nDisabling natives services system..."
 ##########################################################################################################
