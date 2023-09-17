@@ -1,7 +1,9 @@
-systemctl --failed : O systemctl é uma ferramenta poderosa para gerenciar serviços no Linux. Você pode usar o systemctl para verificar o status dos serviços e identificar falhas. 
-sudo dmesg | grep -i error :  O comando dmesg exibe mensagens do kernel, que podem conter informações sobre falhas de hardware ou módulos de kernel. Você pode executar o seguinte comando para verificar as mensagens do kernel:
-journalctl -b -p err : Você pode usar o journalctl para visualizar os logs do sistema, incluindo mensagens de 
-
+systemctl --failed : O systemctl é uma ferramenta poderosa para gerenciar serviços no Linux. 
+Você pode usar o systemctl para verificar o status dos serviços e identificar falhas. 
+sudo dmesg | grep -i error :  
+O comando dmesg verificar mensagens do kernel, em busca de informações sobre falhas de hardware ou nos módulos de kernel. 
+Você pode executar o seguinte comando para verificar as mensagens do kernel:
+journalctl -b -p err : Visualizar todos os logs do sistema, incluindo mensagens de 
 inicialização. Para ver mensagens de inicialização com falha, execute o seguinte comando
 journalctl -xe - pagina com catalogo
 
