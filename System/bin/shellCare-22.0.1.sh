@@ -202,7 +202,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             ;;
 
         15)
-            sudo show__journalctl.sh
+            sudo show__journalctl-22.sh
             ;;
 
         16)
