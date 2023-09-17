@@ -91,6 +91,8 @@ clear
 MENU='shellCare-22.0.1.sh'
 NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
 neofetch_output=$($NEOFETCH)
+
+
 ######################################################################################################################################################################################
 LINE='line.sh'
 echo -e "\033[1;97;100m        ShellCare System          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  23.04.1        \033[0m"
