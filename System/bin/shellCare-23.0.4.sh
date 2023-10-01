@@ -96,7 +96,7 @@ options=("Update all system packages    "
     "Check space disks  "
     "Create Penguin's Eggs  "
     "Open my Penguin's Eggs Files - broot file manager  "
-    "Open CLONRAID backups  "
+    "Verify Penguin's Eggs files  "
     "Mount External Disks   "
     "Reinstall GNOME gdm3   "
     "Start mysql assistent  "
@@ -104,6 +104,7 @@ options=("Update all system packages    "
     "Manage packages with aptitude  "
     "Manage packages and drivers    "
     "Check if a new version of Ubuntu is available  "
+    "Open CLONRAID backups  "
     "Reboot System  "
     "QUIT   "
 
@@ -124,6 +125,7 @@ neofetch_output=$($NEOFETCH)
 PLOT='/home/apollo/plot/Disable-ServicesList.log'
 
 clear_screen() {
+    
     printf "\033c"
 }
 
@@ -176,16 +178,14 @@ while true; do
         ;;
     "")
         if [ $selected -eq $((${#options[@]} - 1)) ]; then
-                
-                clear_screen
-                echo "Exiting the program..."
-                sleep 1
-                echo "Bye!"
-                exit 0
-            # clear_screen
-            # echo "Bye!"
-            # sleep 1
+
+            clear_screen
+            echo "Exiting the program..."
+            sleep 1
+            echo "Bye!"
+            exit 0
             break
+
         else
             clear_screen
             $LINE
@@ -219,7 +219,7 @@ while true; do
                 ;;
 
             7)
-                show__journalctl.sh
+                sudo show__journalctl.sh
                 ;;
 
             8)
@@ -252,7 +252,7 @@ while true; do
                 ;;
 
             13)
-                clonraid__backups.sh
+                eggs__check.sh
                 ;;
 
             14)
@@ -291,15 +291,12 @@ while true; do
                 ;;
 
             21)
+               clonraid__backups.sh
+                ;; 
+            22)
                 reboot__system.sh
                 ;;
 
-
-            # 22)
-            #     echo
-               
-            #     ;;
-                        
             *)
                 echo -e "\nInvalid input!\n"
                 ;;
