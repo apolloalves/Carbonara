@@ -1,0 +1,23 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a device; this may
+# be used with UUID= as a more robust way to name devices that works even if
+# disks are added and removed. See fstab(5).
+#
+# <file system>             <mount point>  <type>  <options>  <dump>  <pass>
+UUID=f63bf177-1179-433a-886d-fcf84047ea7c none 	swap 	 sw,discard  	0 0
+UUID=675c364d-66b5-455f-929e-f67780168484 /boot          xfs     defaults   0 0
+UUID=2d2b14b6-7c83-450a-8f51-db6c00afb290 /              xfs     defaults   0 0
+UUID=40e32b69-daf7-4768-b0db-f2aff4ccedca /home          xfs     defaults   0 0
+
+# EXT@ST500LM012__CLONRAID
+UUID=00f8c416-dccf-4816-836a-c8eb8ba5a108 /mnt/EXT@ST500LM012__CLONRAID xfs defaults 0 0
+
+#VENTOY
+UUID=F283-E755 /mnt/VENTOY  exfat       defaults        0       0
+
+
+tmpfs /tmp tmpfs noexec,nosuid,nodev,noatime,mode=1777,size=512M 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
