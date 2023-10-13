@@ -69,3 +69,4 @@ sudo mount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/
                break
           fi
      done
+     

@@ -95,8 +95,8 @@ options=("Update all system packages    "
     "Show disable services list "
     "Check space disks  "
     "Create Penguin's Eggs  "
+    "Check Penguin's Eggs .iso "
     "Open my Penguin's Eggs Files - broot file manager  "
-    "Verify Penguin's Eggs files  "
     "Mount External Disks   "
     "Reinstall GNOME gdm3   "
     "Start mysql assistent  "
@@ -248,16 +248,17 @@ while true; do
                 ;;
 
             12)
-                showbroot__eggs.sh
+                eggs__check.sh
                 ;;
 
             13)
-                eggs__check.sh
+                showbroot__eggs.sh
                 ;;
 
             14)
                 ext__disk-2.1.sh
                 ;;
+                
 
             15)
                 reinstall__gnome-gdm3.sh
@@ -296,6 +297,8 @@ while true; do
             22)
                 reboot__system.sh
                 ;;
+                 
+            
 
             *)
                 echo -e "\nInvalid input!\n"
