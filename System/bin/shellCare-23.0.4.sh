@@ -88,23 +88,21 @@ options=("Update all system packages    "
     "Remove traces of unused packages from the system   "
     "Run both   "
     "Optimize system performance - ( root user required )   "
-    "Verify Startup time System "
+    "Open STACER    "
     "Swap State "
+    "Verify Startup time System "
     "Replays all of your boot messages 'journalctl -b'  "
     "Disable services natives - ( root user required )    "
-    "Show disable services list "
-    "Check space disks  "
-    "Create Penguin's Eggs  "
-    "Check Penguin's Eggs .iso "
-    "Open my Penguin's Eggs Files - broot file manager  "
+    "Check the list of native services ( disabled )    "
     "Mount External Disks   "
-    "Reinstall GNOME gdm3   "
-    "Start mysql assistent  "
-    "Open STACER    "
+    "Check space disks  "
+    "Egss Wizard"
+    "Open CLONRAID backups  "
     "Manage packages with aptitude  "
     "Manage packages and drivers    "
+    "Reinstall GNOME gdm3   "
+    "Start mysql assistent  "
     "Check if a new version of Ubuntu is available  "
-    "Open CLONRAID backups  "
     "Reboot System  "
     "QUIT   "
 
@@ -125,7 +123,7 @@ neofetch_output=$($NEOFETCH)
 PLOT='/home/apollo/plot/Disable-ServicesList.log'
 
 clear_screen() {
-    
+
     printf "\033c"
 }
 
@@ -211,7 +209,7 @@ while true; do
                 ;;
 
             5)
-                system__analyse.sh
+                stacer__tools.sh
                 ;;
 
             6)
@@ -219,86 +217,61 @@ while true; do
                 ;;
 
             7)
-                sudo show__journalctl.sh
+                system__analyse.sh
                 ;;
 
             8)
-                disable__services.sh
+                sudo show__journalctl.sh
                 ;;
             9)
-                echo -e "\nGenerating list..\n"
-                # $LINE
-                echo "File Path: " $PLOT
-                $LINE
-                echo
-                sleep 1
-                # systemctl list-unit-files --type=service | grep disable
-                systemctl list-unit-files --type=service | grep disable >$PLOT && cat -n $PLOT
-                echo
-                $LINE
-                echo
+                disable__services.sh
                 ;;
 
             10)
-                check__space.sh
+                disabled__ListServices.sh
                 ;;
 
             11)
-                eggs__create.sh
+                ext__disk-2.1.sh
                 ;;
 
             12)
-                eggs__check.sh
+
+                check__space.sh
                 ;;
 
             13)
-                showbroot__eggs.sh
+                sudo eggs__wizard.sh
                 ;;
 
             14)
-                ext__disk-2.1.sh
+
+                clonraid__backups.sh
                 ;;
-                
 
             15)
-                reinstall__gnome-gdm3.sh
+                apititude__manager.sh
                 ;;
 
             16)
-                mysql__fix-1.0.sh
-                ;;
-
-            17)
-                stacer__tools.sh
-                ;;
-
-            18)
-                echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
-                echo "Checking the existence of aptitude..."
-                sudo apt install aptitude -y
-                echo "installation completed!"
-                echo -e "\nopenning aptitude..."
-                sleep 2
-                sudo aptitude
-                echo "done"
-                ;;
-
-            19)
                 software-properties-gtk --open-tab=4
                 ;;
 
-            20)
+            17)
+                reinstall__gnome-gdm3.sh
+                ;;
+
+            18)
+                mysql__fix-1.0.sh
+                ;;
+
+            19)
                 sudo do-release-upgrade
                 ;;
 
-            21)
-               clonraid__backups.sh
-                ;; 
-            22)
+            20)
                 reboot__system.sh
                 ;;
-                 
-            
 
             *)
                 echo -e "\nInvalid input!\n"
