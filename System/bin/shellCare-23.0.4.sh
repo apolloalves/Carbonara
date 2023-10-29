@@ -84,16 +84,18 @@ source ~/.bashrc
 # sudo su -c "bash /bin/remove__unused_ppa.sh"
 ######################################################################################################################################################################################
 
-options=("Update all system packages    "
+options=(
+    
+    "Update all system packages    "
     "Remove traces of unused packages from the system   "
     "Run both   "
     "Optimize system performance - ( root user required )   "
     "Open STACER    "
     "Swap State "
-    "Verify Startup time System "
+    "Check system boot time "
     "Replays all of your boot messages 'journalctl -b'  "
     "Disable services natives - ( root user required )    "
-    "Check the list of native services ( disabled )    "
+    "List of disabled services   "
     "Mount External Disks   "
     "Check space disks  "
     "Egss Wizard"
@@ -101,7 +103,7 @@ options=("Update all system packages    "
     "Manage packages with aptitude  "
     "Manage packages and drivers    "
     "Reinstall GNOME gdm3   "
-    "Start mysql assistent  "
+    "mysql wizard  "
     "Check if a new version of Ubuntu is available  "
     "Reboot System  "
     "QUIT   "
@@ -109,7 +111,6 @@ options=("Update all system packages    "
 )
 
 selected=0
-
 # Função para imprimir texto com cor de fundo
 
 print_with_bg_color() {

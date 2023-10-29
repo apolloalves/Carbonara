@@ -33,6 +33,7 @@ echo
 echo -e "\033[01;32m[\033[01;37m 1\033[01;32m ]\033[00;37m - View only failed boot messages\033m"
 echo -e "\033[01;32m[\033[01;37m 2\033[01;32m ]\033[00;37m - View all system logs, including error messages initialization\033m"
 echo -e "\033[01;32m[\033[01;37m 3\033[01;32m ]\033[00;37m - Check service status and identify faults\033m"
+echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Syslog Monitor\033m"
 echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 
 ######################################################################################################################################################################################
@@ -59,8 +60,14 @@ if [ "$option_choice" != "e" ]; then
             $JORNALMENU
             ;;
         3)
-            # systemctl --failed
+            
             journalctl
+            $JORNALMENU
+        ;;
+        
+        4)
+            
+            sudo tail -f /var/log/syslog
             $JORNALMENU
         ;;
 
