@@ -1,0 +1,11 @@
+[Unit]
+Description=Start snapdService after boot
+
+[Service] 
+Type=oneshot
+ExecStart=/bin/systemctl start snapd.service
+
+[Install] 
+
+WantedBy=multi-user.target
+
