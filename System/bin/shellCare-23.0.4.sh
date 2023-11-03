@@ -4,34 +4,46 @@ source ~/.bashrc
 
 #############################################
 #                                           #
-# Script: shellCare-23.0.4,sh               #
+# Script: shellCare-23.0.4.sh               #
 # Author : Apollo Alves                     #
-# Date : 14/07/2023                         #
+# Date : 03/11/2023                         #
 #############################################
 
+################################################################################################################################
+#                                                                                                                              #
+# This code constitutes an interactive menu for a shell care and maintenance system, with a series of options available        #
+# to users. The menu displays several numbered options, each corresponding to a specific task.                                 #
+#                                                                                                                              #
+# 1. The "Update all system packages" option updates all system packages.                                                      #
+# 2. The option "Scan the system for traces of unused packages" scans the system for traces of unused packages.                #
+# 3. The "Run both" option performs both the update and check for unused package tasks.                                        #
+# 4. The option "Optimize system performance - (root user required)" optimizes system performance, requiring root permissions. #
+# 5. The "Open STACER manager" option opens the STACER manager.                                                                #
+# 6. The "Swap State" option handles the swap state.                                                                           #
+# 7. The "Check system boot time" option checks the system boot time.                                                          #
+# 8. The option "Boot messages wizard ( journalctl -b )" displays boot messages through journalctl.                            #
+# 9. The option "Disable native services - ( root user required )" disables native services, requiring root permissions.       #
+# 10. The "List of disabled services" option lists the disabled services.                                                      #
+# 11. The "Mount External Disks" option handles mounting external disks.                                                       #
+# 12. The "Check space disks" option checks disk space.                                                                        #
+# 13. The "Eggs Wizard" option performs an egg-related function (possibly an internal reference or system-specific code).      #
+# 14. The "Open CLONRAID backups" option opens CLONRAID backups.                                                               #
+# 15. The "Manage packages with aptitude" option manages packages with aptitude.                                               #
+# 16. The "Manage packages and drivers" option handles package and driver management.                                          #
+# 17. The "Reinstall GNOME gdm3" option reinstalls GNOME gdm3.                                                                 #
+# 18. The "mysql wizard" option performs functions related to MySQL.                                                           #
+# 19. The option "Check if a new version of Ubuntu is available" checks if a new version of Ubuntu is available.               #
+# 20. The "Reboot System" option restarts the system.                                                                          #
+# 21. The "QUIT" option ends the program.                                                                                      #
+#                                                                                                                              #
+# Additionally, the code includes formatting functions to print text with background colors, as well as the function to        #
+# clear the screen. The script also displays system information using the "neofetch" command and handles the logic to          #
+# allow the user to select menu options. Each selected option runs a specific script related to the chosen task.               #
+#                                                                                                                              #
+#                                                                                                                              #
+################################################################################################################################
+
 ##################################################################################################################
-#                                                                                                                #
-# Description : This script is an interactive menu that allows the user to select an option and execute          #
-# different commands based on the choice made. Here is a summary of what it does:                                #
-#                                                                                                                #
-# 1. Define some variables like LINE, MENU and REMOVEPACK.                                                       #
-# 2. Displays an informative header with information about the ShellCare System.                                 #
-# 3. Display system information using the "neofetch" command.                                                    #
-# 4. Displays menu options numbered 1 through 20.                                                                #
-# 5. Prompts the user to choose an option by typing the corresponding number.                                    #
-# 6. Based on the chosen option, the script executes different commands corresponding to each case:              #
-#                                                                                                                #
-# - Each option has an associated number and a corresponding action defined in a "case" block.                   #
-# - Commands can include running other shell scripts, opening applications, or performing specific actions.      #
-#                                                                                                                #
-# 7. After executing the action corresponding to the selected option, the script returns to the main menu to     #
-# allow the user to choose another option or exit the program.                                                   #
-#                                                                                                                #
-# In short, this shell script is an interactive menu that provides various options and executes different        #
-# commands based on the user's choice. It offers features such as updating system packages, cleaning files,      #
-# optimizing performance, handling external disks, among other features related to system administration and     #
-# configuration.                                                                                                 #
-#                                                                                                                #
 # ATTENTION!                                                                                                     #
 #                                                                                                                #
 # AT YOUR OWN RISK, WE ARE NOT RESPONSIBLE FOR ANY SYSTEM FAILURES OR DAMAGES THAT MAY OCCUR WITH YOUR GNU/LINUX #
@@ -85,27 +97,48 @@ source ~/.bashrc
 ######################################################################################################################################################################################
 
 options=(
-    
+
+    #1
     "Update all system packages    "
-    "Remove traces of unused packages from the system   "
+    #2
+    "Scan the system for traces of unused packages   "
+    #3
     "Run both   "
+    #4
     "Optimize system performance - ( root user required )   "
-    "Open STACER    "
+    #5
+    "Open STACER manager    "
+    #6
     "Swap State "
+    #7
     "Check system boot time "
-    "Replays all of your boot messages 'journalctl -b'  "
+    #8
+    "Boot messages wizard ( journalctl -b )  "
+    #9
     "Disable services natives - ( root user required )    "
+    #10
     "List of disabled services   "
+    #11
     "Mount External Disks   "
+    #12
     "Check space disks  "
+    #13
     "Egss Wizard"
+    #14
     "Open CLONRAID backups  "
+    #15
     "Manage packages with aptitude  "
+    #16
     "Manage packages and drivers    "
+    #17
     "Reinstall GNOME gdm3   "
+    #18
     "mysql wizard  "
+    #19
     "Check if a new version of Ubuntu is available  "
+    #20
     "Reboot System  "
+    #21
     "QUIT   "
 
 )
