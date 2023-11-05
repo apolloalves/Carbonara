@@ -10,7 +10,7 @@
 #                                                           #
 #############################################################
 
-sudo rm -rfv  /home/apollo__nicolly/.local/share/recently-used.xbel
+sudo rm -rfv  /home/*/.local/share/recently-used.xbel
 #Trash-cli - is no longer supported
 #sudo trash-empty --all -f
 

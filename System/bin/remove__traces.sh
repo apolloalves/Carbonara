@@ -47,7 +47,7 @@ echo -e "\n\033[01;32mRemoving cache and logs files system...\033[00;37m\n"
 sleep 2
 sudo rm -rfv /var/lib/apt/lists/lock
 sudo rm -rfv /var/lib/dpkg/lock-frontend
-sudo rm /var/lib/apt/lists/* -vf
+sudo rm -rfv /var/lib/apt/lists/* 
 sudo rm -rfv /var/lib/dpkg/lock
 sudo rm -rfv ~/.cache/thumbnails/*
 sudo rm -rfv ~/.cache/thumbnails/normal/*
@@ -89,9 +89,8 @@ echo -e "\n\033[01;32mRemoving Rubbish Bin files...\033[00;37m\n"
 sudo rm -rfv .local/share/Trash/*
 sudo rm -rfv /home/*/.local/share/Trash/*/**
 sudo rm -rfv /root/.local/share/Trash/*/**
-sudo rm -rf ~/.local/share/Trash/*i
-sudo rm -rfv  /home/apollo/.local/share/recently-used.xbel
-trash-empty -f
+sudo rm -rfv ~/.local/share/Trash/*i
+sudo rm -rfv  /home/*/.local/share/recently-used.xbel
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
 #####################################################################################################################

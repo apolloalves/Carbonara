@@ -11,7 +11,7 @@ source ~/.bashrc
  
 
 LINE='line.sh'
-PLOT='/home/apollo/plot/Disable-ServicesList.log'
+PLOT='/home/*/plot/Disable-ServicesList.log'
 
  echo -e "\nGenerating list..\n"
                 

@@ -51,8 +51,8 @@
 YES="y"
 NO="n"
 LINE='/bin/line.sh'
-PLOT='/home/apollo/plot/Analyse.svg'
-LOG='/home/apollo/plot/systemd-analize.log'
+PLOT='/home/*/plot/Analyse.svg'
+LOG='/home/*/plot/systemd-analize.log'
 DATE=$(date +"%Y-%m-%d")
 
 echo 
