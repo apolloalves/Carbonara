@@ -51,8 +51,9 @@
 YES="y"
 NO="n"
 LINE='/bin/line.sh'
-PLOT='/home/*/plot/Analyse.svg'
-LOG='/home/*/plot/systemd-analize.log'
+PLOTDIR="$HOME/plot"
+PLOT="$HOME/plot/Analyse.svg"
+LOG="$HOME/plot/systemd-analize.log"
 DATE=$(date +"%Y-%m-%d")
 
 echo 
@@ -66,7 +67,9 @@ read -r SystemAnalyse_question
 if [ "$YES" = "$SystemAnalyse_question" ]; then
     echo -e "\nWait...\n"
     sleep 1
+
     echo "Generating plot..."
+    mkdir $PLOTDIR 
     sleep 1
     systemd-analyze plot >"$PLOT"
     echo "Generating file log..."

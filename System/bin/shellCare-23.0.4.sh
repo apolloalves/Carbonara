@@ -154,7 +154,7 @@ print_with_bg_color() {
 NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
 neofetch_output=$($NEOFETCH)
 
-PLOT='/home/apollo/plot/Disable-ServicesList.log'
+PLOT="$HOME/plot/Disable-ServicesList.log"
 
 clear_screen() {
 
