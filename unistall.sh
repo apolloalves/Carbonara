@@ -4,8 +4,8 @@
 ROOT_DIR="/"
 echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
 
-# Use the find command to locate the "ShellCare" folder
-path=$(find "$ROOT_DIR" -type d -name "ShellCare" 2>/dev/null)
+# Use the find command to locate the "LinuxBashCare" folder
+path=$(find "$ROOT_DIR" -type d -name "LinuxBashCare" 2>/dev/null)
 
 ####################################################################################
 # Checks if the folder/files was found and remove
@@ -14,17 +14,17 @@ path=$(find "$ROOT_DIR" -type d -name "ShellCare" 2>/dev/null)
 if [ -n "$path" ]; then
 
     sleep 2
-    echo -e "\n\033[01;32mThe cloned 'ShellCare' folder was found in: $path\033[00;37m\n"
+    echo -e "\n\033[01;32mThe cloned 'LinuxBashCare' folder was found in: $path\033[00;37m\n"
 
     ls -lsht $path/System/bin/*.sh
     find $path/System/bin/ -ls | wc -l
 
     sudo rm -rfv $path
-    echo -e "\n\033[01;32mRemoving files from ShellCare...\033[00;37m\n"
+    echo -e "\n\033[01;32mRemoving files from LinuxBashCare...\033[00;37m\n"
     sleep 2
     find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
-    find '/bin/' -name "shellCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
-    sudo rm -rfv $HOME/ShellCare && sudo rm -rfv $HOME/plot
+    find '/bin/' -name "LinuxBashCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
+    sudo rm -rfv $HOME/LinuxBashCare && sudo rm -rfv $HOME/plot
     echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
         
 ####################################################################################
@@ -99,10 +99,10 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
 ####################################################################################
-# feedback remove ShellCare
+# feedback remove LinuxBashCare
 ####################################################################################
 
-    echo 'ShellCare has been successfully removed!'
+    echo 'LinuxBashCare has been successfully removed!'
     sleep 2 
     echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n"
     sudo apt autoclean -y

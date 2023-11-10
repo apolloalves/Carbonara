@@ -4,15 +4,15 @@
 ROOT_DIR="/"
 echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
 
-# Use the find command to locate the "ShellCare" folder
-path=$(find "$ROOT_DIR" -type d -name "ShellCare" 2>/dev/null)
+# Use the find command to locate the "LinuxBashCare" folder
+path=$(find "$ROOT_DIR" -type d -name "LinuxBashCare" 2>/dev/null)
 
 # Checks if the folder was found
 
 if [ -n "$path" ]; then
 
     sleep 2
-    echo -e "\n\033[01;32mThe cloned 'ShellCare' folder was found in: $path\033[00;37m\n"
+    echo -e "\n\033[01;32mThe cloned 'LinuxBashCare' folder was found in: $path\033[00;37m\n"
 
     ls -lsht $path/System/bin/*.sh
     find $path/System/bin/ -ls | wc -l
@@ -98,6 +98,6 @@ if [ -n "$path" ]; then
     echo
     broot_install.sh  
     sleep 3
-    shellCare-23.0.4.sh
+    LinuxBashCare-10.11.23.sh
 
 fi
