@@ -92,7 +92,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='sudo /bin/shellCare.sh'
+alias fix='sudo /bin/LinuxBashCare.sh'
 alias rb='trash-empty --all -f'
 alias cls='clear'
 #alias fixp='/bin/fix__packages-7.0.sh'
@@ -122,7 +122,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source /home/apollo/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 export PATH="$PATH":~/.local/bini
 
 
