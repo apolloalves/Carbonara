@@ -34,7 +34,7 @@
 # The script uses the "gnome-terminal" command to open GNOME terminals and start balancing the selected partitions.It's #
 # important to note that this script was likely designed to run in a specific environment, as it references specific    #
 # partitions and specific commands.                                                                                     #
-# MENU='shellCare-2.0.1.sh'                                                                                             #
+# MENU='LinuxBashCare-2.0.1.sh'                                                                                             #
 #                                                                                                                       #
 #########################################################################################################################
 

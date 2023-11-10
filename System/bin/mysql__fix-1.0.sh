@@ -98,7 +98,7 @@ if test 'y' =  "$mysql_reinstall"
             echo -e '\033[05;37mEXECUTE THE COMMAND SOURCE INSIDE MYSQL INSTANCE!\033[00;37m'
             echo ''
             sudo mysql -u root
-            #source $HOME/Shellcare/Mysql/mysql__config.sql
+            #source $HOME/LinuxBashCare/Mysql/mysql__config.sql
 
   elif test 'n' = "$mysql_reinstall"      
   then 

@@ -8,7 +8,7 @@
 #############################################################
 
 
-MENU="shellCare-23.0.4.sh"
+MENU="LinuxBashCare-10.11.23.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE='line.sh'
 YES="y"

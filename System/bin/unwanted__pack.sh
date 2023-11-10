@@ -1,6 +1,6 @@
 #!/bin/bash
  
- MENU="shellCare-23.0.4.sh"
+ MENU="LinuxBashCare-10.11.23.sh"
 
 YES="y"
 NO="n"

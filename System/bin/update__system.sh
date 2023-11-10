@@ -36,7 +36,7 @@
 # recommended to run it carefully and verify the actions that will be performed before proceeding.                    #
 #######################################################################################################################
 
-MENU="shellCare-23.0.4.sh"
+MENU="LinuxBashCare-10.11.23.sh"
 
 YES="y"
 NO="n"
