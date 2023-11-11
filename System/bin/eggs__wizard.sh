@@ -68,7 +68,7 @@ if [ "$option_choice" != "e" ]; then
         ;;
         4)
            sudo mount /dev/sdc1 /mnt/VENTOY && >/dev/null
-           echo -e "\n Opening Nautilus...\n" 
+           echo -e "\nOpening Nautilus file manager...\n" 
            sudo nautilus /mnt/VENTOY/ && >/dev/null
         ;;
 
