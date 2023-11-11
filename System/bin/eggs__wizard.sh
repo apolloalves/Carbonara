@@ -36,6 +36,7 @@ echo
 echo -e "\033[01;32m[\033[01;37m 1\033[01;32m ]\033[00;37m - Create Penguin's Eggs\033m"
 echo -e "\033[01;32m[\033[01;37m 2\033[01;32m ]\033[00;37m - Check Penguin's Eggs .iso\033m"
 echo -e "\033[01;32m[\033[01;37m 3\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot file manager\033m"
+echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - Nautilus file manager\033m"
 echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 
 ######################################################################################################################################################################################
@@ -64,6 +65,11 @@ if [ "$option_choice" != "e" ]; then
         3)
             # systemctl --failed
             $EGGSBROOT
+        ;;
+        4)
+           sudo mount /dev/sdc1 /mnt/VENTOY && >/dev/null
+           echo -e "\n Opening Nautilus...\n" 
+           sudo nautilus /mnt/VENTOY/ && >/dev/null
         ;;
 
         *)
