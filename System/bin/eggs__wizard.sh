@@ -67,9 +67,9 @@ if [ "$option_choice" != "e" ]; then
             $EGGSBROOT
         ;;
         4)
-           sudo mount /dev/sdc1 /mnt/VENTOY && >/dev/null
-           echo -e "\nOpening Nautilus file manager...\n" 
-           sudo nautilus /mnt/VENTOY/ && >/dev/null
+           sudo mount -o ro,noatime /dev/sdc1 /mnt/VENTOY > /dev/null 2>&1
+           echo -e "\nNautilus file manager is execution...\n" 
+           sudo nautilus /mnt/VENTOY/ && > /dev/null 2>&1
         ;;
 
         *)

@@ -40,7 +40,7 @@ read -r EXTST500LM012__CLONRAID
 if test "y" = "$EXTST500LM012__CLONRAID"
 
     then 
-    sudo mount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/
+    sudo mount -o ro,noatime /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/ > /dev/null 2>&1
     echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
 
 elif test "n" = "$EXTST500LM012__CLONRAID"
@@ -65,7 +65,7 @@ read -r EXTST500LM012__VENTOY
 if test "y" = "$EXTST500LM012__VENTOY"
 
     then 
-    sudo mount /dev/sdc1 /mnt/VENTOY
+    sudo mount -o ro,noatime /dev/sdc1 /mnt/VENTOY > /dev/null 2>&1
     echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
 
 elif test "n" = "$EXTST500LM012__VENTOY"
