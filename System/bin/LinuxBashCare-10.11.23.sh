@@ -99,7 +99,7 @@ source ~/.bashrc
 options=(
 
     #1
-    "Update all system packages    "
+    "Update all system packages"
     #2
     "Scan the system for traces of unused packages   "
     #3
@@ -137,12 +137,36 @@ options=(
     #19
     "Check if a new version of Ubuntu is available  "
     #20
-    "Reboot System  "
+    "Start Virtualbox services  "
     #21
+    "Reboot System  "
+    #22
     "QUIT   "
 
 )
-
+scripts=(
+    "update__pack.sh"
+    "remove__traces.sh"
+    "update__system.sh; remove__system.sh"
+    "optimize__performance.sh"
+    "stacer__tools.sh"
+    "swap__state.sh"
+    "system__analyse.sh"
+    "show__journalctl.sh"
+    "disable__services.sh"
+    "disabled__ListServices.sh"
+    "ext__disk-2.1.sh"
+    "check__space.sh"
+    "eggs__wizard.sh"
+    "clonraid__backups.sh"
+    "apititude__manager.sh"
+    "software-properties-gtk --open-tab=4"
+    "reinstall__gnome-gdm3.sh"
+    "mysql__fix-1.0.sh"
+    "do-release-upgrade"
+    "virtualbox_services.sh"
+    "reboot__system.sh"
+)
 selected=0
 # Função para imprimir texto com cor de fundo
 
@@ -210,14 +234,11 @@ while true; do
         ;;
     "")
         if [ $selected -eq $((${#options[@]} - 1)) ]; then
-
             clear_screen
             echo "Exiting the program..."
             sleep 1
             echo "Bye!"
             exit 0
-            break
-
         else
             clear_screen
             $LINE
@@ -226,98 +247,25 @@ while true; do
             sleep 2
 
             option_choice=$((selected + 1)) # Convert to option number
-            case "$option_choice" in
-            # echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
-            1)
-                update__pack.sh
-                ;;
-            2)
-                remove__traces.sh
-                ;;
-            3)
-                update__system.sh
-                remove__system.sh
-                ;;
-            4)
-                sudo su -c optimize__performance.sh
-                ;;
+            if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
+                script_index=$((option_choice - 1))
+                script=${scripts[$script_index]}
+                IFS=';' read -ra script_array <<< "$script"
+for s in "${script_array[@]}"; do
+    script_name=$(echo "$s" | xargs)  # Remover espaços extras
+    if [ -f "${script_name}" ]; then
+        bash "${script_name}"
+    else
+        echo -e "\nScript '${script_name}' not found!\n"
+    fi
+done
 
-            5)
-                stacer__tools.sh
-                ;;
-
-            6)
-                swap__state.sh
-                ;;
-
-            7)
-                system__analyse.sh
-                ;;
-
-            8)
-                sudo show__journalctl.sh
-                ;;
-            9)
-                disable__services.sh
-                ;;
-
-            10)
-                disabled__ListServices.sh
-                ;;
-
-            11)
-                ext__disk-2.1.sh
-                ;;
-
-            12)
-
-                check__space.sh
-                ;;
-
-            13)
-                sudo eggs__wizard.sh
-                ;;
-
-            14)
-
-                clonraid__backups.sh
-                ;;
-
-            15)
-                apititude__manager.sh
-                ;;
-
-            16)
-                software-properties-gtk --open-tab=4
-                ;;
-
-            17)
-                reinstall__gnome-gdm3.sh
-                ;;
-
-            18)
-                mysql__fix-1.0.sh
-                ;;
-
-            19)
-                sudo do-release-upgrade
-                ;;
-
-            20)
-                reboot__system.sh
-                ;;
-
-            *)
+            else
                 echo -e "\nInvalid input!\n"
-                ;;
-            esac
+            fi
 
             read -rsn1 -p "Press any key to continue..."
         fi
         ;;
-    *)
-        echo -e "\nInvalid input!\n"
-        ;;
-
     esac
 done
