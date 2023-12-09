@@ -4,9 +4,9 @@ source ~/.bashrc
 
 #############################################
 #                                           #
-# Script: LinuxBashCare-10.11.23.sh         #
+# Script: LinuxBashCare-10.12.23.sh         #
 # Author : Apollo Alves                     #
-# Date : 03/11/2023                         #
+# Date : 10/12/2023                         #
 #############################################
 
 ################################################################################################################################
@@ -96,79 +96,12 @@ source ~/.bashrc
 # sudo su -c "bash /bin/remove__unused_ppa.sh"
 ######################################################################################################################################################################################
 
-options=(
+source menu.sh
+source scripts.sh
 
-    #1
-    "Update all system packages"
-    #2
-    "Scan the system for traces of unused packages   "
-    #3
-    "Run both   "
-    #4
-    "Optimize system performance - ( root user required )   "
-    #5
-    "Open STACER manager    "
-    #6
-    "Swap State "
-    #7
-    "Check system boot time "
-    #8
-    "Boot messages wizard ( journalctl -b )  "
-    #9
-    "Disable services natives - ( root user required )    "
-    #10
-    "List of disabled services   "
-    #11
-    "Mount External Disks   "
-    #12
-    "Check space disks  "
-    #13
-    "Egss Wizard"
-    #14
-    "Open CLONRAID backups  "
-    #15
-    "Manage packages with aptitude  "
-    #16
-    "Manage packages and drivers    "
-    #17
-    "Reinstall GNOME gdm3   "
-    #18
-    "mysql wizard  "
-    #19
-    "Check if a new version of Ubuntu is available  "
-    #20
-    "Start Virtualbox services  "
-    #21
-    "Reboot System  "
-    #22
-    "QUIT   "
 
-)
-scripts=(
-    "update__pack.sh"
-    "remove__traces.sh"
-    "update__system.sh; remove__system.sh"
-    "optimize__performance.sh"
-    "stacer__tools.sh"
-    "swap__state.sh"
-    "system__analyse.sh"
-    "show__journalctl.sh"
-    "disable__services.sh"
-    "disabled__ListServices.sh"
-    "ext__disk-2.1.sh"
-    "check__space.sh"
-    "eggs__wizard.sh"
-    "clonraid__backups.sh"
-    "apititude__manager.sh"
-    "software-properties-gtk --open-tab=4"
-    "reinstall__gnome-gdm3.sh"
-    "mysql__fix-1.0.sh"
-    "do-release-upgrade"
-    "virtualbox_services.sh"
-    "reboot__system.sh"
-)
 selected=0
-# Função para imprimir texto com cor de fundo
+# Function to print text with background color
 
 print_with_bg_color() {
     local text="$1"
@@ -214,13 +147,13 @@ while true; do
     read -rsn1 key
 
     case "$key" in
-    "[")                      # Detecta sequência de seta (usada pelas teclas de seta)
+    "[")                     # Detect arrow sequence (used by arrow keys)
         read -rsn2 -t 0.1 key # Lê o restante da sequência
         case "$key" in
-        "A") # Seta para cima
+        "A") # Up arrow
             selected=$(((selected - 1 + ${#options[@]}) % ${#options[@]}))
             ;;
-        "B") # Seta para baixo
+        "B") # Up down
             selected=$(((selected + 1) % ${#options[@]}))
             ;;
         esac
