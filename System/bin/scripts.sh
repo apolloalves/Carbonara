@@ -1,7 +1,7 @@
 #!/bin/bash
 #########################################################################
 #                                                                       #
-# Script: scripts.sh - Enter a line after each command                     #           
+# Script: scripts.sh - scripts exec                                     #           
 #                                                                       #
 # Author: Apollo Alves                                                  #
 # Date: 10/12/2023                                                      #

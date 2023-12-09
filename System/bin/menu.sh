@@ -1,7 +1,7 @@
 #!/bin/bash
 #########################################################################
 #                                                                       #
-# Script: menu.sh - Enter a line after each command                     #           
+# Script: menu.sh - item menu                                           #           
 #                                                                       #
 # Author: Apollo Alves                                                  #
 # Date: 10/12/2023                                                      #
