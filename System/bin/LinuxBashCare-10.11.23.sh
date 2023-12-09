@@ -191,7 +191,7 @@ while true; do
     ######################################################################################################################################################################################
     LINE='line.sh'
     echo
-    echo -e "\033[1;97;100m          LinuxBashCare           \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  10.11.23        \033[0m"
+    echo -e "\033[1;97;100m          LinuxBashCare           \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  10.12.23        \033[0m"
     ######################################################################################################################################################################################
     echo
     echo -e "$neofetch_output"
@@ -250,15 +250,15 @@ while true; do
             if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
                 script_index=$((option_choice - 1))
                 script=${scripts[$script_index]}
-                IFS=';' read -ra script_array <<< "$script"
-for s in "${script_array[@]}"; do
-    script_name=$(echo "$s" | xargs)  # Remover espaços extras
-    if [ -f "${script_name}" ]; then
-        bash "${script_name}"
-    else
-        echo -e "\nScript '${script_name}' not found!\n"
-    fi
-done
+                IFS=';' read -ra script_array <<<"$script"
+                for s in "${script_array[@]}"; do
+                    script_name=$(echo "$s" | xargs) # Remover espaços extras
+                    if [ -f "${script_name}" ]; then
+                        bash "${script_name}"
+                    else
+                        echo -e "\nScript '${script_name}' not found!\n"
+                    fi
+                done
 
             else
                 echo -e "\nInvalid input!\n"
