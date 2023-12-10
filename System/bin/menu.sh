@@ -53,7 +53,7 @@ options=(
     #20
     "Start Virtualbox services"
     #21
-    "Linux Report"
+    "Linux Report Machine"
     #22
     "Reboot System"
     #22
