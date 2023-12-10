@@ -24,7 +24,7 @@
 #                                                                                                                              #
 # 4. User input is required to decide whether to plot the system analysis result.                                              #
 #                                                                                                                              #
-# 5. If the user's response is "y" (yes), the script continues with the following steps:                                       # 
+# 5. If the user's response is "y" (yes), the script continues with the following steps:                                       #
 #                                                                                                                              #
 # - A waiting message is displayed.                                                                                            #
 # - The message "Generating plot..." is displayed.                                                                             #
@@ -56,34 +56,57 @@ PLOT="$HOME/plot/Analyse.svg"
 LOG="$HOME/plot/systemd-analize.log"
 DATE=$(date +"%Y-%m-%d")
 
-echo 
+echo
 systemd-analyze
-sleep 1 
-echo 
+sleep 1
+echo
 
-echo -n 'Do you want to plot result of system-analyze (y/n)? '
+#!/bin/bash
+
+echo -n 'Do you want to plot the result of system-analyze (y/n)? '
 read -r SystemAnalyse_question
+
+YES="y"
+NO="n"
+PLOTDIR="$HOME/plot"
+PLOT="$PLOTDIR/plot.png"
+LOG="$PLOTDIR/system-analyze.log"
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
 if [ "$YES" = "$SystemAnalyse_question" ]; then
     echo -e "\nWait...\n"
     sleep 1
 
-    echo "Generating plot..."
-    mkdir $PLOTDIR 
-    sleep 1
-    systemd-analyze plot >"$PLOT"
-    echo "Generating file log..."
-    echo -e "\n$DATE" >> $LOG && systemd-analyze >> $LOG && echo -e "\n"
-    
-    echo -e "File created in: $LOG"
-    sleep 1
+    if [ -d "$PLOTDIR" ]; then
+        echo "$PLOTDIR" was updated!
+        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
+        echo "opening $LOG..."
+        sleep 2 
 
-    echo -e "\nFile created in: $PLOT"
-    echo -e "\nOpening the file..."
-    sleep 2
-    eog "$PLOT"
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-    
+        gedit $LOG
+
+    else
+        echo "Generating plot..."
+        echo "Creating folder plot in: $HOME" >/dev/null 2>&1
+        sleep 2
+        mkdir "$PLOTDIR" >/dev/null 2>&1
+        echo "$PLOTDIR create!"
+        nautilus $PLOTDIR && >/dev/null
+
+        sleep 1
+        systemd-analyze plot >"$PLOT"
+        echo "Generating log file..."
+        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
+
+        echo -e "Log file created in: $LOG"
+        sleep 1
+
+        echo -e "\nPlot created in: $PLOT"
+        echo -e "\nOpening the plot file..."
+        sleep 2
+        eog "$PLOT"
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    fi
 elif [ "$NO" = "$SystemAnalyse_question" ]; then
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 else

@@ -1,6 +1,5 @@
 #!/bin/bash
-source ~/.bashrc
-. ~/.bashrc
+
 
 #############################################
 #                                           #
@@ -9,39 +8,6 @@ source ~/.bashrc
 # Date : 10/12/2023                         #
 #############################################
 
-################################################################################################################################
-#                                                                                                                              #
-# This code constitutes an interactive menu for a shell care and maintenance system, with a series of options available        #
-# to users. The menu displays several numbered options, each corresponding to a specific task.                                 #
-#                                                                                                                              #
-# 1. The "Update all system packages" option updates all system packages.                                                      #
-# 2. The option "Scan the system for traces of unused packages" scans the system for traces of unused packages.                #
-# 3. The "Run both" option performs both the update and check for unused package tasks.                                        #
-# 4. The option "Optimize system performance - (root user required)" optimizes system performance, requiring root permissions. #
-# 5. The "Open STACER manager" option opens the STACER manager.                                                                #
-# 6. The "Swap State" option handles the swap state.                                                                           #
-# 7. The "Check system boot time" option checks the system boot time.                                                          #
-# 8. The option "Boot messages wizard ( journalctl -b )" displays boot messages through journalctl.                            #
-# 9. The option "Disable native services - ( root user required )" disables native services, requiring root permissions.       #
-# 10. The "List of disabled services" option lists the disabled services.                                                      #
-# 11. The "Mount External Disks" option handles mounting external disks.                                                       #
-# 12. The "Check space disks" option checks disk space.                                                                        #
-# 13. The "Eggs Wizard" option performs an egg-related function (possibly an internal reference or system-specific code).      #
-# 14. The "Open CLONRAID backups" option opens CLONRAID backups.                                                               #
-# 15. The "Manage packages with aptitude" option manages packages with aptitude.                                               #
-# 16. The "Manage packages and drivers" option handles package and driver management.                                          #
-# 17. The "Reinstall GNOME gdm3" option reinstalls GNOME gdm3.                                                                 #
-# 18. The "mysql wizard" option performs functions related to MySQL.                                                           #
-# 19. The option "Check if a new version of Ubuntu is available" checks if a new version of Ubuntu is available.               #
-# 20. The "Reboot System" option restarts the system.                                                                          #
-# 21. The "QUIT" option ends the program.                                                                                      #
-#                                                                                                                              #
-# Additionally, the code includes formatting functions to print text with background colors, as well as the function to        #
-# clear the screen. The script also displays system information using the "neofetch" command and handles the logic to          #
-# allow the user to select menu options. Each selected option runs a specific script related to the chosen task.               #
-#                                                                                                                              #
-#                                                                                                                              #
-################################################################################################################################
 
 ##################################################################################################################
 # ATTENTION!                                                                                                     #
@@ -95,10 +61,19 @@ source ~/.bashrc
 # "Remove unused PPA on system - ( root user required )   "
 # sudo su -c "bash /bin/remove__unused_ppa.sh"
 ######################################################################################################################################################################################
+source ~/.bashrc
+. ~/.bashrc
+
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please exec this with root"
+    exit 1
+fi
 
 source menu.sh
 source scripts.sh
-
 
 selected=0
 # Function to print text with background color
@@ -147,7 +122,7 @@ while true; do
     read -rsn1 key
 
     case "$key" in
-    "[")                     # Detect arrow sequence (used by arrow keys)
+    "[")                      # Detect arrow sequence (used by arrow keys)
         read -rsn2 -t 0.1 key # Lê o restante da sequência
         case "$key" in
         "A") # Up arrow
