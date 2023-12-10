@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU='LinuxBashCare-10.11.23.sh'
+MENU='LinuxBashCare-10.12.23.sh'
 
 VALIDATE=$(test "y" || "n" != "$stacer_question")
 echo -n 'Do you want to open stacer ( y/n ) ? or press any key to exit '

@@ -6,7 +6,7 @@ clear
 #                                                                   #
 # Script: eggs__wizard.sh                                           #
 # Author: Apollo Alves                                              #
-# Date: 14/10/2023                                                  #
+# Date: 10/12/2023                                                  #
 #                                                                   #
 #####################################################################
 
@@ -17,7 +17,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 ######################################################################################################################################################################################
-MENU='LinuxBashCare-10.11.23.sh'
+MENU='LinuxBashCare-10.12.23.sh'
 EGGSMENU='eggs__wizard.sh'
 EGGSCREATE='eggs__create.sh'
 EGGSCHECK='eggs__check.sh'
