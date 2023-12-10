@@ -18,9 +18,12 @@ NUCLEOS=$(cat /proc/cpuinfo | grep "model name" | wc -l)
 MEMTOTAL=$(cat /proc/meminfo | grep MemTotal | tr -d ' ' | cut -d: -f2 )
 PARTITIONS=$(df -h /dev/md127p1)
 DATE=$(date | cut -c-25)
+LASTBOOT=$(systemd-analyze)
 WHO=$(who)
 clear
 $LINE
+
+
 echo -e "Machine Report"
 $LINE
 echo -e "Machine Name: $HOSTNAME"
@@ -38,5 +41,6 @@ echo "Núcleos: $NUCLEOS"
 echo -e "Total Memory: $MEMTOTAL"
 $LINE
 echo -e "\nPartitions : $PARTITIONS\n" 
+echo -e "Last boot : $LASTBOOT\n"
 echo -e "Report Date: $DATE"
 echo 
