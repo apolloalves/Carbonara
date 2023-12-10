@@ -15,7 +15,7 @@ echo -e "\n Opening Nautilus...\n"
 #####################################################################################################################
      
 sleep 2
-sudo nautilus /mnt/EXT@ST500LM012__CLONRAID/ && >/dev/null
+sudo nautilus /mnt/EXTST500LM012__CLONRAID/ && >/dev/null
 clear
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 echo

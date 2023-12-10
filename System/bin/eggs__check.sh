@@ -26,13 +26,13 @@
 
 FILEPATH="/home/eggs/*.iso"
 TARGETPATH="/mnt/VENTOY"
-CLONRAID="/mnt/EXT@ST500LM012__CLONRAID/UBUNTU_EGGS/"
+CLONRAID="/mnt/EXTST500LM012__CLONRAID/UBUNTU_EGGS/"
 LINE='line.sh'
 
 echo -e "\nChecking devices..."
 sleep 2
 sudo mount /dev/sdc1 $TARGETPATH
-sudo mount /dev/sdc3 /mnt/EXT@ST500LM012__CLONRAID/
+sudo mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/
 
      DATE=$(date +"%Y-%m-%d")
      arquivo="/home/eggs/*.iso"

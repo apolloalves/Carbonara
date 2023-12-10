@@ -17,7 +17,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 ######################################################################################################################################################################################
-MENU='LinuxBashCare-10.12.23.sh'
+MENU='/bin/LinuxBashCare-10.12.23.sh'
 EGGSMENU='eggs__wizard.sh'
 EGGSCREATE='eggs__create.sh'
 EGGSCHECK='eggs__check.sh'

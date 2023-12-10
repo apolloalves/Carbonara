@@ -14,8 +14,8 @@
 # Description : This shell script called "nautilus.sh" is used to invoke the Nautilus file manager and open a specific     #
 # directory. Here is a summary of what it does:                                                                            #
 #                                                                                                                          #
-# 1. Using the command "sudo nautilus /mnt/EXT@ST500LM012__CLONRAID/", the script invokes the Nautilus file manager        #
-# and opens the directory "/mnt/EXT@ST500LM012__CLONRAID/".                                                                #
+# 1. Using the command "sudo nautilus /mnt/EXTST500LM012__CLONRAID/", the script invokes the Nautilus file manager        #
+# and opens the directory "/mnt/EXTST500LM012__CLONRAID/".                                                                #
 #                                                                                                                          #
 # 2. Next, the script checks if the Nautilus process is running using the command "pgrep -x "nautilus"". If it is running, #
 # it enters a loop.                                                                                                        #
@@ -34,7 +34,7 @@
 #                                                                                                                          #
 ############################################################################################################################
 
-sudo nautilus /mnt/EXT@ST500LM012__CLONRAID/
+sudo nautilus /mnt/EXTST500LM012__CLONRAID/
 
 if pgrep -x "nautilus" > /dev/null
 then

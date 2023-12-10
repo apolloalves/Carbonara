@@ -14,7 +14,7 @@
 # it does:                                                                                                          #
 # 1. Displays a space check message.                                                                                #
 # 2. Wait 1 second.                                                                                                 #
-# 3. Run the commands "df -h /", "df -h /home" and "df -h /mnt/EXT@ST500LM012__CLONRAID" to display disk space      #
+# 3. Run the commands "df -h /", "df -h /home" and "df -h /mnt/EXTST500LM012__CLONRAID" to display disk space      #
 # information in the root, /home and /mnt/EXT@ directories ST500LM012__CLONRAID, respectively.                      #
 # 4. Displays a message indicating that the verification completed successfully.                                    #
 #                                                                                                                   #
@@ -26,7 +26,7 @@
 LINE='line.sh'
 echo -e "\nChecking spaces...\n"                                      
 sleep 2
-df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXT@ST500LM012__CLONRAID && echo "" && df -h /mnt/VENTOY
+df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXTST500LM012__CLONRAID && echo "" && df -h /mnt/VENTOY
 echo ""
 $LINE
 sleep 10

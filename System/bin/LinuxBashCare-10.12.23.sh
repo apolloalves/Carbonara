@@ -3,7 +3,7 @@
 
 #############################################
 #                                           #
-# Script: LinuxBashCare-10.12.23.sh         #
+# Script: /bin/LinuxBashCare-10.12.23.sh         #
 # Author : Apollo Alves                     #
 # Date : 10/12/2023                         #
 #############################################
@@ -72,8 +72,8 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-source menu.sh
-source scripts.sh
+source /bin/menu.sh
+source /bin/scripts.sh
 
 selected=0
 # Function to print text with background color

@@ -24,11 +24,11 @@
 # If the user types "y" for the "/home" volume, the script opens a GNOME terminal with the command "sudo btrfs balance  #
 # start /home", which starts balancing the "/home" volume.                                                              #
 # If the user enters "n" for the "/home" volume, the script will ask if they want to balance the                        #
-# "/EXT@ST500LM012__CLONRAID/" volume.                                                                                  #
-# If the user types "y" for the volume "/EXT@ST500LM012__CLONRAID/", the script opens a GNOME terminal with the         #
-# command "sudo btrfs balance start /mnt/EXT@ST500LM012__CLONRAID/", which starts balancing the volume                  #
-# "/ EXT@ST500LM012__CLONRAID/".                                                                                        #
-# If the user enters "n" for the volume "/EXT@ST500LM012__CLONRAID/", the script will display a confirmation            #
+# "/EXTST500LM012__CLONRAID/" volume.                                                                                  #
+# If the user types "y" for the volume "/EXTST500LM012__CLONRAID/", the script opens a GNOME terminal with the         #
+# command "sudo btrfs balance start /mnt/EXTST500LM012__CLONRAID/", which starts balancing the volume                  #
+# "/ EXTST500LM012__CLONRAID/".                                                                                        #
+# If the user enters "n" for the volume "/EXTST500LM012__CLONRAID/", the script will display a confirmation            #
 # message and return to the main menu.                                                                                  #
 # If the user enters an invalid command, the script will display an error message and return to the main menu.          #
 # The script uses the "gnome-terminal" command to open GNOME terminals and start balancing the selected partitions.It's #
@@ -62,12 +62,12 @@ elif [ "$NO" = "$ROOTVOLUME" ]; then
         echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
     elif [ "$NO" = "$HOMEVOLUME" ]; then
-        echo -n 'Do you want to balance the volume "/EXT@ST500LM012__CLONRAID/" (y/n)? '
+        echo -n 'Do you want to balance the volume "/EXTST500LM012__CLONRAID/" (y/n)? '
         read -r CLONRAID
 
         if [ "$YES" = "$CLONRAID" ]; then
 
-            gnome-terminal --tab -- bash -c "time sudo btrfs balance start /mnt/EXT@ST500LM012__CLONRAID/; exec bash"
+            gnome-terminal --tab -- bash -c "time sudo btrfs balance start /mnt/EXTST500LM012__CLONRAID/; exec bash"
             echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
         elif [ "$NO" = "$CLONRAID" ]; then
