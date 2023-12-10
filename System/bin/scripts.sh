@@ -30,5 +30,6 @@ scripts=(
     "mysql__fix-1.0.sh"
     "do-release-upgrade"
     "virtualbox_services.sh"
+    "LinuxReport.sh"
     "reboot__system.sh"
 )
