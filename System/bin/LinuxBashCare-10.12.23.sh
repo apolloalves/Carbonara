@@ -68,7 +68,7 @@ source ~/.bashrc
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
     echo "This script needs to be run as root."
-    echo "Please exec this with root"
+    echo "Please execute this with sudo"
     exit 1
 fi
 
