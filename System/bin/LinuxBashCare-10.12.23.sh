@@ -1,13 +1,11 @@
 #!/bin/bash
 
-
 #############################################
 #                                           #
-# Script: /bin/LinuxBashCare-10.12.23.sh         #
+# Script: /bin/LinuxBashCare-10.12.23.sh    #
 # Author : Apollo Alves                     #
 # Date : 10/12/2023                         #
 #############################################
-
 
 ##################################################################################################################
 # ATTENTION!                                                                                                     #
@@ -63,7 +61,6 @@
 ######################################################################################################################################################################################
 source ~/.bashrc
 . ~/.bashrc
-
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
@@ -158,16 +155,11 @@ while true; do
             if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
                 script_index=$((option_choice - 1))
                 script=${scripts[$script_index]}
-                IFS=';' read -ra script_array <<<"$script"
-                for s in "${script_array[@]}"; do
-                    script_name=$(echo "$s" | xargs) # Remover espaços extras
-                    if [ -f "${script_name}" ]; then
-                        bash "${script_name}"
-                    else
-                        echo -e "\nScript '${script_name}' not found!\n"
-                    fi
-                done
-
+                if [ -f "/bin/${script}" ]; then
+                    bash "/bin/${script}"
+                else
+                    echo -e "\nScript '/bin/${script}' not found!\n"
+                fi
             else
                 echo -e "\nInvalid input!\n"
             fi
