@@ -90,7 +90,8 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         echo "Creating folder plot in: $HOME" >/dev/null 2>&1
         sleep 2
         mkdir "$PLOTDIR" >/dev/null 2>&1
-        echo "$PLOTDIR create!"
+        echo The folder: "$PLOTDIR was created!"
+        sleep 2
         nautilus $PLOTDIR && >/dev/null
 
         sleep 1

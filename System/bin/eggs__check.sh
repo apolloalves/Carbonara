@@ -24,36 +24,36 @@
 #                                                                                                                      #
 ########################################################################################################################
 
-FILEPATH="/home/eggs/*.iso"
+FILEPATH="/home/eggs/.mnt"
 TARGETPATH="/mnt/VENTOY"
 CLONRAID="/mnt/EXTST500LM012__CLONRAID/UBUNTU_EGGS/"
 LINE='line.sh'
 
 echo -e "\nChecking devices..."
 sleep 2
-sudo mount /dev/sdc1 $TARGETPATH
-sudo mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/
+sudo mount /dev/sdc1 $TARGETPATH > /dev/null 2>&1
+sudo mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ > /dev/null 2>&1
+echo -e "\nAll devices are assembled!"
 
      DATE=$(date +"%Y-%m-%d")
-     arquivo="/home/eggs/*.iso"
 
      while true; do
 
-          length=$(find /home/eggs -maxdepth 1 -name "*.iso" | wc -l)
+          length=$(find $FILEPATH -maxdepth 1 -name "*.iso" | wc -l)
 
           if [ "$length" -gt 0 ]; then
 
-               echo ".iso file(s) found in: "
+               echo -e "\n.iso file(s) found in: "
                echo 
-               find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
+               find $FILEPATH -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
-               sudo mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
+               sudo mv -v $FILEPATH/*.iso $FILEPATH/Ubuntu-22.0.4-LTS_$DATE.iso
                echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
                echo -e "\npreparing to move...\n"
                sleep 1
                echo -e "Moving file to $TARGETPATH ...\n"
                
-               sudo time mv -v /home/eggs/*.iso /mnt/VENTOY
+               sudo time mv -v $FILEPATH/*.iso $TARGETPATH
                echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
                echo "creating a backup for : '$CLONRAID'"
                echo -e "\nwait...\n"
