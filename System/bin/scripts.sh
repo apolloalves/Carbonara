@@ -12,7 +12,7 @@
 scripts=(
     "update__pack.sh"
     "remove__traces.sh"
-    "update__system.sh; remove__system.sh"
+    "update__system.sh;remove__system.sh"
     "optimize__performance.sh"
     "stacer__tools.sh"
     "swap__state.sh"

@@ -35,7 +35,7 @@
 
 MENU='/bin/LinuxBashCare-10.12.23.sh'
 
-REMOVETRACES='remove__traces.sh'
+REMOVETRACES='/bin/remove__traces.sh'
 
 YES="y"
 NO="n"
@@ -47,7 +47,8 @@ NO="n"
 if [ "$removetraces" = "$YES" ]; then 
         
     $REMOVETRACES
-    
+    read -rsn1 -p "Press any key to continue..."
+    $MENU
 fi
 if [ "$removetraces" = "$NO" ]; then 
 

@@ -151,28 +151,33 @@ while true; do
             $LINE
             sleep 2
 
-            option_choice=$((selected + 1)) # Convert to option number
-            if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
-                script_index=$((option_choice - 1))
-                script=${scripts[$script_index]}
+  option_choice=$((selected + 1)) # Convert to option number
+if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
+    script_index=$((option_choice - 1))
+    script=${scripts[$script_index]}
 
-                IFS=';' read -ra script_array <<<"$script"
+    IFS=';' read -ra script_array <<< "$script"
 
-                for sub_script in "${script_array[@]}"; do
-                    sub_script_path="/bin/${sub_script}"
+    for sub_script in "${script_array[@]}"; do
+        # Remover espaços em branco
+        sub_script=$(echo "$sub_script" | tr -d ' ')
 
-                    if [ -f "$sub_script_path" ]; then
-                        bash "$sub_script_path"
-                    else
-                        echo -e "\nScript '$sub_script_path' not found!\n"
-                    fi
-                done
+        sub_script_path="/bin/${sub_script}"
 
-            else
-                echo -e "\nInvalid input!\n"
-            fi
+        if [ -f "$sub_script_path" ]; then
+            bash "$sub_script_path"
+            exit 1
+        else
+            echo -e "\nScript '$sub_script_path' not found!\n"
+            exit 1  # Sair com código de erro se um script não for encontrado
+        fi
+    done
 
-            read -rsn1 -p "Press any key to continue..."
+else
+    echo -e "\nInvalid input!\n"
+fi
+
+read -rsn1 -p "Press any key to continue..."
 
         fi
         ;;
