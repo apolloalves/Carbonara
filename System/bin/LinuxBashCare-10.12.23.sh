@@ -155,16 +155,25 @@ while true; do
             if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
                 script_index=$((option_choice - 1))
                 script=${scripts[$script_index]}
-                if [ -f "/bin/${script}" ]; then
-                    bash "/bin/${script}"
-                else
-                    echo -e "\nScript '/bin/${script}' not found!\n"
-                fi
+
+                IFS=';' read -ra script_array <<<"$script"
+
+                for sub_script in "${script_array[@]}"; do
+                    sub_script_path="/bin/${sub_script}"
+
+                    if [ -f "$sub_script_path" ]; then
+                        bash "$sub_script_path"
+                    else
+                        echo -e "\nScript '$sub_script_path' not found!\n"
+                    fi
+                done
+
             else
                 echo -e "\nInvalid input!\n"
             fi
 
             read -rsn1 -p "Press any key to continue..."
+
         fi
         ;;
     esac

@@ -24,7 +24,7 @@
 #                                                                                                                      #
 ########################################################################################################################
 
-FILEPATH="/home/eggs/.mnt/"
+FILEPATH="/home/eggs/.mnt"
 TARGETPATH="/mnt/VENTOY"
 CLONRAID="/mnt/EXTST500LM012__CLONRAID/UBUNTU_EGGS/"
 LINE='line.sh'
