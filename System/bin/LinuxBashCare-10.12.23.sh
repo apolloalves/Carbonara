@@ -63,11 +63,11 @@ source ~/.bashrc
 . ~/.bashrc
 
 # Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with sudo"
-    exit 1
-fi
+# if [[ $EUID -ne 0 ]]; then
+#     echo "This script needs to be run as root."
+#     echo "Please execute this with sudo"
+#     exit 1
+# fi
 
 source /bin/menu.sh
 source /bin/scripts.sh
@@ -152,6 +152,7 @@ while true; do
             sleep 2
 
   option_choice=$((selected + 1)) # Convert to option number
+option_choice=$((selected + 1)) # Convert to option number
 if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
     script_index=$((option_choice - 1))
     script=${scripts[$script_index]}
@@ -166,10 +167,9 @@ if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
 
         if [ -f "$sub_script_path" ]; then
             bash "$sub_script_path"
-            exit 1
         else
             echo -e "\nScript '$sub_script_path' not found!\n"
-            exit 1  # Sair com código de erro se um script não for encontrado
+            break  # Sair do loop se um script não for encontrado
         fi
     done
 

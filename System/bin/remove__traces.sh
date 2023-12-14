@@ -104,4 +104,3 @@ snap list --all | awk '/disabled/{print $1, $3}' |
         sudo snap remove "$snapname" --revision="$revision"
     done
 echo -e "\n\033[01;37m[\033[00;32m done!\033[01;37m ]\033m\n"
-sleep 5

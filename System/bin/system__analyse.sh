@@ -58,10 +58,7 @@ DATE=$(date +"%Y-%m-%d")
 
 echo
 systemd-analyze
-sleep 1
 echo
-
-#!/bin/bash
 
 echo -n 'Do you want to plot the result of system-analyze (y/n)? '
 read -r SystemAnalyse_question
@@ -70,7 +67,7 @@ YES="y"
 NO="n"
 PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
-LOG="$PLOTDIR/system-analyze.log"
+LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
 if [ "$YES" = "$SystemAnalyse_question" ]; then
@@ -78,34 +75,46 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
     sleep 1
 
     if [ -d "$PLOTDIR" ]; then
-        echo "$PLOTDIR" was updated!
+        echo "$PLOTDIR" was generated!
         echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-        echo "opening $LOG..."
-        sleep 2 
-
-        gedit $LOG
+        echo "File: $LOG was updated in $DATE!" 
+        gedit $LOG >/dev/null 2>&1
+        echo -e "opening nautilus to analyze the generated files..." 
+        nautilus $PLOTDIR >/dev/null 2>&1
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
     else
-        echo "Generating plot..."
-        echo "Creating folder plot in: $HOME" >/dev/null 2>&1
-        sleep 2
+        echo "Creating folder plot in: $HOME"
         mkdir "$PLOTDIR" >/dev/null 2>&1
         echo The folder: "$PLOTDIR was created!"
-        sleep 2
-        nautilus $PLOTDIR && >/dev/null
-
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
         sleep 1
+
+        echo -e "\nGenerating file plot..."
         systemd-analyze plot >"$PLOT"
-        echo "Generating log file..."
-        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-
-        echo -e "Log file created in: $LOG"
+        echo -e "Plot created in: $PLOT"
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
         sleep 1
 
-        echo -e "\nPlot created in: $PLOT"
-        echo -e "\nOpening the plot file..."
-        sleep 2
-        eog "$PLOT"
+        echo -e "\nGenerating log file..."
+        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
+        echo "Log file created in: $LOG"
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+        sleep 1
+
+        echo -e "\nOpening the $PLOT file..."
+        eog "$PLOT" >/dev/null 2>&1
+        sleep 1
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+
+        echo -e "\nOpening $LOG"
+        sleep 1
+        gedit $LOG >/dev/null 2>&1
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+
+        echo -e "Opening Nautilus $PLOTDIR"
+        nautilus $PLOTDIR >/dev/null 2>&1
+        sleep 1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     fi
 elif [ "$NO" = "$SystemAnalyse_question" ]; then
