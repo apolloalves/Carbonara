@@ -6,6 +6,11 @@
 # DATE : 27/07/2022                                         #
 #                                                           #
 #############################################################
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root." 
+    exit 1
+fi
 
 
 MENU="LinuxBashCare-10.11.23.sh"
@@ -26,11 +31,6 @@ function calculate_size() {
     fi
 }
 
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root." 
-    exit 1
-fi
 
 echo
 read -rp 'Would you like to remove all contents of swap? (y/n): ' removeSwap

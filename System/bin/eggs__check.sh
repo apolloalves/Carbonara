@@ -23,6 +23,11 @@
 # to mention that the script contains some commands that require superuser (sudo) privileges.                          #
 #                                                                                                                      #
 ########################################################################################################################
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root." 
+    exit 1
+fi
 
 FILEPATH="/home/eggs/.mnt"
 TARGETPATH="/mnt/VENTOY"

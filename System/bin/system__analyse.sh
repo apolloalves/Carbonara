@@ -56,6 +56,11 @@ PLOT="$HOME/plot/Analyse.svg"
 LOG="$HOME/plot/systemd-analize.log"
 DATE=$(date +"%Y-%m-%d")
 
+PLOT="$PLOTDIR/plot.png"
+LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
+
+
 echo
 systemd-analyze
 echo
@@ -63,12 +68,6 @@ echo
 echo -n 'Do you want to plot the result of system-analyze (y/n)? '
 read -r SystemAnalyse_question
 
-YES="y"
-NO="n"
-PLOTDIR="$HOME/plot"
-PLOT="$PLOTDIR/plot.png"
-LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
-DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
 if [ "$YES" = "$SystemAnalyse_question" ]; then
     echo -e "\nWait...\n"
@@ -88,6 +87,7 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         mkdir "$PLOTDIR" >/dev/null 2>&1
         echo The folder: "$PLOTDIR was created!"
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+
         sleep 1
 
         echo -e "\nGenerating file plot..."

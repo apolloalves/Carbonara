@@ -8,7 +8,12 @@ source ~/.bashrc
 # Author : Apollo Alves                     #
 # Date : 15/14/2023                         #
 #############################################
- 
+ # Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root." 
+    exit 1
+fi
+
 
 LINE='line.sh'
 PLOT="$HOME/plot/Disable-ServicesList.log"

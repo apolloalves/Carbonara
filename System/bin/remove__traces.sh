@@ -39,7 +39,15 @@
 # In short, the script removes cache files and system logs, cleans up the system by removing unnecessary packages            #
 # and files, empties the recycle bin, and removes old versions of snap packages. These actions are performed with            #
 # the aim of freeing up disk space, optimizing performance and removing unwanted files from the system.                      #
-#                                                                                                                            #
+#      
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo"
+    exit 1
+fi
+                                                                                                                     
 ##############################################################################################################################
 echo -e "\n\033[01;32mRemoving cache and logs files system...\033[00;37m\n"
 ##############################################################################################################################

@@ -1,5 +1,12 @@
 #!/bin/bash
  
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo"
+    exit 1
+fi
+
  MENU="LinuxBashCare-10.11.23.sh"
 
 YES="y"

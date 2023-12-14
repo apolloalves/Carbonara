@@ -63,11 +63,11 @@ source ~/.bashrc
 . ~/.bashrc
 
 # Check if the user is root
-# if [[ $EUID -ne 0 ]]; then
-#     echo "This script needs to be run as root."
-#     echo "Please execute this with sudo"
-#     exit 1
-# fi
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo"
+    exit 1
+fi
 
 source /bin/menu.sh
 source /bin/scripts.sh
@@ -151,33 +151,32 @@ while true; do
             $LINE
             sleep 2
 
-  option_choice=$((selected + 1)) # Convert to option number
-option_choice=$((selected + 1)) # Convert to option number
-if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
-    script_index=$((option_choice - 1))
-    script=${scripts[$script_index]}
+            option_choice=$((selected + 1)) # Convert to option number
+            if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
+                script_index=$((option_choice - 1))
+                script=${scripts[$script_index]}
 
-    IFS=';' read -ra script_array <<< "$script"
+                IFS=';' read -ra script_array <<<"$script"
 
-    for sub_script in "${script_array[@]}"; do
-        # Remover espaços em branco
-        sub_script=$(echo "$sub_script" | tr -d ' ')
+                for sub_script in "${script_array[@]}"; do
+                    # Remover espaços em branco
+                    sub_script=$(echo "$sub_script" | tr -d ' ')
 
-        sub_script_path="/bin/${sub_script}"
+                    sub_script_path="/bin/${sub_script}"
 
-        if [ -f "$sub_script_path" ]; then
-            bash "$sub_script_path"
-        else
-            echo -e "\nScript '$sub_script_path' not found!\n"
-            break  # Sair do loop se um script não for encontrado
-        fi
-    done
+                    if [ -f "$sub_script_path" ]; then
+                        bash "$sub_script_path"
+                    else
+                        echo -e "\nScript '$sub_script_path' not found!\n"
+                        break # Sair do loop se um script não for encontrado
+                    fi
+                done
 
-else
-    echo -e "\nInvalid input!\n"
-fi
+            else
+                echo -e "\nInvalid input!\n"
+            fi
 
-read -rsn1 -p "Press any key to continue..."
+            read -rsn1 -p "Press any key to continue..."
 
         fi
         ;;
