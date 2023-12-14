@@ -31,5 +31,7 @@ scripts=(
     "release__upgrade.sh"
     "virtualbox_services.sh"
     "report.sh"
+    "shellCare-22.0.1.sh"
     "reboot__system.sh"
+
 )

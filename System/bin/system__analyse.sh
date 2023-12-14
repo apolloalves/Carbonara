@@ -52,7 +52,7 @@ YES="y"
 NO="n"
 LINE='/bin/line.sh'
 PLOTDIR="$HOME/plot"
-PLOT="$HOME/plot/Analyse.svg"
+ ="$HOME/plot/Analyse.svg"
 LOG="$HOME/plot/systemd-analize.log"
 DATE=$(date +"%Y-%m-%d")
 

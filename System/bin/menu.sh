@@ -53,6 +53,8 @@ options=(
     #21
     "Linux Report Machine"
     #22
+    "Change old version for ShellCare-22.0.1.sh"
+    #23
     "Reboot System"
     #22
     "QUIT"
