@@ -1,4 +1,21 @@
 #!/bin/bash
+####################################################################################
+#                                                                                  #
+# Script: install.sh - LinuxBashCare Setup Script                                  #
+#                                                                                  #
+# Author: Apollo Alves                                                             #
+# Date: 16/12/2023                                                                 #
+#                                                                                  #
+# Description:                                                                     #
+# This script automates the setup process for LinuxBashCare. It performs           #
+# various tasks, including locating the LinuxBashCare folder, setting              #
+# execute permissions, copying executables to /bin, updating the system,           #
+# installing dependencies, and configuring system utilities.                       #
+#                                                                                  #
+# Note: This script assumes a Debian-based system and requires superuser           #
+# (sudo) privileges for certain operations.                                        #
+#                                                                                  #
+####################################################################################
 
 # Defines the root directory from which find will be run
 ROOT_DIR="/"
@@ -25,7 +42,6 @@ if [ -n "$path" ]; then
     sudo rsync -avh --progress $path/System/bin/*.sh /bin/
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
-    # arrumar que bra de linmha
     echo -e "\n\033[01;32mupdate packages of system...\033[00;37m\n"
     echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
     sleep 2
@@ -75,16 +91,8 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
     echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
-    curl -fsSL https://pieroproietti.github.io/penguins-eggs-ppa/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/penguins-eggs.gpg
-    echo "deb [arch=$(dpkg --print-architecture)] https://pieroproietti.github.io/penguins-eggs-ppa ./" | sudo tee /etc/apt/sources.list.d/penguins-eggs.list >/dev/null
-    sudo apt update -y
-    sleep 2
-    sudo apt install eggs=9.4.15 -y
-    sudo apt-mark hold eggs=9.4.15
-    sleep 2
-    echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
-    sudo eggs calamares --install
-    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    source eggs__install.sh
+    
 
     echo -e "\n\033[01;32minstalling flatpak...\033[00;37m\n"
     sleep 2
