@@ -32,6 +32,9 @@
 # operations.                                                                                                          #
 #                                                                                                                      #
 ########################################################################################################################
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
