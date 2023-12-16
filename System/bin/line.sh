@@ -4,7 +4,7 @@
 # Script: line.sh - Enter a line after each command                     #           
 #                                                                       #
 # Author: Apollo Alves                                                  #
-# Date: 14/07/2023                                                      #
+# Date: 16/12/2023                                                      #
 #                                                                       #
 #########################################################################
 
