@@ -18,10 +18,11 @@ fi
 
 ######################################################################################################################################################################################
 MENU='/bin/LinuxBashCare-10.12.23.sh'
-EGGSMENU='eggs__wizard.sh'
-EGGSCREATE='eggs__create.sh'
-EGGSCHECK='eggs__check.sh'
-EGGSBROOT='showbroot__eggs.sh'
+EGGSMENU='/bin/eggs__wizard.sh'
+EGGSCREATE='/bin/eggs__create.sh'
+EGGSCHECK='/bin/eggs__check.sh'
+EGGSBROOT='/bin/showbroot__eggs.sh'
+EGGSINSTALL='/bin/eggs__install.sh'
 ######################################################################################################################################################################################
 LINE='line.sh'
 echo -e "\033[1;97;100m        LinuxBashCare System          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  23.04.1        \033[0m"
@@ -37,6 +38,7 @@ echo -e "\033[01;32m[\033[01;37m 1\033[01;32m ]\033[00;37m - Create Penguin's Eg
 echo -e "\033[01;32m[\033[01;37m 2\033[01;32m ]\033[00;37m - Check Penguin's Eggs .iso\033m"
 echo -e "\033[01;32m[\033[01;37m 3\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot file manager\033m"
 echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - Nautilus file manager\033m"
+echo -e "\033[01;32m[\033[01;37m 5\033[01;32m ]\033[00;37m - Penguin's Eggs and Calamares Install \033m"
 echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 
 ######################################################################################################################################################################################
@@ -63,7 +65,6 @@ if [ "$option_choice" != "e" ]; then
             $EGGSCHECK
             ;;
         3)
-            # systemctl --failed
             $EGGSBROOT
         ;;
         4)
@@ -71,20 +72,20 @@ if [ "$option_choice" != "e" ]; then
            echo -e "\nNautilus file manager is execution...\n" 
            sudo nautilus /mnt/VENTOY/ && > /dev/null 2>&1
         ;;
+        
+        5)
+           $EGGSINSTALL
+        ;;
 
         *)
             echo -e "\nInvalid input! Please enter the number contained in the menu!.\n"
             ;;
         esac
-        read -rsn1 -p "Press any key to continue..."
-        $EGGSMENU
-        # $MENU
-    # else
-    #     echo -e "\nops!\n"
-    #     echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
-    #     echo -e "Invalid input! Please enter the number contained in the menu!.\n"
-    #     $JORNALMENU
 
+        read -rsn1 -p "Press any key to continue..."
+        
+        $EGGSMENU
+        
     fi
 else
     $MENU

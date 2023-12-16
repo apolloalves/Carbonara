@@ -3,7 +3,6 @@
 #####################################################################
 #                                                                   #
 # Script: Script for file System Startup time Analyse.              #
-#                                                                   #
 # Author: Apollo Alves                                              #
 # Date: 25/06/2023                                                  #
 #                                                                   #
@@ -45,21 +44,17 @@
 # Note: This script assumes the existence of the `systemd-analyze` and `eog` commands. Make sure you have these                #
 # commands installed on your system before running the script.                                                                 #
 #                                                                                                                              #
-#                                                                                                                              #
 ################################################################################################################################
 
 YES="y"
 NO="n"
 LINE='/bin/line.sh'
 PLOTDIR="$HOME/plot"
- ="$HOME/plot/Analyse.svg"
-LOG="$HOME/plot/systemd-analize.log"
-DATE=$(date +"%Y-%m-%d")
-
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
-DATE=$(date '+%Y-%m-%d %H:%M:%S')
+# DATE=$(date +"%Y-%m-%d")
 
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
 echo
 systemd-analyze
@@ -68,21 +63,29 @@ echo
 echo -n 'Do you want to plot the result of system-analyze (y/n)? '
 read -r SystemAnalyse_question
 
-
 if [ "$YES" = "$SystemAnalyse_question" ]; then
     echo -e "\nWait...\n"
     sleep 1
 
     if [ -d "$PLOTDIR" ]; then
         echo "$PLOTDIR" was generated!
+
+        echo -e "\nGenerating file plot..."
+        systemd-analyze plot >"$PLOT"
+        echo -e "Plot created in: $PLOT"
+        eog $PLOT >/dev/null 2>&1
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+
         echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-        echo "File: $LOG was updated in $DATE!" 
+        echo "File: $LOG was updated in $DATE!"
         gedit $LOG >/dev/null 2>&1
-        echo -e "opening nautilus to analyze the generated files..." 
+        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+        echo -e "opening nautilus to analyze the generated files..."
         nautilus $PLOTDIR >/dev/null 2>&1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
     else
+
         echo "Creating folder plot in: $HOME"
         mkdir "$PLOTDIR" >/dev/null 2>&1
         echo The folder: "$PLOTDIR was created!"
@@ -91,8 +94,8 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         sleep 1
 
         echo -e "\nGenerating file plot..."
+        echo -e "\nOpening the $PLOT file..."
         systemd-analyze plot >"$PLOT"
-        echo -e "Plot created in: $PLOT"
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
         sleep 1
 
@@ -117,6 +120,7 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         sleep 1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     fi
+
 elif [ "$NO" = "$SystemAnalyse_question" ]; then
     echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 else
