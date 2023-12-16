@@ -16,8 +16,12 @@
 #                                                                                                                  #
 ####################################################################################################################
 
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
 echo -e "\n Opening Nautilus...\n"
-    
+
 sleep 2
 sudo nautilus /mnt/EXTST500LM012__CLONRAID/ && >/dev/null
 clear
