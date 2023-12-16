@@ -1,7 +1,5 @@
 #!/bin/bash
-source ~/.bashrc
-. ~/.bashrc
-clear
+
 #####################################################################
 #                                                                   #
 # Script: eggs__wizard.sh                                           #
@@ -9,6 +7,18 @@ clear
 # Date: 10/12/2023                                                  #
 #                                                                   #
 #####################################################################
+######################################################################################################################
+#                                                                                                                    #
+# Description:                                                                                                       #
+# This script serves as a menu for managing Penguin's Eggs, providing options to create, check, and open files with  #
+# broot or Nautilus file managers. It also allows installation of Penguin's Eggs and Calamares.                      #
+#                                                                                                                    #
+######################################################################################################################
+
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+clear
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
@@ -53,29 +63,28 @@ valid_option=true
 if [ "$option_choice" != "e" ]; then
 
     if [ "$valid_option" = true ]; then
-       
 
         case "$option_choice" in
         1)
-           
+
             $EGGSCREATE
             ;;
         2)
-            
+
             $EGGSCHECK
             ;;
         3)
             $EGGSBROOT
-        ;;
+            ;;
         4)
-           sudo mount -o ro,noatime /dev/sdc1 /mnt/VENTOY > /dev/null 2>&1
-           echo -e "\nNautilus file manager is execution...\n" 
-           sudo nautilus /mnt/VENTOY/ && > /dev/null 2>&1
-        ;;
-        
+            sudo mount -o ro,noatime /dev/sdc1 /mnt/VENTOY >/dev/null 2>&1
+            echo -e "\nNautilus file manager is execution...\n"
+            sudo nautilus /mnt/VENTOY/ && >/dev/null 2>&1
+            ;;
+
         5)
-           $EGGSINSTALL
-        ;;
+            $EGGSINSTALL
+            ;;
 
         *)
             echo -e "\nInvalid input! Please enter the number contained in the menu!.\n"
@@ -83,9 +92,9 @@ if [ "$option_choice" != "e" ]; then
         esac
 
         read -rsn1 -p "Press any key to continue..."
-        
+
         $EGGSMENU
-        
+
     fi
 else
     $MENU
