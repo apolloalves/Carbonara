@@ -2,7 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: checkSpace.sh                                             #
+# Script: check__space.sh                                           #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #

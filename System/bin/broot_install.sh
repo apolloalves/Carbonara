@@ -2,7 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: apititude__manager.sh                                     #
+# Script: broot_install.sh                                          #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #
