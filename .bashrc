@@ -7,6 +7,7 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+export PATH=$PATH:/bin
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -48,12 +49,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+# We have color support; assume it's compliant with Ecma-48
+# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+# a case would tend to support setf rather than setaf.)
+color_prompt=yes
     else
-	color_prompt=
+color_prompt=
     fi
 fi
 
@@ -92,7 +93,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='sudo /bin/LinuxBashCare.sh'
+alias fix='sudo /bin/shellCare.sh'
 alias rb='trash-empty --all -f'
 alias cls='clear'
 #alias fixp='/bin/fix__packages-7.0.sh'
@@ -122,7 +123,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source $HOME/.config/broot/launcher/bash/br
+source /home/apollo/.config/broot/launcher/bash/br
 export PATH="$PATH":~/.local/bini
 
 
@@ -137,5 +138,6 @@ cat ~/.cache/wal/sequences
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 
-# Keyboard config 
+# Keyboard config
 setxkbmap -model abnt2 -layout br
+
