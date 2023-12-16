@@ -1,7 +1,5 @@
 #!/bin/bash
-source ~/.bashrc
-. ~/.bashrc
-clear
+
 #####################################################################
 #                                                                   #
 # Script: show__journalctl.sh                                       #
@@ -9,6 +7,34 @@ clear
 # Date: 19/07/2023                                                  #
 #                                                                   #
 #####################################################################
+
+##################################################################################################################
+#                                                                                                                #
+# Description:                                                                                                   #
+# This script provides options to view and monitor system logs using journalctl. It includes commands to view    #
+# failed boot messages, all system logs (including error messages during initialization), check service status,  #
+# and monitor syslog. The menu-driven interface simplifies the process of accessing and analyzing system logs.   #
+#                                                                                                                #
+##################################################################################################################
+
+##################################################################################################################
+#                                                                                                                #
+# systemctl --failed: The systemctl is a powerful tool for managing services on Linux.                           #
+# You can use systemctl to check the status of services and identify failures.                                   #
+# sudo dmesg | grep -i error: The dmesg command checks kernel messages, searching for information about hardware #
+# failures or kernel modules.                                                                                    #
+# You can execute the following command to check kernel messages:                                                #
+# journalctl -b -p err: View all system logs, including boot messages. To see failed boot messages, execute the  #
+# following command:                                                                                             #
+# journalctl -xe - Catalog page                                                                                  #
+#                                                                                                                #
+#                                                                                                                #
+##################################################################################################################
+
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+clear
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
@@ -77,12 +103,6 @@ if [ "$option_choice" != "e" ]; then
         esac
         read -rsn1 -p "Press any key to continue..."
         $JORNALMENU
-        # $MENU
-    # else
-    #     echo -e "\nops!\n"
-    #     echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
-    #     echo -e "Invalid input! Please enter the number contained in the menu!.\n"
-    #     $JORNALMENU
 
     fi
 else
