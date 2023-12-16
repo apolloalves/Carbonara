@@ -51,7 +51,7 @@ scripts=(
     "show__journalctl.sh"
     "disable__services.sh"
     "disabled__ListServices.sh"
-    "ext__disk-2.1.sh"
+    "mount__extDisks.sh"
     "check__space.sh"
     "eggs__wizard.sh"
     "clonraid__backups.sh"
