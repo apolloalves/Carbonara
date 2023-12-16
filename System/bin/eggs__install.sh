@@ -1,6 +1,29 @@
 
 #!/bin/bash
 
+##############################################################################################
+#                                                                                            #
+# Script: eggs__install.sh - Penguins-eggs Installation Script                               #           
+#                                                                                            #
+# Author: Apollo Alves                                                                       #  
+# Date: 16/12/2023                                                                           #
+#                                                                                            #
+# Description:                                                                               #
+# This script automates the installation of Penguins-eggs on a Debian-                       #
+# based system. It performs the following steps:                                             #
+#                                                                                            #
+# 1. Checks if Penguins-eggs is already installed.                                           #
+# 2. Downloads the Penguins-eggs package if not present.                                     #
+# 3. Installs the Penguins-eggs package using dpkg.                                          #
+# 4. Marks the installed package to prevent automatic updates.                               #
+# 5. Installs Penguins-eggs Calamares module.                                                #
+# 6. Removes the downloaded .deb file.                                                       #
+#                                                                                            #
+# Note: This script assumes a Debian-based system and requires superuser                     #
+# (sudo) privileges for package installation.                                                #
+#                                                                                            #
+##############################################################################################
+
     echo -e "\n\033[01;32mVerificando a instalação do Penguins-eggs...\033[00;37m\n"
 
     # Check if the package is already installed
