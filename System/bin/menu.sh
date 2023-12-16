@@ -1,12 +1,19 @@
 #!/bin/bash
 #########################################################################
 #                                                                       #
-# Script: menu.sh - item menu                                           #           
-#                                                                       #
+# Script: menu.sh - Item Menu                                           #           
 # Author: Apollo Alves                                                  #
-# Date: 10/12/2023                                                      #
+# Date: 16/12/2023                                                      #
 #                                                                       #
 #########################################################################
+
+##########################################################################################################
+#                                                                                                        #
+# Description: This bash script provides a menu with various system-related options for easy management. #
+# Each option corresponds to a specific task, such as updating system packages, optimizing performance,  #
+# checking system boot time, disabling native services, and more.                                        #
+#                                                                                                        #
+##########################################################################################################
 
 options=(
 
