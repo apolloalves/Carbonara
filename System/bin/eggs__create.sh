@@ -1,10 +1,13 @@
 #!/bin/bash
 
+#####################################################################
+#                                                                   #
+# Script: eggs__create.sh                                           #
+# Author: Apollo Alves                                              #
+# Date: 16/12/2023                                                  #
+#####################################################################
+
 ########################################################################################################################
-#                                                                                                                      #
-# Script : eggsCreate.sh                                                                                               #
-# Create : 14/04/2023                                                                                                  #
-# Author : Apollo Alves                                                                                                #
 #                                                                                                                      #
 # Description : This is a shell script called "eggsCreate.sh". Here is an overview of what the script does:            #
 #                                                                                                                      #
