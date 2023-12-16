@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=EC2 Instance Connect
-Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=poemefdploggobcnildncjpddhhfmkap
-Icon=brave-poemefdploggobcnildncjpddhhfmkap-Default
-StartupWMClass=crx_poemefdploggobcnildncjpddhhfmkap

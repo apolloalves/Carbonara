@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Conceitos básicos: tutoriais de computação em nuvem para desenvolver na AWS
-Exec=/opt/brave.com/brave/brave-browser --profile-directory=Default --app-id=nkcjgnbgphgodagbbodengleffajhgib
-Icon=brave-nkcjgnbgphgodagbbodengleffajhgib-Default
-StartupWMClass=crx_nkcjgnbgphgodagbbodengleffajhgib
