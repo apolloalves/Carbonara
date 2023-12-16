@@ -1,14 +1,8 @@
 #!/bin/bash
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root." 
-    exit 1
-fi
 
 #####################################################################
 #                                                                   #
-# Script: Script : mount__extDisks.sh                               #
-#                                                                   #
+# Script: mount__extDisks.sh                                        #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #
@@ -38,6 +32,12 @@ fi
 # operations.                                                                                                          #
 #                                                                                                                      #
 ########################################################################################################################
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root." 
+    exit 1
+fi
 
 echo -n "Mount the disk EXTST500LM012__CLONRAID ? (y/n) "
 read -r EXTST500LM012__CLONRAID
