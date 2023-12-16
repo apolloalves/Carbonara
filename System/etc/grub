@@ -14,7 +14,6 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 #GRUB_CMDLINE_LINUX_DEFAULT="loglevel=0"
 GRUB_CMDLINE_LINUX_DEFAULT="noplymouth video=SVIDEO-1:d loglevel=0"
 GRUB_CMDLINE_LINUX=""
-
 # Uncomment to enable BadRAM filtering, modify to suit your needs
 # This works with Linux (no patch required) and with any kernel that obtains
 # the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
