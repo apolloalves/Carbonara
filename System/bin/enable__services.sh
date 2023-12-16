@@ -2,21 +2,16 @@
 
 #############################################
 #                                           #
-# Script: Remove Services of System in boot #
+# Script:enable__services.sh                #
 # Author : Apollo Alves                     #
 # Date : 13/01/2023                         #
 #                                           #
-#                                           #
 #############################################
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root." 
-    exit 1
-fi
+
 
 ##########################################################################################################################
-#                                                                                                                        #               
-# Description: This is a bash script that enables some system services at boot. I'll explain what each part does:        # 
+#                                                                                                                        #
+# Description: This is a bash script that enables some system services at boot. I'll explain what each part does:        #
 #                                                                                                                        #
 # The script starts with a header that contains information about the author and creation date.                          #
 #                                                                                                                        #
@@ -49,10 +44,21 @@ fi
 # vboxballoonctrl-service.service: VirtualBox balloon control service.                                                   #
 # vboxdrv.service: VirtualBox driver service.                                                                            #
 # vboxweb-service.service: VirtualBox web service.                                                                       #
-# Note: Some parts of the script are commented out, which means that these parts are not executed. Therefore, these      # 
+# Note: Some parts of the script are commented out, which means that these parts are not executed. Therefore, these      #
 # services will not be enabled.                                                                                          #
-#                                                                                                                        #
-##########################################################################################################################
+# 
+
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    exit 1
+fi
+
+
 echo -e "\nenabling natives services system..."
 ##########################################################################################################
 #                                                                                                        #
@@ -65,7 +71,7 @@ echo -e "\nenabling natives services system..."
 echo "enabling bluetooth.service"
 echo
 sudo systemctl enable bluetooth.service
-sleep 1 
+sleep 1
 sudo systemctl status bluetooth.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
@@ -79,7 +85,7 @@ line.sh
 echo "enabling accounts-daemon.service..."
 echo
 sudo systemctl enable accounts-daemon.service
-sleep 1 
+sleep 1
 sudo systemctl status accounts-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
@@ -87,7 +93,7 @@ line.sh
 ##########################################################################################################
 # enable avahi-daemon.service : is supposed to provide zero-configuration network discovery, and make it #
 # super-easy to find printers and other hosts on your network. I always enable it and don’t miss it.     #
-###########################################################################################################
+##########################################################################################################
 
 echo "enabling avahi-daemon.service..."
 echo
@@ -132,7 +138,7 @@ echo "enabling ModemManager.service..."
 echo
 sudo systemctl enable ModemManager.service
 sudo systemctl status ModemManager.service
-sleep 1 
+sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -162,11 +168,11 @@ line.sh
 # Warsaw Service : Remove service ITAU Bank # #
 ###############################################
 
-echo -e "enabling warsaw service..."        
+echo -e "enabling warsaw service..."
 echo
-sudo systemctl enable warsaw.service            
-sleep 1 
-sudo systemctl status warsaw.service            
+sudo systemctl enable warsaw.service
+sleep 1
+sudo systemctl status warsaw.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -238,17 +244,17 @@ line.sh
 echo -e "enabling cups.service..."
 echo
 sudo systemctl enable vboxautostart-service.service
-sudo systemctl enable vboxballoonctrl-service.service 
-sudo systemctl enable vboxdrv.service  
-sudo systemctl enable vboxweb-service.service  
+sudo systemctl enable vboxballoonctrl-service.service
+sudo systemctl enable vboxdrv.service
+sudo systemctl enable vboxweb-service.service
 sleep 1
 sudo systemctl status vboxautostart-service.service
-echo 
-sudo systemctl status vboxballoonctrl-service.service 
-echo 
-sudo systemctl status vboxdrv.service  
-echo 
-sudo systemctl status vboxweb-service.service  
+echo
+sudo systemctl status vboxballoonctrl-service.service
+echo
+sudo systemctl status vboxdrv.service
+echo
+sudo systemctl status vboxweb-service.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
