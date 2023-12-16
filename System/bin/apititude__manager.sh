@@ -7,7 +7,7 @@ Copy code
 #                                                                   #
 # Script: apititude__manager.sh                                     #
 # Author: Apollo Alves                                              #
-# Date: 15/14/2023                                                  #
+# Date: 16/12/2023                                                  #
 #                                                                   #
 #####################################################################
 
