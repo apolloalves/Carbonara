@@ -18,11 +18,17 @@
 #                                                                          #
 ############################################################################
 
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
-   echo "This script needs to be run as root." 
-   exit 1
+    echo "This script needs to be run as root."
+    echo "Please execute this with "
+    exit 1
 fi
+
 
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE='/bin/line.sh'
@@ -33,9 +39,9 @@ LINE='/bin/line.sh'
     
     sleep 2
   
-    sudo sync; echo 1 > /proc/sys/vm/drop_caches
-	sudo sync; echo 2 > /proc/sys/vm/drop_caches
-	sudo sync; echo 3 > /proc/sys/vm/drop_caches
+     sync; echo 1 > /proc/sys/vm/drop_caches
+	 sync; echo 2 > /proc/sys/vm/drop_caches
+	 sync; echo 3 > /proc/sys/vm/drop_caches
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
     
     #####################################################################################################################
@@ -43,8 +49,8 @@ LINE='/bin/line.sh'
     #####################################################################################################################
     echo -e "\033[01;32mExecuting prelink...\033[00;37m\n"
     sleep 1
-    sudo prelink -amvR
-    sudo /etc/cron.daily/prelink
+     prelink -amvR
+     /etc/cron.daily/prelink
     sleep 1
     echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
     
@@ -53,7 +59,7 @@ LINE='/bin/line.sh'
     #####################################################################################################################
     echo -e "\n\033[01;32mCleaning RAM memory...\033[00;37m\n"
     sleep 1 
-    sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+     sync && echo 3 |  tee /proc/sys/vm/drop_caches
     #####################################################################################################################
     # CLEAN SWAP
     cleanup__swap.sh
