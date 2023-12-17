@@ -21,7 +21,7 @@
 #                                                                                                                #
 # systemctl --failed: The systemctl is a powerful tool for managing services on Linux.                           #
 # You can use systemctl to check the status of services and identify failures.                                   #
-# sudo dmesg | grep -i error: The dmesg command checks kernel messages, searching for information about hardware #
+#  dmesg | grep -i error: The dmesg command checks kernel messages, searching for information about hardware #
 # failures or kernel modules.                                                                                    #
 # You can execute the following command to check kernel messages:                                                #
 # journalctl -b -p err: View all system logs, including boot messages. To see failed boot messages, execute the  #
@@ -93,7 +93,7 @@ if [ "$option_choice" != "e" ]; then
         
         4)
             
-            sudo tail -f /var/log/syslog
+             tail -f /var/log/syslog
             $JORNALMENU
         ;;
 
