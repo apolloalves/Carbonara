@@ -2,7 +2,7 @@
 
 #####################################################################
 #                                                                   #
-# Script: update.sh                                                 #
+# Script: update__pack-.sh                                          #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #

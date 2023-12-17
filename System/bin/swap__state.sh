@@ -10,7 +10,7 @@
 
 ####################################################################################################################################
 #                                                                                                                                  #
-# Description : This shell script called "swapS__state.sh" displays the state of the system's swap memory. Here is a summary of what  #
+# Description : This shell script called "swap__state.sh" displays the state of the system's swap memory. Here is a summary of what  #
 # it does:                                                                                                                         #
 #                                                                                                                                  #
 # 1. Displays a message indicating that the state of swap memory will be shown.                                                    #
