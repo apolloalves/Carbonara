@@ -19,13 +19,18 @@
 #                                                                           #
 #############################################################################
 
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
-   echo "This script needs to be run as root." 
-   exit 1
+    echo "This script needs to be run as root."
+    echo "Please execute this with "
+    exit 1
 fi
 
 echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
 sleep 2
-sudo apt install gdm3 -y
+ apt install gdm3 -y
 echo -e "\033[01;37m[\033[00;32m all done!\033[01;37m ]\033m\n"
