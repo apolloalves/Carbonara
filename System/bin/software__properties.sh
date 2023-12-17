@@ -1,11 +1,11 @@
 #!/bin/bash
-#########################################################################
-#                                                                       #
-# Script: release__upgrade.sh - Enter a line after each command         #           
-#                                                                       #
-# Author: Apollo Alves                                                  #
-# Date: 14/12/2023                                                      #
-#                                                                       #
-#########################################################################
+#######################################################################
+#                                                                     #
+# Script: stacer__tools.sh                                            #
+# Author: Apollo Alves                                                #
+# Date: 16/12/2023                                                    #
+# Description: This script opens the Software Updates window in tab 4 #
+#                                                                     #
+#######################################################################
 
 sudo software-properties-gtk --open-tab=4
