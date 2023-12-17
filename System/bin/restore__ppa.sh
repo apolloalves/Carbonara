@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#####################################################################
+#                                                                   #
+# Script: restore__ppa.sh                                           #
+# optimizer performance.                                            #
+#                                                                   #
+# Author: Apollo Alves                                              #
+# Date: 16/12/2023                                                  #
+#                                                                   #
+#####################################################################
+
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
    echo "This script needs to be run as root." 

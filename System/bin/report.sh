@@ -1,9 +1,7 @@
 #!/bin/bash
 #####################################################################
 #                                                                   #
-# Script: removepack.sh For updates packages of system and          #
-# optimizer performance.                                            #
-#                                                                   #
+# Script: report.sh                                                 #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #
