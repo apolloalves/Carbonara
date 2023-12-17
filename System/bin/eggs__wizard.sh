@@ -33,6 +33,7 @@ EGGSCREATE='/bin/eggs__create.sh'
 EGGSCHECK='/bin/eggs__check.sh'
 EGGSBROOT='/bin/showbroot__eggs.sh'
 EGGSINSTALL='/bin/eggs__install.sh'
+MANAGER='/bin/nautilus.sh'
 ######################################################################################################################################################################################
 LINE='line.sh'
 echo -e "\033[1;97;100m        LinuxBashCare System          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  23.04.1        \033[0m"
@@ -60,7 +61,7 @@ $LINE
 
 valid_option=true
 
-if [ "$option_choice" != "e" ]; then
+if [ "$option_choice" != "E" ]; then
 
     if [ "$valid_option" = true ]; then
 
@@ -77,12 +78,10 @@ if [ "$option_choice" != "e" ]; then
             $EGGSBROOT
             ;;
         4)
-            sudo mount -o ro,noatime /dev/sdc1 /mnt/VENTOY >/dev/null 2>&1
-            echo -e "\nNautilus file manager is execution...\n"
-            sudo nautilus /mnt/VENTOY/ && >/dev/null 2>&1
+            $MANAGER
             ;;
-
         5)
+
             $EGGSINSTALL
             ;;
 

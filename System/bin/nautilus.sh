@@ -6,7 +6,7 @@
 #                                                                         #
 # Author: Apollo Alves                                                    #
 # Date: 25/06/2023                                                        #
-#                                                                         #                              
+#                                                                         #
 ###########################################################################
 
 ############################################################################################################################
@@ -34,14 +34,24 @@
 #                                                                                                                          #
 ############################################################################################################################
 
-sudo nautilus /mnt/EXTST500LM012__CLONRAID/
+# Directory path
+sudo mount /dev/sdc1 /mnt/VENTOY > /dev/null 2>&1
+sudo mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ > /dev/null 2>&1
+echo "All devices are mounted!"
 
-if pgrep -x "nautilus" > /dev/null
-then
-until ! pgrep -x "nautilus" > /dev/null
-do
-      echo -e > /dev/null
-      sudo killall nautilus
-      echo "fechado"
-done
+# Check if Nautilus processes are running
+if pgrep -x "nautilus" >/dev/null; then
+ 
+    echo "Terminating Nautilus processes..."
+    pkill -f "nautilus" > /dev/null 2>&1
+
+    # Wait until Nautilus processes are completely closed
+    while pgrep -x "nautilus" >/dev/null; do
+        echo -n "."
+        sleep 1
+    done
 fi
+
+# Open Nautilus in the specified directory
+echo "Opening Nautilus..."
+nautilus /mnt/VENTOY &
