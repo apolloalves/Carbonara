@@ -53,7 +53,7 @@ PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
 # DATE=$(date +"%Y-%m-%d")
-MANAGER='/bin/nautilus__systemd.sh'
+# MANAGER='/bin/nautilus__systemd.sh'
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
@@ -82,7 +82,24 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         gedit $LOG >/dev/null 2>&1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
         echo -e "opening nautilus to analyze the generated files..."
-        $MANAGER
+
+        # Check if Nautilus processes are running
+        if pgrep -x "nautilus" >/dev/null; then
+
+            echo "Terminating Nautilus processes..."
+            pkill -f "nautilus" >/dev/null 2>&1
+
+            # Wait until Nautilus processes are completely closed
+            while pgrep -x "nautilus" >/dev/null; do
+                echo -n "."
+                sleep 1
+            done
+        fi
+
+        # Open Nautilus in the specified directory
+        nautilus $PLOTDIR &
+
+        # $MANAGER
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
     else
@@ -117,7 +134,23 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
         echo -e "Opening Nautilus $PLOTDIR"
-        $MANAGER
+       
+        # Check if Nautilus processes are running
+        if pgrep -x "nautilus" >/dev/null; then
+
+            echo "Terminating Nautilus processes..."
+            pkill -f "nautilus" >/dev/null 2>&1
+
+            # Wait until Nautilus processes are completely closed
+            while pgrep -x "nautilus" >/dev/null; do
+                echo -n "."
+                sleep 1
+            done
+        fi
+
+        # Open Nautilus in the specified directory
+        nautilus $PLOTDIR &
+
         sleep 1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     fi
