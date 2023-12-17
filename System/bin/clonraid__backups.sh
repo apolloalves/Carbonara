@@ -20,10 +20,16 @@
 source ~/.bashrc
 . ~/.bashrc
 
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    exit 1
+fi
+
 echo -e "\n Opening Nautilus...\n"
 
 sleep 2
-sudo nautilus /mnt/EXTST500LM012__CLONRAID/ && >/dev/null
+nautilus /mnt/EXTST500LM012__CLONRAID/ && >/dev/null
 clear
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 echo
