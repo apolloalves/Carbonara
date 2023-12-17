@@ -1,13 +1,26 @@
 #!/bin/bash
+#####################################################################
+#                                                                   #
+# Script: virtualbox_services.sh                                    #
+# Author: Apollo Alves                                              #
+# Date: 16/12/2023                                                  #
+#                                                                   #
+#####################################################################
+
+##########################################################################
+#                                                                        #
+# # System Analysis Script                                               #
+# # This script utilizes systemd-analyze to analyze the system's         #
+# # performance. It prompts the user whether they want to generate a     #
+# # plot of the analysis results and opens Nautilus to view the plot and #
+# # log files. It also checks for the existence of necessary commands    #
+# # and creates the required directories. It ends by displaying a line   #
+# # from a specified script (line.sh) if available.                      #
+#                                                                        #
+##########################################################################
+
 source ~/.bashrc
 . ~/.bashrc
-
-#############################################
-#                                           #
-# Script: virtualbox_services               #
-# Author : Apollo Alves                     #
-# Date : 09/12/2023                         #
-#############################################
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
