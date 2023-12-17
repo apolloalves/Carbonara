@@ -32,9 +32,9 @@
 ##################################################################################################################
 
 # Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-clear
+# source ~/.bashrc
+# . ~/.bashrc
+# clear
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
@@ -86,16 +86,17 @@ if [ "$option_choice" != "e" ]; then
             $JORNALMENU
             ;;
         3)
-            
+
             journalctl
             $JORNALMENU
-        ;;
-        
+            ;;
+
         4)
-            
-             tail -f /var/log/syslog
+            echo -e "\nMapping system activities..."
+            sudo tail -f /var/log/syslog
+
             $JORNALMENU
-        ;;
+            ;;
 
         *)
             echo -e "\nInvalid input! Please enter the number contained in the menu!.\n"
