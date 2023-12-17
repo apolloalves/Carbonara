@@ -53,6 +53,7 @@ PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
 # DATE=$(date +"%Y-%m-%d")
+MANAGER='/bin/nautilus__systemd.sh'
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
@@ -81,7 +82,7 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         gedit $LOG >/dev/null 2>&1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
         echo -e "opening nautilus to analyze the generated files..."
-        nautilus $PLOTDIR >/dev/null 2>&1
+        $MANAGER
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
     else
@@ -116,7 +117,7 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
         echo -e "Opening Nautilus $PLOTDIR"
-        nautilus $PLOTDIR >/dev/null 2>&1
+        $MANAGER
         sleep 1
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
     fi
