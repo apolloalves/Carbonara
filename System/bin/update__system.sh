@@ -2,11 +2,9 @@
 
 #####################################################################
 #                                                                   #
-# Script: fix__packages-7.0.sh For updates packages of system and   #
-# optimizer performance.                                            #
-#                                                                   #
+# Script: update__system.sh                                         #
 # Author: Apollo Alves                                              #
-# Date: 25/06/2023                                                  #
+# Date: 16/12/2023                                                  #
 #                                                                   #
 #####################################################################
 
