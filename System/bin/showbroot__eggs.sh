@@ -1,17 +1,17 @@
 #! /bin/bash
+
 #####################################################################
 #                                                                   #
-# Script: showbroot__eggs.sh                                      #
-# 
+# Script: showbroot__eggs.sh                                        #
 # Author: Apollo Alves                                              #
-# Date: 18/19/2023                                                  #
+# Date: 16/12/2023                                                  #
 #                                                                   #
 #####################################################################
 
 #####################################################################################################################
 #                                                                                                                   #
-# This script is responsible for opening the backup directory located at: /mnt/VENTOY which contains the list of     #
-# Penguin's Eggs Files .isos files using broot as a file manager.                                                    #
+# This script is responsible for opening the backup directory located at: /mnt/VENTOY which contains the list of    #
+# Penguin's Eggs Files .isos files using broot as a file manager.                                                   #
 #                                                                                                                   #
 #####################################################################################################################
 
