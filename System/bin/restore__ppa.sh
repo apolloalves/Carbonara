@@ -18,10 +18,15 @@
 #                                                                  #
 ####################################################################
 
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
-   echo "This script needs to be run as root." 
-   exit 1
+    echo "This script needs to be run as root."
+    echo "Please execute this with "
+    exit 1
 fi
 
 # Check if the backup files exist
