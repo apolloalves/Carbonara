@@ -1,12 +1,24 @@
 #!/bin/bash
-############################################################
-# exer.sh : Soma a entrada de dois valores                 #
-# Autor : Apollo Alves                                     #
-# Data Criação :  06/01/2022                               #
-#                                                          #
-# Descrição : Script de que soma a entrada de dois valores #
-#                                                          #
-############################################################
+#####################################################################
+#                                                                   #
+# Script: removepack.sh For updates packages of system and          #
+# optimizer performance.                                            #
+#                                                                   #
+# Author: Apollo Alves                                              #
+# Date: 16/12/2023                                                  #
+#                                                                   #
+#####################################################################
+
+########################################################################
+#                                                                      #
+# System Report Script                                                 #
+# This script generates a comprehensive machine report with various    #
+# system information. It includes details like machine name, OS name,  #
+# kernel version, hardware information, memory details, partition      #
+# information, last boot time, and more. Requires no user interaction. #
+#                                                                      #
+########################################################################
+
 LINE='line.sh'
 HOSTNAME=$(hostname)
 KERNEL=$(uname -r)
