@@ -106,6 +106,6 @@ if [ -n "$path" ]; then
     echo
     broot_install.sh  
     sleep 3
-    LinuxBashCare-10.11.23.sh
+    LinuxBashCare-10.12.23.sh
 
 fi
