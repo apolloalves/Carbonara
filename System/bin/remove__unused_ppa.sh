@@ -1,4 +1,23 @@
 #!/bin/bash
+#####################################################################
+#                                                                   #
+# Script: removepack.sh For updates packages of system and          #
+# optimizer performance.                                            #
+#                                                                   #
+# Author: Apollo Alves                                              #
+# Date: 16/12/2023                                                  #
+#                                                                   #
+#####################################################################
+
+#######################################################################
+#                                                                     #
+# Remove Unused PPAs Script                                           #
+# This script identifies and removes unused Personal Package Archives #
+# (PPAs) from the system. It checks for root privileges, lists unused #
+# PPAs, prompts the user for removal, and provides options to create  #
+# backups and restore them. Requires root privileges to run.          #
+#                                                                     #
+#######################################################################
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
