@@ -17,12 +17,22 @@
 # the rubbish bin and close any active Nautilus instances.            #
 #                                                                     #
 #######################################################################
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
 
-sudo rm -rfv  /home/*/.local/share/recently-used.xbel
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please execute this with "
+    exit 1
+fi
+
+ rm -rfv  /home/*/.local/share/recently-used.xbel
 #Trash-cli - is no longer supported
-#sudo trash-empty --all -f
+# trash-empty --all -f
 
-sudo rm -rf ~/.local/share/Trash/*i
+ rm -rf ~/.local/share/Trash/*i
 
 
 nautilus --quit
