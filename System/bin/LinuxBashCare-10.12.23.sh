@@ -54,10 +54,10 @@
 ######################################################################################################################################################################################
 
 # "Remove unwanted packages of system - ( root user required )    "
-# sudo su -c "bash /bin/unwanted__pack.sh"
+#  su -c "bash /bin/unwanted__pack.sh"
 
 # "Remove unused PPA on system - ( root user required )   "
-# sudo su -c "bash /bin/remove__unused_ppa.sh"
+#  su -c "bash /bin/remove__unused_ppa.sh"
 ######################################################################################################################################################################################
 source ~/.bashrc
 . ~/.bashrc
@@ -65,7 +65,7 @@ source ~/.bashrc
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
     echo "This script needs to be run as root."
-    echo "Please execute this with sudo"
+    echo "Please execute this with "
     exit 1
 fi
 
