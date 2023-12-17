@@ -5,7 +5,7 @@
 # Script:nautilus.sh - Invoke Nautilus by opening a specific directory.   #
 #                                                                         #
 # Author: Apollo Alves                                                    #
-# Date: 25/06/2023                                                        #
+# Date: 16/12/2023                                                        #
 #                                                                         #
 ###########################################################################
 
