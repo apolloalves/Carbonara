@@ -40,9 +40,9 @@ echo -e "\nDisabling natives services system..."
 ##########################################################################################################
 echo "Disabling disable bluetooth.service"
 echo
-sudo systemctl disable bluetooth.service
+systemctl disable bluetooth.service
 sleep 1
-sudo systemctl status bluetooth.service
+systemctl status bluetooth.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 #systemctl status bluetooth.service
@@ -56,9 +56,9 @@ line.sh
 #########################################################################################################
 echo "Disabling accounts-daemon.service..."
 echo
-sudo systemctl disable accounts-daemon.service
+systemctl disable accounts-daemon.service
 sleep 1
-sudo systemctl status accounts-daemon.service
+systemctl status accounts-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 #systemctl status accounts-daemon.service
@@ -72,9 +72,9 @@ line.sh
 
 echo "Disabling disable avahi-daemon.service..."
 echo
-sudo systemctl disable avahi-daemon.service
+systemctl disable avahi-daemon.service
 sleep 1
-sudo systemctl status avahi-daemon.service
+systemctl status avahi-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -88,9 +88,9 @@ line.sh
 
 echo "Disabling brltty.service..."
 echo
-sudo systemctl disable brltty.service
+systemctl disable brltty.service
 sleep 1
-sudo systemctl status brltty.service
+systemctl status brltty.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 #systemctl status brltty.service
@@ -103,9 +103,9 @@ line.sh
 ###################################################################################################################
 echo "Disabling debug-shell.service..."
 echo
-sudo systemctl disable debug-shell.service
+systemctl disable debug-shell.service
 sleep 1
-sudo systemctl status debug-shell.service
+systemctl status debug-shell.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 #systemctl status debug-shell.service
@@ -120,8 +120,8 @@ line.sh
 ########################################################################################################################
 echo "Disabling ModemManager.service..."
 echo
-sudo systemctl disable ModemManager.service
-sudo systemctl status ModemManager.service
+systemctl disable ModemManager.service
+systemctl status ModemManager.service
 sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
@@ -131,8 +131,8 @@ line.sh
 ####################################################################################################################
 
 echo "Disabling pppd-dns.service..."
-sudo systemctl disable pppd-dns.service
-sudo systemctl status pppd-dns.service
+systemctl disable pppd-dns.service
+systemctl status pppd-dns.service
 sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
@@ -154,9 +154,9 @@ line.sh
 
 echo -e "Disabling warsaw service..."
 echo
-sudo systemctl disable warsaw.service
+systemctl disable warsaw.service
 sleep 1
-sudo systemctl status warsaw.service
+systemctl status warsaw.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -166,9 +166,9 @@ line.sh
 
 echo -e "Disabling mysql service..."
 echo
-sudo systemctl disable mysql.service
+systemctl disable mysql.service
 sleep 1
-sudo systemctl status mysql.service
+systemctl status mysql.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -178,9 +178,9 @@ line.sh
 
 echo -e "Disabling network-dispatcher services..."
 echo
-sudo systemctl disable networkd-dispatcher.service systemd-networkd.service
+systemctl disable networkd-dispatcher.service systemd-networkd.service
 sleep 1
-sudo systemctl status networkd-dispatcher.service systemd-networkd.service
+systemctl status networkd-dispatcher.service systemd-networkd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -190,9 +190,9 @@ line.sh
 
 echo -e "Disabling cups.service..."
 echo
-sudo systemctl disable cups.service
+systemctl disable cups.service
 sleep 1
-sudo systemctl status systemctl disable cups.service
+systemctl status systemctl disable cups.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -202,9 +202,9 @@ line.sh
 
 echo -e "Disabling cups.service..."
 echo
-sudo systemctl disable apport.service
+systemctl disable apport.service
 sleep 1
-sudo systemctl status systemctl apport.service
+systemctl status systemctl apport.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -214,10 +214,10 @@ line.sh
 
 echo -e "Disabling disable openvpn.service..."
 echo
-sudo systemctl stop openvpn.service
-sudo systemctl disable openvpn.service
+systemctl stop openvpn.service
+systemctl disable openvpn.service
 sleep 1
-sudo systemctl status systemctl openvpn.service
+systemctl status systemctl openvpn.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -227,18 +227,18 @@ line.sh
 
 echo -e "Disabling cups.service..."
 echo
-sudo systemctl disable vboxautostart-service.service
-sudo systemctl disable vboxballoonctrl-service.service
-sudo systemctl disable vboxdrv.service
-sudo systemctl disable vboxweb-service.service
+systemctl disable vboxautostart-service.service
+systemctl disable vboxballoonctrl-service.service
+systemctl disable vboxdrv.service
+systemctl disable vboxweb-service.service
 sleep 1
-sudo systemctl status vboxautostart-service.service
+systemctl status vboxautostart-service.service
 echo
-sudo systemctl status vboxballoonctrl-service.service
+systemctl status vboxballoonctrl-service.service
 echo
-sudo systemctl status vboxdrv.service
+systemctl status vboxdrv.service
 echo
-sudo systemctl status vboxweb-service.service
+systemctl status vboxweb-service.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -249,8 +249,8 @@ line.sh
 TeamViwer Service
 echo -e "Disabling teamviewer services..."
 echo
-sudo systemctl status teamviewerd.service
+systemctl status teamviewerd.service
 sleep 1
-sudo systemctl disable teamviewerd.service
+systemctl disable teamviewerd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
