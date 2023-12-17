@@ -2,29 +2,23 @@
 
 #####################################################################
 #                                                                   #
-# Script: checkSpace                                                #
-# optimizer performance.                                            #
-#                                                                   #
+# Script: reinstall__gnome-gdm3.sh                                  #
 # Author: Apollo Alves                                              #
-# Date: 14/07/2023                                                  #
+# Date: 16/12/2023                                                  #
 #                                                                   #
 #####################################################################
 
-#####################################################################################################################
-#                                                                                                                   #
-# Description : This shell script named "checkSpace.sh" performs the following actions:                             #
-#                                                                                                                   #
-# 1. Displays a message that gdm3 is being reinstalled.                                                             #
-# 2. Wait 2 seconds.                                                                                                #
-# 3. Use the command "sudo apt install gdm3 -y" to reinstall the gdm3 package. The "-y" parameter is used to        #
-# automatically confirm installation questions.                                                                     #
-# 4. Displays a message indicating that the reinstallation completed successfully.                                  #
-#                                                                                                                   #
-# In short, the script reinstalls the gdm3 package using the apt package manager. gdm3 is a display manager used on #
-# Linux systems, and this reinstallation can be useful to optimize performance or fix problems related to gdm3 if   #
-# necessary.                                                                                                        #
-#                                                                                                                   #
-#####################################################################################################################
+#############################################################################
+#                                                                           #
+# Reinstall GDM3 Script                                                     #
+# This script reinstalls the GNOME Display Manager (GDM3) on a Debian-based #
+# system. It checks if the user has root privileges and then proceeds to    #
+# reinstall GDM3 using the 'apt' package manager. Requires root privileges  #
+# to run.                                                                   #
+#                                                                           #
+#                                                                           #
+#############################################################################
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
    echo "This script needs to be run as root." 
