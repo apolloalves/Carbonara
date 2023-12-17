@@ -45,7 +45,7 @@
 # vboxweb-service.service: VirtualBox web service.                                                                       #
 # Note: Some parts of the script are commented out, which means that these parts are not executed. Therefore, these      #
 # services will not be enabled.                                                                                          #
-# 
+#
 
 # Source and initialize bashrc
 source ~/.bashrc
@@ -56,7 +56,6 @@ if [[ $EUID -ne 0 ]]; then
     echo "This script needs to be run as root."
     exit 1
 fi
-
 
 echo -e "\nenabling natives services system..."
 ##########################################################################################################
@@ -69,9 +68,9 @@ echo -e "\nenabling natives services system..."
 
 echo "enabling bluetooth.service"
 echo
-sudo systemctl enable bluetooth.service
+systemctl enable bluetooth.service
 sleep 1
-sudo systemctl status bluetooth.service
+systemctl status bluetooth.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -83,9 +82,9 @@ line.sh
 
 echo "enabling accounts-daemon.service..."
 echo
-sudo systemctl enable accounts-daemon.service
+systemctl enable accounts-daemon.service
 sleep 1
-sudo systemctl status accounts-daemon.service
+systemctl status accounts-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -96,9 +95,9 @@ line.sh
 
 echo "enabling avahi-daemon.service..."
 echo
-sudo systemctl enable avahi-daemon.service
+systemctl enable avahi-daemon.service
 sleep 1
-sudo systemctl status avahi-daemon.service
+systemctl status avahi-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -108,9 +107,9 @@ line.sh
 
 echo "enabling brltty.service..."
 echo
-sudo systemctl enable brltty.service
+systemctl enable brltty.service
 sleep 1
-sudo systemctl status brltty.service
+systemctl status brltty.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -121,9 +120,9 @@ line.sh
 
 echo "enabling debug-shell.service..."
 echo
-sudo systemctl enable debug-shell.service
+systemctl enable debug-shell.service
 sleep 1
-sudo systemctl status debug-shell.service
+systemctl status debug-shell.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -135,8 +134,8 @@ line.sh
 
 echo "enabling ModemManager.service..."
 echo
-sudo systemctl enable ModemManager.service
-sudo systemctl status ModemManager.service
+systemctl enable ModemManager.service
+systemctl status ModemManager.service
 sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
@@ -146,8 +145,8 @@ line.sh
 ####################################################################################################################
 
 echo "enabling pppd-dns.service..."
-sudo systemctl enable pppd-dns.service
-sudo systemctl status pppd-dns.service
+systemctl enable pppd-dns.service
+systemctl status pppd-dns.service
 sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
@@ -169,9 +168,9 @@ line.sh
 
 echo -e "enabling warsaw service..."
 echo
-sudo systemctl enable warsaw.service
+systemctl enable warsaw.service
 sleep 1
-sudo systemctl status warsaw.service
+systemctl status warsaw.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -181,9 +180,9 @@ line.sh
 
 echo -e "enabling mysql service..."
 echo
-sudo systemctl enable mysql.service
+systemctl enable mysql.service
 sleep 1
-sudo systemctl status mysql.service
+systemctl status mysql.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -193,9 +192,9 @@ line.sh
 
 echo -e "enabling network-dispatcher services..."
 echo
-sudo systemctl enable networkd-dispatcher.service systemd-networkd.service
+systemctl enable networkd-dispatcher.service systemd-networkd.service
 sleep 1
-sudo systemctl status networkd-dispatcher.service systemd-networkd.service
+systemctl status networkd-dispatcher.service systemd-networkd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -205,9 +204,9 @@ line.sh
 
 echo -e "enabling cups.service..."
 echo
-sudo systemctl enable cups.service
+systemctl enable cups.service
 sleep 1
-sudo systemctl status systemctl enable cups.service
+systemctl status systemctl enable cups.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -217,9 +216,9 @@ line.sh
 
 echo -e "enabling cups.service..."
 echo
-sudo systemctl enable apport.service
+systemctl enable apport.service
 sleep 1
-sudo systemctl status systemctl apport.service
+systemctl status systemctl apport.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -229,10 +228,10 @@ line.sh
 
 echo -e "enabling enable openvpn.service..."
 echo
-sudo systemctl stop openvpn.service
-sudo systemctl enable openvpn.service
+systemctl stop openvpn.service
+systemctl enable openvpn.service
 sleep 1
-sudo systemctl status systemctl openvpn.service
+systemctl status systemctl openvpn.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -242,18 +241,18 @@ line.sh
 
 echo -e "enabling cups.service..."
 echo
-sudo systemctl enable vboxautostart-service.service
-sudo systemctl enable vboxballoonctrl-service.service
-sudo systemctl enable vboxdrv.service
-sudo systemctl enable vboxweb-service.service
+systemctl enable vboxautostart-service.service
+systemctl enable vboxballoonctrl-service.service
+systemctl enable vboxdrv.service
+systemctl enable vboxweb-service.service
 sleep 1
-sudo systemctl status vboxautostart-service.service
+systemctl status vboxautostart-service.service
 echo
-sudo systemctl status vboxballoonctrl-service.service
+systemctl status vboxballoonctrl-service.service
 echo
-sudo systemctl status vboxdrv.service
+systemctl status vboxdrv.service
 echo
-sudo systemctl status vboxweb-service.service
+systemctl status vboxweb-service.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
 
@@ -264,8 +263,8 @@ line.sh
 TeamViwer Service
 echo -e "enabling teamviewer services..."
 echo
-sudo systemctl status teamviewerd.service
+systemctl status teamviewerd.service
 sleep 1
-sudo systemctl enable teamviewerd.service
+systemctl enable teamviewerd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
