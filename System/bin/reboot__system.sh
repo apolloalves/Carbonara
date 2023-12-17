@@ -14,6 +14,17 @@ fi
 #                                                                   #
 #####################################################################
 
+#####################################################################
+#                                                                   #
+# Reboot System Script                                              #
+# This script prompts the user if they want to restart the system   #
+# and initiates the reboot if the user chooses 'y'. It also handles #
+# invalid input and provides appropriate messages. Requires root    #
+# privileges to run.                                                #
+#                                                                   #
+#                                                                   #
+#####################################################################
+
 MENU="LinuxBashCare-10.11.23.sh"
 YES="y"
 NO="n"
