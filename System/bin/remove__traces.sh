@@ -22,51 +22,55 @@
 #                                                                    #
 ######################################################################
 
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
     echo "This script needs to be run as root."
-    echo "Please execute this with sudo"
+    echo "Please execute this with "
     exit 1
 fi
-                                                                                                                     
+                                                                                                               
 ##############################################################################################################################
 echo -e "\n\033[01;32mRemoving cache and logs files system...\033[00;37m\n"
 ##############################################################################################################################
     
 sleep 2
-sudo rm -rfv /var/lib/apt/lists/lock
-sudo rm -rfv /var/lib/dpkg/lock-frontend
-sudo rm -rfv /var/lib/apt/lists/* 
-sudo rm -rfv /var/lib/dpkg/lock
-sudo rm -rfv ~/.cache/thumbnails/*
-sudo rm -rfv ~/.cache/thumbnails/normal/*
-sudo rm -rf ~/.cache/icon*
-sudo rm -rfv /var/cache/apt/archives/lock
-sudo rm -rfv ~/.cache/tracker/
-sudo rm -Rfv /var/log/*
+ rm -rfv /var/lib/apt/lists/lock
+ rm -rfv /var/lib/dpkg/lock-frontend
+ rm -rfv /var/lib/apt/lists/* 
+ rm -rfv /var/lib/dpkg/lock
+ rm -rfv ~/.cache/thumbnails/*
+ rm -rfv ~/.cache/thumbnails/normal/*
+ rm -rf ~/.cache/icon*
+ rm -rfv /var/cache/apt/archives/lock
+ rm -rfv ~/.cache/tracker/
+ rm -Rfv /var/log/*
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
 
 #####################################################################################################################
 echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n"
 #####################################################################################################################
 
-sudo apt autoclean -y
-sudo apt -s clean
-sudo apt clean -y
-sudo apt clean all
-sudo apt purge --autoremove
-sudo apt autoremove -y 
+ apt autoclean -y
+ apt -s clean
+ apt clean -y
+ apt clean all
+ apt purge --autoremove
+ apt autoremove -y 
 
 #####################################################################################################################
 echo -e "\n\033[01;32mRemove orphaned libraries...\033[00;37m\n"
 #####################################################################################################################
 
-sudo apt remove "$(deborphan)"
-sudo deborphan --guess-data | xargs sudo apt-get -y remove --purge
-sudo deborphan | xargs sudo apt-get -y remove --purge
+ apt remove "$(deborphan)"
+ deborphan --guess-data | xargs  apt-get -y remove --purge
+ deborphan | xargs  apt-get -y remove --purge
 
-sudo dpkg --configure -a
-sudo apt --fix-broken install
+ dpkg --configure -a
+ apt --fix-broken install
 sleep 1
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 sleep 1
@@ -75,11 +79,11 @@ sleep 1
 echo -e "\n\033[01;32mRemoving Rubbish Bin files...\033[00;37m\n"
 #####################################################################################################################
 
-sudo rm -rfv .local/share/Trash/*
-sudo rm -rfv /home/*/.local/share/Trash/*/**
-sudo rm -rfv /root/.local/share/Trash/*/**
-sudo rm -rfv ~/.local/share/Trash/*i
-sudo rm -rfv  /home/*/.local/share/recently-used.xbel
+ rm -rfv .local/share/Trash/*
+ rm -rfv /home/*/.local/share/Trash/*/**
+ rm -rfv /root/.local/share/Trash/*/**
+ rm -rfv ~/.local/share/Trash/*i
+ rm -rfv  /home/*/.local/share/recently-used.xbel
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
 
 #####################################################################################################################
@@ -90,7 +94,7 @@ sleep 2
 set -eu
 snap list --all | awk '/disabled/{print $1, $3}' |
     while read snapname revision; do
-        sudo snap remove "$snapname" --revision="$revision"
+         snap remove "$snapname" --revision="$revision"
     done
 echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"
 
