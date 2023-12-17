@@ -1,5 +1,24 @@
 #!/bin/bash
- 
+
+#####################################################################
+#                                                                   #
+# Script: unwanted__pack.sh                                         #
+# Author: Apollo Alves                                              #
+# Date: 16/12/2023                                                  #
+#                                                                   #
+#####################################################################
+
+######################################################################
+#                                                                    #
+# Unwanted Package Removal Script                                    #
+# This script is designed to be run with root privileges and removes #
+# unwanted packages from the system, as well as purges leftover      #
+# configurations. It prompts the user for confirmation and executes  #
+# the removal process if the user agrees. If the user declines or    #
+# provides invalid input, it redirects to the specified menu script. #
+#                                                                    #
+######################################################################
+
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
     echo "This script needs to be run as root."
