@@ -20,7 +20,7 @@
 #   - Execute the script with root privileges.                        #
 #                                                                     #
 # Example:                                                            #
-#   sudo ./disabled__ListServices.sh                                  #
+#    ./disabled__ListServices.sh                                  #
 #                                                                     #
 ######################################################################
 
