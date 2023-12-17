@@ -28,6 +28,12 @@
 source ~/.bashrc
 . ~/.bashrc
 
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    exit 1
+fi
+
 FILEPATH="/home/eggs/*.iso"
 TARGETPATH="/mnt/VENTOY"
 CLONRAID="/mnt/EXTST500LM012__CLONRAID/UBUNTU_EGGS/"

@@ -19,12 +19,16 @@
 # 6. Removes the downloaded .deb file.                                                       #
 #                                                                                            #
 # Note: This script assumes a Debian-based system and requires superuser                     #
-# (sudo) privileges for package installation.                                                #
 #                                                                                            #
 ##############################################################################################
 # Source and initialize bashrc
 source ~/.bashrc
 . ~/.bashrc
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    exit 1
+fi
 
 echo -e "\n\033[01;32mVerificando a instalação do Penguins-eggs...\033[00;37m\n"
 
@@ -55,10 +59,10 @@ fi
 echo -e "\n\033[01;32mInstalando Penguins-eggs...\033[00;37m\n"
 
 # Update package information
-sudo apt update -y
+apt update -y
 
 # Install the package
-sudo dpkg -i "$DEB_FILE"
+dpkg -i "$DEB_FILE"
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
@@ -67,10 +71,10 @@ if [ $? -ne 0 ]; then
 fi
 
 # Mark the package as held to prevent automatic updates
-sudo apt-mark hold eggs=9.4.15
+apt-mark hold eggs=9.4.15
 sleep 2
 echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
-sudo eggs calamares --install
+eggs calamares --install
 echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
 # Remove .deb file if it exists
