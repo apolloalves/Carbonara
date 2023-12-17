@@ -3,8 +3,6 @@
 #####################################################################
 #                                                                   #
 # Script: restore__ppa.sh                                           #
-# optimizer performance.                                            #
-#                                                                   #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #
