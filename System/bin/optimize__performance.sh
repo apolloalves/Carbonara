@@ -72,6 +72,7 @@ LINE='/bin/line.sh'
     #####################################################################################################################
     # CLEAN SWAP
     cleanup__swap.sh
-    echo -e "\n\033mall done!\033m\n"
+    echo -e "\n\033[01;05;37mSystem successfully optimized!!\033[00;37m\n"
+
     
     
