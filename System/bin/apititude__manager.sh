@@ -29,9 +29,9 @@
 
     echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
     echo "Checking the existence of aptitude..."
-    sudo apt install aptitude -y
+    apt install aptitude -y
     echo "installation completed!"
     echo -e "\nopenning aptitude..."
     sleep 2
-    sudo aptitude
+    aptitude
     echo "done"
