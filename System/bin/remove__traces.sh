@@ -111,4 +111,5 @@ snap list --all | awk '/disabled/{print $1, $3}' |
     while read snapname revision; do
         sudo snap remove "$snapname" --revision="$revision"
     done
-echo -e "\n\033[01;37m[\033[00;32m done!\033[01;37m ]\033m\n"
+echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"
+
