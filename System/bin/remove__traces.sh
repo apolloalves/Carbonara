@@ -2,44 +2,25 @@
 
 #####################################################################
 #                                                                   #
-# Script: removepack.sh For updates packages of system and   #
+# Script: removepack.sh For updates packages of system and          #
 # optimizer performance.                                            #
 #                                                                   #
 # Author: Apollo Alves                                              #
-# Date: 02/07/2023                                                  #
+# Date: 16/12/2023                                                  #
 #                                                                   #
 #####################################################################
 
-##############################################################################################################################
-# Description : This shell script called "removepack.sh" performs a series of actions to update system packages and optimize #
-# performance. Here is a summary of what it does:                                                                            #
-#                                                                                                                            #
-# 1. Remove cache files and system logs.                                                                                     #
-# - Removes file locks related to the apt package manager.                                                                   #
-# - Removes apt cache files.                                                                                                 #
-# - Removes thumbnails from cache.                                                                                           #
-# - Removes icon cache files.                                                                                                #
-# - Remove cache tracker.                                                                                                    #
-# - Removes system logs.                                                                                                     #
-#                                                                                                                            #
-# 2. Cleans the system.                                                                                                      #
-# - Runs "apt autoclean" and "apt clean" commands to clear apt's package cache.                                              #
-# - Remove orphaned packages using the "deborphan" command.                                                                  #
-# - Configure pending dpkg packages.                                                                                         #
-# - Fix broken packages using "apt --fix-broken install".                                                                    #
-# - Remove history file from file manager.                                                                                   #
-#                                                                                                                            #
-# 3. Remove files from recycle bin.                                                                                          #
-# - Removes files from the recycle bin in the user's and all users' current directory.                                       #
-# - Empty the trash using the "trash-empty" command.                                                                         #
-#                                                                                                                            #
-# 4. Remove old versions of snaps packages.                                                                                  #
-# - Lists all disabled snaps and removes old versions.                                                                       #
-#                                                                                                                            #
-# In short, the script removes cache files and system logs, cleans up the system by removing unnecessary packages            #
-# and files, empties the recycle bin, and removes old versions of snap packages. These actions are performed with            #
-# the aim of freeing up disk space, optimizing performance and removing unwanted files from the system.                      #
-#      
+######################################################################
+#                                                                    #
+# Remove Package and Optimize Performance Script                     #
+# This script is designed to update system packages and optimize     #
+# system performance. It removes cache and log files, cleans the     #
+# system, removes orphaned libraries, clears the rubbish bin, and    #
+# removes old snaps. It checks for root privileges before executing. #
+# Requires root privileges to run.                                   #
+#                                                                    #
+#                                                                    #
+######################################################################
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
