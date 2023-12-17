@@ -59,9 +59,9 @@ case "$removeSwap" in
         used_before=$(free -k | awk '/^Swap:/ {print $3}')
         echo "Used swap space before: $(calculate_size $used_before)"
 
-        sudo swapoff -a
+        swapoff -a
         # We don't delete the swap partition, we just turn it on and off to free up the space
-        sudo swapon -a
+        swapon -a
 
         # Get occupied space after cleaning
         used_after=$(free -k | awk '/^Swap:/ {print $3}')
@@ -73,8 +73,8 @@ case "$removeSwap" in
         echo -e "\n\033[01;37m[\033[00;32m Swap data was cleaned \033[01;37m ]\033m\n"
         echo
         echo -e "\033[01;32mActivating swap...\033[00;37m\n"
-        sudo swapon -a -v
-        sudo sysctl -w vm.swappiness=10
+        swapon -a -v
+        sysctl -w vm.swappiness=10
         echo
         free -h
         echo
