@@ -8,6 +8,15 @@
 #                                                                   #
 #####################################################################
 
+####################################################################
+#                                                                  #
+# Restore PPA Script                                               #
+# This script is designed to be run as root and restores the APT   #
+# configuration files to their original state using previously     #
+# created backups. It checks for root privileges and the existence #
+# of backup files before performing the restoration.               #
+#                                                                  #
+####################################################################
 
 # Check if the user is root
 if [[ $EUID -ne 0 ]]; then
