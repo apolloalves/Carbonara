@@ -79,20 +79,24 @@ if [ "$option_choice" != "e" ]; then
         case "$option_choice" in
         1)
             journalctl -b -p err
+            clear
             $JORNALMENU
             ;;
         2)
             journalctl -xe
+            clear
             $JORNALMENU
             ;;
         3)
-
             journalctl
+            clear
             $JORNALMENU
             ;;
 
         4)
             echo -e "\nMapping system activities..."
+            sudo touch /var/log/syslog 
+            sleep 2 
             sudo tail -f /var/log/syslog
 
             $JORNALMENU
