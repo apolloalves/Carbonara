@@ -25,8 +25,6 @@ LINE='/bin/line.sh'
 PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
-# DATE=$(date +"%Y-%m-%d")
-# MANAGER='/bin/nautilus__systemd.sh'
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
@@ -125,11 +123,11 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         nautilus $PLOTDIR &
 
         sleep 1
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+        echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n" 
     fi
 
 elif [ "$NO" = "$SystemAnalyse_question" ]; then
-    echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+    echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n" 
 else
     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi
