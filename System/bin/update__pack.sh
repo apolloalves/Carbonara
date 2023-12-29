@@ -57,6 +57,7 @@ apt upgrade -y
 apt dist-upgrade -y
 apt full-upgrade -y
 apt --fix-broken install
+dpkg --configure -a
 apt install -f
 
 echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"

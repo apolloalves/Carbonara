@@ -32,7 +32,7 @@ EGGSCREATE='/bin/eggs__create.sh'
 EGGSCHECK='/bin/eggs__check.sh'
 EGGSBROOT='/bin/showbroot__eggs.sh'
 MANAGER='/bin/nautilus.sh'
-EGGSINSTALL='/bin/eggs__in e stall.sh'
+EGGSINSTALL='/bin/eggs__install.sh'
 EGGSMENU='/bin/eggs__wizard.sh'
 
 ######################################################################################################################################################################################
