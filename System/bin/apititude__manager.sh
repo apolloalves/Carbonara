@@ -8,13 +8,15 @@
 #                                                                   #
 #####################################################################
 
-####################################################################################################################
-#                                                                                                                  #
-# Description:                                                                                                     #
-# This script installs and opens the aptitude package manager. It checks if the user has root privileges and then  #
-# installs aptitude. After installation, it opens aptitude for package management.                                 #
-#                                                                                                                  #
-####################################################################################################################
+########################################################################################
+#                                                                                      #
+# Description:                                                                         #
+#                                                                                      #
+# This script installs and opens the aptitude package manager. It checks if the user   #
+# has root privileges and then                                                         #      
+# installs aptitude. After installation, it opens aptitude for package management.     #                            
+#                                                                                      #                            
+########################################################################################
 
 # Source and initialize bashrc
     source ~/.bashrc
@@ -31,6 +33,7 @@
     echo "Checking the existence of aptitude..."
     apt install aptitude -y
     echo "installation completed!"
+    
     echo -e "\nopenning aptitude..."
     sleep 2
     aptitude
