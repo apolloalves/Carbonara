@@ -30,11 +30,11 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo -e "\n\033[01;32mVerificando a instalação do Penguins-eggs...\033[00;37m\n"
+echo -e "\n\033[01;32mVerifying Penguins-eggs installation...\033[00;37m\n"
 
 # Check if the package is already installed
 if dpkg-query -W -f='${Status}' eggs 2>/dev/null | grep -q "install ok installed"; then
-    echo "Penguins-eggs is already installed! skipped..."
+    echo -e "Penguins-eggs is already installed! skipped...\n"
     exit 0
 fi
 
@@ -56,7 +56,9 @@ else
     fi
 fi
 
-echo -e "\n\033[01;32mInstalando Penguins-eggs...\033[00;37m\n"
+echo -e "\n\033[01;32mInstalling Penguins-eggs...\033[00;37m\n"
+
+
 
 # Update package information
 apt update -y
@@ -66,7 +68,7 @@ dpkg -i "$DEB_FILE"
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
-    echo "Erro ao instalar o pacote Penguins-eggs. Saindo."
+    echo "Error installing the Penguins-eggs package. Leaving.."
     exit 1
 fi
 
@@ -83,4 +85,7 @@ if [ -e "$DEB_FILE" ]; then
     rm "$DEB_FILE"
 fi
 
-echo "Penguins-eggs instalado com sucesso."
+# BLINK MESSAGE
+echo -e "\n\033[01;05;37mPenguins-eggs installed successfully!!\033[00;37m\n"
+
+
