@@ -72,6 +72,7 @@ while true; do
 
           rsync -avh --progress $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
           $LINE
+          echo "Openning Google drive..."
           break
 
      else

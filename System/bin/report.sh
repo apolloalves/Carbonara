@@ -36,18 +36,24 @@ CODENAME=$(cat /etc/os-release | grep VERSION= | cut -c22- | cut -c-17)
 PROCESSADOR=$(cat /proc/cpuinfo | grep "model name" | head -n1 | cut -c14-)
 NUCLEOS=$(cat /proc/cpuinfo | grep "model name" | wc -l)
 MEMTOTAL=$(cat /proc/meminfo | grep MemTotal | tr -d ' ' | cut -d: -f2 )
-PARTITIONS=$(df -h /dev/md127p1)
+PARTITIONS=$(df -h / && echo "" && df -h /mnt/EXTST500LM012__CLONRAID && echo "" && df -h /mnt/VENTOY)
 DATE=$(date | cut -c-25)
 LASTBOOT=$(systemd-analyze)
+VIDEO=$(lspci | grep -i vga | cut -c 36-)
 WHO=$(who)
+
+MOTHERBOARD=$(dmidecode -t baseboard | grep "Manufacturer") 
+MODEL=$(dmidecode -t baseboard | grep "Product Name")
+
+
 clear
 $LINE
 
 
 echo -e "Machine Report"
 $LINE
-echo -e "Machine Name: $HOSTNAME"
-echo -e "Distro Name: $DISTRONAME\n"  
+echo -e "\nMachine Name: $HOSTNAME"
+echo -e "Distro Name: $DISTRONAME"  
 echo -e "OS Name: $OSNAME"
 echo -e "Codename : $CODENAME" 
 echo -e "Version Kernel: $KERNEL"
@@ -56,11 +62,20 @@ echo -n "User: " && whoami
 echo
 $LINE
 echo -e "\nHardwares: \n"
+echo $MOTHERBOARD
+echo $MODEL
 echo -e "Processador: $PROCESSADOR"  
 echo "Núcleos: $NUCLEOS" 
 echo -e "Total Memory: $MEMTOTAL"
+echo "Video: $VIDEO"
+echo
 $LINE
-echo -e "\nPartitions : $PARTITIONS\n" 
-echo -e "Last boot : $LASTBOOT\n"
+
+echo -e "\nPartitions: \n"
+echo -e "$PARTITIONS\n" 
+$LINE
+echo -e "\nLast boot : $LASTBOOT\n"
+echo
 echo -e "Report Date: $DATE"
-echo 
+$LINE
+echo

@@ -28,12 +28,13 @@ fi
 
 ######################################################################################################################################################################################
 MENU='/bin/LinuxBashCare-10.12.23.sh'
-EGGSMENU='/bin/eggs__wizard.sh'
 EGGSCREATE='/bin/eggs__create.sh'
 EGGSCHECK='/bin/eggs__check.sh'
 EGGSBROOT='/bin/showbroot__eggs.sh'
-EGGSINSTALL='/bin/eggs__install.sh'
 MANAGER='/bin/nautilus.sh'
+EGGSINSTALL='/bin/eggs__in e stall.sh'
+EGGSMENU='/bin/eggs__wizard.sh'
+
 ######################################################################################################################################################################################
 LINE='line.sh'
 echo -e "\033[1;97;100m        LinuxBashCare System          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  23.04.1        \033[0m"
@@ -49,6 +50,7 @@ echo -e "\033[01;32m[\033[01;37m 1\033[01;32m ]\033[00;37m - Create Penguin's Eg
 echo -e "\033[01;32m[\033[01;37m 2\033[01;32m ]\033[00;37m - Check Penguin's Eggs .iso\033m"
 echo -e "\033[01;32m[\033[01;37m 3\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - broot file manager\033m"
 echo -e "\033[01;32m[\033[01;37m 4\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files - Nautilus file manager\033m"
+# echo -e "\033[01;32m[\033[01;37m 5\033[01;32m ]\033[00;37m - Open my Penguin's Eggs Files in Google Drive backup folders \033m"
 echo -e "\033[01;32m[\033[01;37m 5\033[01;32m ]\033[00;37m - Penguin's Eggs and Calamares Install \033m"
 echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 
@@ -84,7 +86,7 @@ if [ "$option_choice" != "E" ]; then
 
             $EGGSINSTALL
             ;;
-
+        
         *)
             echo -e "\nInvalid input! Please enter the number contained in the menu!.\n"
             ;;
