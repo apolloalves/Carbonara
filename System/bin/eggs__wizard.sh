@@ -63,7 +63,7 @@ $LINE
 
 valid_option=true
 
-if [ "$option_choice" != "E" || "$option_choice" != "e" ]; then
+if [ "$option_choice" != "E" ] || ["$option_choice" != "e" ]; then
 
     if [ "$valid_option" = true ]; then
 
