@@ -1,14 +1,11 @@
 #!/bin/bash
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
 # Check if the user is root
-if [[ $EUID -ne 0 ]]; then
+if (( EUID != 0 )); then
     echo "This script needs to be run as root."
-    echo "Please execute this with "
+    echo "Please execute this with sudo."
     exit 1
 fi
+
 
 ############################################################################
 #                                                                          #
@@ -31,6 +28,15 @@ fi
 #                                                                           #
 #############################################################################
 
+# Function to print status
+print_status() {
+    if [ "$?" -eq 0 ]; then
+        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    else
+        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+    fi
+}
+
 
 # GREEN MESSAGE
 #############################################################################
@@ -50,7 +56,7 @@ rm -rfv ~/.cache/tracker/
 rm -Rfv /var/log/*
 
 # OK MESSAGE
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
+print_status
 
 # GREEN MESSAGE
 #############################################################################
@@ -65,7 +71,7 @@ sudo apt purge --autoremove
 sudo apt autoremove -y
 
 # OK MESSAGE
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
+print_status
 
 # GREEN MESSAGE
 #############################################################################
@@ -81,7 +87,7 @@ apt --fix-broken install
 sleep 1
 
 # OK MESSAGE
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
+print_status
 
 # GREEN MESSAGE
 #############################################################################
@@ -97,19 +103,20 @@ sudo journalctl --vacuum-size=50M
 history -c && history -w
 
 # OK MESSAGE
-echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
+print_status
 
 # GREEN MESSAGE
 #############################################################################
 echo -e "\n\033[01;32mRemoving old snaps of system...\033[00;37m\n"         #
 #############################################################################
 
-sleep 2
 set -eu
 snap list --all | awk '/disabled/{print $1, $3}' |
     while read snapname revision; do
         snap remove "$snapname" --revision="$revision"
     done
+    echo "No snaps to remove!"
+
 
 # BLINK SUCCESSFULLY MESSAGE
 echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"
