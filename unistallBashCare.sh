@@ -8,6 +8,7 @@ fi
 
 # Defines the root directory from which find will be run
 ROOT_DIR="/"
+LINUXBASHCARE_DIR="$HOME/LinuxBashCare"
 echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
 
 # Use the find command to locate the "LinuxBashCare" folder
@@ -30,7 +31,7 @@ if [ -n "$path" ]; then
     sleep 2
     find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
     find '/bin/' -name "LinuxBashCare-*.sh" -exec sudo rm -rfv {} \; | wc -l
-    sudo rm -rfv $HOME/LinuxBashCare && sudo rm -rfv $HOME/plot
+    sudo rm -rfv $HOME/plot
     echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
         
 ####################################################################################
@@ -122,7 +123,11 @@ if [ -n "$path" ]; then
     sleep 2 
     sudo apt update -y && sudo apt upgrade -y
     echo -e "\n\033[01;05;37mLinuxBashCare-10.12.23 successfully removed!!\033[00;37m\n"
+    echo "If you decide to install LinuxBashCare again, access the in folder : $LINUXBASHCARE_DIR"
+    echo "end run ./installBashCare.sh as sudo."
+    echo "Thank you!"
     sleep 2 
+    echo "bye!"
     clear 
     exit
 
