@@ -31,6 +31,7 @@ fi
 #                                                                           #
 #############################################################################
 
+
 # GREEN MESSAGE
 #############################################################################
 echo -e "\n\033[01;32mRemoving cache and logs files system...\033[00;37m\n" #
@@ -56,12 +57,12 @@ echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
 echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n" #              #
 #############################################################################
 
-apt autoclean -y
-apt -s clean
-apt clean -y
-apt clean all
-apt purge --autoremove
-apt autoremove -y
+sudo apt autoclean -y
+sudo apt -s clean
+sudo apt clean -y
+sudo apt clean all
+sudo apt purge --autoremove
+sudo apt autoremove -y
 
 # OK MESSAGE
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m'
@@ -92,6 +93,8 @@ rm -rfv /home/*/.local/share/Trash/*/**
 rm -rfv /root/.local/share/Trash/*/**
 rm -rfv ~/.local/share/Trash/*i
 rm -rfv /home/*/.local/share/recently-used.xbel
+sudo journalctl --vacuum-size=50M
+history -c && history -w
 
 # OK MESSAGE
 echo -e '\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n'
