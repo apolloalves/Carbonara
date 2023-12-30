@@ -1,6 +1,12 @@
 #!/bin/bash
-# Defines the root directory from which find will be run
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 
+# Defines the root directory from which find will be run
 ROOT_DIR="/"
 echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
 
@@ -86,7 +92,8 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;32muninstalling Penguins-eggs...\033[00;37m\n"
     sudo rm -rfv /etc/apt/trusted.gpg.d/penguins-eggs.gpg
     sudo rm -rfv /etc/apt/sources.list.d/penguins-eggs.list
-    sudo apt purge eggs=* 
+    dpkg --remove --force-remove-reinstreq eggs
+    sudo apt purge eggs=* -y
     echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
 
 ####################################################################################
