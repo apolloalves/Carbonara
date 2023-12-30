@@ -30,11 +30,10 @@ fi
 echo -e "\n\033[01;32mVerifying Penguins-eggs installation...\033[00;37m\n"
 
 # Check if the package is already installed
-if dpkg-query -W -f='${Status}' eggs 2>/dev/null | grep -q "install ok installed"; then
-    echo -e "Penguins-eggs is already installed! skipped...\n"
+if dpkg -l | grep -w "eggs" >/dev/null; then
+    echo -e "\033[01;05;37mPenguins-eggs is already installed! skipped!!\033[00;37m\n"
     exit 0
 fi
-
 # .deb file name
 DEB_FILE="eggs_9.4.15_amd64.deb"
 
@@ -76,12 +75,13 @@ eggs calamares --install
 echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
 # Remove .deb file if it exists
-if [ -e "$DEB_FILE" ]; then
-    echo "Removed $DEB_FILE file."
-    rm "$DEB_FILE"
-fi
+# if [ -e "$DEB_FILE" ]; then
+#     echo "Removed $DEB_FILE file."
+#     rm "$DEB_FILE"
+# fi
 
 # BLINK MESSAGE
 echo -e "\n\033[01;05;37mPenguins-eggs installed successfully!!\033[00;37m\n"
+
 
 
