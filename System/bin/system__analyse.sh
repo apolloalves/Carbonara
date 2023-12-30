@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: system__analyse.sh                                        #
@@ -105,7 +110,7 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
         echo -e "Opening Nautilus $PLOTDIR"
-       
+
         # Check if Nautilus processes are running
         if pgrep -x "nautilus" >/dev/null; then
 
@@ -123,11 +128,11 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         nautilus $PLOTDIR &
 
         sleep 1
-        echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n" 
+        echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
     fi
 
 elif [ "$NO" = "$SystemAnalyse_question" ]; then
-    echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n" 
+    echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
 else
     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi

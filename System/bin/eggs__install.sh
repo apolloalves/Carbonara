@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 ##############################################################################################
 #                                                                                            #
 # Script: eggs__install.sh - Penguins-eggs Installation Script                               #
@@ -21,14 +26,6 @@
 # Note: This script assumes a Debian-based system and requires superuser                     #
 #                                                                                            #
 ##############################################################################################
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    exit 1
-fi
 
 echo -e "\n\033[01;32mVerifying Penguins-eggs installation...\033[00;37m\n"
 

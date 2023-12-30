@@ -1,4 +1,10 @@
 #!/bin/bash
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: remove__unused_ppa.sh                                     #
@@ -16,18 +22,6 @@
 # backups and restore them. Requires root privileges to run.          #
 #                                                                     #
 #######################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with "
-    exit 1
-fi
-
 
 # Get the list of all PPAs installed on the system
 installed_ppas=$(find /etc/apt/sources.list.d/ -type f -name "*.list" -exec awk -F'/' '/^deb / {print $NF}' {} \; | cut -d: -f1 | sort -u)

@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: eggs__wizard.sh                                           #
@@ -14,17 +19,7 @@
 # broot or Nautilus file managers. It also allows installation of Penguin's Eggs and Calamares.                      #
 #                                                                                                                    #
 ######################################################################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
 clear
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    exit 1
-fi
 
 ######################################################################################################################################################################################
 MENU='/bin/LinuxBashCare-10.12.23.sh'

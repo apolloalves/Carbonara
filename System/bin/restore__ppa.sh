@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: restore__ppa.sh                                           #
@@ -17,17 +22,6 @@
 # of backup files before performing the restoration.               #
 #                                                                  #
 ####################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with "
-    exit 1
-fi
 
 # Check if the backup files exist
 if [[ ! -f /etc/apt/sources.list.bak || ! -d /etc/apt/sources.list.d.bak ]]; then

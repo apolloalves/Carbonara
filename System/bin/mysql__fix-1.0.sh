@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: mysql__fix-1.0.sh                                         #
@@ -37,17 +42,6 @@
 #                                                                                                 #
 #                                                                                                 #
 ###################################################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with "
-    exit 1
-fi
 
 echo -n 'Would you like to remove mysql from the system? (y/n) '
 read -r mysql_question

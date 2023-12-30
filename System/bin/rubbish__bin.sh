@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: rubbish__bin.sh                                           #
@@ -17,16 +22,6 @@
 # the rubbish bin and close any active Nautilus instances.            #
 #                                                                     #
 #######################################################################
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with "
-    exit 1
-fi
 
  rm -rfv  /home/*/.local/share/recently-used.xbel
 #Trash-cli - is no longer supported

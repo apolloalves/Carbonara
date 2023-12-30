@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: disabled__ListServices.sh                                 #
@@ -20,19 +25,9 @@
 #   - Execute the script with root privileges.                        #
 #                                                                     #
 # Example:                                                            #
-#    ./disabled__ListServices.sh                                  #
+#    ./disabled__ListServices.sh                                      #
 #                                                                     #
 ######################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    exit 1
-fi
 
 LINE='line.sh'
 PLOT="$HOME/plot/Disable-ServicesList.log"

@@ -1,4 +1,10 @@
 #!/bin/bash
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 
 #####################################################################
 #                                                                   #
@@ -15,17 +21,6 @@
 # installs aptitude. After installation, it opens aptitude for package management.                                #
 #                                                                                                                 #
 ##################################################################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with sudo"
-    exit 1
-fi
 
 echo -e "\n\033[01;37m\033[01mremoving previous versions broot...\033[00;37m\033[00m\n"
 

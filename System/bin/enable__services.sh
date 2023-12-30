@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #############################################
 #                                           #
 # Script:enable__services.sh                #
@@ -46,17 +51,6 @@
 # Note: Some parts of the script are commented out, which means that these parts are not executed. Therefore, these      #
 # services will not be enabled.                                                                                          #
 #
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    exit 1
-fi
-
 echo -e "\nenabling natives services system..."
 ##########################################################################################################
 #                                                                                                        #

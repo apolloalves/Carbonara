@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: unwanted__pack.sh                                         #
@@ -18,17 +23,6 @@
 # provides invalid input, it redirects to the specified menu script. #
 #                                                                    #
 ######################################################################
-
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-      echo "This script needs to be run as root."
-      echo "Please execute this with "
-      exit 1
-fi
 
 MENU="LinuxBashCare-10.11.23.sh"
 

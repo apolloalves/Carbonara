@@ -1,5 +1,10 @@
 #!/bin/bash
-
+# Check if the user is root
+if (( EUID != 0 )); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 #####################################################################
 #                                                                   #
 # Script: mount__extDisks.sh                                        #
@@ -32,15 +37,7 @@
 # operations.                                                                                                          #
 #                                                                                                                      #
 ########################################################################################################################
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
 
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root." 
-    exit 1
-fi
 
 echo -n "Mount the disk EXTST500LM012__CLONRAID ? (y/n) "
 read -r EXTST500LM012__CLONRAID
