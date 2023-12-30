@@ -1,4 +1,14 @@
 #!/bin/bash
+# Source and initialize bashrc
+source ~/.bashrc
+. ~/.bashrc
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please execute this with "
+    exit 1
+fi
 
 #####################################################################
 #                                                                   #
@@ -9,6 +19,7 @@
 #####################################################################
 
 #######################################################################################################################
+#                                                                                                                     #      
 # The script in question is a Bash script that aims to update operating system packages and optimize performance. It  #
 # prompts the user to respond whether they want to update system packages or clean up system packages.                #
 #                                                                                                                     #
@@ -35,38 +46,50 @@
 #                                                                                                                     #
 #######################################################################################################################
 
-# Source and initialize bashrc
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with "
-    exit 1
-fi
+##############################################################################
+# COMMANDS                                                                   #
+#                                                                            #
+# 1. Update the package list                                                 #
+# 2. Fix missing or broken packages                                          #
+# 3. Perform distribution upgrade (more aggressive in dependency resolution) #
+# 4. Upgrade packages                                                        #
+# 5. Ensure all dependencies are satisfied (optional)                        #
+# 6. Install or update specific packages                                     #
+# 7. Fix potential configuration issues with dpkg                            #
+# 8. Install aptitude (optional)                                             #
+# 9. Resolve missing dependencies (optional)                                 #
+#                                                                            #
+##############################################################################
 
 # GREEN MESSAGE
-echo -e "\n\033[01;32mUpdating system packages...\033[00;37m\n"
+##############################################################################
+echo -e "\n\033[01;32mUpdating system packages...\033[00;37m\n"              #                                      
+##############################################################################
 
 sleep 1
-apt update -y
-apt update --fix-missing
-apt install aptitude -y
-apt install base-files sosreport ubuntu-server
-apt upgrade -y
-apt dist-upgrade -y
-apt full-upgrade -y
-apt --fix-broken install
-dpkg --configure -a
-apt install -f
+sudo apt update -y
+sudo apt --fix-missing install
+sudo apt --fix-broken install
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
+sudo apt full-upgrade -y
+sudo apt install base-files sosreport
+sudo dpkg --configure -a
+sudo apt install aptitude -y
+sudo apt install -f
 
 # GREEN MESSAGE
-echo -e "\n\033[01;32mChecking drivers updates...\033[00;37m\n"
+##############################################################################
+echo -e "\n\033[01;32mChecking drivers updates...\033[00;37m\n"              #
+##############################################################################
+
 ubuntu-drivers autoinstall
 
 # GREEN MESSAGE
-echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m\n"
+##############################################################################
+echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m\n"          #
+##############################################################################
+
 flatpak update -y
 
 # BLINK MESSAGE
