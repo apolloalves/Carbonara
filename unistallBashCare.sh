@@ -121,6 +121,10 @@ if [ -n "$path" ]; then
     echo 'updated system packages...'
     sleep 2 
     sudo apt update -y && sudo apt upgrade -y
-    echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
+    echo -e "\n\033[01;05;37mLinuxBashCare-10.12.23 successfully removed!!\033[00;37m\n"
+    sleep 2 
+    clear 
+    exit
+
 
 fi

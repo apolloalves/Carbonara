@@ -110,6 +110,9 @@ if [ -n "$path" ]; then
     sleep 1
     echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
     source /bin/eggs__install.sh
+    echo -e "\n\033[01;05;37mLinuxBashCare-10.12.23 successfully installed!!\033[00;37m\n"
+    echo "Executando LinuxBashCare-10.12.23..."
+    sleep 2 
     LinuxBashCare-10.12.23.sh
 
 fi
