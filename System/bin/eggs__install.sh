@@ -59,7 +59,8 @@ echo -e "\n\033[01;32mInstalling Penguins-eggs...\033[00;37m\n"
 
 # Update package information
 apt update -y
-
+apt install -f 
+dpkg --configure -a
 # Install the package
 dpkg -i "$DEB_FILE"
 
