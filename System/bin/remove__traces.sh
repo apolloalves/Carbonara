@@ -96,5 +96,7 @@ snap list --all | awk '/disabled/{print $1, $3}' |
     while read snapname revision; do
          snap remove "$snapname" --revision="$revision"
     done
+
+# BLINK MESSAGE
 echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"
 

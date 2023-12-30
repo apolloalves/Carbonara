@@ -46,7 +46,8 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo -e "\nUpdating system packages...\n"
+# GREEN MESSAGE
+echo -e "\n\033[01;32mUpdating system packages...\033[00;37m\n"
 
 sleep 1
 apt update -y
@@ -60,11 +61,16 @@ apt --fix-broken install
 dpkg --configure -a
 apt install -f
 
-echo -e "\n\033[00;37mChecking drivers updates...\033[00;37m"
+# GREEN MESSAGE
+echo -e "\n\033[01;32mChecking drivers updates...\033[00;37m\n"
 ubuntu-drivers autoinstall
-echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
 
-echo -e "\n\033[00;37mChecking for flatpak updates...\033[00;37m"
+# GREEN MESSAGE
+echo -e "\n\033[01;32mChecking for flatpak updates...\033[00;37m\n"
 flatpak update -y
-echo -e "\n\033[01;05;37mSystem packages have been updated successfully!!\033[00;37m\n"
-sleep 3
+
+# BLINK MESSAGE
+echo -e "\n\033[01;05;32mSystem packages have been updated successfully!!\033[00;37m\n"
+sleep 1
+
+

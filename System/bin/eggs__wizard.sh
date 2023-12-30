@@ -63,9 +63,8 @@ $LINE
 
 valid_option=true
 
-if [ "$option_choice" != "E" ] || [ "$option_choice" != "e" ]
+if [ "$option_choice" != "E" -a "$option_choice" != "e" ]; then
 
- then
 
     if [ "$valid_option" = true ]; then
 
@@ -100,5 +99,7 @@ if [ "$option_choice" != "E" ] || [ "$option_choice" != "e" ]
 
     fi
 else
+    echo -e '\nBye!'
+    sleep 1 
     $MENU
 fi

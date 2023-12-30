@@ -1,4 +1,13 @@
 #!/bin/bash
+source ~/.bashrc
+. ~/.bashrc
+
+# Check if the user is root
+if [[ $EUID -ne 0 ]]; then
+    echo "This script needs to be run as root."
+    echo "Please execute this with "
+    exit 1
+fi
 
 #############################################
 #                                           #
@@ -29,11 +38,20 @@
 # PRINT FATAL ERROR "RED" - "BLINK"                                                                              #
 # echo -e '\033[05;31merro fatal\033[00;37m'                                                                     #
 #                                                                                                                #
+# PRINT MESSAGE WHITE - "BLINK"                                                                                  #
+# echo -e '\033[01;05;37mDONE\033[00;37m'                                                                        #
+#                                                                                                                #
+# BLINK MESSAGE                                                                                                  #
+# echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"              #
+#                                                                                                                #
 # PRINT IN "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
 # echo -e '\033[01;37mubuntu \033[04;32mfocal fossa\033[00;37m!!!'                                               #
 #                                                                                                                #
 # OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                            #
 # echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"                               #
+#                                                                                                                #
+# OK MESSAGE - DEFAUL                                                                                            #
+# echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"                                                     #
 #                                                                                                                #
 # DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                                              #
 #                                                                                                                #
@@ -45,7 +63,7 @@
 #                                                                                                                #
 # WAIT                                                                                                           #
 # echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"                                                    #
-#                                                     #                                                          #
+#                                                                                                                #
 # BACKGROUND WHITE IN TEXT WHITE                                                                                 #
 # echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"                                       #
 #                                                                                                                #
@@ -59,15 +77,6 @@
 # "Remove unused PPA on system - ( root user required )   "
 #  su -c "bash /bin/remove__unused_ppa.sh"
 ######################################################################################################################################################################################
-source ~/.bashrc
-. ~/.bashrc
-
-# Check if the user is root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script needs to be run as root."
-    echo "Please execute this with "
-    exit 1
-fi
 
 source /bin/menu.sh
 source /bin/scripts.sh
@@ -122,6 +131,7 @@ while true; do
     "[")                      # Detect arrow sequence (used by arrow keys)
         read -rsn2 -t 0.1 key # Lê o restante da sequência
         case "$key" in
+
         "A") # Up arrow
             selected=$(((selected - 1 + ${#options[@]}) % ${#options[@]}))
             ;;
