@@ -90,10 +90,6 @@ if [ -n "$path" ]; then
     sudo apt install stacer -y
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
-    echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
-    source /bin/eggs__install.sh
-    
-
     echo -e "\n\033[01;32minstalling flatpak...\033[00;37m\n"
     sleep 2
     sudo apt install flatpak -y
@@ -105,7 +101,9 @@ if [ -n "$path" ]; then
     echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
     echo
     broot_install.sh  
-    sleep 3
+    sleep 1
+    echo -e "\n\033[01;32minstalling Penguins-eggs...\033[00;37m\n"
+    source /bin/eggs__install.sh
     LinuxBashCare-10.12.23.sh
 
 fi
