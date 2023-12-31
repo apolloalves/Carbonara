@@ -110,7 +110,6 @@ if [ -n "$path" ]; then
 # feedback remove LinuxBashCare
 ####################################################################################
 
-    echo 'LinuxBashCare has been successfully removed!'
     sleep 2 
     echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n"
     sudo apt autoclean -y
@@ -122,6 +121,7 @@ if [ -n "$path" ]; then
     echo 'updated system packages...'
     sleep 2 
     sudo apt update -y && sudo apt upgrade -y
+    sleep 5
     echo -e "\n\033[01;05;37mLinuxBashCare-10.12.23 successfully removed!!\033[00;37m\n"
     echo "If you decide to install LinuxBashCare again, access the in folder : $LINUXBASHCARE_DIR"
     echo "end run ./installBashCare.sh as sudo."
