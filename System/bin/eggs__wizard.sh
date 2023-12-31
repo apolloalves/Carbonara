@@ -75,7 +75,9 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             $EGGSCHECK
             ;;
         3)
+            sudo mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ >/dev/null 2>&1
             $EGGSBROOT
+
             ;;
         4)
             $MANAGER
