@@ -41,7 +41,7 @@ DEB_FILE="eggs_9.4.15_amd64.deb"
 if [ -e "$DEB_FILE" ]; then
     echo "The file $DEB_FILE already exists in the directory. Skipping the download."
 else
-    echo -e "\n\033[01;32mBaixando o pacote Penguins-eggs...\033[00;37m\n"
+    echo -e "\n\033[01;32mDownloading the Penguins-eggs package...\033[00;37m\n"
     # Download the Penguins-eggs package
     curl -LJO "https://sourceforge.net/projects/penguins-eggs/files/DEBS/versions/$DEB_FILE/download"
     # curl -LJO --connect-timeout 10 --max-time 600 "https://github.com/apolloalves/LinuxBashCare/raw/10.12.23/$DEB_FILE"
@@ -53,14 +53,11 @@ else
     fi
 fi
 
-echo -e "\n\033[01;32mInstalling Penguins-eggs...\033[00;37m\n"
-
-# Update package information
+# Install the package
 apt update -y
 dpkg -i "$DEB_FILE"
 dpkg --configure -a
 apt install -f 
-# Install the package
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
@@ -83,6 +80,7 @@ echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
 
 # BLINK MESSAGE
 echo -e "\n\033[01;05;37mPenguins-eggs installed successfully!!\033[00;37m\n"
+sleep 5
 
 
 
