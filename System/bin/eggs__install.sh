@@ -43,8 +43,8 @@ if [ -e "$DEB_FILE" ]; then
 else
     echo -e "\n\033[01;32mBaixando o pacote Penguins-eggs...\033[00;37m\n"
     # Download the Penguins-eggs package
-    # curl -LJO "https://sourceforge.net/projects/penguins-eggs/files/DEBS/versions/$DEB_FILE/download"
-    curl -LJO --connect-timeout 10 --max-time 600 "https://github.com/apolloalves/LinuxBashCare/raw/10.12.23/$DEB_FILE"
+    curl -LJO "https://sourceforge.net/projects/penguins-eggs/files/DEBS/versions/$DEB_FILE/download"
+    # curl -LJO --connect-timeout 10 --max-time 600 "https://github.com/apolloalves/LinuxBashCare/raw/10.12.23/$DEB_FILE"
 
     # Check if the download was successful
     if [ $? -ne 0 ]; then
