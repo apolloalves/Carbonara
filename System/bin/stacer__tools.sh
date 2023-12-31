@@ -39,7 +39,8 @@
 
 MENU="LinuxBashCare-10.12.23.sh"
 
-echo -n 'Do you want to open stacer (y/n)? '
+echo
+printf 'Do you want to open stacer (y/n) ? '
 read -r stacer_response
 
 if [ "$stacer_response" = "y" ] || [ "$stacer_response" = "Y" ]; then
