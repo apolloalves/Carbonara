@@ -26,7 +26,7 @@ if [ -n "$path" ]; then
     ls -lsht $path/System/bin/*.sh
     find $path/System/bin/ -ls | wc -l
 
-    sudo rm -rfv $path
+    # sudo rm -rfv $path
     echo -e "\n\033[01;32mRemoving files from LinuxBashCare...\033[00;37m\n"
     sleep 2
     find '/bin/' -name "*__*.sh" -exec sudo rm -rfv {} \; | wc -l
