@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check if the user is root
-if (( EUID != 0 )); then
+if ((EUID != 0)); then
     echo "This script needs to be run as root."
     echo "Please execute this with sudo."
     exit 1
@@ -33,14 +33,23 @@ LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
+# Function to print status
+print_status() {
+    if [ "$?" -eq 0 ]; then
+        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    else
+        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+    fi
+}
+
 echo
 systemd-analyze
 echo
 
-echo -n 'Do you want to plot the result of system-analyze (y/n)? '
-read -r SystemAnalyse_question
+printf 'Do you want to plot the result of system-analyze (y/n) ? '
+read -r SYSTEM_ANALYSE
 
-if [ "$YES" = "$SystemAnalyse_question" ]; then
+if [ "$YES" = "$SYSTEM_ANALYSE" ]; then
     echo -e "\nWait...\n"
     sleep 1
 
@@ -51,13 +60,13 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         systemd-analyze plot >"$PLOT"
         echo -e "Plot created in: $PLOT"
         eog $PLOT >/dev/null 2>&1
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+        print_status
 
         echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
         echo "File: $LOG was updated in $DATE!"
         gedit $LOG >/dev/null 2>&1
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-        echo -e "opening nautilus to analyze the generated files..."
+        print_status
+        echo -e "\nopening nautilus to analyze the generated files...\n"
 
         # Check if Nautilus processes are running
         if pgrep -x "nautilus" >/dev/null; then
@@ -74,40 +83,38 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
 
         # Open Nautilus in the specified directory
         nautilus $PLOTDIR &
-
-        # $MANAGER
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
+        print_status
+        echo
     else
 
         echo "Creating folder plot in: $HOME"
         mkdir "$PLOTDIR" >/dev/null 2>&1
         echo The folder: "$PLOTDIR was created!"
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+        print_status
 
         sleep 1
 
         echo -e "\nGenerating file plot..."
         echo -e "\nOpening the $PLOT file..."
         systemd-analyze plot >"$PLOT"
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+        print_status
         sleep 1
 
         echo -e "\nGenerating log file..."
         echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
         echo "Log file created in: $LOG"
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+        print_status
         sleep 1
 
         echo -e "\nOpening the $PLOT file..."
         eog "$PLOT" >/dev/null 2>&1
         sleep 1
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m"
+        print_status
 
         echo -e "\nOpening $LOG"
         sleep 1
         gedit $LOG >/dev/null 2>&1
-        echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+        print_status
 
         echo -e "Opening Nautilus $PLOTDIR"
 
@@ -128,11 +135,11 @@ if [ "$YES" = "$SystemAnalyse_question" ]; then
         nautilus $PLOTDIR &
 
         sleep 1
-        echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
+        print_status
     fi
 
-elif [ "$NO" = "$SystemAnalyse_question" ]; then
-    echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"
+elif [ "$NO" = "$SYSTEM_ANALYSE" ]; then
+    print_status
 else
     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi

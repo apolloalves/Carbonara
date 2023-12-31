@@ -53,7 +53,8 @@ rm -rfv ~/.cache/thumbnails/normal/*
 rm -rf ~/.cache/icon*
 rm -rfv /var/cache/apt/archives/lock
 rm -rfv ~/.cache/tracker/
-rm -Rfv /var/log/*
+find /var/log/ ! -name 'syslog' -type f -exec rm -fv {} +
+# rm -Rfv /var/log/*
 
 # OK MESSAGE
 print_status
