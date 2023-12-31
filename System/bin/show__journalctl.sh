@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check if the user is root
-if (( EUID != 0 )); then
+if ((EUID != 0)); then
     echo "This script needs to be run as root."
     echo "Please execute this with sudo."
     exit 1
@@ -58,12 +58,14 @@ echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 
 echo
 $LINE
-read -p "Input option : " option_choice
+formatted_prompt=$(printf "\e[1;97mInput option :\e[0m ")
+read -p "$formatted_prompt" option_choice
+
 $LINE
 
 valid_option=true
 
-if [ "$option_choice" != "e" ]; then
+if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
     if [ "$valid_option" = true ]; then
         # echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
@@ -86,11 +88,13 @@ if [ "$option_choice" != "e" ]; then
             ;;
 
         4)
-            echo -e "\nMapping system activities..."
-            sudo touch /var/log/syslog 
-            sleep 2 
+            echo -e "\n\033[01;05;32mMapping system activities...\033[00;37m\n"
+            echo -e "\033[1;97mPress Ctrl+C at any time to exit and return to the menu\033[0m"
+            # $LINE
+            echo
+            sleep 2
             sudo tail -f /var/log/syslog
-
+            clear
             $JORNALMENU
             ;;
 
@@ -99,9 +103,12 @@ if [ "$option_choice" != "e" ]; then
             ;;
         esac
         read -rsn1 -p "Press any key to continue..."
+        clear
         $JORNALMENU
 
     fi
 else
+    echo -e '\nBye!'
+    sleep 1 
     $MENU
 fi

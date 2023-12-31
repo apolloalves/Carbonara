@@ -53,12 +53,14 @@ echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 
 echo
 $LINE
-read -p "Input option : " option_choice
+formatted_prompt=$(printf "\e[1;97mInput option :\e[0m ")
+read -p "$formatted_prompt" option_choice
+# read -p "Input option : " option_choice
 $LINE
 
 valid_option=true
 
-if [ "$option_choice" != "E" -a "$option_choice" != "e" ]; then
+if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
 
     if [ "$valid_option" = true ]; then
