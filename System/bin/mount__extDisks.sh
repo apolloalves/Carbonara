@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check if the user is root
-if (( EUID != 0 )); then
+if ((EUID != 0)); then
     echo "This script needs to be run as root."
     echo "Please execute this with sudo."
     exit 1
@@ -38,24 +38,28 @@ fi
 #                                                                                                                      #
 ########################################################################################################################
 
+# Function to print status
+print_status() {
+    if [ "$?" -eq 0 ]; then
+        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    else
+        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+    fi
+}
 
-echo -n "Mount the disk EXTST500LM012__CLONRAID ? (y/n) "
+printf "\nMount the disk EXTST500LM012__CLONRAID (y/n) ? "
 read -r EXTST500LM012__CLONRAID
 
-if test "y" = "$EXTST500LM012__CLONRAID"
-
-    then 
-     mount -o ro,noatime /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ > /dev/null 2>&1
-    echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
-
-elif test "n" = "$EXTST500LM012__CLONRAID"
-    
-    then
-        
+if test "y" = "$EXTST500LM012__CLONRAID"; then
+    echo
+    mount -o ro,noatime /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/
+    print_status
+    echo
+elif test "n" = "$EXTST500LM012__CLONRAID"; then
+    umount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ -l > /dev/null 2>&1
     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-elif test "y" || "n" != "$EXTST500LM012__CLONRAID"
-    then
+elif test "y" || "n" != "$EXTST500LM012__CLONRAID"; then
     echo 'invalid arguments!'
 
 fi
@@ -67,20 +71,18 @@ fi
 echo -n "Mount the disk VENTOY ? (y/n) "
 read -r EXTST500LM012__VENTOY
 
-if test "y" = "$EXTST500LM012__VENTOY"
+if test "y" = "$EXTST500LM012__VENTOY"; then
+    echo
+    mount -o ro,noatime /dev/sdc1 /mnt/VENTOY/
+    print_status
+    echo
 
-    then 
-     mount -o ro,noatime /dev/sdc1 /mnt/VENTOY > /dev/null 2>&1
-    echo -e '\n\033[00;37m[\033[00;32m OK!\033[00;37m ]\033m\n'
-
-elif test "n" = "$EXTST500LM012__VENTOY"
-    
-    then
-     umount /dev/sdc1 /mnt/VENTOY -l
+elif test "n" = "$EXTST500LM012__VENTOY"; then
+echo
+    umount /dev/sdc1 /mnt/VENTOY -l > /dev/null 2>&1
     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-elif test "y" || "n" != "$EXTST500LM012__VENTOY"
-    then
+elif test "y" || "n" != "$EXTST500LM012__VENTOY"; then
     echo 'invalid arguments!'
 
 fi

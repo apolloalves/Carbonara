@@ -52,6 +52,7 @@ line.sh
 #########################################################################################################
 echo "Disabling accounts-daemon.service..."
 echo
+systemctl stop accounts-daemon.service
 systemctl disable accounts-daemon.service
 sleep 1
 systemctl status accounts-daemon.service
@@ -150,6 +151,7 @@ line.sh
 
 echo -e "Disabling warsaw service..."
 echo
+systemctl stop warsaw.service
 systemctl disable warsaw.service
 sleep 1
 systemctl status warsaw.service
@@ -245,8 +247,10 @@ line.sh
 TeamViwer Service
 echo -e "Disabling teamviewer services..."
 echo
+systemctl stop teamviewerd.service
 systemctl status teamviewerd.service
 sleep 1
+systemctl stop teamviewerd.service
 systemctl disable teamviewerd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
 line.sh
