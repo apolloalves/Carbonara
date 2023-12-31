@@ -25,6 +25,16 @@ fi
 #                                                                                                                                                    #
 ######################################################################################################################################################
 
+# Function to print status
+print_status() {
+    if [ "$?" -eq 0 ]; then
+        printf "\n\033[01;37m[\033[00;32m inative\033[01;37m ]\033m\n"
+    else
+        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+    fi
+}
+
+
 ####################################################################################################################################################
 echo -e "\nDisabling natives services system..."
 ##########################################################################################################
@@ -39,7 +49,8 @@ echo
 systemctl disable bluetooth.service
 sleep 1
 systemctl status bluetooth.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 #systemctl status bluetooth.service
 ##########################################################################################################
@@ -56,7 +67,8 @@ systemctl stop accounts-daemon.service
 systemctl disable accounts-daemon.service
 sleep 1
 systemctl status accounts-daemon.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 #systemctl status accounts-daemon.service
 ##########################################################################################################
@@ -72,7 +84,8 @@ echo
 systemctl disable avahi-daemon.service
 sleep 1
 systemctl status avahi-daemon.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #systemctl status avahi-daemon.service
@@ -88,7 +101,8 @@ echo
 systemctl disable brltty.service
 sleep 1
 systemctl status brltty.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 #systemctl status brltty.service
 ###################################################################################################################
@@ -103,7 +117,8 @@ echo
 systemctl disable debug-shell.service
 sleep 1
 systemctl status debug-shell.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 #systemctl status debug-shell.service
 ########################################################################################################################
@@ -120,7 +135,9 @@ echo
 systemctl disable ModemManager.service
 systemctl status ModemManager.service
 sleep 1
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+systemctl status debug-shell.service
+echo 
+print_status
 line.sh
 
 ####################################################################################################################
@@ -131,7 +148,8 @@ echo "Disabling pppd-dns.service..."
 systemctl disable pppd-dns.service
 systemctl status pppd-dns.service
 sleep 1
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #######################################################################################################
@@ -155,7 +173,8 @@ systemctl stop warsaw.service
 systemctl disable warsaw.service
 sleep 1
 systemctl status warsaw.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 ###############################################
@@ -167,7 +186,8 @@ echo
 systemctl disable mysql.service
 sleep 1
 systemctl status mysql.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #################################
@@ -179,7 +199,8 @@ echo
 systemctl disable networkd-dispatcher.service systemd-networkd.service
 sleep 1
 systemctl status networkd-dispatcher.service systemd-networkd.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #################################
@@ -191,7 +212,8 @@ echo
 systemctl disable cups.service
 sleep 1
 systemctl status systemctl disable cups.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #################################
@@ -203,7 +225,8 @@ echo
 systemctl disable apport.service
 sleep 1
 systemctl status systemctl apport.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #################################
@@ -216,7 +239,8 @@ systemctl stop openvpn.service
 systemctl disable openvpn.service
 sleep 1
 systemctl status systemctl openvpn.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #################################
@@ -237,20 +261,22 @@ echo
 systemctl status vboxdrv.service
 echo
 systemctl status vboxweb-service.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+echo 
+print_status
 line.sh
 
 #################################
 #   teamviewerd.service         #
 #################################
 
-TeamViwer Service
+
 echo -e "Disabling teamviewer services..."
 echo
 systemctl stop teamviewerd.service
 systemctl status teamviewerd.service
 sleep 1
 systemctl stop teamviewerd.service
-systemctl disable teamviewerd.service
-echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
+systemctl disable teamviewerd.service > /dev/null 2>&1
+echo 
+print_status
 line.sh

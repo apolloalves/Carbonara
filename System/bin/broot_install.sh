@@ -6,6 +6,15 @@ if (( EUID != 0 )); then
     exit 1
 fi
 
+# Function to print status
+print_status() {
+    if [ "$?" -eq 0 ]; then
+        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    else
+        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+    fi
+}
+
 #####################################################################
 #                                                                   #
 # Script: broot_install.sh                                          #
@@ -36,4 +45,6 @@ curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
 sleep 5
 mv -v broot /usr/local/bin
 chmod +x /usr/local/bin/broot
-echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
+echo 
+print_status
+

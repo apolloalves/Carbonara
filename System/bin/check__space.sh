@@ -23,6 +23,14 @@
 #                                                                                                                   #
 #####################################################################################################################
 
+# Function to print status
+print_status() {
+    if [ "$?" -eq 0 ]; then
+        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+    else
+        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+    fi
+}
 
 LINE='line.sh'
 echo -e "\nChecking spaces...\n"                                      
@@ -31,4 +39,6 @@ df -h / && echo "" && df -h /home && echo "" && df -h /mnt/EXTST500LM012__CLONRA
 echo ""
 $LINE
 sleep 10
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+echo 
+print_status
+
