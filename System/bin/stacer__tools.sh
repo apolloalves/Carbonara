@@ -37,35 +37,25 @@
 #                                                                                                                    #
 ######################################################################################################################
 
-MENU="LinuxBashCare-10.11.23.sh"
-YES="y"
-NO="n"
+MENU="LinuxBashCare-10.12.23.sh"
 
-echo -n 'Do you want to open stacer ( y/n ) ? '
-read -r stacer_question
+echo -n 'Do you want to open stacer (y/n)? '
+read -r stacer_response
 
-if test "y" = "$stacer_question"; then
-
-  echo "stacer is running..."
+if [ "$stacer_response" = "y" ] || [ "$stacer_response" = "Y" ]; then
+  printf "\nstacer is running..."
   sleep 2
-  stacer &
+  stacer > /dev/null 2>&1 &
 
-  until ! pgrep -x "stacer" >/dev/null; do
-    echo -e '\cAguardando o encerramento do stacer pelo usuário...'
-    sleep 2
+  until ! pgrep -x "stacer" > /dev/null 2>&1; do
+    sleep 1
   done
 
   $MENU
-
-fi
-
-if test "n" = "$stacer_question"; then
+elif [ "$stacer_response" = "n" ] || [ "$stacer_response" = "N" ]; then
   $MENU
-
-elif [ "$stacer_question" != "$YES" ] && [ "$stacer_question" != "$NO" ]; then
-
-  echo -e "\nInvalid input! Please enter 'y' or 'n'.\n"
+else
+  printf -e "\nInvalid input! Please enter 'y' or 'n'.\n"
   sleep 2
   $MENU
-
 fi
