@@ -5,11 +5,11 @@
 # disks are added and removed. See fstab(5).
 #
 # <file system>             <mount point>  <type>  <options>  <dump>  <pass>
-UUID=4ff74fe2-40d1-4352-b002-dc09508171b9 /              ext4    defaults   0 0
-UUID=3fb2c1d0-1a09-4e64-baa6-edc721a1b9d3 swap           swap    defaults   0 0
+UUID=a73b564e-8214-4e8a-beff-12f9cc51bd03 /              ext4    defaults   0 0
+UUID=ef2c0951-b003-4e56-b93f-6c9dfd205532 swap           swap    defaults   0 0
 
 # EXT@ST500LM012__CLONRAID
-#UUID=00f8c416-dccf-4816-836a-c8eb8ba5a108 /mnt/EXT@ST500LM012__CLONRAID xfs defaults 0 0
+# UUID=00f8c416-dccf-4816-836a-c8eb8ba5a108 /mnt/EXT@ST500LM012__CLONRAID xfs defaults 0 0
 
 #VENTOY
 #UUID=F283-E755 /mnt/VENTOY  exfat       defaults        0       0
@@ -19,4 +19,5 @@ tmpfs /tmp tmpfs noexec,nosuid,nodev,noatime,mode=1777,size=512M 0 0
 tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
 tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
 tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
+
 

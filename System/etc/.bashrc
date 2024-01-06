@@ -11,7 +11,7 @@ export PATH=$PATH:/bin
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTTIMEFORMAT='%Y-%m-%d%T '
 HISTTIMEFORMAT='%Y-%m-%d%T '
 
 # append to the history file, don't overwrite it
