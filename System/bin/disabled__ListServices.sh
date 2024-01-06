@@ -18,8 +18,9 @@ fi
 # of disabled services on the system and saves it to a log file.      #
 # The log file is located at $HOME/plot/Disable-ServicesList.log.     #
 # It uses systemctl to list unit files of type service, filters the   #
-# ones marked as 'disable', and outputs the list with line numbers.   #
-# A separator line is displayed before and after the list.            #
+# ones marked as 'disable', and outputs the list with LINE_SCRIPT     #
+# numbers.                                                            #
+# A separator LINE_SCRIPT is displayed before and after the list.     #
 #                                                                     #
 # Usage:                                                              #
 #   - Execute the script with root privileges.                        #
@@ -29,17 +30,17 @@ fi
 #                                                                     #
 ######################################################################
 
-LINE='line.sh'
+LINE_SCRIPT='line_script.sh'
 PLOT="$HOME/plot/Disable-ServicesList.log"
 
 echo -e "\nGenerating list..\n"
 
 echo "File Path: " $PLOT
-$LINE
+$LINE_SCRIPT
 echo
 sleep 1
 # systemctl list-unit-files --type=service | grep disable
 systemctl list-unit-files --type=service | grep disable >$PLOT && cat -n $PLOT
 echo
-$LINE
+$LINE_SCRIPT
 echo

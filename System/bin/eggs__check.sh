@@ -34,7 +34,7 @@ fi
 FILEPATH="/home/eggs/*.iso"
 TARGETPATH="/mnt/VENTOY"
 CLONRAID="/mnt/EXTST500LM012__CLONRAID/UBUNTU_EGGS/"
-LINE='line.sh'
+LINE_SCRIPT='line_script.sh'
 
 echo -e "\nChecking devices..."
 sleep 2
@@ -67,7 +67,7 @@ while true; do
           echo -e "\nwait...\n"
 
           rsync -avh --progress $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
-          $LINE
+          $LINE_SCRIPT
           break
 
      else

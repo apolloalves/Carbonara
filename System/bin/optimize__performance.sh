@@ -26,7 +26,7 @@ fi
 ############################################################################
 
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
-LINE='/bin/line.sh'
+LINE_SCRIPT='/bin/line_script.sh'
 
 # Function to print status
 print_status() {

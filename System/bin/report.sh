@@ -23,7 +23,7 @@ fi
 #                                                                      #
 ########################################################################
 
-LINE='line.sh'
+LINE_SCRIPT='line_script.sh'
 HOSTNAME=$(hostname)
 KERNEL=$(uname -r)
 OSNAME=$(uname)
@@ -43,11 +43,11 @@ MODEL=$(dmidecode -t baseboard | grep "Product Name")
 
 
 clear
-$LINE
+$LINE_SCRIPT
 
 
 echo -e "Machine Report"
-$LINE
+$LINE_SCRIPT
 echo -e "\nMachine Name: $HOSTNAME"
 echo -e "Distro Name: $DISTRONAME"  
 echo -e "OS Name: $OSNAME"
@@ -56,7 +56,7 @@ echo -e "Version Kernel: $KERNEL"
 echo -n "Active Machine Since: " && uptime -s
 echo -n "User: " && whoami
 echo
-$LINE
+$LINE_SCRIPT
 echo -e "\nHardwares: \n"
 echo $MOTHERBOARD
 echo $MODEL
@@ -65,13 +65,13 @@ echo "Núcleos: $NUCLEOS"
 echo -e "Total Memory: $MEMTOTAL"
 echo "Video: $VIDEO"
 echo
-$LINE
+$LINE_SCRIPT
 
 echo -e "\nPartitions: \n"
 echo -e "$PARTITIONS\n" 
-$LINE
+$LINE_SCRIPT
 echo -e "\nLast boot : $LASTBOOT\n"
 echo
 echo -e "Report Date: $DATE"
-$LINE
+$LINE_SCRIPT
 echo

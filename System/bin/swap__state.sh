@@ -15,7 +15,7 @@
 #                                                                                                                                  #
 # 1. Displays a message indicating that the state of swap memory will be shown.                                                    #
 # 2. Use the "free -h" command to display information about memory usage, including swap memory.                                   #
-# 3. Displays a line using the "$LINE" variable, which prints a line for each executed command.                                    #
+# 3. Displays a LINE_SCRIPT using the "$LINE_SCRIPT" variable, which prints a LINE_SCRIPT for each executed command.                                    #
 # 4. Displays a message indicating that the operation is complete.                                                                 #
 # 5. Wait 2 seconds.                                                                                                               #
 #                                                                                                                                  #
@@ -25,6 +25,6 @@
 ####################################################################################################################################
 echo -e "\nSwap Sate\n"
 free -h
-$LINE
+$LINE_SCRIPT
 echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
 # sleep 4

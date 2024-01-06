@@ -26,7 +26,7 @@ fi
 
 YES="y"
 NO="n"
-LINE='/bin/line.sh'
+LINE_SCRIPT='/bin/line_script.sh'
 PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
@@ -144,6 +144,6 @@ else
     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi
 
-if ! command -v "$LINE" >/dev/null; then
-    echo -e "Command not found: $LINE\n"
+if ! command -v "$LINE_SCRIPT" >/dev/null; then
+    echo -e "Command not found: $LINE_SCRIPT\n"
 fi

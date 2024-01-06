@@ -7,7 +7,7 @@ if (( EUID != 0 )); then
 fi
 ################################################################################
 #                                                                              #
-# Script: release__upgrade.sh - Enter a line after each command                #           
+# Script: release__upgrade.sh - Enter a LINE_SCRIPT after each command                #           
 #                                                                              #
 # Author: Apollo Alves                                                         #
 # Date: 14/12/2023                                                             #

@@ -38,13 +38,13 @@ fi
 MENU='/bin/LinuxBashCare-10.12.23.sh'
 JORNALMENU='show__journalctl.sh'
 ######################################################################################################################################################################################
-LINE='line.sh'
+LINE_SCRIPT='line_script.sh'
 echo -e "\033[1;97;100m        LinuxBashCare System          \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  23.04.1        \033[0m"
 ######################################################################################################################################################################################
 echo
-# $LINE
+# $LINE_SCRIPT
 echo -e "\033[01;97m Input an option from the menu: \033[0m"
-$LINE
+$LINE_SCRIPT
 echo
 ######################################################################################################################################################################################
 
@@ -57,11 +57,11 @@ echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
 ######################################################################################################################################################################################
 
 echo
-$LINE
+$LINE_SCRIPT
 formatted_prompt=$(printf "\e[1;97mInput option :\e[0m ")
 read -p "$formatted_prompt" option_choice
 
-$LINE
+$LINE_SCRIPT
 
 valid_option=true
 
@@ -90,7 +90,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         4)
             echo -e "\n\033[01;05;32mMapping system activities...\033[00;37m\n"
             echo -e "\033[1;97mPress Ctrl+C at any time to exit and return to the menu\033[0m"
-            # $LINE
+            # $LINE_SCRIPT
             echo
             sleep 2
             sudo tail -f /var/log/syslog

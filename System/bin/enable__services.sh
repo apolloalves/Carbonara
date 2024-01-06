@@ -26,8 +26,8 @@ fi
 # checks the status of the service using systemctl status <service_name> and displays a message indicating whether the   #
 # service was successfully enabled.                                                                                      #
 #                                                                                                                        #
-# Between each section of enabling the service, the script calls the line.sh file, which is likely responsible for       #
-# displaying a separator line in the terminal output.                                                                    #
+# Between each section of enabling the service, the script calls the line_script.sh file, which is likely responsible for       #
+# displaying a separator LINE_SCRIPT in the terminal output.                                                                    #
 #                                                                                                                        #
 # Here is a brief explanation of the enabled services:                                                                   #
 #                                                                                                                        #
@@ -66,7 +66,7 @@ systemctl enable bluetooth.service
 sleep 1
 systemctl status bluetooth.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ##########################################################################################################
 # enable accounts-daemon : is a potential security risk. It is part of AccountsService, which allows     #
@@ -80,7 +80,7 @@ systemctl enable accounts-daemon.service
 sleep 1
 systemctl status accounts-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ##########################################################################################################
 # enable avahi-daemon.service : is supposed to provide zero-configuration network discovery, and make it #
@@ -93,7 +93,7 @@ systemctl enable avahi-daemon.service
 sleep 1
 systemctl status avahi-daemon.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ############################################################################################
 # enable brltty.service : provides Braille device support, for example, Braille displays.  #
@@ -105,7 +105,7 @@ systemctl enable brltty.service
 sleep 1
 systemctl status brltty.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ###################################################################################################################
 # enable debug-shell.service : opens a giant security hole and should never be enabled except when you are using  #
@@ -118,7 +118,7 @@ systemctl enable debug-shell.service
 sleep 1
 systemctl status debug-shell.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ########################################################################################################################
 # ModemManager.service : is a DBus-activated daemon that controls mobile broadband (2G/3G/4G) interfaces. If you don’t #
@@ -132,7 +132,7 @@ systemctl enable ModemManager.service
 systemctl status ModemManager.service
 sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ####################################################################################################################
 # pppd-dns.service is a relic of the dim past. If you use dial-up Internet, keep it. Otherwise, you don’t need it. #
@@ -143,7 +143,7 @@ systemctl enable pppd-dns.service
 systemctl status pppd-dns.service
 sleep 1
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #######################################################################################################
 #                                                                                                     #
@@ -166,7 +166,7 @@ systemctl enable warsaw.service
 sleep 1
 systemctl status warsaw.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 ###############################################
 # mysql.service                               #
@@ -178,7 +178,7 @@ systemctl enable mysql.service
 sleep 1
 systemctl status mysql.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #################################
 # Network Dispatcher Services   #
@@ -190,7 +190,7 @@ systemctl enable networkd-dispatcher.service systemd-networkd.service
 sleep 1
 systemctl status networkd-dispatcher.service systemd-networkd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #################################
 # cups.service                  #
@@ -202,7 +202,7 @@ systemctl enable cups.service
 sleep 1
 systemctl status systemctl enable cups.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #################################
 # #  apport.service             #
@@ -214,7 +214,7 @@ systemctl enable apport.service
 sleep 1
 systemctl status systemctl apport.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #################################
 #   openvpn.service             #
@@ -227,7 +227,7 @@ systemctl enable openvpn.service
 sleep 1
 systemctl status systemctl openvpn.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #################################
 #   virtualbox services         #
@@ -248,7 +248,7 @@ systemctl status vboxdrv.service
 echo
 systemctl status vboxweb-service.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh
 
 #################################
 #   teamviewerd.service         #
@@ -261,4 +261,4 @@ systemctl status teamviewerd.service
 sleep 1
 systemctl enable teamviewerd.service
 echo -e "\n\033[01;37m[\033[00;32m inative\033[00;37m ]\033m\n"
-line.sh
+line_script.sh

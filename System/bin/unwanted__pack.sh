@@ -19,7 +19,7 @@ fi
 # This script is designed to be run with root privileges and removes #
 # unwanted packages from the system, as well as purges leftover      #
 # configurations. It prompts the user for confirmation and executes  #
-# the removal process if the user agrees. If the user declines or    #
+# the removal process if the user agrees. If the user decLINE_SCRIPTs or    #
 # provides invalid input, it redirects to the specified menu script. #
 #                                                                    #
 ######################################################################

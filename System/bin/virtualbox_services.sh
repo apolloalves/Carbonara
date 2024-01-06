@@ -20,8 +20,8 @@ fi
 # # performance. It prompts the user whether they want to generate a     #
 # # plot of the analysis results and opens Nautilus to view the plot and #
 # # log files. It also checks for the existence of necessary commands    #
-# # and creates the required directories. It ends by displaying a line   #
-# # from a specified script (line.sh) if available.                      #
+# # and creates the required directories. It ends by displaying a LINE_SCRIPT   #
+# # from a specified script (line_script.sh) if available.                      #
 #                                                                        #
 ##########################################################################
 

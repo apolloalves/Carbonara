@@ -25,7 +25,7 @@ fi
 
 MENU="/bin/LinuxBashCare-10.12.23.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
-LINE='line.sh'
+LINE_SCRIPT='line_script.sh'
 YES="y"
 NO="n"
 

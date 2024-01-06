@@ -51,7 +51,7 @@ sleep 1
 systemctl status bluetooth.service
 echo 
 print_status
-line.sh
+line_script.sh
 #systemctl status bluetooth.service
 ##########################################################################################################
 #                                                                                                        #
@@ -69,7 +69,7 @@ sleep 1
 systemctl status accounts-daemon.service
 echo 
 print_status
-line.sh
+line_script.sh
 #systemctl status accounts-daemon.service
 ##########################################################################################################
 #                                                                                                         #
@@ -86,7 +86,7 @@ sleep 1
 systemctl status avahi-daemon.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #systemctl status avahi-daemon.service
 ############################################################################################
@@ -103,7 +103,7 @@ sleep 1
 systemctl status brltty.service
 echo 
 print_status
-line.sh
+line_script.sh
 #systemctl status brltty.service
 ###################################################################################################################
 #                                                                                                                 #
@@ -119,7 +119,7 @@ sleep 1
 systemctl status debug-shell.service
 echo 
 print_status
-line.sh
+line_script.sh
 #systemctl status debug-shell.service
 ########################################################################################################################
 #                                                                                                                      #
@@ -138,7 +138,7 @@ sleep 1
 systemctl status debug-shell.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 ####################################################################################################################
 # pppd-dns.service is a relic of the dim past. If you use dial-up Internet, keep it. Otherwise, you don’t need it. #
@@ -150,7 +150,7 @@ systemctl status pppd-dns.service
 sleep 1
 echo 
 print_status
-line.sh
+line_script.sh
 
 #######################################################################################################
 #                                                                                                     #
@@ -175,7 +175,7 @@ sleep 1
 systemctl status warsaw.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 ###############################################
 # mysql.service                               #
@@ -188,7 +188,7 @@ sleep 1
 systemctl status mysql.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #################################
 # Network Dispatcher Services   #
@@ -201,7 +201,7 @@ sleep 1
 systemctl status networkd-dispatcher.service systemd-networkd.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #################################
 # cups.service                  #
@@ -214,7 +214,7 @@ sleep 1
 systemctl status systemctl disable cups.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #################################
 # #  apport.service             #
@@ -227,7 +227,7 @@ sleep 1
 systemctl status systemctl apport.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #################################
 #   openvpn.service             #
@@ -241,7 +241,7 @@ sleep 1
 systemctl status systemctl openvpn.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #################################
 #   virtualbox services         #
@@ -263,7 +263,7 @@ echo
 systemctl status vboxweb-service.service
 echo 
 print_status
-line.sh
+line_script.sh
 
 #################################
 #   teamviewerd.service         #
@@ -279,4 +279,4 @@ systemctl stop teamviewerd.service
 systemctl disable teamviewerd.service > /dev/null 2>&1
 echo 
 print_status
-line.sh
+line_script.sh
