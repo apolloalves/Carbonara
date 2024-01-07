@@ -71,7 +71,7 @@ while true; do
           gnome-terminal --tab -- bash -c "watch df -h /mnt/EXTST500LM012__CLONRAID/"
           
           echo "Opening Google Drive..."
-          brave-browser --profile-directory=Default --app-id=aghbiahbpaijignceidepookljebhfak
+          brave-browser --profile-directory=Default --app-id=aghbiahbpaijignceidepookljebhfak &
           echo -e "\n\033[01;05;37mupload the file : 'Ubuntu-22.0.4-LTS_$DATE.iso' to Google Drive now!!\033[00;37m\n"
           $LINE_SCRIPT
           break
