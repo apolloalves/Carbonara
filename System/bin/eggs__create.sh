@@ -56,20 +56,24 @@ while true; do
           echo
           find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
+          echo -e "\nwait...\n"
+          echo -e "Moving file to $TARGETPATH ...\n"
           mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
+          
           echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
           echo -e "\npreparing to move...\n"
           sleep 1
-          echo -e "Moving file to $TARGETPATH ...\n"
-
           time mv -v /home/eggs/*.iso /mnt/VENTOY
           echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-          echo "creating a backup for : '$CLONRAID'"
-          echo -e "\nwait...\n"
 
+          echo "creating a backup for : '$CLONRAID'"
           rsync -avh --progress $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
+          gnome-terminal --tab -- bash -c "watch df -h /mnt/EXTST500LM012__CLONRAID/"
+          
+          echo "Opening Google Drive..."
+          brave-browser --profile-directory=Default --app-id=aghbiahbpaijignceidepookljebhfak
+          echo -e "\n\033[01;05;37mupload the file : 'Ubuntu-22.0.4-LTS_$DATE.iso' to Google Drive now!!\033[00;37m\n"
           $LINE_SCRIPT
-          echo "Openning Google drive..."
           break
 
      else
