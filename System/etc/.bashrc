@@ -12,7 +12,6 @@ export PATH=$PATH:/bin
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTTIMEFORMAT='%Y-%m-%d%T '
-HISTTIMEFORMAT='%Y-%m-%d%T '
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -93,10 +92,9 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='sudo /bin/shellCare.sh'
+alias fix='sudo /bin/LinuxBashCare-10.12.23.sh'
 alias rb='trash-empty --all -f'
 alias cls='clear'
-#alias fixp='/bin/fix__packages-7.0.sh'
 alias lt='ls -lsht'
 
 # Add an "alert" alias for long running commands.  Use like so:
