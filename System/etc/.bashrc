@@ -11,7 +11,7 @@ export PATH=$PATH:/bin
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTTIMEFORMAT='%Y-%m-%d%T '
+HISTTIMEFORMAT=' %Y-%m-%d %T '
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -92,7 +92,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fix='sudo /bin/LinuxBashCare-10.12.23.sh'
+alias lb='sudo /bin/LinuxBashCare-10.12.23.sh'
 alias rb='trash-empty --all -f'
 alias cls='clear'
 alias lt='ls -lsht'
@@ -139,3 +139,7 @@ source ~/.cache/wal/colors-tty.sh
 # Keyboard config
 setxkbmap -model abnt2 -layout br
 
+function lsblkd() {
+echo 
+lsblk --output=NAME,MODEL,PATH,FSAVAIL,FSROOTS,FSSIZE,FSTYPE,FSUSED,FSUSE%,FSVER,MOUNTPOINTS | grep -v loop
+}
