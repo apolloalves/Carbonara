@@ -101,7 +101,7 @@ rm -rfv /root/.local/share/Trash/*/**
 rm -rfv ~/.local/share/Trash/*i
 rm -rfv /home/*/.local/share/recently-used.xbel
 sudo journalctl --vacuum-size=50M
-history -c && history -w
+# history -c && history -w
 
 # OK MESSAGE
 print_status

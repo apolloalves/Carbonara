@@ -17,7 +17,7 @@ fi
 #                                                                                                                      #
 # 1. Set the FILEPATH and TARGETPATH variables for the source and destination ISO file paths, respectively.            #
 # 2. Check the device and mount the specified mount point in $TARGETPATH.                                              #
-# 3. Get the current date and store it in the $DATE variable.                                                          #
+# 3. Get the current date and store it in the  variable.                                                          #
 # 4. Check for .iso files in the /home/eggs directory.                                                                 #
 # 5. If .iso files are found, display the list of files, rename the first file to "Ubuntu-22.0.4-LTS_current_date.iso,"#
 #    and move it to $TARGETPATH.                                                                                       #

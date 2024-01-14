@@ -45,6 +45,7 @@ curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
 sleep 5
 mv -v broot /usr/local/bin
 chmod +x /usr/local/bin/broot
+sudo su broot
 echo 
 print_status
 
