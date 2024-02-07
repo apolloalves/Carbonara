@@ -112,12 +112,13 @@ echo -e "\n\033[01;32mRemoving old snaps of system...\033[00;37m\n"         #
 #############################################################################
 
 set -eu
-snap list --all | awk '/disabled/{print $1, $3}' |
-    while read snapname revision; do
-        snap remove "$snapname" --revision="$revision"
-    done
-    echo "No snaps to remove!"
-
-
+# Verifica se há snaps desativados e os remove
+if snap list --all | awk '/disabled/{print $1, $3}' | while read snapname revision; do
+    snap remove "$snapname" --revision="$revision"
+done; then
 # BLINK SUCCESSFULLY MESSAGE
-echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"
+    echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"
+else
+    echo "No snaps to remove!"
+fi
+
