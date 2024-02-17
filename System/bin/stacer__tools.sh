@@ -44,15 +44,15 @@ printf 'Do you want to open stacer (y/n) ? '
 read -r stacer_response
 
 if [ "$stacer_response" = "y" ] || [ "$stacer_response" = "Y" ]; then
-  printf "\nstacer is running..."
+  printf "\nstacer is running...\n"
   sleep 2
-  stacer > /dev/null 2>&1 &
+  stacer &> /dev/null 2>&1
 
   until ! pgrep -x "stacer" > /dev/null 2>&1; do
     sleep 1
   done
-
   $MENU
+
 elif [ "$stacer_response" = "n" ] || [ "$stacer_response" = "N" ]; then
   $MENU
 else

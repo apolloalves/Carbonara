@@ -73,10 +73,10 @@ while true; do
           echo "Opening Google Drive..."
           brave-browser --profile-directory=Default --app-id=aghbiahbpaijignceidepookljebhfak &
           echo -e "\n\033[01;05;37mupload the file : 'Ubuntu-22.0.4-LTS_$DATE.iso' to Google Drive now!!\033[00;37m\n"
-          $LINE_SCRIPT
-          source /bin/eggs__check.sh
+          $LINE_SCRIPT'
           break
      else
+          # EGGS NEW WINDOW
           echo -e "\nWait...\n"
           sleep 2
           echo -e "No .iso file found in /home/eggs/"
