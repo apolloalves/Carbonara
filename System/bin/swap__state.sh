@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #####################################################################
 #                                                                   #
 # Script: swapState.sh                                              #
@@ -23,8 +22,12 @@
 # state of memory. This can be useful for monitoring memory usage and identifying whether swap memory is being used by the system. #
 #                                                                                                                                  #
 ####################################################################################################################################
+LINE_SCRIPT='/bin/line_script.sh'
+
+
 echo -e "\nSwap Sate\n"
 free -h
 $LINE_SCRIPT
+
 echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
 # sleep 4

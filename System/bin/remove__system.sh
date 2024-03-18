@@ -24,7 +24,7 @@ fi
 #                                                                   #
 #####################################################################
 
-MENU='/bin/LinuxBashCare-10.12.23.sh'
+MENU='/bin/ShellCare-22.0.1.sh'
 REMOVETRACES='/bin/remove__traces.sh'
 
 YES="y"

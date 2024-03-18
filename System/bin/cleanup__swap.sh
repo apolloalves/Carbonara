@@ -23,7 +23,7 @@ fi
 #                                                                                                                #
 ##################################################################################################################
 
-MENU="/bin/LinuxBashCare-10.12.23.sh"
+MENU="/bin/ShellCare-22.0.1.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE_SCRIPT='line_script.sh'
 YES="y"

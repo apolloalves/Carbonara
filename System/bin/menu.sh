@@ -28,15 +28,15 @@ options=(
     #5
     "Open STACER manager"
     #6
-    "Swap State"
+    # "Swap State"
     #7
     "Check system boot time"
     #8
     "Boot messages wizard ( journalctl -b )"
     #9
-    "Disable services natives"
+    # "Disable services natives"
     #10
-    "List of disabled services"
+    # "List of disabled services"
     #11
     "Mount External Disks"
     #12
@@ -46,15 +46,15 @@ options=(
     #14
     "Open CLONRAID backups"
     #15
-    "Manage packages with aptitude"
+    # "Manage packages with aptitude"
     #16
-    "Manage packages and drivers"
+    # "Manage packages and drivers"
     #17
-    "Reinstall GNOME gdm3"
+    # "Reinstall GNOME gdm3"
     #18
     "mysql wizard"
     #19
-    "Check if a new version of Ubuntu is available"
+    # "Check if a new version of Ubuntu is available"
     #20
     "Start Virtualbox services"
     #21
