@@ -227,10 +227,8 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             report.sh
             ;;
 
+       
         22)
-            LinuxBashCare-10.12.23.sh
-            ;;
-        23)
             reboot__system.sh
             ;;
         
