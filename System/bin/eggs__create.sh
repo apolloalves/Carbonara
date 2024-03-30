@@ -31,7 +31,7 @@ if ! mountpoint -q $CLONRAID; then
 fi
 
 DATE=$(date +"%Y-%m-%d")
-ISO_FILES=$(find $FILEPATH -maxdepth 1 -name "*.iso")
+ISO_FILES=$(\ $FILEPATH -maxdepth 1 -name "*.iso")
 
 if [[ $(echo $ISO_FILES | wc -w) -gt 0 ]]; then
     FIRST_ISO=$(echo $ISO_FILES | cut -d' ' -f1)
