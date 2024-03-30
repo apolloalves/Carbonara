@@ -47,19 +47,19 @@ print_status() {
     fi
 }
 
-printf "\nMount the disk EXT@SA400S3GB__CLONRAID (y/n) ? "
-read -r EXT@SA400S3GB__CLONRAID
+printf "\nMount the disk EXTSA400S3GB__CLONRAID (y/n) ? "
+read -r EXTSA400S3GB__CLONRAID
 
-if test "y" = "$EXT@SA400S3GB__CLONRAID"; then
+if test "y" = "$EXTSA400S3GB__CLONRAID"; then
     echo
     mount -o ro,noatime /dev/sdc3 /mnt/EXT@SA400S3GB__CLONRAID/
     print_status
     echo
-elif test "n" = "$EXT@SA400S3GBST500LM012__CLONRAID"; then
+elif test "n" = "$EXTSA400S3GB__CLONRAID"; then
     umount /dev/sdc3 /mnt/EXT@SA400S3GB__CLONRAID/ -l > /dev/null 2>&1
     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-elif test "y" || "n" != "$EXT@SA400S3GB__CLONRAID"; then
+elif test "y" || "n" != "$EXTSA400S3GB__CLONRAID"; then
     echo 'invalid arguments!'
 
 fi
@@ -69,20 +69,20 @@ fi
 #################################################################################################################
 
 echo -n "Mount the disk VENTOY ? (y/n) "
-read -r EXT@SA400S3GB__VENTOY
+read -r EXTSA400S3GB__VENTOY
 
-if test "y" = "$EXT@SA400S3GB__VENTOY"; then
+if test "y" = "$EXTSA400S3GB__VENTOY"; then
     echo
     mount -o ro,noatime /dev/sdc1 /mnt/VENTOY/
     print_status
     echo
 
-elif test "n" = "$EXT@SA400S3GB__VENTOY"; then
+elif test "n" = "$EXTSA400S3GB__VENTOY"; then
 echo
     umount /dev/sdc1 /mnt/VENTOY -l > /dev/null 2>&1
     echo -e '\n\033[00;37m[\033[00;32m OFF!\033[00;37m ]\033m\n'
 
-elif test "y" || "n" != "$EXT@SA400S3GB__VENTOY"; then
+elif test "y" || "n" != "$EXTSA400S3GB__VENTOY"; then
     echo 'invalid arguments!'
 
 fi
