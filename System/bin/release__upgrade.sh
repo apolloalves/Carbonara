@@ -15,5 +15,6 @@ fi
 # description: This script checks if there is any version of Ubuntu available  #
 ################################################################################
 
-echo ""
+echo
 do-release-upgrade
+echo
