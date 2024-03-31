@@ -15,12 +15,12 @@ fi
 # Description: This shell script, named "eggsCreate.sh," performs the following tasks:                                 #
 ########################################################################################################################                                                                                                                      #
 #                                                                                                                      #
-# 1. Set the FILEPATH and TARGETPATH variables for the source and destination ISO file paths, respectively.            #
-# 2. Check the device and mount the specified mount point in $TARGETPATH.                                              #
+# 1. Set the FILEPATH and VENTOY variables for the source and destination ISO file paths, respectively.            #
+# 2. Check the device and mount the specified mount point in $VENTOY.                                              #
 # 3. Get the current date and store it in the  variable.                                                          #
 # 4. Check for .iso files in the /home/eggs directory.                                                                 #
 # 5. If .iso files are found, display the list of files, rename the first file to "Ubuntu-22.0.4-LTS_current_date.iso,"#
-#    and move it to $TARGETPATH.                                                                                       #
+#    and move it to $VENTOY.                                                                                       #
 # 6. If no .iso files are found, display a message indicating that no files were found and open a new terminal to run  #
 #    the command " eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_current_date."                     #
 #                                                                                                                      #
@@ -30,16 +30,22 @@ fi
 #                                                                                                                      #
 ########################################################################################################################
 
-
-FILEPATH="/home/eggs/*.iso"
-TARGETPATH="/mnt/VENTOY"
-CLONRAID="/mnt/EXTST500LM012__CLONRAID/UBUNTU_EGGS/"
+FILEPATH="/home/eggs"
+VENTOY="/mnt/VENTOY"
+CLONRAID="/mnt/EXT@SA400S3GB__CLONRAID/UBUNTU_EGGS/"
 LINE_SCRIPT='line_script.sh'
 
+# Check and mount devices
 echo -e "\nChecking devices..."
 sleep 2
-mount /dev/sdc1 $TARGETPATH
-mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/
+
+if ! mountpoint -q $VENTOY; then
+    mount /dev/sdc1 $VENTOY || { echo "Failed to mount $VENTOY"; exit 1; }
+fi
+
+if ! mountpoint -q $CLONRAID; then
+    mount /dev/sdc3 $CLONRAID || { echo "Failed to mount $CLONRAID"; exit 1; }
+fi
 
 DATE=$(date +"%Y-%m-%d")
 arquivo="/home/eggs/*.iso"
@@ -55,7 +61,7 @@ while true; do
           find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
           echo -e "\nwait...\n"
-          echo -e "Moving file to $TARGETPATH ...\n"
+          echo -e "Moving file to $VENTOY ...\n"
           mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
 
           echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
@@ -65,11 +71,9 @@ while true; do
           echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
           echo "creating a backup for : '$CLONRAID'"
-          rsync -avh --progress $TARGETPATH/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
-          gnome-terminal --tab -- bash -c "watch df -h /mnt/EXTST500LM012__CLONRAID/"
+          gnome-terminal --tab -- bash -c "watch df -h $CLONRAID"
+          rsync -avh --progress $VENTOY/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
 
-          echo "Opening Google Drive..."
-          brave-browser --profile-directory=Default --app-id=aghbiahbpaijignceidepookljebhfak &
           echo -e "\n\033[01;05;37mupload the file : 'Ubuntu-22.0.4-LTS_$DATE.iso' to Google Drive now!!\033[00;37m\n"
           $LINE_SCRIPT
           break
