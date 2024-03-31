@@ -26,4 +26,4 @@ fi
 echo -e "\n\033[01;32mReinstalling gdm3...\033[00;37m\n"
 sleep 2
  apt install gdm3 -y
-echo -e "n\033[01;37m[\033[00;32m OK \033[01;37m ]\033m\n"
+echo -e "\n\033[01;37m[\033[00;32m OK \033[01;37m ]\033m\n"
