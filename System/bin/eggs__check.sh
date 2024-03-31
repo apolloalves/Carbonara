@@ -79,7 +79,7 @@ while true; do
      else
           echo -e "\nWait...\n"
           sleep 2
-          echo -e "No .iso file found in /home/eggs/"
+          echo -e "\nNo .iso file found in /home/eggs/\n"
           break
      fi
 done

@@ -82,7 +82,7 @@ while true; do
         break
 
     else
-        echo "No .iso file found in $FILEPATH. Generating new .iso file..."
+        echo -e "\nNo .iso file found in $FILEPATH. Generating new .iso file...\n"
         gnome-terminal -- bash -c "eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
         break
     fi
