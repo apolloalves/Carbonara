@@ -22,7 +22,7 @@ fi
 clear
 
 ######################################################################################################################################################################################
-MENU='/bin/LinuxBashCare-10.12.23.sh'
+MENU='/bin/shellCare-22.0.1.sh'
 EGGSCREATE='/bin/eggs__create.sh'
 EGGSCHECK='/bin/eggs__check.sh'
 EGGSBROOT='/bin/showbroot__eggs.sh'
