@@ -108,7 +108,6 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
     fi
 else
-    echo -e '\nBye!'
-    sleep 1 
+    
     $MENU
 fi
