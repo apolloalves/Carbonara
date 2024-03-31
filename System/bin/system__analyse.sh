@@ -37,6 +37,7 @@ DATE=$(date '+%Y-%m-%d %H:%M:%S')
 print_status() {
     if [ "$?" -eq 0 ]; then
         printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+        echo
     else
         printf "[ \033[01;31mFAILED\033[01;37m ]\n"
     fi
