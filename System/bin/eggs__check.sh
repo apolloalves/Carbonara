@@ -33,7 +33,8 @@ fi
 FILEPATH="/home/eggs"
 VENTOY="/mnt/VENTOY"
 CLONRAID="/mnt/EXT@SA400S3GB__CLONRAID/UBUNTU_EGGS/"
-LINE_SCRIPT='line_script.sh'
+LINE_SCRIPT='/bin/line_script.sh'
+
 
 # Check and mount devices
 echo -e "\nChecking devices..."
@@ -48,7 +49,6 @@ if ! mountpoint -q $CLONRAID; then
 fi
 
 DATE=$(date +"%Y-%m-%d")
-arquivo="/home/eggs/*.iso"
 
 while true; do
 
@@ -61,16 +61,14 @@ while true; do
           find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
           echo -e "\nwait...\n"
+          echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
           echo -e "Moving file to $VENTOY ...\n"
           mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
-
-          echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
-          echo -e "\npreparing to move...\n"
           sleep 1
           time mv -v /home/eggs/*.iso /mnt/VENTOY
           echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
-          echo "creating a backup for : '$CLONRAID'"
+          echo -e "\ncreating a backup for : '$CLONRAID'"
           gnome-terminal --tab -- bash -c "watch df -h $CLONRAID"
           rsync -avh --progress $VENTOY/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
 
