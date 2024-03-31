@@ -81,7 +81,5 @@ scripts=(
     #option 21
     "report.sh"
     #option 22
-    "shellCare-22.0.1.sh"
-    #option 23
     "reboot__system.sh"
 )
