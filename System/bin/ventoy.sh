@@ -41,7 +41,7 @@ fi
 
 # Directory path
 mount /dev/sdc1 /mnt/VENTOY >/dev/null 2>&1
-mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ >/dev/null 2>&1
+mount /dev/sdc3 /mnt/MDSATA/ >/dev/null 2>&1
 echo "All devices are mounted!"
 
 # Check if Nautilus processes are running
