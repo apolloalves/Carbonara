@@ -24,7 +24,7 @@ fi
 ########################################################################
 
 LINE_SCRIPT='line_script.sh'
-HOSTNAME=$(hostname)
+HOSTNAME=$(hostnamectl)
 KERNEL=$(uname -r)
 OSNAME=$(uname)
 DISTRONAME=$(cat /etc/os-release | head -n1 | cut -c 13-)
