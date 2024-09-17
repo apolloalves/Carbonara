@@ -42,10 +42,10 @@ print_status() {
 LINE_SCRIPT='line_script.sh'
 echo -e "\nChecking spaces...\n"                                      
 sleep 2
-df -h / && echo "" && df -h /mnt/EXT@SA400S3GB__CLONRAID/ && echo "" && df -h /mnt/VENTOY/
+df -h /dev/md127p1 && echo "" && df -h /dev/md127p2 && echo "" && df -h /mnt/MDSATA/ && echo "" && df -h /mnt/VENTOY/
 echo ""
 $LINE_SCRIPT
-sleep 10
+sleep  2
 echo 
 print_status
 
