@@ -23,8 +23,8 @@ fi
 
 echo -e "\n Opening Nautilus...\n"
 
-sleep 2
-nautilus /mnt/EXTST500LM012__CLONRAID/ && >/dev/null
+sleep 1
+nautilus /mnt/MDSATA/ && >/dev/null
 clear
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 echo
