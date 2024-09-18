@@ -27,12 +27,11 @@ LINE_SCRIPT='line_script.sh'
 HOSTNAME=$(hostnamectl)
 KERNEL=$(uname -r)
 OSNAME=$(uname)
-DISTRONAME=$(cat /etc/os-release | head -n1 | cut -c 13-)
-CODENAME=$(cat /etc/os-release | grep VERSION= | cut -c22- | cut -c-17)
+DISTRONAME=$(cat /etc/os-release | head -n1 | cut -c -10)
 PROCESSADOR=$(cat /proc/cpuinfo | grep "model name" | head -n1 | cut -c14-)
 NUCLEOS=$(cat /proc/cpuinfo | grep "model name" | wc -l)
 MEMTOTAL=$(cat /proc/meminfo | grep MemTotal | tr -d ' ' | cut -d: -f2 )
-PARTITIONS=$(df -h / && echo "" && df -h /mnt/EXTST500LM012__CLONRAID && echo "" && df -h /mnt/VENTOY)
+PARTITIONS=$(df -h /dev/md127p1  && echo "" df -h /dev/md127p2 && echo "" && df -h /mnt/MDSATA && echo "" && df -h /mnt/VENTOY)
 DATE=$(date | cut -c-25)
 LASTBOOT=$(systemd-analyze)
 VIDEO=$(lspci | grep -i vga | cut -c 36-)
@@ -51,7 +50,6 @@ $LINE_SCRIPT
 echo -e "\nMachine Name: $HOSTNAME"
 echo -e "Distro Name: $DISTRONAME"  
 echo -e "OS Name: $OSNAME"
-echo -e "Codename : $CODENAME" 
 echo -e "Version Kernel: $KERNEL"
 echo -n "Active Machine Since: " && uptime -s
 echo -n "User: " && whoami
