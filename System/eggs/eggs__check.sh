@@ -32,7 +32,7 @@ fi
 
 FILEPATH="/home/eggs"
 VENTOY="/mnt/VENTOY"
-CLONRAID="/mnt/EXT@SA400S3GB__CLONRAID/UBUNTU_EGGS/"
+MDSATA="/mnt/MDSATA/"
 LINE_SCRIPT='/bin/line_script.sh'
 
 
@@ -44,8 +44,8 @@ if ! mountpoint -q $VENTOY; then
     mount /dev/sdc1 $VENTOY || { echo "Failed to mount $VENTOY"; exit 1; }
 fi
 
-if ! mountpoint -q $CLONRAID; then
-    mount /dev/sdc3 $CLONRAID || { echo "Failed to mount $CLONRAID"; exit 1; }
+if ! mountpoint -q $MDSATA; then
+    mount /dev/sdc3 $MDSATA || { echo "Failed to mount $MDSATA"; exit 1; }
 fi
 
 DATE=$(date +"%Y-%m-%d")
@@ -61,18 +61,18 @@ while true; do
           find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
           echo -e "\nwait...\n"
-          echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
+          echo -e "\n\033[01;05;37mRenamed your iso file to : 'ARCHLINUX__$DATE.iso'!\033[00;37m\n"
           echo -e "Moving file to $VENTOY ...\n"
-          mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
+          sudo mv -v /home/eggs/*.iso /home/eggs/ARCHLINUX_$DATE.iso
           sleep 1
           time mv -v /home/eggs/*.iso /mnt/VENTOY
           echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
-          echo -e "\ncreating a backup for : '$CLONRAID'"
-          gnome-terminal --tab -- bash -c "watch df -h $CLONRAID"
-          rsync -avh --progress $VENTOY/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
+          echo -e "\ncreating a backup for : '$MDSATA'"
+          sudo kgx --tab -e "watch df -h $MDSATA"
+          rsync -avh --progress $VENTOY/ARCHLINUX_$DATE.iso $MDSATA
 
-          echo -e "\n\033[01;05;37mupload the file : 'Ubuntu-22.0.4-LTS_$DATE.iso' to Google Drive now!!\033[00;37m\n"
+          echo -e "\n\033[01;05;37mupload the file : 'ARCHLINUX__$DATE.iso' to Google Drive now!!\033[00;37m\n"
           $LINE_SCRIPT
           break
 

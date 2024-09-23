@@ -15,12 +15,12 @@ fi
 # Description: This shell script, named "eggsCreate.sh," performs the following tasks:                                 #
 ########################################################################################################################                                                                                                                      #
 #                                                                                                                      #
-# 1. Set the FILEPATH and VENTOY variables for the source and destination ISO file paths, respectively.            #
-# 2. Check the device and mount the specified mount point in $VENTOY.                                              #
+# 1. Set the FILEPATH and MDSATA variables for the source and destination ISO file paths, respectively.            #
+# 2. Check the device and mount the specified mount point in $MDSATA.                                              #
 # 3. Get the current date and store it in the  variable.                                                          #
 # 4. Check for .iso files in the /home/eggs directory.                                                                 #
-# 5. If .iso files are found, display the list of files, rename the first file to "Ubuntu-22.0.4-LTS_current_date.iso,"#
-#    and move it to $VENTOY.                                                                                       #
+# 5. If .iso files are found, display the list of files, rename the first file to "ARCHLINUX_current_date.iso,"#
+#    and move it to $MDSATA.                                                                                       #
 # 6. If no .iso files are found, display a message indicating that no files were found and open a new terminal to run  #
 #    the command " eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_current_date."                     #
 #                                                                                                                      #
@@ -31,24 +31,23 @@ fi
 ########################################################################################################################
 
 FILEPATH="/home/eggs"
-VENTOY="/mnt/VENTOY"
-CLONRAID="/mnt/EXT@SA400S3GB__CLONRAID/UBUNTU_EGGS/"
+MDSATA="/mnt/MDSATA/ArchlinuxEggs"
 LINE_SCRIPT='/bin/line_script.sh'
 
 # Check and mount devices
 echo -e "\nChecking devices..."
 sleep 2
 
-if ! mountpoint -q $VENTOY; then
-    mount /dev/sdc1 $VENTOY || {
-        echo "Failed to mount $VENTOY"
+if ! mountpoint -q $MDSATA; then
+    mount /dev/sdc1 $MDSATA || {
+        echo "Failed to mount $MDSATA"
         exit 1
     }
 fi
 
-if ! mountpoint -q $CLONRAID; then
-    mount /dev/sdc3 $CLONRAID || {
-        echo "Failed to mount $CLONRAID"
+if ! mountpoint -q $MDSATA; then
+    mount /dev/sdc3 $MDSATA || {
+        echo "Failed to mount $MDSATA"
         exit 1
     }
 fi
@@ -66,24 +65,24 @@ while true; do
         find /home/eggs -maxdepth 1 -name "*.iso" -exec echo "- {}" \;
 
         echo -e "\nwait...\n"
-        echo -e "\n\033[01;05;37mRenamed your iso file to : 'Ubuntu-22.0.4-LTS_$DATE.iso'!\033[00;37m\n"
-        echo -e "Moving file to $VENTOY ...\n"
-        mv -v /home/eggs/*.iso /home/eggs/Ubuntu-22.0.4-LTS_$DATE.iso
+        echo -e "\n\033[01;05;37mRenamed your iso file to : 'ARCHLINUX_$DATE.iso'!\033[00;37m\n"
+        echo -e "Moving file to $MDSATA ...\n"
+        mv -v /home/eggs/*.iso /home/eggs/ARCHLINUX_$DATE.iso
         sleep 1
-        time mv -v $FILEPATH/*.iso $VENTOY
+        time mv -v $FILEPATH/*.iso $MDSATA
         echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 
-        echo -e "\ncreating a backup for : '$CLONRAID'"
-        gnome-terminal --tab -- bash -c "watch df -h $CLONRAID"
-        rsync -avh --progress $VENTOY/Ubuntu-22.0.4-LTS_$DATE.iso $CLONRAID
+        echo -e "\ncreating a backup for : '$MDSATA'"
+        watch df -h $MDSATA
+        rsync -avh --progress $MDSATA/ARCHLINUX_$DATE.iso $MDSATA
 
-        echo -e "\n\033[01;05;37mupload the file : 'Ubuntu-22.0.4-LTS_$DATE.iso' to Google Drive now!!\033[00;37m\n"
+        echo -e "\n\033[01;05;37mupload the file : 'ARCHLINUX_$DATE.iso' to Google Drive now!!\033[00;37m\n"
         $LINE_SCRIPT
         break
 
     else
         echo -e "\nNo .iso file found in $FILEPATH. Generating new .iso file...\n"
-        gnome-terminal -- bash -c "eggs produce --clone --prefix=Ubuntu-22.04.2-LTS --basename=_$DATE"
+        eggs produce --clone --prefix=ARCHLINUX --basename=_$DATE
         break
     fi
 done
