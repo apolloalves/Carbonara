@@ -35,7 +35,7 @@ if dpkg -l | grep -w "eggs" >/dev/null; then
     exit 0
 fi
 # .deb file name
-DEB_FILE="eggs_9.4.15_amd64.deb"
+DEB_FILE="get-eggs"
 
 # Check if the .deb file already exists
 if [ -e "$DEB_FILE" ]; then
@@ -43,8 +43,7 @@ if [ -e "$DEB_FILE" ]; then
 else
     echo -e "\n\033[01;32mDownloading the Penguins-eggs package...\033[00;37m\n"
     # Download the Penguins-eggs package
-    curl -LJO "https://sourceforge.net/projects/penguins-eggs/files/DEBS/versions/$DEB_FILE/download"
-    # curl -LJO --connect-timeout 10 --max-time 600 "https://github.com/apolloalves/LinuxBashCare/raw/10.12.23/$DEB_FILE"
+    git clone https://github.com/pieroproietti/get-eggs && cd get-eggs && sudo ./get-eggs.sh
 
     # Check if the download was successful
     if [ $? -ne 0 ]; then
@@ -54,10 +53,7 @@ else
 fi
 
 # Install the package
-apt update -y
-dpkg -i "$DEB_FILE"
-dpkg --configure -a
-apt install -f 
+apt pacman -Syu
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
@@ -65,18 +61,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Mark the package as held to prevent automatic updates
-apt-mark hold eggs=9.4.15
 sleep 2
 echo -e "\n\033[01;32minstalling Penguins-eggs calamares...\033[00;37m\n"
 eggs calamares --install
 echo -e "\n\033[01;37m\033[01;32mdone\033[00;37m\033m"
-
-# Remove .deb file if it exists
-# if [ -e "$DEB_FILE" ]; then
-#     echo "Removed $DEB_FILE file."
-#     rm "$DEB_FILE"
-# fi
 
 # BLINK MESSAGE
 echo -e "\n\033[01;05;37mPenguins-eggs installed successfully!!\033[00;37m\n"

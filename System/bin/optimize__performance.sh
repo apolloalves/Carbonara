@@ -51,11 +51,10 @@ print_status
 echo -e "\n\033[01;32mExecuting prelink...\033[00;37m\n"                     #
 ############################################################################
 
-sleep 1
-prelink -amvR
-/etc/cron.daily/prelink
-sleep 1
-print_status
+
+
+
+
 
 #RAM MEMORY
 ############################################################################

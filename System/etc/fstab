@@ -3,10 +3,10 @@
 
 # <file system> <dir> <type> <options> <dump> <pass>
 # /dev/md127p2
-UUID=25f2683c-2dfa-434b-bde7-b795a7a07418	/         	ext4      	rw,relatime,stripe=256	0 0
+UUID=25f2683c-2dfa-434b-bde7-b795a7a07418	/         	ext4      	rw,noatime,nodiratime,stripe=256 0 0
 
 # /dev/md127p1
-UUID=7707e34f-d316-4920-9495-ef7c151fc050	/boot     	ext4      	rw,relatime,stripe=256	0 0
+UUID=7707e34f-d316-4920-9495-ef7c151fc050	/boot     	ext4      	rw,noatime,nodiratime,stripe=256 0 0
 
 # /dev/sda1
 UUID=6E89-B183      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
@@ -29,8 +29,7 @@ UUID=08A1-5F4C /mnt/VENTOY 					exfat       	defaults       		0 0
 # MDSATA 
 UUID=053f9c64-a395-461f-bf6a-487f2456d6f3  /mnt/MDSATA	    	ext4   		defaults  	 	0 0
 
-
 tmpfs /tmp tmpfs noexec,nosuid,nodev,noatime,mode=1777,size=512M 0 0
-tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
+tmpfs /var/tmp tmpfs noatime,mode=1777 0 0
+tmpfs /var/spool tmpfs noatime,mode=1777 0 0
+tmpfs /var/log tmpfs noatime,mode=0755 0 0

@@ -27,6 +27,7 @@
 LINE_SCRIPT='/bin/line_script.sh'
 
 
+
 echo -e "\nSwap Sate\n"
 free -h
 $LINE_SCRIPT
