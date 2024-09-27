@@ -14,7 +14,7 @@
 # it does:                                                                                                          #
 # 1. Displays a space check message.                                                                                #
 # 2. Wait 1 second.                                                                                                 #
-# 3. Run the commands "df -h /", "df -h /home" and "df -h /mnt/MDSATA" to display disk space      #
+# 3. Run the commands "df -h /", "df -h /home" and "df -h /mnt/MDSATA" to display disk space      		    #
 # information in the root, /home and /mnt/EXT@ directories ST500LM012__CLONRAID, respectively.                      #
 # 4. Displays a message indicating that the verification completed successfully.                                    #
 #                                                                                                                   #
