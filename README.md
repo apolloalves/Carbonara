@@ -1,7 +1,7 @@
 LinuxBashCare-10.12.23
 Description:
 
-This Bash script, named LinuxBashCare-10.12.23.sh, is designed to perform system maintenance tasks on a GNU/Linux distribution. Developed by Apollo Alves and last updated on 16/12/2023, the script provides a menu-based interface for users to choose from various system optimization and cleanup options. Before executing, it checks whether the user has root privileges, requiring sudo if not.
+This Bash script, named Carbonara, is designed to perform system maintenance tasks on a GNU/Linux distribution. Developed by Apollo Alves and last updated on 16/12/2023, the script provides a menu-based interface for users to choose from various system optimization and cleanup options. Before executing, it checks whether the user has root privileges, requiring sudo if not.
 
 Disclaimer:
 
