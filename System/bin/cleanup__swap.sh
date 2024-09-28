@@ -23,7 +23,7 @@ fi
 #                                                                                                                #
 ##################################################################################################################
 
-MENU="/bin/ShellCare-22.0.1.sh"
+MENU="/bin/shellCare-22.0.1.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE_SCRIPT='line_script.sh'
 YES="y"
@@ -80,6 +80,8 @@ case "$removeSwap" in
         echo
         echo -e "swappiness set: $SWAPPINESS"
         echo -e "\n\033[01;37m[\033[00;32m Swap is active now! \033[01;37m ]\033m\n"
+        sudo swapon --show
+
         ;;
     "$NO")
         echo "Operation aborted!"

@@ -18,50 +18,27 @@
 options=(
 
     #1
-    "Update all system packages"
-    #2
-    "Scan the system for traces of unused packages"
-    #3
-    "Run both"
-    #4
     "Optimize system performance "
-    #5
-    "Open STACER manager"
-    #6
+
+    #2
     "Swap State"
-    #7
+    #3
     "Check system boot time"
-    #8
+    #4
     "Boot messages wizard ( journalctl -b )"
-    #9
-    "Disable services natives"
-    #10
+    #5
     "List of disabled services"
-    #11
-    "Mount External Disks"
-    #12
+    #6
     "Check space disks"
-    #13
+    #7
     "Egss Wizard"
-    #14
+    #8
     "Open CLONRAID backups"
-    #15
-    "Manage packages with aptitude"
-    #16
-    "Manage packages and drivers"
-    #17
-    "Reinstall GNOME gdm3"
-    #18
-    "mysql wizard"
-    #19
-    "Check if a new version of Ubuntu is available"
-    #20
-    "Start Virtualbox services"
-    #21
+    #9
     "Linux Report Machine"
-    #22
+    #10
     "Reboot System"
-    #23
+    #11
     "QUIT"
 
 )

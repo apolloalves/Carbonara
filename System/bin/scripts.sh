@@ -39,13 +39,13 @@
 scripts=(
     
     #option 1
-    "update__pack.sh"
+    "optimize__performance.sh"
     #option 2 
     "remove__traces.sh"
     #option 3
     "update__system.sh;remove__system.sh"
     #option 4
-    "optimize__performance.sh"
+
     #option 5
     "stacer__tools.sh"
     #option 6

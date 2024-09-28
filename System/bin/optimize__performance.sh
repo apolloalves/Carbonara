@@ -39,17 +39,11 @@ print_status() {
 
 # Clear page cache
 ############################################################################
-echo -e "\n\033[01;32mRemoving drop_caches files system...\033[00;37m\n"   #
+echo -e "\n\033[01;32mRemoving caches...\033[00;37m\n"   #
 ############################################################################
-echo 1 > /proc/sys/vm/drop_caches
-echo 2 > /proc/sys/vm/drop_caches
-echo 3 > /proc/sys/vm/drop_caches
-print_status
 
-#PRELINK     
-############################################################################                                                              
-echo -e "\n\033[01;32mExecuting prelink...\033[00;37m\n"                     #
-############################################################################
+sudo pacman -Scc --noconfirm
+print_status
 
 
 
@@ -61,11 +55,9 @@ echo -e "\n\033[01;32mExecuting prelink...\033[00;37m\n"                     #
 echo -e "\n\033[01;32mCleaning RAM memory...\033[00;37m\n"                 #
 ############################################################################
 
-sleep 1
-sync && echo 3 | tee /proc/sys/vm/drop_caches
-# CLEAN SWAP
 cleanup__swap.sh
 
 ############################################################################
 echo -e "\n\033[01;05;37mSystem successfully optimized!!\033[00;37m\n"     #
 ############################################################################
+
