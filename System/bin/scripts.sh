@@ -41,45 +41,25 @@ scripts=(
     #option 1
     "optimize__performance.sh"
     #option 2 
-    "remove__traces.sh"
-    #option 3
-    "update__system.sh;remove__system.sh"
-    #option 4
-
-    #option 5
-    "stacer__tools.sh"
-    #option 6
     "swap__state.sh"
-    #option 7
+    #option 3
     "system__analyse.sh"
-    #option 8
+    #option 4
     "show__journalctl.sh"
-    #option 9
+    #option 5
     "disable__services.sh"
-    #option 10
-    "disabled__ListServices.sh"
-    #option 11
-    "mount__extDisks.sh"
-    #option 12
+    #option 6
     "check__space.sh"
-    #option 13
+    #option 7
     "eggs__wizard.sh"
-    #option 14
+    #option 8
     "clonraid__backups.sh"
-    #option 15
-    "apititude__manager.sh"
-    #option 16
-    "software__properties.sh"
-    #option 17
-    "reinstall__gnome-gdm3.sh"
-    #option 18
-    "mysql__fix-1.0.sh"
-    #option 19
-    "release__upgrade.sh"
-    #option 20
-    "virtualbox_services.sh"
-    #option 21
+    #option 9
+    "disabled__ListServices.sh"
+    #option 10
+    "mount__extDisks.sh"
+    #option 11
     "report.sh"
-    #option 22
+    #option 12
     "reboot__system.sh"
-)
+
