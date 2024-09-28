@@ -18,7 +18,7 @@
 options=(
 
     #1
-    "Optimize system performance "
+    "Optimize system performance"
     #2
     "Swap State"
     #3

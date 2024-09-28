@@ -93,7 +93,7 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             # $LINE_SCRIPT
             echo
             sleep 2
-            sudo tail -f /var/log/syslog
+            journalctl -f
             clear
             $JORNALMENU
             ;;

@@ -23,7 +23,7 @@ fi
 #                                                                                                                #
 ##################################################################################################################
 
-MENU="/bin/shellCare-22.0.1.sh"
+MENU="/bin/carbonara.sh"
 SWAPPINESS=$(cat /proc/sys/vm/swappiness)
 LINE_SCRIPT='line_script.sh'
 YES="y"

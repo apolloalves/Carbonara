@@ -86,7 +86,8 @@ print_with_bg_color() {
     echo -e "\033[1;30;107m${text}\033[m"
 }
 
-NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
+#NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
+NEOFETCH='neofetch'
 neofetch_output=$($NEOFETCH)
 
 PLOT="$HOME/plot/Disable-ServicesList.log"
@@ -102,7 +103,7 @@ while true; do
     ######################################################################################################################################################################################
     LINE='/bin/line_script.sh'
     echo
-    echo -e "\033[1;97;100m          LinuxBashCare           \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        version  10.01.24        \033[0m"
+    echo -e "\033[1;97;100m               CARBONARA            \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        ARCHLINUX       \033[0m"
     ######################################################################################################################################################################################
     echo
     echo -e "$neofetch_output"
