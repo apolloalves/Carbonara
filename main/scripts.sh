@@ -55,12 +55,11 @@ scripts=(
     #option 8
     "clonraid__backups.sh"
     #option 9
-    "disabled__ListServices.sh"
-    #option 10
-    "mount__extDisks.sh"
-    #option 11
     "report.sh"
-    #option 12
-    "reboot__system.sh"
+    #option 10
+      "reboot__system.sh"
+    #option 11
+
+
 
 )
