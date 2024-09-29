@@ -47,7 +47,7 @@ scripts=(
     #option 4
     "show__journalctl.sh"
     #option 5
-    "disable__services.sh"
+    "disabled__ListServices.sh"
     #option 6
     "check__space.sh"
     #option 7

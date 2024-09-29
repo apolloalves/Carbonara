@@ -34,7 +34,7 @@ options=(
     #8
     "Open CLONRAID backups"
     #9
-    "Linux Report Machine"
+    "Report Machine"
     #10
     "Reboot System"
     #11
