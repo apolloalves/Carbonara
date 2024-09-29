@@ -37,7 +37,7 @@ read -r rebootSystem
 
 if [ "$rebootSystem" = "$YES" ]; then
      
-      init 6
+      restart now
 
 fi
 

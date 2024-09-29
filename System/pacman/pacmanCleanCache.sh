@@ -64,28 +64,7 @@ print_status
 echo -e "\n\033[01;32mCleaning files system...\033[00;37m\n" #              #
 #############################################################################
 
-sudo apt autoclean -y
-sudo apt -s clean
-sudo apt clean -y
-sudo apt clean all
-sudo apt purge --autoremove
-sudo apt autoremove -y
-
-# OK MESSAGE
-print_status
-
-# GREEN MESSAGE
-#############################################################################
-echo -e "\n\033[01;32mRemove orphaned libraries...\033[00;37m\n"            #
-#############################################################################
-
-apt remove "$(deborphan)"
-deborphan --guess-data | xargs apt-get -y remove --purge
-deborphan | xargs apt-get -y remove --purge
-
-dpkg --configure -a
-apt --fix-broken install
-sleep 1
+pacman -Scc --noconfirm
 
 # OK MESSAGE
 print_status

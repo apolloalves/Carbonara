@@ -28,7 +28,7 @@ ROOT_DIR="/"
 echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"
 
 # Use the find command to locate the "LinuxBashCare" folder
-path=$(find "$ROOT_DIR" -type d -name "LinuxBashCare" 2>/dev/null)
+path=$(find "$ROOT_DIR" -type d -name "Carbonara" 2>/dev/null)
 
 # Checks if the folder was found
 
