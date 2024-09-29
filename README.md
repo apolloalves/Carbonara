@@ -28,7 +28,7 @@ Usage:
 To run the script, execute it with root privileges (sudo):
 
 bash
-sudo LinuxBashCare-10.12.23.sh
+sudo Cabonara
 Contributions:
 
 The README encourages users to contribute to the code and emphasizes the collaborative spirit of the GNU/Linux community.
