@@ -22,12 +22,12 @@ fi
 clear
 
 ######################################################################################################################################################################################
-MENU='/bin/shellCare-22.0.1.sh'
+MENU='/bin/carbonara.sh'
 EGGSCREATE='/bin/eggs__create.sh'
 EGGSCHECK='/bin/eggs__check.sh'
 EGGSBROOT='/bin/showbroot__eggs.sh'
-MANAGER='/bin/nautilus.sh'
 EGGSINSTALL='/bin/eggs__install.sh'
+MANAGER='/bin/nautilus.sh'
 EGGSMENU='/bin/eggs__wizard.sh'
 
 ######################################################################################################################################################################################
@@ -75,15 +75,13 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             $EGGSCHECK
             ;;
         3)
-            sudo mount /dev/sdc3 /mnt/EXTST500LM012__CLONRAID/ >/dev/null 2>&1
+            sudo mount /dev/sdc3 /mnt/MDSATA/ >/dev/null 2>&1
             $EGGSBROOT
-
             ;;
         4)
             $MANAGER
             ;;
         5)
-
             $EGGSINSTALL
             ;;
         
