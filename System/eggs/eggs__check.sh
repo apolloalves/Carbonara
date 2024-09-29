@@ -30,6 +30,7 @@ fi
 #                                                                                                                      #
 ########################################################################################################################
 
+EGGS_DIRECTORY="/home/eggs"
 FILEPATH="/home/eggs/.mnt/"
 VENTOY="/mnt/VENTOY"
 MDSATA="/mnt/MDSATA/"
@@ -72,6 +73,8 @@ while true; do
           sudo kgx --tab -e "watch df -h $MDSATA"
           rsync -avh --progress $VENTOY/ARCHLINUX_$DATE.iso $MDSATA
 
+	  sudo rm -rfv $EGGS_DIRECTORY
+	  echo -e "\n\033[01;05;37mEggs directory was removed! : Eggs directory was removed!!!\033[00;37m\n"
           echo -e "\n\033[01;05;37mupload the file : 'ARCHLINUX__$DATE.iso' to Google Drive now!!\033[00;37m\n"
           $LINE_SCRIPT
           break
