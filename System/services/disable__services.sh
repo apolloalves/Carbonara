@@ -38,21 +38,8 @@ print_status() {
 ####################################################################################################################################################
 echo -e "\nDisabling natives services system..."
 ##########################################################################################################
-#                                                                                                        #
-# Disable Bluetooth : is a potential security risk. It is part of AccountsService, which allows programs #
-# to get and manipulate user account information. I can’t think of a good reason to allow this kind of   #
-# behind-my-back operations, so I mask it.                                                               #
-#                                                                                                        #
-##########################################################################################################
-echo "Disabling disable bluetooth.service"
-echo
-systemctl disable bluetooth.service
-sleep 1
-systemctl status bluetooth.service
-echo 
-print_status
-line_script.sh
-#systemctl status bluetooth.service
+
+
 ##########################################################################################################
 #                                                                                                        #
 # Disable accounts-daemon : is a potential security risk. It is part of AccountsService, which allows    #
@@ -177,18 +164,6 @@ echo
 print_status
 line_script.sh
 
-###############################################
-# mysql.service                               #
-###############################################
-
-echo -e "Disabling mysql service..."
-echo
-systemctl disable mysql.service
-sleep 1
-systemctl status mysql.service
-echo 
-print_status
-line_script.sh
 
 #################################
 # Network Dispatcher Services   #
