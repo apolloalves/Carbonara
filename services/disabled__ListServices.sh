@@ -31,7 +31,7 @@ fi
 ######################################################################
 
 LINE_SCRIPT='line_script.sh'
-PLOT="$HOME/plot/Disable-ServicesList.log"
+PLOT="$HOME/apollo/plot/Disable-ServicesList.log"
 
 echo -e "\nGenerating list..\n"
 
@@ -40,7 +40,7 @@ $LINE_SCRIPT
 echo
 sleep 1
 # systemctl list-unit-files --type=service | grep disable
-systemctl list-unit-files --type=service | grep disable > $PLOT && cat -n $PLOT
+systemctl list-unit-files --type=service | grep disable
 echo
 $LINE_SCRIPT
 echo
