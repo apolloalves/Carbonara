@@ -40,7 +40,7 @@ $LINE_SCRIPT
 echo
 sleep 1
 # systemctl list-unit-files --type=service | grep disable
-systemctl list-unit-files --type=service | grep disable >$PLOT && cat -n $PLOT
+systemctl list-unit-files --type=service | grep disable > $PLOT && cat -n $PLOT
 echo
 $LINE_SCRIPT
 echo
