@@ -65,6 +65,7 @@ while true; do
           echo -e "\n\033[01;05;37mRenamed your iso file to : 'ARCHLINUX__$DATE.iso'!\033[00;37m\n"
           echo -e "Moving file to $VENTOY ...\n"
           sudo mv -v $FILEPATH/*.iso $FILEPATH/ARCHLINUX_$DATE.iso
+
           sleep 1
           time mv -v $FILEPATH/*.iso /mnt/VENTOY
           echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
@@ -73,8 +74,7 @@ while true; do
           sudo kgx --tab -e "watch df -h $MDSATA"
           rsync -avh --progress $VENTOY/ARCHLINUX_$DATE.iso $MDSATA
 
-	  sudo rm -rfv $EGGS_DIRECTORY
-	  echo -e "\n\033[01;05;37mEggs directory was removed! : Eggs directory was removed!!!\033[00;37m\n"
+
           echo -e "\n\033[01;05;37mupload the file : 'ARCHLINUX__$DATE.iso' to Google Drive now!!\033[00;37m\n"
           $LINE_SCRIPT
           break
@@ -83,6 +83,8 @@ while true; do
           echo -e "\nWait...\n"
           sleep 2
           echo -e "\nNo .iso file found in $FILEPATH/\n"
+          echo -e "\n\033[01;05;37mdirectory: $EGGS_DIRECTORY was removed!!!\033[00;37m\n"
+	  sudo rm -rfv $EGGS_DIRECTORY
           break
      fi
 done

@@ -53,6 +53,9 @@ if ! mountpoint -q $MDSATA; then
     mount /dev/sdc3 $MDSATA || { echo "Failed to mount $MDSATA"; exit 1; }
 fi
 DATE=$(date +"%Y-%m-%d")
+echo "Removing folder: $EGGS_DIRECTORY..."
+sudo rm -rfv $EGGS_DIRECTORY
+
 
 while true; do
 
@@ -76,7 +79,7 @@ while true; do
         watch df -h $MDSATA
         rsync -avh --progress $VENTOY/ARCHLINUX_$DATE.iso $MDSATA
 
-	sudo rm -rfv $EGGS_DIRECTORY
+
 	echo -e "\n\033[01;05;37mEggs directory was removed! : Eggs directory was removed!!!\033[00;37m\n"
 	echo -e "\n\033[01;05;37mupload the file : 'ARCHLINUX_$DATE.iso' to Google Drive now!!\033[00;37m\n"
         $LINE_SCRIPT

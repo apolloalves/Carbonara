@@ -117,9 +117,9 @@ while true; do
         option_number=$((i + 1))
         formatted_number=$(printf "%02d" "$option_number") # Formata o número com dois dígitos
         if [ $i -eq $selected ]; then
-            print_with_bg_color "[ $formatted_number ] - ${options[$i]}" 4
+            print_with_bg_color "[ $formatted_number ] ${options[$i]}" 4
         else
-            echo -e "\033[01;32m[\033[01;97m $formatted_number\033[01;32m ]\033[00;37m - ${options[$i]}"
+            echo -e "\033[01;32m[\033[01;97m $formatted_number\033[01;32m ]\033[00;37m ${options[$i]}"
         fi
     done
 
