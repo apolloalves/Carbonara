@@ -1,2 +1,0 @@
-clear_screen	carbonara.sh	/^clear_screen() {$/;"	f
-print_with_bg_color	carbonara.sh	/^print_with_bg_color() {$/;"	f

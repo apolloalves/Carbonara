@@ -1,4 +1,0 @@
-clear_screen	check__space.sh	/^clear_screen() {$/;"	f
-clear_screen	mount_volumes.sh	/^clear_screen() {$/;"	f
-print_status	check__space.sh	/^print_status() {$/;"	f
-print_status	mount_volumes.sh	/^print_status() {$/;"	f

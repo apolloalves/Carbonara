@@ -1,6 +1,0 @@
-# backup copy of /home/Carbonara/.gnome-builder/flatpak/filter, do not edit!
-deny *
-allow runtime/org.freedesktop.*
-allow runtime/org.gnome.*
-allow runtime/io.elementary.*
-allow runtime/org.kde.*

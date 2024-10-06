@@ -1,5 +1,0 @@
-deny *
-allow runtime/org.freedesktop.*
-allow runtime/org.gnome.*
-allow runtime/io.elementary.*
-allow runtime/org.kde.*
