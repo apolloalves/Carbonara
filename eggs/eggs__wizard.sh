@@ -75,11 +75,11 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             $EGGSCHECK
             ;;
         3)
-            sudo mount /dev/sdc3 /mnt/MDSATA/ >/dev/null 2>&1
+            sudo mount /dev/sdd3 /mnt/MDSATA/ >/dev/null 2>&1
             $EGGSBROOT
             ;;
         4)
-            $MANAGER
+            $MANAGER >/dev/null 2>&1
             ;;
         5)
             $EGGSINSTALL

@@ -1,0 +1,1 @@
+print_status	system__analyse.sh	/^print_status() {$/;"	f

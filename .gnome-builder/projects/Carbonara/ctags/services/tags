@@ -1,0 +1,1 @@
+print_status	disable__services.sh	/^print_status() {$/;"	f

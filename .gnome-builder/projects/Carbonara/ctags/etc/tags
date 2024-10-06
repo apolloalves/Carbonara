@@ -1,0 +1,6 @@
+WaylandEnable	custom.conf	/^WaylandEnable=false$/;"	k	section:daemon
+chooser	custom.conf	/^[chooser]$/;"	s
+daemon	custom.conf	/^[daemon]$/;"	s
+debug	custom.conf	/^[debug]$/;"	s
+security	custom.conf	/^[security]$/;"	s
+xdmcp	custom.conf	/^[xdmcp]$/;"	s

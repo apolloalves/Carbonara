@@ -42,11 +42,11 @@ echo -e "\nChecking devices..."
 sleep 1
 
 if ! mountpoint -q $VENTOY; then
-    mount /dev/sdc1 $VENTOY || { echo "Failed to mount $VENTOY"; exit 1; }
+    mount /dev/sdd1 $VENTOY || { echo "Failed to mount $VENTOY"; exit 1; }
 fi
 
 if ! mountpoint -q $MDSATA; then
-    mount /dev/sdc3 $MDSATA || { echo "Failed to mount $MDSATA"; exit 1; }
+    mount /dev/sdd3 $MDSATA || { echo "Failed to mount $MDSATA"; exit 1; }
 fi
 
 DATE=$(date +"%Y-%m-%d")

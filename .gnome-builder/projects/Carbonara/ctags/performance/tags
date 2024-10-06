@@ -1,0 +1,2 @@
+calculate_size	cleanup__swap.sh	/^function calculate_size() {$/;"	f
+print_status	optimize__performance.sh	/^print_status() {$/;"	f

@@ -40,8 +40,8 @@ fi
 ############################################################################################################################
 
 # Directory path
-mount /dev/sdc1 /mnt/VENTOY >/dev/null 2>&1
-mount /dev/sdc3 /mnt/MDSATA/ >/dev/null 2>&1
+mount /dev/sdd1 /mnt/VENTOY >/dev/null 2>&1
+mount /dev/sdd3 /mnt/MDSATA/ >/dev/null 2>&1
 echo "All devices are mounted!"
 
 # Check if Nautilus processes are running
@@ -59,4 +59,4 @@ fi
 
 # Open Nautilus in the specified directory
 echo "Opening Nautilus..."
-nautilus /mnt/VENTOY &
+nautilus /mnt/VENTOY & >/dev/null 2>&1

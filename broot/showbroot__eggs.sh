@@ -24,6 +24,6 @@ TARGETPATH="/mnt/VENTOY"
 
 echo "Checking device..."
 sleep 2
- mount /dev/sdc1 $TARGETPATH
+mount /dev/sdd1 $TARGETPATH
 echo -e "\nOpening broot...\n"
  broot -s -p -d --sort-by-date $TARGETPATH

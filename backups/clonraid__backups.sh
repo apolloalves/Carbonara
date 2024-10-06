@@ -24,7 +24,7 @@ fi
 echo -e "\n Opening Nautilus...\n"
 
 sleep 1
-nautilus /mnt/MDSATA/ && >/dev/null
+nautilus /mnt/MDSATA/ && >/dev/null 2>&1
 clear
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 echo

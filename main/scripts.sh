@@ -57,8 +57,10 @@ scripts=(
     #option 9
     "report.sh"
     #option 10
-      "reboot__system.sh"
+    "pipewire__.sh"
     #option 11
+    "reboot__system.sh"
+
 
 
 

@@ -37,7 +37,7 @@ read -r rebootSystem
 
 if [ "$rebootSystem" = "$YES" ]; then
      
-      restart now
+      reboot now
 
 fi
 

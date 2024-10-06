@@ -36,8 +36,10 @@ options=(
     #9
     "Report Machine"
     #10
-    "Reboot System"
+    "Fix pipewire"
     #11
+    "Reboot System"
+    #1
     "QUIT"
 
 )
