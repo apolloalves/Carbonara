@@ -38,8 +38,10 @@ options=(
     #10
     "Fix pipewire"
     #11
+    "Review Services pipewire"
+    #12
     "Reboot System"
-    #1
+    #13
     "QUIT"
 
 )

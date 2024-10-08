@@ -59,6 +59,8 @@ scripts=(
     #option 10
     "pipewire__.sh"
     #option 11
+    "PipewireStateAllServices.sh"
+    #option 12
     "reboot__system.sh"
 
 
