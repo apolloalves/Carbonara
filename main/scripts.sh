@@ -61,6 +61,10 @@ scripts=(
     #option 11
     "PipewireStateAllServices.sh"
     #option 12
+    "backup_Personal.sh"
+
+
+
     "reboot__system.sh"
 
 

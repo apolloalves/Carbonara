@@ -40,8 +40,10 @@ options=(
     #11
     "Review Services pipewire"
     #12
-    "Reboot System"
+    "Make Backup with rsync"
     #13
+    "Reboot System"
+    #14
     "QUIT"
 
 )
