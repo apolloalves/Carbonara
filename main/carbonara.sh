@@ -102,7 +102,7 @@ neofetch_output=$(neofetch)
 source '/bin/menu.sh'
 #source '/bin/line_script.sh'
 
-echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m  - EXIT\033m"
+
 echo
 $LINE
 read -p "Input option : " option_choice
