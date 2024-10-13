@@ -6,14 +6,58 @@ if (( EUID != 0 )); then
     exit 1
 fi
 
-#############################################
-#                                           #
-# Script: /bin/LinuxBashCare-10.12.23.sh    #
-# Author : Apollo Alves                     #
-# Date : 16/12/2023                         #
-#############################################
+#!/bin/bash
+source ~/.bashrc
+. ~/.bashrc
+clear
+
+source '/bin/menu.sh'
+source '/bin/line_script.sh'
+
+########################################################################################################################
+#                                                                                                                      #
+# CARBONARA                                                                                                            #
+# THIS PROGRAM CONTAINS ROUTINE AUTOMATION SCRIPTS FOR:                                                                #
+#                                                                                                                      #
+# FULL KERNEL UPDATE;                                                                                                  #
+# COMPLETE UPDATE OF THE LIST OF REPOSITORIES;                                                                         #
+# APPLICATION UPDATE VIA FLATPAK UPDATE                                                                                #
+# COMPLETE DEVICE DRIVER UPDATE;                                                                                       #
+# GRUB UPDATE AFTER KERNEL UPDATE;                                                                                     #
+#                                                                                                                      #
+# AUTOMATIC REMOVAL AND CORRECTION OF APT/DPKG PACKAGES;                                                               #
+# REMOVAL AND CORRECTION OF TRACES OF UNUSED PACKAGES;                                                                 #
+# AUTOMATIC REMOVAL OF ORPHANED PACKAGES THAT ONLY OCCUPY SPACES;                                                      #
+#                                                                                                                      #
+# CLEANING EXCHANGE;                                                                                                   #
+# DISK USAGE SPACE SUMMARY;                                                                                            #
+#                                                                                                                      #
+# IN ADDITION, WE HAVE INCLUDED SCRIPTS TO REMOVE TRACES OF UNUSED DPKGS AND APTS PACKAGES THAT TAKE UP UNNECESSARY    #
+# SPACE AND                                                                                                         #
+# ALSO REMOVE THE ACCUMULATED KERNEL.                                                                                  #
+#                                                                                                                      #
+# AUTHOR : APOLLO ALVES                                                                                                                     #
+#                                                                                                                      #
+########################################################################################################################
+# FOR IT TO WORK EFFECTIVELY, WE RECOMMEND INSTALLING SOME DEPENDENCIES:                                               #
+########################################################################################################################
+# TRASH-CLI - REMOVAL RUBBISH BIN FILES      #
+# HTTPS://GITHUB.COM/ANDREAFRANCIA/TRASH-CLI #
+#                                            #
+# ORPHANER - REMOVAL OF ORPHAN PACKAGES      #
+# SUDO APT INSTALL DEBORPHAN                 #
+#                                            #
+##############################################
+
+# Instructions:
+
+# 1 - Download the file;
+# 2 - Give him execution privileges (X) as root;
+# 3 - Move the file to the /bin directory
+# 4 - Run the command in the terminal with sudo
 
 ##################################################################################################################
+#                                                                                                                #
 # ATTENTION!                                                                                                     #
 #                                                                                                                #
 # AT YOUR OWN RISK, WE ARE NOT RESPONSIBLE FOR ANY SYSTEM FAILURES OR DAMAGES THAT MAY OCCUR WITH YOUR GNU/LINUX #
@@ -25,168 +69,104 @@ fi
 # WE ENCOURAGE YOU TO FEEL FREE TO FURTHER IMPROVE OUR CODE. AFTER ALL, THAT'S WHAT THE GNU/LINUX UNIVERSE WAS   #
 # BORN FOR!                                                                                                      #
 #                                                                                                                #
-# GOOD LUCK! GREETINGS!                                                                                          #
+# # GOOD LUCK! GREETINGS!                                                                                        #
 ##################################################################################################################
 # HIGHLIGHTS COMMANDS                                                                                            #
 ##################################################################################################################
-# PRINT GOOGLE =)                                                                                                #
+#                                                                                                                #
+# PRINT GOOGLE                                                                                                   #
 # echo -e '\033[01;34;47mg\033[01;31mo\033[01;33mo\033[01;34mg\033[01;32ml \033[01;31me\033[00;37;40m'           #
 #                                                                                                                #
 # PRINT FATAL ERROR "RED" - "BLINK"                                                                              #
 # echo -e '\033[05;31merro fatal\033[00;37m'                                                                     #
 #                                                                                                                #
-# PRINT MESSAGE WHITE - "BLINK"                                                                                  #
-# echo -e '\033[01;05;37mDONE\033[00;37m'                                                                        #
-#                                                                                                                #
-# BLINK MESSAGE                                                                                                  #
-# echo -e "\n\033[01;05;37mTraces of unused packages have been successfully removed!!\033[00;37m\n"              #
-#                                                                                                                #
 # PRINT IN "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
 # echo -e '\033[01;37mubuntu \033[04;32mfocal fossa\033[00;37m!!!'                                               #
-#                                                                                                                #
-# OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                            #
-# echo -e "\n\033[01;37m[\033[00;32m \033[01mOK\033[00;32m\033[01;37m ]\033[00m\n"                               #
-#                                                                                                                #
-# OK MESSAGE - DEFAUL                                                                                            #
-# echo -e "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"                                                     #
-#                                                                                                                #
-# DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                                              #
-#                                                                                                                #
-# echo -e "\n\033[01;37m[\033[00;32m \033[01mdone\033[00;32m\033[01;37m ]\033[00m\n"                             #
-# echo -e "\n\033[01;37m\033[01;32m done\033[00;37m\033m\n"                                                      #
-#                                                                                                                #
-# BACKGROUND IN TEXT                                                                                             #
-# echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"                                            #
-#                                                                                                                #
-# WAIT                                                                                                           #
-# echo -e "\n\033[01;37m\033[01mwait...\033[00;37m\033[00m\n"                                                    #
-#                                                                                                                #
-# BACKGROUND WHITE IN TEXT WHITE                                                                                 #
-# echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"                                       #
-#                                                                                                                #
-######################################################################################################################################################################################
-# Removed from list option
+#
+# OK MESSAGE "WHITE BOLD UBUNTU" AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
+# echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
+#
+# DONE MESSAGE AND "GREEN UNDERSCORE" "FOCAL FOSSA"                                              #
+# echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
+#
+# BACKGROUND IN TEXT
+# echo -e "\033[48;8;01;30;100mChoose an option from the menu\033[0m"
+#
+# BACKGROUND WHITE IN TEXT WHITE
+# echo -e "\033[1;48;05;32;100m   Choose an option from the menu  \033[0m"
+
 ######################################################################################################################################################################################
 
-# "Remove unwanted packages of system - ( root user required )    "
-#  su -c "bash /bin/unwanted__pack.sh"
+MENU='carbonara.sh'
+neofetch_output=$(neofetch)
 
-# "Remove unused PPA on system - ( root user required )   "
-#  su -c "bash /bin/remove__unused_ppa.sh"
-######################################################################################################################################################################################
+echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m  - EXIT\033m"
+echo
+$LINE
+read -p "Input option : " option_choice
+$LINE
 
-source /bin/menu.sh
-source /bin/scripts.sh
 
-selected=0
-# Function to print text with background color
+valid_option=true
 
-print_with_bg_color() {
-    local text="$1"
-    echo -e "\033[1;30;107m${text}\033[m"
-}
+if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
-#NEOFETCH='neofetch --ascii_colors 8 7 --colors 7'
-NEOFETCH='neofetch'
-neofetch_output=$($NEOFETCH)
+    if [ "$valid_option" = true ]; then
+        echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
 
-PLOT="$HOME/plot/Disable-ServicesList.log"
-
-clear_screen() {
-
-    printf "\033c"
-}
-
-while true; do
-    clear_screen
-
-    ######################################################################################################################################################################################
-    LINE='/bin/line_script.sh'
-    echo
-    echo -e "\033[1;97;100m               CARBONARA            \033[0m\033[1;30;107m         Apollo Alves         \033[1;97;100m        ARCHLINUX       \033[0m"
-    ######################################################################################################################################################################################
-    echo
-    echo -e "$neofetch_output"
-    $LINE
-    echo -e "Select an option from the menu: \033[01;97m ${options[$selected]}"
-
-    $LINE
-    echo
-
-    for i in "${!options[@]}"; do
-        option_number=$((i + 1))
-        formatted_number=$(printf "%02d" "$option_number") # Formata o número com dois dígitos
-        if [ $i -eq $selected ]; then
-            print_with_bg_color "[ $formatted_number ] ${options[$i]}" 4
-        else
-            echo -e "\033[01;32m[\033[01;97m $formatted_number\033[01;32m ]\033[00;37m ${options[$i]}"
-        fi
-    done
-
-    read -rsn1 key
-
-    case "$key" in
-    "[")                      # Detect arrow sequence (used by arrow keys)
-        read -rsn2 -t 0.1 key # Lê o restante da sequência
-        case "$key" in
-
-        "A") # Up arrow
-            selected=$(((selected - 1 + ${#options[@]}) % ${#options[@]}))
+        case "$option_choice" in
+        1)
+            eggs__wizard.sh
             ;;
-        "B") # Up down
-            selected=$(((selected + 1) % ${#options[@]}))
+        2)
+            clonraid__backups.sh
+            ;;
+        3)
+            check__space.sh
+           ;;
+        4)
+           swap__state.sh
+            ;;
+        5)
+           optimize__performance.sh
+            ;;
+        6)
+           report.sh
+            ;;
+
+        7)
+           show__journalctl.sh
+            ;;
+
+        8)
+            system__analyse.sh
+            ;;
+
+        9)
+            disabled__ListServices.sh
+            ;;
+        10)
+            report.sh
+            ;;
+        11)
+	    reboot__system.sh
+            ;;
+
+        *)
+            echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+            echo -e "Invalid input! Please enter 'y' or 'n'.\n"
             ;;
         esac
-        ;;
-    [1-9])
-        if [ "$key" -ge 1 ] && [ "$key" -le ${#options[@]} ]; then
-            selected=$((key - 1))
-        else
-            echo -e "\nInvalid input!\n"
-        fi
-        ;;
-    "")
-        if [ $selected -eq $((${#options[@]} - 1)) ]; then
-            clear_screen
-            echo "Exiting the program..."
-            sleep 1
-            echo "Bye!"
-            exit 0
-        else
-            clear_screen
-            $LINE
-            echo -e "Option selected: \033[01;97m ${options[$selected]}"
-            $LINE
-            sleep 2
-
-            option_choice=$((selected + 1)) # Convert to option number
-            if [ $option_choice -ge 1 ] && [ $option_choice -le ${#options[@]} ]; then
-                script_index=$((option_choice - 1))
-                script=${scripts[$script_index]}
-
-                IFS=';' read -ra script_array <<<"$script"
-
-                for sub_script in "${script_array[@]}"; do
-                    # Remover espaços em branco
-                    sub_script=$(echo "$sub_script" | tr -d ' ')
-
-                    sub_script_path="/bin/${sub_script}"
-
-                    if [ -f "$sub_script_path" ]; then
-                        bash "$sub_script_path"
-                    else
-                        echo -e "\nScript '$sub_script_path' not found!\n"
-                        break # Sair do loop se um script não for encontrado
-                    fi
-                done
-
-            else
-                echo -e "\nInvalid input!\n"
-            fi
-
-            read -rsn1 -p "Press any key to continue..."
-
-        fi
-        ;;
-    esac
-done
+        $MENU
+    else
+        echo -e "\nops!\n"
+        echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
+        echo -e "Invalid input! Please enter 'y' or 'n'.\n"
+    fi
+else
+    echo
+    echo "Exiting the program..."
+    echo "Bye!"
+    sleep 2
+    clear
+fi
