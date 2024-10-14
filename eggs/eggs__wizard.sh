@@ -19,6 +19,7 @@ fi
 # broot or Nautilus file managers. It also allows installation of Penguin's Eggs and Calamares.                      #
 #                                                                                                                    #
 ######################################################################################################################
+sleep 2
 clear
 
 ######################################################################################################################################################################################
@@ -32,7 +33,7 @@ EGGSMENU='/bin/eggs__wizard.sh'
 
 ######################################################################################################################################################################################
 LINE_SCRIPT='line_script.sh'
-echo -e "\033[1;97;100m               CARBONARA            \033[0m\033[1;30;107m        APOLLO ALVES         \033[1;97;100m        ARCHLINUX       \033[0m"
+echo -e "\033[1;97;100m               carbonara            \033[0m\033[1;30;107m        Apollo Alves        \033[1;97;100m        Penguin's Eggs Wizard       \033[0m"
 ######################################################################################################################################################################################
 echo
 # $LINE_SCRIPT
@@ -55,7 +56,7 @@ echo
 $LINE_SCRIPT
 formatted_prompt=$(printf "\e[1;97mInput option :\e[0m ")
 read -p "$formatted_prompt" option_choice
-# read -p "Input option : " option_choice
+
 $LINE_SCRIPT
 
 valid_option=true
@@ -66,8 +67,8 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
     if [ "$valid_option" = true ]; then
 
         case "$option_choice" in
-        1)
 
+        1)
             $EGGSCREATE
             ;;
         2)

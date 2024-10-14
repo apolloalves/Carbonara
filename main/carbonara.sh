@@ -96,15 +96,10 @@ clear
 
 ######################################################################################################################################################################################
 
-MENU='carbonara.sh'
-neofetch_output=$(neofetch)
-
 source '/bin/menu.sh'
-#source '/bin/line_script.sh'
+source '/bin/line_script.sh'
 
-
-echo
-$LINE
+MENU='/bin/carbonara.sh'
 read -p "Input option : " option_choice
 $LINE
 
@@ -114,7 +109,7 @@ valid_option=true
 if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
     if [ "$valid_option" = true ]; then
-        echo -e "\033[05;31mThe option: $option_choice will be executed:\033[00;37m\n"
+        echo -e "\n\033[01;33mThe option: $option_choice will be executed:\033[00;33m\n"
 
         case "$option_choice" in
         1)
@@ -156,7 +151,8 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
-            echo -e "Invalid input! Please enter 'y' or 'n'.\n"
+            sleep 2
+           $MENU
             ;;
         esac
         $MENU

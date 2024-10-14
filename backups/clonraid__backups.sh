@@ -1,4 +1,4 @@
-rsync_gen.sh#!/bin/bash
+#!/bin/bash
 # Check if the user is root
 if (( EUID != 0 )); then
     echo "This script needs to be run as root."
@@ -20,11 +20,11 @@ fi
 # the operation was successful.                                                                                    #
 #                                                                                                                  #
 ####################################################################################################################
+MENU='/bin/carbonara.sh'
 
-echo -e "\n Opening Nautilus...\n"
+
+echo -e "\nOpening Nautilus..."
 
 sleep 1
-nautilus /mnt/MDSATA/ && >/dev/null 2>&1
-clear
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-echo
+nautilus /mnt/MDSATA >/dev/null 2>&1
+$MENU

@@ -54,7 +54,7 @@ if ! mountpoint -q $MDSATA; then
 fi
 DATE=$(date +"%Y-%m-%d")
 echo "Removing folder: $EGGS_DIRECTORY..."
-sudo rm -rfv $EGGS_DIRECTORY
+sudo rm -rfv $EGGS_DIRECTORY >/dev/null 2>&1
 
 
 while true; do

@@ -45,7 +45,7 @@ sleep 2
 df -h /dev/md127p1 && echo "" && df -h /dev/md127p2 && echo "" && df -h /dev/sdd1 && echo "" && df -h /dev/sdd3
 echo ""
 $LINE_SCRIPT
-sleep  2
+sleep  10
 echo 
 print_status
 
