@@ -132,6 +132,10 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             system__analyse.sh
             ;;
 
+	7)
+	    show__journalctl.sh
+            ;;
+
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
             sleep 2
