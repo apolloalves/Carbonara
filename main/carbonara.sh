@@ -128,7 +128,9 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         5)
             performance_wizard.sh
             ;;
-
+	6)
+            system__analyse.sh
+            ;;
 
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"

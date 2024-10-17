@@ -30,121 +30,76 @@ LINE_SCRIPT='/bin/line_script.sh'
 PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
-
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
 # Function to print status
 print_status() {
     if [ "$?" -eq 0 ]; then
-        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-        echo
+        printf "\n\033[01;37m[\033[00;32m OK \033[01;37m]\033[00m\n"
     else
-        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
+        printf "\n\033[01;37m[\033[00;31m FAILED \033[01;37m]\033[00m\n"
     fi
 }
+
+# Check for systemd-analyze
+if ! command -v systemd-analyze >/dev/null 2>&1; then
+    echo "systemd-analyze is not installed. Please install it first."
+    exit 1
+fi
 
 echo
 systemd-analyze
 echo
 
-printf 'Do you want to plot the result of system-analyze (y/n) ? '
+# Ask for plotting the system analysis
+printf 'Do you want to plot the result of system-analyze (y/n)? '
 read -r SYSTEM_ANALYSE
 
-if [ "$YES" = "$SYSTEM_ANALYSE" ]; then
+if [ "$SYSTEM_ANALYSE" = "$YES" ]; then
     echo -e "\nWait...\n"
     sleep 1
 
-    if [ -d "$PLOTDIR" ]; then
-        echo "$PLOTDIR" was generated!
-
-        echo -e "\nGenerating file plot..."
-        systemd-analyze plot >"$PLOT"
-        echo -e "Plot created in: $PLOT"
-        eog $PLOT >/dev/null 2>&1
-        print_status
-
-        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-        echo "File: $LOG was updated in $DATE!"
-        gedit $LOG >/dev/null 2>&1
-        print_status
-        echo -e "\nopening nautilus to analyze the generated files...\n"
-
-        # Check if Nautilus processes are running
-        if pgrep -x "nautilus" >/dev/null; then
-
-            echo "Terminating Nautilus processes..."
-            pkill -f "nautilus" >/dev/null 2>&1
-
-            # Wait until Nautilus processes are completely closed
-            while pgrep -x "nautilus" >/dev/null; do
-                echo -n "."
-                sleep 1
-            done
-        fi
-
-        # Open Nautilus in the specified directory
-        nautilus $PLOTDIR &
-        print_status
-        echo
-    else
-
-        echo "Creating folder plot in: $HOME"
-        mkdir "$PLOTDIR" >/dev/null 2>&1
-        echo The folder: "$PLOTDIR was created!"
-        print_status
-
-        sleep 1
-
-        echo -e "\nGenerating file plot..."
-        echo -e "\nOpening the $PLOT file..."
-        systemd-analyze plot >"$PLOT"
-        print_status
-        sleep 1
-
-        echo -e "\nGenerating log file..."
-        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-        echo "Log file created in: $LOG"
-        print_status
-        sleep 1
-
-        echo -e "\nOpening the $PLOT file..."
-        eog "$PLOT" >/dev/null 2>&1
-        sleep 1
-        print_status
-
-        echo -e "\nOpening $LOG"
-        sleep 1
-        gedit $LOG >/dev/null 2>&1
-        print_status
-
-        echo -e "Opening Nautilus $PLOTDIR"
-
-        # Check if Nautilus processes are running
-        if pgrep -x "nautilus" >/dev/null; then
-
-            echo "Terminating Nautilus processes..."
-            pkill -f "nautilus" >/dev/null 2>&1
-
-            # Wait until Nautilus processes are completely closed
-            while pgrep -x "nautilus" >/dev/null; do
-                echo -n "."
-                sleep 1
-            done
-        fi
-
-        # Open Nautilus in the specified directory
-        nautilus $PLOTDIR &
-
-        sleep 1
+    if [ ! -d "$PLOTDIR" ]; then
+        echo "Creating folder: $PLOTDIR"
+        mkdir -p "$PLOTDIR" >/dev/null 2>&1
         print_status
     fi
 
-elif [ "$NO" = "$SYSTEM_ANALYSE" ]; then
+    # Generate systemd-analyze plot
+    echo -e "\nGenerating plot..."
+    systemd-analyze plot >"$PLOT"
     print_status
+
+    echo -e "Plot saved in: $PLOT"
+    eog "$PLOT" >/dev/null 2>&1 &
+
+    # Generate systemd-analyze log
+    echo -e "\nGenerating log file..."
+    echo "$DATE" >>"$LOG"
+    systemd-analyze >>"$LOG"
+    print_status
+
+    echo -e "Log saved in: $LOG"
+    gedit "$LOG" >/dev/null 2>&1 &
+
+    # Restart Nautilus if running and open directory
+    if pgrep -x "nautilus" >/dev/null; then
+        echo "Restarting Nautilus..."
+        pkill nautilus
+        sleep 1
+    fi
+
+    echo -e "Opening Nautilus in: $PLOTDIR"
+    nautilus "$PLOTDIR" >/dev/null 2>&1 &
+    print_status
+
+elif [ "$SYSTEM_ANALYSE" = "$NO" ]; then
+    echo "System analysis plot skipped."
 else
     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi
 
-if ! command -v "$LINE_SCRIPT" >/dev/null; then
+# Check if LINE_SCRIPT exists
+if ! command -v "$LINE_SCRIPT" >/dev/null 2>&1; then
     echo -e "Command not found: $LINE_SCRIPT\n"
 fi
