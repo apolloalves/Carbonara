@@ -6,7 +6,6 @@ if (( EUID != 0 )); then
     exit 1
 fi
 
-#!/bin/bash
 source ~/.bashrc
 . ~/.bashrc
 clear
@@ -115,39 +114,21 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         1)
             eggs__wizard.sh
             ;;
+
         2)
+            backup_Personal.sh
+            ;;
+
+        3)
             clonraid__backups.sh
             ;;
-        3)
+	4)
             check__space.sh
-           ;;
-        4)
-           swap__state.sh
             ;;
         5)
-           optimize__performance.sh
-            ;;
-        6)
-           report.sh
+            performance_wizard.sh
             ;;
 
-        7)
-           show__journalctl.sh
-            ;;
-
-        8)
-            system__analyse.sh
-            ;;
-
-        9)
-            disabled__ListServices.sh
-            ;;
-        10)
-            report.sh
-            ;;
-        11)
-	    reboot__system.sh
-            ;;
 
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"

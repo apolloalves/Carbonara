@@ -1,5 +1,11 @@
 
 #!/bin/bash
+# Check if the user is root
+if ((EUID != 0)); then
+    echo "This script needs to be run as root."
+    echo "Please execute this with sudo."
+    exit 1
+fi
 
 #####################################################################
 #                                                                   #
@@ -25,11 +31,11 @@
 #                                                                                                                                  #
 ####################################################################################################################################
 LINE_SCRIPT='/bin/line_script.sh'
-
+PERFORMANCE='/bin/performance_wizard.sh'
 
 
 echo -e "\nSwap Sate\n"
 free -h
 $LINE_SCRIPT
-
 echo -e "\n\033[01;37m[\033[00;32m done\033[00;37m ]\033m\n"
+

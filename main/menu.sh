@@ -30,22 +30,10 @@ echo
 
 ######################################################################################################################################################################################
 
-echo -e "\033[1;36m[\033[01;37m 01\033[1;36m ]\033[01;37m - Egss Wizard"
-echo -e "\033[1;36m[\033[01;37m 02\033[1;36m ]\033[01;37m - Open CLONRAID backups"
-echo -e "\033[1;36m[\033[01;37m 03\033[1;36m ]\033[01;37m - Check space disks"
-echo -e "\033[1;36m[\033[01;37m 04\033[1;36m ]\033[01;37m - Swap State"
-echo -e "\033[1;36m[\033[01;37m 05\033[1;36m ]\033[01;37m - Optimize system performance"
-echo -e "\033[1;36m[\033[01;37m 06\033[1;36m ]\033[01;37m - Report Machine"
-echo -e "\033[1;36m[\033[01;37m 07\033[1;36m ]\033[01;37m - Boot messages wizard ( journalctl -b )"
-echo -e "\033[1;36m[\033[01;37m 08\033[1;36m ]\033[01;37m - Verify Startup time System"
-echo -e "\033[1;36m[\033[01;37m 09\033[1;36m ]\033[01;37m - List of disabled services"
-echo -e "\033[1;36m[\033[01;37m 10\033[1;36m ]\033[01;37m - Report"
-echo -e "\033[1;36m[\033[01;37m 11\033[1;36m ]\033[01;37m - Reboot System"
+echo -e "\033[1;36m[\033[01;37m 01\033[1;36m ]\033[01;37m - Penguin's Eggs Wizard"
+echo -e "\033[1;36m[\033[01;37m 02\033[1;36m ]\033[01;37m - Rsync Backup System"
+echo -e "\033[1;36m[\033[01;37m 03\033[1;36m ]\033[01;37m - Open Clonraid Backups"
+echo -e "\033[1;36m[\033[01;37m 04\033[1;36m ]\033[01;37m - Check Space Disks"
+echo -e "\033[1;36m[\033[01;37m 05\033[1;36m ]\033[01;37m - Optimize System Performance Wizard"
 echo -e "\033[1;36m[\033[01;37m E\033[1;36m  ]\033[01;37m - EXIT"
 echo
-
-
-
-
-
-

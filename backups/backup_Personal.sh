@@ -29,19 +29,19 @@ echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 sleep 3
 clear
 echo -e "\n iniciando o backup folder /home...\n"
-rsync -avh --delete --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/*","node_modules/*"} /home/ /mnt/MDSATA/HOME_BACKUP/ >> /var/log/home_backup.log
+rsync -avh --delete --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/","node_modules/","package.json","package-lock.json","lost+found"} /home/ /mnt/MDSATA/HOME_BACKUP/ >> /var/log/home_backup.log
 echo -e "\n backup folder home completed...\n"
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
 clear
 echo "Opening files logs "
 echo
 sleep 2
-sudo kgx --tab -e "cat /var/log/home_backup.log"
+sudo kgx --tab -e "cat /var/log/home_backup.log" >/dev/null 2>&1
 
 echo
 echo
 cat /var/log/root_backup.log
-sudo kgx --tab -e "cat /var/log/root_backup.log"
+sudo kgx --tab -e "cat /var/log/root_backup.log" >/dev/null 2>&1
 
 clear
 echo "Operation completed"

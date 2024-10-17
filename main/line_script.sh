@@ -1,7 +1,7 @@
 #!/bin/bash
 #########################################################################
 #                                                                       #
-# Script: line_script.sh - Enter a LINE_SCRIPT after each command                     #           
+# Script: line_script.sh - Enter a LINE_SCRIPT after each command       #
 #                                                                       #
 # Author: Apollo Alves                                                  #
 # Date: 16/12/2023                                                      #
@@ -9,14 +9,16 @@
 #########################################################################
 
 #############################################################################################################
-# Description : This bash code creates a LINE_SCRIPT containing 90 trace characters (─) and prints this LINE_SCRIPT on    #
+# Description : This bash code creates a LINE_SCRIPT containing 90 trace characters (─) and  	            #
+# prints this LINE_SCRIPT on    									    #
 # the console.                                                                                              #
 # Here is a step by step description of what the code does:                                                 #
 #                                                                                                           #
-# The LINE_SCRIPT variable is initialized as an empty string:                                                      #
-# Then a loop is used to ite from 0 to 89 (90 times) and build the LINE_SCRIPT by adding the character "─" (trace) #
-# to the LINE_SCRIPT variable with each iteration:                                                                 #
-# Finally, the Printf command is used to print the LINE_SCRIPT on the console.                                     #
+# The LINE_SCRIPT variable is initialized as an empty string:                                               #
+# Then a loop is used to ite from 0 to 89 (90 times) and build the LINE_SCRIPT by adding the                #
+# character "─" (trace) 										    #
+# to the LINE_SCRIPT variable with each iteration:                                                          #
+# Finally, the Printf command is used to print the LINE_SCRIPT on the console.                              #
 #                                                                                                           #
 #############################################################################################################
 
