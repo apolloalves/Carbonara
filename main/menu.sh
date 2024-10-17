@@ -24,7 +24,7 @@ echo -e "\n\033[1;97;100m              Carbonara           \033[0m\033[1;30;107m
 echo
 neofetch
 $LINE
-echo -e "\033[01;97m Select an option from the menu: \033[0m"
+echo -e "\033[01;97m Enter a menu option: \033[0m"
 $LINE
 echo
 
@@ -38,8 +38,11 @@ echo -e "\033[1;36m[\033[0m 05\033[1;36m ]\033[0m Optimize System Performance Wi
 echo -e "\033[1;36m[\033[0m 06\033[1;36m ]\033[0m Verify Startup time System"
 echo -e "\033[1;36m[\033[0m 07\033[1;36m ]\033[0m Boot messages wizard ( journalctl -b )"
 echo -e "\033[1;36m[\033[0m 08\033[1;36m ]\033[0m List of disabled services"
-echo -e "\033[1;36m[\033[0m E\033[1;36m ]\033[0m  EXIT"
-echo
+echo -e "\033[1;36m[\033[0m 09\033[1;36m ]\033[0m Report"
+echo -e "\033[1;36m[\033[0m 10\033[1;36m ]\033[0m Reboot System"
+echo -e "\033[1;36m[\033[0m 11\033[1;36m ]\033[0m Clear Rubbish bin"
+echo -e "\033[1;36m[\033[0m E\033[1;36m  ]\033[0m EXIT\n"
+
 
 
 

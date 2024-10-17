@@ -23,16 +23,19 @@ fi
 #                                                                     #
 #######################################################################
 
- rm -rfv  /home/*/.local/share/recently-used.xbel
-#Trash-cli - is no longer supported
-# trash-empty --all -f
+MENU='/bin/carbonara.sh'
 
- rm -rf ~/.local/share/Trash/*i
+pkill nautilus
+echo "nautilus is closed!"
+trash-empty --all -f
+echo "The trash was cleanup!"
 
+rm -rf  /home/*/.local/share/recently-used.xbel
+rm -rf ~/.local/share/Trash/*i >/dev/null
 
-nautilus --quit
-
+echo "Rubish bin is clean!"
 echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-
-
-
+sleep 2
+read -rsn1 -p "Press any key to continue..."
+clear
+$MENU

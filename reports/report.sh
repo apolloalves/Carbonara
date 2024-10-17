@@ -1,13 +1,14 @@
 #!/bin/bash
 # Check if the user is root
-if ((EUID != 0)); then
+if (( EUID != 0 )); then
     echo "This script needs to be run as root."
     echo "Please execute this with sudo."
     exit 1
 fi
+
 #####################################################################
 #                                                                   #
-# Script: system__analyse.sh                                        #
+# Script: report.sh                                                 #
 # Author: Apollo Alves                                              #
 # Date: 16/12/2023                                                  #
 #                                                                   #
@@ -15,136 +16,66 @@ fi
 
 ########################################################################
 #                                                                      #
-# System Analyse Script                                                #
-# This script is designed to be run with root privileges and performs  #
-# system analysis using systemd-analyze. It provides options to plot   #
-# the results, generate log files, and open relevant files and         #
-# directories. It checks for the existence of folders and files,       #
-# creates them if necessary, and opens the relevant Nautilus instance. #
+# System Report Script                                                 #
+# This script generates a comprehensive machine report with various    #
+# system information. It includes details like machine name, OS name,  #
+# kernel version, hardware information, memory details, partition      #
+# information, last boot time, and more. Requires no user interaction. #
 #                                                                      #
 ########################################################################
 
-YES="y"
-NO="n"
-LINE_SCRIPT='/bin/line_script.sh'
-PLOTDIR="$HOME/plot"
-PLOT="$PLOTDIR/plot.png"
-LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
+MENU='carbonara.sh'
+LINE_SCRIPT='line_script.sh'
+HOSTNAME=$(hostnamectl)
+KERNEL=$(uname -r)
+OSNAME=$(uname)
+DISTRONAME=$(cat /etc/os-release | head -n1 | cut -c -10)
+PROCESSADOR=$(cat /proc/cpuinfo | grep "model name" | head -n1 | cut -c14-)
+NUCLEOS=$(cat /proc/cpuinfo | grep "model name" | wc -l)
+MEMTOTAL=$(cat /proc/meminfo | grep MemTotal | tr -d ' ' | cut -d: -f2)
+PARTITIONS=$(df -h /dev/md127p1 && echo "" && df -h /dev/md127p2 && echo "" && df -h /mnt/MDSATA && echo "" && df -h /mnt/VENTOY)
+DATE=$(date | cut -c-25)
+LASTBOOT=$(systemd-analyze)
+VIDEO=$(lspci | grep -i vga | cut -c 36-)
+WHO=$(who)
+MOTHERBOARD=$(dmidecode -t baseboard | grep "Manufacturer")
+MODEL=$(dmidecode -t baseboard | grep "Product Name")
 
-DATE=$(date '+%Y-%m-%d %H:%M:%S')
+clear
+$LINE_SCRIPT
+echo -e "Machine Report"
+$LINE_SCRIPT
+echo -e "\nMachine Name: $HOSTNAME"
+echo -e "Distro Name: $DISTRONAME"
+echo -e "OS Name: $OSNAME"
+echo -e "Version Kernel: $KERNEL"
+echo -n "Active Machine Since: " && uptime -s
+echo -n "User: " && whoami
+echo
+$LINE_SCRIPT
+echo -e "\nHardwares: \n"
+echo $MOTHERBOARD
+echo $MODEL
+echo -e "Processador: $PROCESSADOR"
+echo "Núcleos: $NUCLEOS"
+echo -e "Total Memory: $MEMTOTAL"
+echo "Video: $VIDEO"
+echo
+$LINE_SCRIPT
 
-# Function to print status
-print_status() {
-    if [ "$?" -eq 0 ]; then
-        printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
-        echo
-    else
-        printf "[ \033[01;31mFAILED\033[01;37m ]\n"
-    fi
-}
+echo -e "\nPartitions: \n"
+echo -e "$PARTITIONS\n"
+$LINE_SCRIPT
+echo -e "\nLast boot : $LASTBOOT\n"
+echo
+echo -e "Report Date: $DATE"
+$LINE_SCRIPT
+echo
+
+# Esperar por uma tecla pressionada antes de limpar a tela
+read -rsn1 -p "Press any key to continue..."
+clear
 
 echo
-systemd-analyze
-echo
+carbonara.sh
 
-printf 'Do you want to plot the result of system-analyze (y/n) ? '
-read -r SYSTEM_ANALYSE
-
-if [ "$YES" = "$SYSTEM_ANALYSE" ]; then
-    echo -e "\nWait...\n"
-    sleep 1
-
-    if [ -d "$PLOTDIR" ]; then
-        echo "$PLOTDIR" was generated!
-
-        echo -e "\nGenerating file plot..."
-        systemd-analyze plot >"$PLOT"
-        echo -e "Plot created in: $PLOT"
-        eog $PLOT >/dev/null 2>&1
-        print_status
-
-        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-        echo "File: $LOG was updated in $DATE!"
-        gedit $LOG >/dev/null 2>&1
-        print_status
-        echo -e "\nopening nautilus to analyze the generated files...\n"
-
-        # Check if Nautilus processes are running
-        if pgrep -x "nautilus" >/dev/null; then
-
-            echo "Terminating Nautilus processes..."
-            pkill -f "nautilus" >/dev/null 2>&1
-
-            # Wait until Nautilus processes are completely closed
-            while pgrep -x "nautilus" >/dev/null; do
-                echo -n "."
-                sleep 1
-            done
-        fi
-
-        # Open Nautilus in the specified directory
-        nautilus $PLOTDIR &
-        print_status
-        echo
-    else
-
-        echo "Creating folder plot in: $HOME"
-        mkdir "$PLOTDIR" >/dev/null 2>&1
-        echo The folder: "$PLOTDIR was created!"
-        print_status
-
-        sleep 1
-
-        echo -e "\nGenerating file plot..."
-        echo -e "\nOpening the $PLOT file..."
-        systemd-analyze plot >"$PLOT"
-        print_status
-        sleep 1
-
-        echo -e "\nGenerating log file..."
-        echo -e "\n$DATE" >>"$LOG" && systemd-analyze >>"$LOG" && echo -e "\n"
-        echo "Log file created in: $LOG"
-        print_status
-        sleep 1
-
-        echo -e "\nOpening the $PLOT file..."
-        eog "$PLOT" >/dev/null 2>&1
-        sleep 1
-        print_status
-
-        echo -e "\nOpening $LOG"
-        sleep 1
-        gedit $LOG >/dev/null 2>&1
-        print_status
-
-        echo -e "Opening Nautilus $PLOTDIR"
-
-        # Check if Nautilus processes are running
-        if pgrep -x "nautilus" >/dev/null; then
-
-            echo "Terminating Nautilus processes..."
-            pkill -f "nautilus" >/dev/null 2>&1
-
-            # Wait until Nautilus processes are completely closed
-            while pgrep -x "nautilus" >/dev/null; do
-                echo -n "."
-                sleep 1
-            done
-        fi
-
-        # Open Nautilus in the specified directory
-        nautilus $PLOTDIR &
-
-        sleep 1
-        print_status
-    fi
-
-elif [ "$NO" = "$SYSTEM_ANALYSE" ]; then
-    print_status
-else
-    echo -e "Invalid input! Please enter 'y' or 'n'.\n"
-fi
-
-if ! command -v "$LINE_SCRIPT" >/dev/null; then
-    echo -e "Command not found: $LINE_SCRIPT\n"
-fi

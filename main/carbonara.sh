@@ -132,13 +132,22 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 	6)
             system__analyse.sh
             ;;
-
 	7)
 	    show__journalctl.sh
             ;;
-
         8)
            disabled__ListServices.sh
+           ;;
+        9)
+           report.sh
+           ;;
+
+        10)
+           reboot__system.sh
+           ;;
+
+        11)
+           rubbish__bin.sh
            ;;
 
         *)
