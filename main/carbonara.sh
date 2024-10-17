@@ -108,7 +108,8 @@ valid_option=true
 if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 
     if [ "$valid_option" = true ]; then
-        echo -e "\n\033[01;33mThe option: $option_choice will be executed:\033[00;33m\n"
+        echo -e "\n\033[01;33mThe option: $option_choice will be executed:\033[0m\n"
+
 
         case "$option_choice" in
         1)
@@ -136,13 +137,17 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
 	    show__journalctl.sh
             ;;
 
+        8)
+           disabled__ListServices.sh
+           ;;
+
         *)
             echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"
             sleep 2
            $MENU
             ;;
         esac
-        $MENU
+
     else
         echo -e "\nops!\n"
         echo -e "\033[01;05;37m'$option_choice' command not found!\033[00m\n"

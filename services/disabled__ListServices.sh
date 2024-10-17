@@ -30,17 +30,22 @@ fi
 #                                                                     #
 ######################################################################
 
+clear
 LINE_SCRIPT='line_script.sh'
-PLOT="$HOME/apollo/plot/Disable-ServicesList.log"
+MENU='/bin/carbonara.sh'
+PLOT="/home/apollo/plot/Disable-ServicesList.log"
 
 echo -e "\nGenerating list..\n"
 
 echo "File Path: " $PLOT
 $LINE_SCRIPT
 echo
-sleep 1
-# systemctl list-unit-files --type=service | grep disable
-systemctl list-unit-files --type=service | grep disable
+
+sudo systemctl list-unit-files --type=service | grep disabled > $PLOT
+cat $PLOT
 echo
 $LINE_SCRIPT
+read -rsn1 -p "Press any key to continue..."
+clear
+$MENU
 echo

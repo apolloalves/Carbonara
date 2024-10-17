@@ -78,17 +78,26 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
             ;;
 
       4)
-	    echo -e "\n\033[01;05;32mMapping system activities...\033[00;37m\n"
+	   echo -e "\n\033[01;05;32mMapping system activities...\033[00;37m\n"
 	    echo -e "\033[1;97mPress Ctrl+C at any time to exit and return to the menu\033[0m"
 	    sleep 2
 
-	    # Captura Ctrl+C apenas durante o monitoramento com journalctl -f
-	    trap 'echo -e "\n\033[01;31mReturning to the menu...\033[0m"; sleep 2; clear; $JORNALMENU' SIGINT
+	    # Captura Ctrl+C durante o monitoramento com journalctl -f
+	    trap ctrl_c INT
 
+	    # Função para lidar com Ctrl+C
+	    ctrl_c() {
+		echo -e "\n\033[01;31mCtrl+C detected! Returning to the menu...\033[0m"
+		sleep 2
+		clear
+		$JORNALMENU
+	    }
+
+	    # Inicia o monitoramento com journalctl -f
 	    journalctl -f
 
-	    # Após o monitoramento, limpar o trap
-	    trap - SIGINT
+	    # Após o monitoramento, desativar o trap
+	    trap - INT
 
 	    clear
 	    $JORNALMENU
