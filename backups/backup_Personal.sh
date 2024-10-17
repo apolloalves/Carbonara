@@ -16,34 +16,80 @@ fi
 ####################################################################################################################
 #                                                                                                                  #
 # Description:                                                                                                     #
-# This script exec rsync backups folders / and /home 	   							   #
-# the operation was successful.                                                                                    #
+# This script executes rsync backups for folders / and /home, and logs the results.                                #
 #                                                                                                                  #
 ####################################################################################################################
+
 clear
-echo -e "\n EXECUTANDO BACKUP DA FOLDER / ...\n"
-sleep 1
+MENU='/bin/carbonara.sh'
+# Exibe mensagem em amarelo negrito
+echo -e "\n\033[1;33mEXECUTING BACKUP OF ROOT FOLDER\033[0m"
+
+(
+    # Loop de progresso
+    while true; do
+        for i in {0..100}; do
+            # Imprime a porcentagem
+            echo -ne "\rProgress: $i% ["
+            # Imprime a barra de progresso
+            for ((j=0; j<i/2; j++)); do
+                echo -n "="
+            done
+            for ((j=i/2; j<50; j++)); do
+                echo -n " "
+            done
+            echo -n "]"
+            sleep 0.1
+        done
+        break
+    done
+) &
+
+# Guarda o PID do processo de loop
+LOOP_PID=$!
+# Executa o backup da raiz
 rsync -avh --delete --exclude={"/proc/*","/sys/*","/dev/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/home/*"} / /mnt/MDSATA/ROOT_BACKUP/ >> /var/log/root_backup.log
-echo -e "\n backup folder root completed...\n"
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-sleep 3
-clear
-echo -e "\n iniciando o backup folder /home...\n"
-rsync -avh --delete --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/","node_modules/","package.json","package-lock.json","lost+found"} /home/ /mnt/MDSATA/HOME_BACKUP/ >> /var/log/home_backup.log
-echo -e "\n backup folder home completed...\n"
-echo -e "\n\033[01;37m[\033[00;32m OK\033[00;37m ]\033m\n"
-clear
-echo "Opening files logs "
+
+# Quando o backup terminar, o laço é finalizado
+kill $LOOP_PID
+
+# Exibe mensagem de conclusão
 echo
+echo -e "\n\033[1;32mBackup folder root completed...\033[0m\n"
+
+# Inicia o backup da pasta /home
+echo -e "\n\033[1;33mStarting backup of /home folder...\033[0m\n"
+
+# Inicia o laço em segundo plano para imprimir os "..." continuamente
+while true; do
+    echo -n "."
+    sleep 1  # Pausa de 1 segundo entre os pontos
+done &
+
+# Guarda o PID do processo de loop
+LOOP_PID=$!
+
+# Executa o backup da pasta /home
+rsync -avh --delete --exclude={".local/share/Trash/*","apollo/.local/share/Trash/*","eggs/","node_modules/","package.json","package-lock.json","lost+found"} /home/ /mnt/MDSATA/HOME_BACKUP/ >> /var/log/home_backup.log
+
+# Quando o backup terminar, o laço é finalizado
+kill $LOOP_PID
+
+# Exibe mensagem de conclusão
+echo
+echo -e "\n\033[1;32mBackup folder home completed...\033[0m\n"
+
+clear
+
+# Abre os logs em terminais separados
+echo -e "\nOpening logs...\n"
 sleep 2
 sudo kgx --tab -e "cat /var/log/home_backup.log" >/dev/null 2>&1
-
-echo
-echo
-cat /var/log/root_backup.log
 sudo kgx --tab -e "cat /var/log/root_backup.log" >/dev/null 2>&1
 
 clear
-echo "Operation completed"
+echo
+echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
 sleep 2
-carbonara
+echo "Returning to the menu.."
+$MENU
