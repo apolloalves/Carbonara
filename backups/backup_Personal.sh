@@ -20,8 +20,9 @@ fi
 #                                                                                                                  #
 ####################################################################################################################
 
-clear
 MENU='/bin/carbonara.sh'
+clear
+
 # Exibe mensagem em amarelo negrito
 echo -e "\n\033[1;33mEXECUTING BACKUP OF ROOT FOLDER\033[0m"
 
@@ -105,5 +106,5 @@ clear
 echo
 echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
 echo "Returning to the menu.."
-sleep 3
+sleep 5
 $MENU

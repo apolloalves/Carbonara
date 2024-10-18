@@ -27,6 +27,7 @@ fi
 YES="y"
 NO="n"
 LINE_SCRIPT='/bin/line_script.sh'
+MENU='/bin/carbonara.sh'
 PLOTDIR="$HOME/plot"
 PLOT="$PLOTDIR/plot.png"
 LOG="$PLOTDIR/system-analyze-$(date '+%Y-%m-%d').log"
@@ -95,6 +96,7 @@ if [ "$SYSTEM_ANALYSE" = "$YES" ]; then
 
 elif [ "$SYSTEM_ANALYSE" = "$NO" ]; then
     echo "System analysis plot skipped."
+    $MENU
 else
     echo -e "Invalid input! Please enter 'y' or 'n'.\n"
 fi
