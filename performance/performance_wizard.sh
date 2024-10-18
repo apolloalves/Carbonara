@@ -36,7 +36,7 @@ echo
 echo -e "\033[01;32m[\033[01;37m 01\033[01;32m ]\033[00;37m - View Swap State\033m"
 echo -e "\033[01;32m[\033[01;37m 02\033[01;32m ]\033[00;37m - Cleanup Swap State\033m"
 echo -e "\033[01;32m[\033[01;37m 03\033[01;32m ]\033[00;37m - Optimize Performance of System\033m"
-echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m - Exit\033m"
+echo -e "\033[01;32m[\033[01;37m E\033[01;32m ]\033[00;37m  - Exit\033m"
 
 ######################################################################################################################################################################################
 
@@ -65,7 +65,6 @@ if [ "$option_choice" != "e" ] && [ "$option_choice" != "E" ]; then
         3)
            optimize__performance.sh
            ;;
-
 
         *)
             echo -e "\nInvalid input! Please enter the number contained in the menu!.\n"
