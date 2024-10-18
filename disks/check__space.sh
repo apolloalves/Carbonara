@@ -23,7 +23,7 @@
 #                                                                                                                   #
 #####################################################################################################################
 
-
+MENU='/bin/carbonara.sh'
 clear_screen() {
 
     printf "\033c"
@@ -34,18 +34,21 @@ clear_screen
 print_status() {
     if [ "$?" -eq 0 ]; then
         printf "\n\033[01;37m[\033[00;32m OK\033[01;37m ]\033m\n"
+
     else
         printf "[ \033[01;31mFAILED\033[01;37m ]\n"
     fi
 }
 
 LINE_SCRIPT='line_script.sh'
-echo -e "\nChecking spaces...\n"                                      
+echo -e "\n\033[01;33mChecking spaces...\033[0m\n"
 sleep 2
 df -h /dev/md127p1 && echo "" && df -h /dev/md127p2 && echo "" && df -h /dev/sdd1 && echo "" && df -h /dev/sdd3
 echo ""
 $LINE_SCRIPT
-sleep  10
 echo 
-print_status
+read -rsn1 -p "Press any key to continue..."
+$MENU
+
+
 

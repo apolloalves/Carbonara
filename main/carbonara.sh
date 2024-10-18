@@ -95,11 +95,11 @@ clear
 
 ######################################################################################################################################################################################
 
+MENU='/bin/carbonara.sh'
 source '/bin/menu.sh'
 source '/bin/line_script.sh'
+read -p $'\033[01;33m Input option : \033[0m' option_choice
 
-MENU='/bin/carbonara.sh'
-read -p "Input option : " option_choice
 $LINE
 
 
