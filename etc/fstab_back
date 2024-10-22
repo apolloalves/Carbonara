@@ -1,0 +1,13 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/md127p2
+UUID=db0901c3-b246-405b-8d44-a9bd4f85f5f1	/         	ext4      	rw,relatime,stripe=256	0 1
+
+# /dev/md127p1
+UUID=CB58-6ACE      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/md127p3
+UUID=7ebb98f0-8663-4712-af2a-d8bc8ee4491a	/home     	ext4      	rw,relatime,stripe=256	0 2
+

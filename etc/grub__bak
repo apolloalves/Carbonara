@@ -3,8 +3,7 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nomodeset nohz_full=0-15 loglevel=0"
-#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nomodeset loglevel=0"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
@@ -15,7 +14,7 @@ GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
 # Set to 'countdown' or 'hidden' to change timeout behavior,
 # press ESC key to display menu.
-GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT_STYLE=menu
 
 # Uncomment to use basic console
 GRUB_TERMINAL_INPUT=console
@@ -45,6 +44,7 @@ GRUB_DISABLE_RECOVERY=true
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
 #GRUB_BACKGROUND="/path/to/wallpaper"
+#GRUB_THEME="/path/to/gfxtheme"
 
 # Uncomment to get a beep at GRUB start
 #GRUB_INIT_TUNE="480 440 1"
@@ -61,4 +61,3 @@ GRUB_DISABLE_RECOVERY=true
 # functionality install os-prober and uncomment to detect and include other
 # operating systems.
 #GRUB_DISABLE_OS_PROBER=false
-GRUB_THEME="/usr/share/grub/themes/Xenlism-Arch/theme.txt"
