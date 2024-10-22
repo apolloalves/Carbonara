@@ -107,4 +107,5 @@ echo
 echo -e "\033[1;32;5mBackup Completed Successfully!\033[0m"
 echo "Returning to the menu.."
 sleep 5
+
 $MENU
